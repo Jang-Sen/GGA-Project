@@ -78,9 +78,6 @@
 				      대관문의</a></li>
 				      <li><a href="http://localhost:9000/gga_plz/store.do">
 				      스토어</a></li>
-				      <li><a href="#">
-				   		이벤트
-				      </a></li>
 				          </ul>
 				 </div>
 			</div>
