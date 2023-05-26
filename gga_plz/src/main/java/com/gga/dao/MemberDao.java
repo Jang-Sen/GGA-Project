@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.gga.vo.MemberVo;
 
 public class MemberDao extends DBConn {
+	
 	/* 전체 카운트 가져오기*/
 	public int totalRowCount() {
 			int count = 0;
@@ -55,7 +56,7 @@ public class MemberDao extends DBConn {
 	}
 	
    /*
-    * select - 愿�由ъ옄 �쉶�썝 愿�由�
+    * select - 회원 리스트
     */
    public ArrayList<MemberVo> select(){
       ArrayList<MemberVo> list = new ArrayList<MemberVo>();
@@ -85,7 +86,7 @@ public class MemberDao extends DBConn {
    }
    
    /*
-    * idCheck - �븘�씠�뵒 以묐났 泥댄겕
+    * idCheck - 아이디 중복 체크
     */
    public int idCheck(String id) {
       int result = 0;
@@ -107,7 +108,7 @@ public class MemberDao extends DBConn {
    }
    
    /*
-    * loginCheck - 濡쒓렇�씤 泥댄겕
+    * loginCheck - 로그인 체크
     */
    public int loginCheck(MemberVo memberVo) {
       int result = 0;
@@ -130,7 +131,7 @@ public class MemberDao extends DBConn {
    }
    
    /*
-    * update - �궡 �젙蹂� �닔�젙
+    * update - 마이페이지 정보 수정
     */
    public int update(MemberVo memberVo) {
       int result = 0;
@@ -154,7 +155,7 @@ public class MemberDao extends DBConn {
    }
    
    /*
-    * insert - �쉶�썝媛��엯
+    * insert - 회원 가입
     */
    public int insert(MemberVo memberVo) {
       int result = 0;
@@ -184,7 +185,7 @@ public class MemberDao extends DBConn {
    }
    
    /*
-    * select(mid) - �쉶�썝 �젙蹂� �긽�꽭 蹂닿린
+    * select(mid) - 회원 리스트
     */
    public MemberVo select(String mid) {
       MemberVo memberVo = new MemberVo();

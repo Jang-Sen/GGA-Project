@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gga.service.MemberService;
 import com.gga.service.NoticeService;
-import com.gga.vo.BoardVo;
 import com.gga.vo.MemberVo;
 import com.gga.vo.NoticeVo;
 
@@ -21,15 +21,15 @@ public class AdminController {
 //	  @Autowired 
 //	  private BoardService boardService;
 	  
-//	  @Autowired 
-//	  private MemberService memberService;
+	  @Autowired 
+	  private MemberService memberService;
 	 
-	
-	@Autowired
-	private NoticeService noticeService;
+	  
+	  @Autowired
+	  private NoticeService noticeService;
 	
 	/*
-	 * admin_board_content - ���� �󼼺��� ( ������ )
+	 * admin_board_content - 리뷰 상세보기
 	 */
 	@RequestMapping(value="/admin_board_content.do",method=RequestMethod.GET)
 	public ModelAndView admin_board_content(String bid) {
@@ -44,7 +44,7 @@ public class AdminController {
 	}
 	
 	/*
-	 * admin_board_list - ���� ���� ( ������ )
+	 * admin_board_list - 리뷰 목록
 	 */
 	@RequestMapping(value="/admin_board_list.do", method=RequestMethod.GET)
 	public ModelAndView admin_board_list(String page) {
@@ -93,29 +93,28 @@ public class AdminController {
 	}
 	
 	/*
-	 * admin_member_list - ȸ�� ���� ( ������ )
+	 * admin_member_list - 회원 목록
 	 */
 	@RequestMapping(value="/admin_member_list.do", method=RequestMethod.GET)
 	public ModelAndView admin_member_list(String page) {
 		ModelAndView model = new ModelAndView();
-		//MemberDao memberDao = new MemberDao();
 		
-		//����¡ ó�� - startCount, endCount ���ϱ�
+		// 페이징 처리 - startCount, endCount 구하기
 		int startCount = 0;
 		int endCount = 0;
-		int pageSize = 5;	//���������� �Խù� ��
-		int reqPage = 1;	//��û������	
-		int pageCount = 1;	//��ü ������ ��
-//		int dbCount = memberService.getTotalRowCount();	//DB���� ������ ��ü ���
+		int pageSize = 5;	// 한 페이지 당 게시물 수
+		int reqPage = 1;	// 요청 페이지
+		int pageCount = 1;	// 전체 페이지 수
+		int dbCount = memberService.getTotalRowCount();	// DB에서 가져온 전체 행 수
 		
-		//�� ������ �� ���
-//		if(dbCount % pageSize == 0){
-//			pageCount = dbCount/pageSize;
-//		}else{
-//			pageCount = dbCount/pageSize+1;
-//		}
+		// 총 페이지 수 계산
+		if(dbCount % pageSize == 0){
+			pageCount = dbCount/pageSize;
+		}else{
+			pageCount = dbCount/pageSize+1;
+		}
 
-		//��û ������ ���
+		// 요청 페이지 계산
 		if(page != null){
 			reqPage = Integer.parseInt(page);
 			startCount = (reqPage-1) * pageSize+1; 
@@ -125,11 +124,11 @@ public class AdminController {
 			endCount = 5;
 		}
 		
-//		ArrayList<MemberVo> list = memberService.getSelect(startCount, endCount);
-//	
-//		model.addObject("list", list);
-//		
-//		model.addObject("dbCount", dbCount);
+		ArrayList<MemberVo> list = memberService.getSelect(startCount, endCount);
+	
+		model.addObject("list", list);
+		
+		model.addObject("dbCount", dbCount);
 		model.addObject("pageSize", pageSize);
 		model.addObject("pageCount", pageCount);
 		model.addObject("page", reqPage);
@@ -142,7 +141,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_delete_proc �����Ϸ� ó��
+	 * admin_notice_delete_proc - 공지사항 삭제 처리
 	 */
 	@RequestMapping(value="/admin_notice_delete_proc.do", method=RequestMethod.POST)
 	public ModelAndView admin_notice_delete_proc(String nid) {
@@ -156,7 +155,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_delete �������� ���� ��
+	 * admin_notice_delete - 공지사항 삭제
 	 */
 	@RequestMapping(value="/admin_notice_delete.do", method=RequestMethod.GET)
 	public ModelAndView admin_notice_delete(String nid) {
@@ -169,7 +168,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_write_proc.do
+	 * admin_notice_write_proc.do - 공지사항 등록 처리
 	 */
 	@RequestMapping(value="/admin_notice_write_proc.do", method=RequestMethod.POST)
 	public String admin_notice_write_proc(NoticeVo noticeVo) {
@@ -185,7 +184,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_write
+	 * admin_notice_write - 공지사항 등록
 	 */
 	@RequestMapping(value="/admin_notice_write.do", method = RequestMethod.GET)
 	public String admin_notice_write() {
@@ -194,7 +193,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_update_proc.do - �������� ���� ó��
+	 * admin_notice_update_proc.do - 공지사항 수정 처리
 	 */
 	@RequestMapping(value="/admin_notice_update_proc.do", method=RequestMethod.POST)
 	public ModelAndView admin_notice_update_proc(NoticeVo noticeVo) {
@@ -211,7 +210,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_update.do
+	 * admin_notice_update.do - 공지사항 수정
 	 */
 	@RequestMapping(value="/admin_notice_update.do", method=RequestMethod.GET)
 	public ModelAndView admin_notice_update(String nid) {
@@ -226,7 +225,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_notice_content.do
+	 * admin_notice_content.do - 공지사항 상세보기
 	 */
 	@RequestMapping(value="/admin_notice_content.do", method=RequestMethod.GET)
 	public ModelAndView admin_notice_content(String nid) {
@@ -242,7 +241,7 @@ public class AdminController {
 	
 	
 	/*
-	 * admin_index.do
+	 * admin_index.do - 관리자 메인 페이지
 	 */
 	@RequestMapping(value="/admin_index.do", method=RequestMethod.GET)
 	public String admin_index() {

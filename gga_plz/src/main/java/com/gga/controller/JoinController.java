@@ -1,50 +1,52 @@
 package com.gga.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gga.dao.MemberDao;
+import com.gga.service.MemberService;
 import com.gga.vo.MemberVo;
 
 @Controller
 public class JoinController {
+	
+	@Autowired
+	private MemberService memberService;
+	
 	/**
-	 * join.do
+	 * join.do - íšŒì›ê°€ì…
 	 */
 	@RequestMapping(value="/join.do", method=RequestMethod.GET)
 	public String join() {
 		return "/join/join";
 	}
+	
 	/**
-	 *  idCheckProc Áßº¹°Ë»ç
+	 *  idCheckProc ì•„ì´ë”” ì¤‘ë³µì²´í¬
 	 */
 	@RequestMapping(value="/idCheckProc.do", method=RequestMethod.GET)
 	@ResponseBody
 	public String idCheckProc(String id) {
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.idCheck(id);
-		
-		return String.valueOf(result);
-		
+		return memberService.getIdCheck(id);
 	}
+	
 	/**
-	 * joinProc °¡ÀÔÇÏ±â 
+	 * joinProc íšŒì›ê°€ì… ì²˜ë¦¬
 	 */
 	@RequestMapping(value="/joinProc.do", method=RequestMethod.POST)
 	public ModelAndView joinProc(MemberVo memberVo) {
 		ModelAndView model = new ModelAndView();
 		
-		MemberDao memberDao = new MemberDao();
-		int result = memberDao.insert(memberVo);
+		int result = memberService.getJoin(memberVo);
 		
 		if(result == 1) {
 			model.addObject("joinResult", "ok");
 			model.setViewName("/login/login");
 		} else {
-			//È¸¿ø°¡ÀÔ ½ÇÆĞ½Ã!
+			// ì—ëŸ¬ ë©”ì„¸ì§€
 		}
 		return model;	
 	}
