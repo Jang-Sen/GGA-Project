@@ -24,8 +24,8 @@
 	</beans:bean>
 	
 	<!-- Service -->
-	<!-- <beans:bean id="memberService" class="com.gga.service.MemberServiceImpl" />
-	<beans:bean id="boardService" class="com.gga.service.BoardServiceImpl" /> -->
+	<beans:bean id="memberService" class="com.gga.service.MemberServiceImpl" />
+	<!-- <beans:bean id="boardService" class="com.gga.service.BoardServiceImpl" /> -->
 	<beans:bean id="noticeService" class="com.gga.service.NoticeServiceImpl" />
 	<beans:bean id="orderService" class="com.gga.service.OrderServiceImpl" />
 	<beans:bean id="movieService" class="com.gga.service.MovieServiceImpl" />
