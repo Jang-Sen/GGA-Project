@@ -55,6 +55,31 @@
 .section4{
     margin-top: 20px;
 }
+
+.fixed_button{
+	border : 1px solid blue;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	margin : 50px 230px;
+	border: none;
+	padding: 10px;
+	font-weight: bold;
+	
+}
+
+.fixed_button .fixed{
+	padding: 10px;
+	cursor: pointer;
+}
+.fixed_button .fixed .fixed_order_btn{
+	border-radius: 30px;
+	padding: 11px 35px;
+	opacity:0.5;
+}
+
+
+
 </style>
 
 <body>
@@ -72,6 +97,33 @@
 			    <iframe justify-content-center width="100%" height="500px" 
 			    src="https://www.youtube.com/embed/cGNUpsevAk4?mute=1&autoplay=1"></iframe>
 			</div>
+		</div>
+		
+		<div class="fixed_button">
+		<!-- 예매하기 고정 버튼 -->
+			<div class="fixed">
+			<a href = "http://localhost:9000/gga_plz/movie_menu.do">
+			<button type="button" class="fixed_order_btn">예매하기</button></a>
+			</div>
+			
+		<!-- 카카오톡 채널 추가 버튼 -->
+			<!-- <div class="fixed"
+			  id="kakao-talk-channel-add-button"
+			  data-channel-public-id="_CIxkYxj"
+			  data-size="large"
+			  data-support-multiple-densities="true"
+			></div> -->
+			
+		<!-- 카카오톡 톡상담 버튼 -->
+			<div class="fixed"
+			  id="kakao-talk-channel-chat-button"
+			  data-channel-public-id="_CIxkYxj"
+			  data-title="consult"
+			  data-size="large"
+			  data-color="yellow"
+			  data-shape="pc"
+			  data-support-multiple-densities="true"
+			></div>
 		</div>
 		
 		<div class="section2">
@@ -225,4 +277,42 @@
 			marker.setMap(map);
 	</script>
 </body>
+
+	<!-- 카카오톡 채널 추가  -->
+	<!-- <script>
+	  window.kakaoAsyncInit = function() {
+	    Kakao.Channel.createAddChannelButton({
+	      container: '#kakao-talk-channel-add-button',
+	    });
+	  };
+	
+	  (function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.channel.min.js';
+	    js.integrity = 'sha384-MEvxc+j9wOPB2TZ85/N6G3bt3K1/CgHSGNSM+88GoytFuzP4C9szmANjTCNfgKep';
+	    js.crossOrigin = 'anonymous';
+	    fjs.parentNode.insertBefore(js, fjs);
+	  })(document, 'script', 'kakao-js-sdk');
+	</script> -->
+
+	<!-- 카카오톡 톡상담 -->
+	<script>
+	  window.kakaoAsyncInit = function() {
+	    Kakao.Channel.createChatButton({
+	      container: '#kakao-talk-channel-chat-button',
+	    });
+	  };
+	
+	  (function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.channel.min.js';
+	    js.integrity = 'sha384-MEvxc+j9wOPB2TZ85/N6G3bt3K1/CgHSGNSM+88GoytFuzP4C9szmANjTCNfgKep';
+	    js.crossOrigin = 'anonymous';
+	    fjs.parentNode.insertBefore(js, fjs);
+	  })(document, 'script', 'kakao-js-sdk');
+	</script>
 </html>
