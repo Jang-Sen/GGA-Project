@@ -1,5 +1,39 @@
 $(document).ready(function(){
+	/***********************************
+	store
+	*************************************/
+   $("#store_cart").click(function(){
+  $('#cartModal').modal('show');
+ });
+  $("#cartaddbtn").click(function(){
+	 $('#buyModal').modal('show');
+ });
+  $("#shoppingbtn").click(function(){
+	 $('#buyModal').modal('hide');
+ });
+  $("#gocartbtn").click(function(){
+	 $('#buyModal').modal('hide');
+	 $('#cartModal').modal('show');
+ });
+  $("#cartclosebtn2").click(function(){
+	 $('#buyModal').modal('hide');
+ });
+  $("#buybtn").click(function(){
+	 $('#buycartModal').modal('show');
+ });
+  $("#cartclosebtn3").click(function(){
+	 $('#buycartModal').modal('hide');
+ });
 
+ 
+  $("#cartcardpay").click(function(){
+	alert("추후에 결제 구현");
+ });
+  $("#cartclosebtn").click(function(){
+  $('#cartModal').modal('hide');
+ });
+ 
+ 
 	/*********************************
 	 영화 CRUD
 	 *********************************/
@@ -115,7 +149,6 @@ $(document).ready(function(){
 		var seatcom = $("#seatcom").html();
 		var seattotal = $("#seattotal").html();
 		var oid = $("#oidinput").val();
-		alert(seatcom+seattotal+oid);
 		
 		var IMP = window.IMP; 
         IMP.init("imp71285848"); 
