@@ -49,4 +49,21 @@ public class LoginController {
 		
 		return model; 
 	}
+	
+	/*
+	 * login_idFind - 아이디 찾기
+	 */
+	@RequestMapping(value="/login_idFind.do", method=RequestMethod.GET)
+	public String login_idFind() {
+		return "/login/login_idFind";
+	}
+	
+	/*
+	 * login_pwFind - 비밀번호 찾기
+	 */
+	@RequestMapping(value="/login_pwFind.do", method=RequestMethod.GET)
+	public String login_pwFind() {
+		return "/login/login_pwFind";
+	}
+	
 }
