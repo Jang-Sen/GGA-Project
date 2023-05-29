@@ -65,8 +65,8 @@
 							<img src="http://localhost:9000/gga_plz/images/loginbtn.png" class="loginbtnbtn" id="btnLogin">
 						</li>
 						<li>
-							<span><a href="#">아이디 찾기></a></span>
-							<span><a href="#">비밀번호 찾기></a></span>
+							<span><a href="http://localhost:9000/gga_plz/login_idFind.do">아이디 찾기></a></span>
+							<span><a href="http://localhost:9000/gga_plz/login_pwFind.do">비밀번호 찾기></a></span>
 						</li>
 						<li>
 							<h5>간편로그인</h5>

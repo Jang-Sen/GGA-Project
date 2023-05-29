@@ -213,4 +213,42 @@ public class MemberDao extends DBConn {
       
       return memberVo;
    }
+   
+   /*
+    * select(memberVo) - 아이디 찾기
+    */
+   public void select_id(MemberVo memberVo) {
+	   String sql = "SELECT ID FROM GGA_MEMBER"
+	   		+ " WHERE NAME = ? AND BIRTH = ? AND PHONE = ?";
+	   getPreparedStatement(sql);
+	   
+	   try {
+		pstmt.setNString(1, memberVo.getName());
+		pstmt.setNString(2, memberVo.getBirth());
+		pstmt.setNString(3, memberVo.getPhone());
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   
+   }
+   
+   /*
+    * select(memberVo) - 비밀번호 찾기
+    */
+   public void select_pw(MemberVo memberVo) {
+	   String sql = "SELECT PASS FROM GGA_MEMBER"
+			   + " WHERE ID = ? AND NAME = ? AND BIRTH = ? AND PHONE = ?";
+	   getPreparedStatement(sql);
+	   
+	   try {
+		   pstmt.setNString(1, memberVo.getId());
+		   pstmt.setNString(2, memberVo.getName());
+		   pstmt.setNString(3, memberVo.getBirth());
+		   pstmt.setNString(4, memberVo.getPhone());
+	   } catch (Exception e) {
+		   e.printStackTrace();
+	   }
+	   
+   }
+   
 }
