@@ -3,22 +3,41 @@ $(document).ready(function(){
 	store
 	*************************************/
    $("#store_cart").click(function(){
-  $('#cartModal').modal('show');
+  	 $('#CartModal .modal-content').load('cartModal.do');
+	 $('#CartModal').modal('show');
  });
-  $("#cartaddbtn").click(function(){
-	 $('#buyModal').modal('show');
- });
+  
+  $(".cartbtn").click(function() {
+  		var pid = $(this).data('id');
+
+	  $.ajax({
+	    url: "cart_insert_proc.do?pid="+pid,
+	    success: function(result) {
+
+	      $('#buyModal').modal('show');
+	      
+	    }
+	  });
+	  return false;
+});
+
+
   $("#shoppingbtn").click(function(){
 	 $('#buyModal').modal('hide');
  });
   $("#gocartbtn").click(function(){
 	 $('#buyModal').modal('hide');
-	 $('#cartModal').modal('show');
+	
+	 $('#CartModal .modal-content').load('cartModal.do');
+	 $('#CartModal').modal('show');
+	 
  });
+ 
+
   $("#cartclosebtn2").click(function(){
 	 $('#buyModal').modal('hide');
  });
-  $("#buybtn").click(function(){
+  $(".cartbtn2").click(function(){
 	 $('#buycartModal').modal('show');
  });
   $("#cartclosebtn3").click(function(){

@@ -616,7 +616,13 @@ div.container section.coron_2 div:nth-child(4) {
 .cartbtn img{
 	width:135px;
 }
+.cartbtn2 img{
+	width:135px;
+}
 .cartbtn:hover{
+	cursor:pointer;
+}
+.cartbtn2:hover{
 	cursor:pointer;
 }
 .store_cart {
