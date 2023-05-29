@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,14 +70,14 @@
 			<div class="row">
 				<div class="col">
 					<div class="card">
-					  <img src="http://localhost:9000/gga_plz/images/comboset.png" class="mimg" id="MOVIE_0004">
+					  <img src="http://localhost:9000/gga_plz/images/comboset.png">
 					  <div class="card-body">
 					    <h5 class="card-title">팝콘 콤보</h5>
 					    <p class="card-text">가격 : 15,000<p>
 					    <div class="storebtns">
-					    <a class="cartbtn" id="cartaddbtn">
+					    <a class="cartbtn" data-id="P_0001" id="popcorncombobtn">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn">
+							<a id="buybtn" class="cartbtn2">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					    </div>
 					  </div>
@@ -84,14 +85,14 @@
 				</div>
 				<div class="col">
 					<div class="card">
-					  <img src="http://localhost:9000/gga_plz/images/popcorn.png" class="mimg" id="MOVIE_0001">
+					  <img src="http://localhost:9000/gga_plz/images/popcorn.png">
 					  <div class="card-body">
 					    <h5 class="card-title">팝콘 단품</h5>
 					    <p class="card-text">가격 : 5,000</p>
 					    <div class="storebtns">
-					   <a class="cartbtn" id="cartaddbtn">
+					   <a class="cartbtn" data-id="P_0002" id="popcorncombobtn">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn">
+							<a id="buybtn" class="cartbtn2">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -99,14 +100,14 @@
 				</div>
 				<div class="col">
 					<div class="card">
-					  <img src="http://localhost:9000/gga_plz/images/coke.png" class="mimg" id="MOVIE_0002">
+					  <img src="http://localhost:9000/gga_plz/images/coke.png">
 					  <div class="card-body">
 					    <h5 class="card-title">콜라 단품</h5>
 					    <p class="card-text">가격 : 3,000<p>
 					    <div class="storebtns">
-					    <a class="cartbtn" id="cartaddbtn">
+					    <a class="cartbtn" data-id="P_0003">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn">
+							<a id="buybtn" class="cartbtn2">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -117,14 +118,14 @@
 			<div class="row">
 				<div class="col">
 					<div class="card">
-					  <img src="http://localhost:9000/gga_plz/images/cottoncandy.png" class="mimg" id="MOVIE_0007">
+					  <img src="http://localhost:9000/gga_plz/images/cottoncandy.png">
 					  <div class="card-body">
 					    <h5 class="card-title">솜사탕</h5>
 					    <p class="card-text">가격 : 5,000<p>
 					    <div class="storebtns">
-					   <a class="cartbtn" id="cartaddbtn">
+					   <a class="cartbtn" data-id="P_0004">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn">
+							<a id="buybtn" class="cartbtn2">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -132,14 +133,14 @@
 				</div>
 				<div class="col">
 					<div class="card">
-					  <img src="http://localhost:9000/gga_plz/images/ggagiftcard.png" class="mimg" id="MOVIE_0003">
+					  <img src="http://localhost:9000/gga_plz/images/ggagiftcard.png">
 					  <div class="card-body">
 					    <h5 class="card-title">GGA 기프트카드</h5>
 					    <p class="card-text">가격 : 30,000<p>
 					    <div class="storebtns">
-					    <a class="cartbtn" id="cartaddbtn">
+					    <a class="cartbtn" data-id="P_0005">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn">
+							<a id="buybtn" class="cartbtn2">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -147,14 +148,14 @@
 				</div>
 				<div class="col">
 				<div class="card" >
-				  <img src="http://localhost:9000/gga_plz/images/snack.png" class="mimg" id="MOVIE_0009">
+				  <img src="http://localhost:9000/gga_plz/images/snack.png">
 				  <div class="card-body">
 				    <h5 class="card-title">버터구이 오징어</h5>
 				    <p class="card-text">가격 : 5,000<p>
 				    <div class="storebtns">
-				   			 <a class="cartbtn" id="cartaddbtn">
+				   			 <a class="cartbtn" data-id="P_0006">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn">
+							<a id="buybtn" class="cartbtn2">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 				  </div>
 				  </div>
@@ -164,7 +165,7 @@
 		</nav>
 			</div>
 			
-			<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<%-- <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header border-bottom-0">
@@ -188,18 +189,20 @@
             </tr>
           </thead>
           <tbody>
+             <c:forEach var="cartVo" items="${list}">
             <tr>
               <td class="w-25">
                 <img src="http://localhost:9000/gga_plz/images/popcorn.png" class="img-fluid img-thumbnail" alt="Sheep">
               </td>
-              <td>팝콘 단품</td>
-              <td>5,000</td>
-              <td class="qty"><input type="text" class="form-control" id="qtyinput" value="1"></td>
-              <td>5,000</td>
+              <td>${cartVo.pname}</td>
+              <td>${cartVo.pprice}</td>
+              <td class="qty"><input type="text" class="form-control" id="qtyinput" value="${cartVo.qty}"></td>
+              <td>${cartVo.totalprice }</td>
               <td>
                 <button type="button" class="cartitemdelete">삭제</button>
               </td>
             </tr>
+            </c:forEach>
           </tbody>
         </table> 
         <div class="carttotalprice justify-content-end">
@@ -212,6 +215,14 @@
         <button type="button" id="cartcardpay" class="btn btn-success" data-dismiss="modal">
     <img src="http://localhost:9000/gga_plz/images/cardpay.png"></button>
       </div>
+    </div>
+  </div>
+</div>  --%>
+
+<!-- Moa Modal-->
+  <div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
     </div>
   </div>
 </div>
