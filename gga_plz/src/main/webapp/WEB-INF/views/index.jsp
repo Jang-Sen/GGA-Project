@@ -65,6 +65,7 @@
 	border: none;
 	padding: 10px;
 	font-weight: bold;
+	z-index : 1;
 	
 }
 
@@ -102,7 +103,7 @@
 		<div class="fixed_button">
 		<!-- 예매하기 고정 버튼 -->
 			<div class="fixed">
-			<a href = "http://localhost:9000/gga_plz/movie_menu.do">
+			<a href = "http://localhost:9000/gga_plz/order.do">
 			<button type="button" class="fixed_order_btn">예매하기</button></a>
 			</div>
 			
