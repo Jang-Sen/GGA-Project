@@ -68,7 +68,7 @@
 					</li>
 					<li>
 						<label>생년월일</label>
-						<input type="text" name="birth" class="input1" id="birth" numberOnly placeholder="주민등록번호 앞 6자리">
+						<input type="text" name="birth" class="input1" id="birth" maxlength="6" numberOnly placeholder="주민등록번호 앞 6자리">
 					</li>
 					<li>
 						<label>성별</label>
@@ -80,7 +80,7 @@
 						<input type="radio" name="tel" value="skt"><span>SKT</span>
 						<input type="radio" name="tel" value="kt"><span>KT</span>
 						<input type="radio" name="tel" value="lgu+"><span>LG U+</span>
-						<input type="text" name="phone" id="phone" numberOnly>				
+						<input type="text" name="phone" id="phone" maxlength="11" numberOnly>				
 					</li>
 					<li>
 						<label>이메일</label>
@@ -97,7 +97,7 @@
 					<li>
 						<label>차량번호</label>
 						<input type="text" name="car1" id="car1" class="input1" placeholder= "예) 00가">
-						<input type="text" name="car2" id="car2" class="input1" numberOnly placeholder= "예) 0000">
+						<input type="text" name="car2" id="car2" class="input1" maxlength="4" numberOnly placeholder= "예) 0000">
 					</li>
 					<li>
 					<li>

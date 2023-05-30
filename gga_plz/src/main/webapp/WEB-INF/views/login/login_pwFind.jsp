@@ -43,7 +43,7 @@
 	<!-- content -->
 	<div class="container">
 		<div class="login_title">
-			<h1>비밀번호 찾기</h1>
+			<img src="http://localhost:9000/gga_plz/images/passschtitle.png">
 		</div>
 		<p>찾으실 아이디와 이름, 생년월일 및 휴대전화를 입력해주세요.</p>
 		<section class="login">
@@ -59,15 +59,15 @@
 					</li>
 					<li>
 						<label>생년월일</label>
-						<input type="text" name="birth" id="birth" class="input1" numberOnly placeholder="주민등록번호 앞 6자리">
+						<input type="text" name="birth" id="birth" class="input1" maxlength="6" numberOnly placeholder="주민등록번호 앞 6자리">
 					</li>
 					<li>
 						<label>휴대전화</label>
-						<input type="text" name="phone" id="phone" numberOnly placeholder="'-'없이 모두 입력">
+						<input type="text" name="phone" id="phone" maxlength="11" numberOnly placeholder="'-'없이 모두 입력">
 					</li>
 				</ul>
 					<div class="findbtn">
-						<button type="submit" id="btnFindPw" class="btnfindproc">찾기</button>
+						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindId" class="btnfindproc">
 					</div>
 			</form>
 		</section>
