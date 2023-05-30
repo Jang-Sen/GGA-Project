@@ -43,7 +43,7 @@
 	<!-- content -->
 	<div class="container">
 		<div class="login_title">
-			<h1>아이디 찾기</h1>
+			<img src="http://localhost:9000/gga_plz/images/idschtitle.png">
 		</div>
 		<p>회원 정보에 등록된 이름과 휴대전화를 입력해주세요.</p>
 		<section class="login">
@@ -59,11 +59,11 @@
 					</li>
 					<li>
 						<label>휴대전화</label>
-						<input type="text" name="phone" id="phone" numberOnly placeholder="'-'없이 모두 입력">
+						<input type="text" name="phone" id="phone" maxlength="11" numberOnly placeholder="'-'없이 모두 입력">
 					</li>
 				</ul>
 					<div class="findbtn">
-						<button type="submit" id="btnFindId" class="btnfindproc">찾기</button>
+						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindId" class="btnfindproc">
 					</div>
 			</form>
 		</section>

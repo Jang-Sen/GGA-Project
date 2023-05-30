@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.member">
+
+	<select id="select" parameterType="map" resultType="com.gga.vo.MemberVo">
+		SELECT RNO, ID, NAME, MDATE 
+					FROM (SELECT ROWNUM RNO, ID, NAME, TO_CHAR(MDATE,'YYYY-MM-DD') MDATE 
+					FROM (SELECT ID, NAME, MDATE FROM MYCGV_MEMBER
+					ORDER BY MDATE DESC))
+					WHERE RNO BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM GGA_MEMBER WHERE ID = #{id}
+	</select>
+	
+	<select id="select2">
+		SELECT ROWNUM RNO, ID, NAME, CARNUM, TO_CHAR(MDATE, 'YYYY-MM-DD') MDATE
+            	FROM (SELECT ID, NAME, CARNUM, MDATE
+            	FROM GGA_MEMBER ORDER BY MDATE DESC)
+	</select>
+	
+	<select id="login" parameterType="com.gga.vo.MemberVo" resultType="int">
+		SELECT COUNT(*) FROM GGA_MEMBER WHERE ID = #{id} AND PASS = #{pass}
+	</select>
+	
+	<update id="update" parameterType="com.gga.vo.MemberVo">
+		UPDATE GGA_MEMBER SET PASS = #{pass}, PHONE = #{phone}, EMAIL = #{email}, CARNUM = #{carnum}
+            WHERE ID = #{id}
+	</update>
+	
+	<insert id="join" parameterType="com.gga.vo.MemberVo">
+		INSERT INTO GGA_MEMBER(ID, PASS, NAME, BIRTH, GENDER, TEL, PHONE, EMAIL, CARNUM, GENRE, MDATE)
+            VALUES(#{id}, #{pass}, #{name}, #{birth}, #{gender}, #{tel}, #{phone}, #{email}, #{carnum}, #{genreList}, SYSDATE)
+	</insert>
+	
+</mapper>

@@ -1,10 +1,21 @@
 package com.gga.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.gga.vo.MemberVo;
 
+@Repository
 public class MemberDao extends DBConn {
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
 	
 	/* 전체 카운트 가져오기*/
 	public int totalRowCount() {
@@ -28,6 +39,16 @@ public class MemberDao extends DBConn {
 	/* 전체 리스트 */
 	public ArrayList<MemberVo> select(int startCount, int endCount){
 		
+		Map<String, Integer> param = new HashMap<String, Integer>();
+		
+		param.put("start", startCount);
+		param.put("end", endCount);
+		
+		List<MemberVo> list = sqlSession.selectList("mapper.member.select", param);
+		
+		return (ArrayList<MemberVo>)list;
+		
+		/*
 		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 		try{
 			String sql = "SELECT RNO, ID, NAME, MDATE" + 
@@ -53,12 +74,18 @@ public class MemberDao extends DBConn {
 			
 		}catch(Exception e){ e.printStackTrace();}
 		return list;
+		*/
 	}
 	
    /*
     * select - 회원 리스트
     */
    public ArrayList<MemberVo> select(){
+	   List<MemberVo> list = sqlSession.selectList("mapper.member.select2"); 
+	   
+	   return (ArrayList<MemberVo>)list;
+	   
+	   /*
       ArrayList<MemberVo> list = new ArrayList<MemberVo>();
       String sql = "SELECT ROWNUM RNO, ID, NAME, CARNUM, TO_CHAR(MDATE, 'YYYY-MM-DD') MDATE"
             + " FROM (SELECT ID, NAME, CARNUM, MDATE"
@@ -83,12 +110,17 @@ public class MemberDao extends DBConn {
       }
       
       return list;
+      */
    }
    
    /*
     * idCheck - 아이디 중복 체크
     */
    public int idCheck(String id) {
+	   
+	   return sqlSession.selectOne("mapper.member.idCheck", id);
+	   
+	   /*
       int result = 0;
       String sql = "SELECT COUNT(*) FROM GGA_MEMBER WHERE ID = ?";
       getPreparedStatement(sql);
@@ -105,12 +137,17 @@ public class MemberDao extends DBConn {
       }
       
       return result;
+      */
    }
    
    /*
     * loginCheck - 로그인 체크
     */
    public int loginCheck(MemberVo memberVo) {
+	   
+	   return sqlSession.selectOne("mapper.member.login", memberVo);
+	   
+	   /*
       int result = 0;
       String sql = "SELECT COUNT(*) FROM GGA_MEMBER WHERE ID = ? AND PASS = ?";
       getPreparedStatement(sql);
@@ -128,15 +165,20 @@ public class MemberDao extends DBConn {
       }
       
       return result;
+      */
    }
    
    /*
     * update - 마이페이지 정보 수정
     */
    public int update(MemberVo memberVo) {
+	   
+	   return sqlSession.update("mapper.member.update", memberVo);
+	   
+	   /*
       int result = 0;
       String sql = "UPDATE GGA_MEMBER SET PASS = ?, PHONE = ?, EMAIL = ?, CARNUM = ?"
-            + " WHERE MID = ?";
+            + " WHERE ID = ?";
       getPreparedStatement(sql);
       
       try {
@@ -152,12 +194,17 @@ public class MemberDao extends DBConn {
       }
       
       return result;
+      */
    }
    
    /*
     * insert - 회원 가입
     */
    public int insert(MemberVo memberVo) {
+	   
+	   return sqlSession.insert("join", memberVo);
+	   
+	   /*
       int result = 0;
       String sql = "INSERT INTO GGA_MEMBER(ID, PASS, NAME, BIRTH, GENDER, TEL, PHONE, EMAIL, CARNUM, GENRE, MDATE)"
             + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE)";
@@ -182,6 +229,7 @@ public class MemberDao extends DBConn {
       }
       
       return result;
+      */
    }
    
    /*
