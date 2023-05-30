@@ -30,6 +30,7 @@
 	<beans:bean id="orderService" class="com.gga.service.OrderServiceImpl" />
 	<beans:bean id="movieService" class="com.gga.service.MovieServiceImpl" />
 	<beans:bean id="pageService" class="com.gga.service.PageServiceImpl" />
+	<beans:bean id="cartService" class="com.gga.service.CartServiceImpl" />
 	
 	<context:component-scan base-package="com.gga.controller" />
 	
