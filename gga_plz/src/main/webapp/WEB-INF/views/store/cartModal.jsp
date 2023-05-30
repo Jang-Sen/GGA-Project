@@ -9,12 +9,14 @@
 <script src ="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css"> <!-- gga.css -->
 <script src="http://localhost:9000/gga_plz/js/modal_jquery.js"></script> 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"  
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />	
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 	<!-- 부트스트랩 -->
 </head>
 <style>
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -51,14 +53,14 @@
 <body>
 	
 	
-	
+	 <c:if test="${not empty list}">
 	<!-- content -->
       <div class="modal-header border-bottom-0">
         <h5 class="modal-title" id="exampleModalLabel">
           장바구니
         </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cartclosebtn">
-          <span aria-hidden="true">  X  </span>
+        <button type="button" class="cartclosebtn" data-dismiss="modal" aria-label="Close" id="cartclosebtn">
+          X
         </button>
       </div>
       <div class="modal-content">
@@ -74,6 +76,7 @@
             </tr>
           </thead>
           <tbody>
+          <c:set var = "total" value = "0" />
           <c:forEach var="cartVo" items="${list}">
             <tr>
               <td class="w-25">
@@ -82,7 +85,8 @@
               <td>${cartVo.pname}</td>
               <td>${cartVo.pprice}</td>
               <td class="qty"><input type="text" class="form-control" id="qtyinput" value="${cartVo.qty}"></td>
-              <td>${cartVo.totalprice}</td>
+              <td class="cartpprice">${cartVo.totalprice}</td>
+              <c:set var= "total" value="${total + cartVo.totalprice}"/>
               <td>
                 <button type="button" class="cartitemdelete" data-id="${cartVo.pid}">삭제</button>
               </td>
@@ -91,15 +95,38 @@
           </tbody>
         </table> 
         <div class="carttotalprice justify-content-end">
-          <h5>합계: <span class="price text-success">5,000</span></h5>
+          <h5>합계: <span class="totaltotalprice" id="totaltotalprice"><c:out value="${total}"/></span></h5>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="cartkakaopay" class="btn btn-success" data-dismiss="modal">
+        <button type="button" id="modalkakaopay" class="btn btn-success" data-dismiss="modal">
     <img src="http://localhost:9000/gga_plz/images/kakaopay.png"></button>
-        <button type="button" id="cartcardpay" class="btn btn-success" data-dismiss="modal">
+        <button type="button" id="modalcardpay" class="btn btn-success" data-dismiss="modal">
     <img src="http://localhost:9000/gga_plz/images/cardpay.png"></button>
       </div>
+			
+			
+	 </c:if>
+  <c:if test="${empty list}">		
+			
+			
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel">
+          장바구니
+        </h5>
+        <button type="button" class="cartclosebtn" data-dismiss="modal" aria-label="Close" id="cartclosebtn">
+          X
+        </button>
+      </div>
+      <div class="modal-content">
+      <img class="emptycartimg" src="http://localhost:9000/gga_plz/images/emptycart.png">
+      
+      <a class="emptycartclass">
+	<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/emptycartbtn.png"></a>
+
+      </div>
+
+		</c:if>	
 			
 	<!-- content -->
 

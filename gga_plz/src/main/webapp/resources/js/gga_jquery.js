@@ -2,6 +2,25 @@ $(document).ready(function(){
 	/***********************************
 	store
 	*************************************/
+	
+	
+
+function reloadModalContent() {  
+   $('#CartModal .modal-content').load('cartModal.do', function() {
+      $('#CartModal').modal('show');
+      
+
+   });
+}
+
+$(document).on('click', '.emptycartclass', function() {
+  $('#CartModal').modal('hide');
+});
+
+$(document).on('click', '.cartclosebtn', function() {
+  $('#CartModal').modal('hide');
+});
+	
    $("#store_cart").click(function(){
   	 $('#CartModal .modal-content').load('cartModal.do');
 	 $('#CartModal').modal('show');
@@ -39,6 +58,8 @@ $(document).ready(function(){
  });
   $(".cartbtn2").click(function(){
 	 $('#buycartModal').modal('show');
+	 $("#cartkakaopay").data('price',$(this).data('price'));
+	 $("#cartcardpay").data('price',$(this).data('price'));
  });
   $("#cartclosebtn3").click(function(){
 	 $('#buycartModal').modal('hide');
@@ -46,11 +67,111 @@ $(document).ready(function(){
 
  
   $("#cartcardpay").click(function(){
-	alert("추후에 결제 구현");
+	var price = $(this).data('price');
+
+		var IMP = window.IMP; 
+        IMP.init("imp71285848"); 
+      
+        var today = new Date();   
+        var hours = today.getHours(); // 시
+        var minutes = today.getMinutes();  // 분
+        var seconds = today.getSeconds();  // 초
+        var milliseconds = today.getMilliseconds();
+        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+		
+		if(price == "0"){
+			alert("결제할 상품이 없습니다.");
+		}else{
+			IMP.request_pay({
+                pg : 'kcp',
+                pay_method : 'card',
+                merchant_uid: "IMP"+makeMerchantUid, 
+                name : 'GGA 스토어',
+                amount : price,
+                buyer_email : 'Iamport@chai.finance',
+                buyer_name : '아임포트 기술지원팀',
+                buyer_tel : '010-1234-5678',
+                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_postcode : '123-456'
+	           /* m_redirect_url: "http://localhost:9000/gga_plz/ordercon.do" */
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    console.log(rsp);
+                    jQuery.ajax({
+        				url:"cart_order_proc.do?price="+price,
+        				method:"POST",
+        				headers: { "Content-Type": "application/json" },
+        			    data: {
+        			          imp_uid: rsp.imp_uid,            // 결제 고유번호
+        			          merchant_uid: rsp.merchant_uid   // 주문번호
+        			        }
+                    	}).done(function (data) {
+                        // 성공시 로직
+                    		location.replace("http://localhost:9000/gga_plz/index.do");
+                    	})
+                    } else {
+                    console.log(rsp);
+                    alert("결제를 실패했습니다. 잠시후 다시 시도해 주세요.");
+                    
+              	  }
+            
+            });
+	}
+
  });
-  $("#cartclosebtn").click(function(){
-  $('#cartModal').modal('hide');
+  $("#cartkakaopay").click(function(){
+		var price = $(this).data('price');
+
+		var IMP = window.IMP; 
+        IMP.init("imp71285848"); 
+      
+        var today = new Date();   
+        var hours = today.getHours(); // 시
+        var minutes = today.getMinutes();  // 분
+        var seconds = today.getSeconds();  // 초
+        var milliseconds = today.getMilliseconds();
+        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+		
+		if(price == "0"){
+			alert("결제할 상품이 없습니다.");
+		}else{
+			IMP.request_pay({
+                pg : 'kakaopay',
+                pay_method : 'card',
+                merchant_uid: "IMP"+makeMerchantUid, 
+                name : 'GGA 스토어',
+                amount : price,
+                buyer_email : 'Iamport@chai.finance',
+                buyer_name : '아임포트 기술지원팀',
+                buyer_tel : '010-1234-5678',
+                buyer_addr : '서울특별시 강남구 삼성동',
+                buyer_postcode : '123-456'
+	           /* m_redirect_url: "http://localhost:9000/gga_plz/ordercon.do" */
+            }, function (rsp) { // callback
+                if (rsp.success) {
+                    console.log(rsp);
+                    jQuery.ajax({
+        				url:"cart_order_proc.do?price="+price,
+        				method:"POST",
+        				headers: { "Content-Type": "application/json" },
+        			    data: {
+        			          imp_uid: rsp.imp_uid,            // 결제 고유번호
+        			          merchant_uid: rsp.merchant_uid   // 주문번호
+        			        }
+                    	}).done(function (data) {
+                        // 성공시 로직
+                    		location.replace("http://localhost:9000/gga_plz/index.do");
+                    	})
+                    } else {
+                    console.log(rsp);
+                    alert("결제를 실패했습니다. 잠시후 다시 시도해 주세요.");
+                    
+              	  }
+            
+            });
+	}
  });
+ 
  
  
 	/*********************************
@@ -217,9 +338,7 @@ $(document).ready(function(){
             
             });
 	}
-			/*alert(seatcom + ","+ seattotal);*/
 			
-		
 		
 	});
 	/*

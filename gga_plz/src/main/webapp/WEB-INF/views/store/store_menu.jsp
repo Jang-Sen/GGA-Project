@@ -12,6 +12,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />	
+   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>	
+	
 	<!-- 부트스트랩 -->
 </head>
 <style>
@@ -77,7 +79,7 @@
 					    <div class="storebtns">
 					    <a class="cartbtn" data-id="P_0001" id="popcorncombobtn">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2">
+							<a id="buybtn" class="cartbtn2" data-id="P_0001" data-price="15000">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					    </div>
 					  </div>
@@ -92,7 +94,7 @@
 					    <div class="storebtns">
 					   <a class="cartbtn" data-id="P_0002" id="popcorncombobtn">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2">
+							<a id="buybtn" class="cartbtn2" data-id="P_0002" data-price="5000">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -107,7 +109,7 @@
 					    <div class="storebtns">
 					    <a class="cartbtn" data-id="P_0003">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2">
+							<a id="buybtn" class="cartbtn2" data-id="P_0003" data-price="3000">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -125,7 +127,7 @@
 					    <div class="storebtns">
 					   <a class="cartbtn" data-id="P_0004">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2">
+							<a id="buybtn" class="cartbtn2" data-id="P_0004" data-price="5000">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -140,7 +142,7 @@
 					    <div class="storebtns">
 					    <a class="cartbtn" data-id="P_0005">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2">
+							<a id="buybtn" class="cartbtn2" data-id="P_0005" data-price="30000">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -155,7 +157,7 @@
 				    <div class="storebtns">
 				   			 <a class="cartbtn" data-id="P_0006">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2">
+							<a id="buybtn" class="cartbtn2" data-id="P_0006" data-price="5000">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 				  </div>
 				  </div>
@@ -165,60 +167,7 @@
 		</nav>
 			</div>
 			
-	<%-- <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <h5 class="modal-title" id="exampleModalLabel">
-          장바구니
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cartclosebtn">
-          <span aria-hidden="true">  X  </span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-image">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">상품명</th>
-              <th scope="col">가격</th>
-              <th scope="col">수량</th>
-              <th scope="col">합계</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-             <c:forEach var="cartVo" items="${list}">
-            <tr>
-              <td class="w-25">
-                <img src="http://localhost:9000/gga_plz/images/popcorn.png" class="img-fluid img-thumbnail" alt="Sheep">
-              </td>
-              <td>${cartVo.pname}</td>
-              <td>${cartVo.pprice}</td>
-              <td class="qty"><input type="text" class="form-control" id="qtyinput" value="${cartVo.qty}"></td>
-              <td>${cartVo.totalprice }</td>
-              <td>
-                <button type="button" class="cartitemdelete">삭제</button>
-              </td>
-            </tr>
-            </c:forEach>
-          </tbody>
-        </table> 
-        <div class="carttotalprice justify-content-end">
-          <h5>합계: <span class="price text-success">5,000</span></h5>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="cartkakaopay" class="btn btn-success" data-dismiss="modal">
-    <img src="http://localhost:9000/gga_plz/images/kakaopay.png"></button>
-        <button type="button" id="cartcardpay" class="btn btn-success" data-dismiss="modal">
-    <img src="http://localhost:9000/gga_plz/images/cardpay.png"></button>
-      </div>
-    </div>
-  </div>
-</div>  --%>
-
+	
 <!-- Moa Modal-->
   <div class="modal fade" id="CartModal" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
@@ -243,7 +192,7 @@
         </div>
         
         <!-- Modal footer -->
-        <div class="footer">
+        <div class="buycartmodal_footer">
           <button type="button" id="cartkakaopay" class="cartkakaobtn"><img src="http://localhost:9000/gga_plz/images/kakaopay.png"></button>
           <button type="button" id="cartcardpay" class="cartcardbtn"><img src="http://localhost:9000/gga_plz/images/cardpay.png"></button>
         </div>
