@@ -73,11 +73,11 @@
     </article>
 		</div>
 		<form name="orderForm" action="orderProc.do" method="post">
-		<input type="hidden" name="movieid" id="movieid">
-		<input type="hidden" name="movieordertitle" id="movieordertitle">
-		<input type="hidden" name="odate" id="odate">
-		<input type="hidden" name="otime" id="otime">
-		<input type="hidden" name="oid" id="oid">
+		<input type="text" name="movieid" id="movieid">
+		<input type="text" name="movieordertitle" id="movieordertitle">
+		<input type="text" name="odate" id="odate">
+		<input type="text" name="otime" id="otime">
+		<input type="text" name="oid" id="oid">
 		
 		<div class="ticket_bac2">
 		<ul>
