@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-		
-<%@ page import = "com.gga.vo.OrderVo" %>
-<%@ page import = "com.gga.dao.OrderDao" %>
+    pageEncoding="UTF-8"%>		
 
-<%
-	String oid = request.getParameter("oid");
-	OrderDao orderDao = new OrderDao();
-	OrderVo orderVo = orderDao.select(oid);	
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,29 +46,29 @@
 		
 		<div class="ticketcon_bac1">
 			<label>제목 :</label>
-			<p class="ticketcon_title"><%= orderVo.getMovieid() %></p><br>
+			<p class="ticketcon_title">${orderconVo.movieordertitle}</p><br>
 			<label>날짜 :</label>
-			<p class="ticketcon_date"><%= orderVo.getOdate() %></p><br>
+			<p class="ticketcon_date">${orderconVo.odate}</p><br>
 			<label>시간 :</label>
-			<p class="ticketcon_time"><%= orderVo.getOtime() %></p><br>
+			<p class="ticketcon_time">${orderconVo.otime}</p><br>
 			<label>가격 :</label>
-			<p class="ticketcon_price"><%= orderVo.getPrice() %></p><br>
+			<p class="ticketcon_price">${orderconVo.price}</p><br>
 			<label>좌석 :</label>
-			<p class="ticket_orderseat"><%= orderVo.getSeat() %></p>
+			<p class="ticket_orderseat">${orderconVo.seat}</p>
 			<label>예매번호 :</label>
-			<p class="ticket_ordernum"><%= oid %></p><br>
+			<p class="ticket_ordernum">${orderconVo.oconid}</p><br>
 		
 		</div>
 		
 		<div class="ticketcon_bac2">
 			<label>이름 :</label>
-			<p class="ticketcon_name"><%= orderVo.getOname() %></p><br>
+			<p class="ticketcon_name">${orderconVo.oname}</p><br>
 			<label>차량번호 :</label>
-			<p class="ticketcon_carnum"><%= orderVo.getOcarnum() %></p><br>
+			<p class="ticketcon_carnum">${orderconVo.ocarnum}</p><br>
 			<label>Email :</label>
-			<p class="ticketcon_email"><%= orderVo.getOemail() %></p><br>
+			<p class="ticketcon_email">${orderconVo.oemail}</p><br>
 			<label>전화번호 :</label>
-			<p class="ticket_number"><%= orderVo.getOphone() %></p><br>
+			<p class="ticket_number">${orderconVo.ophone}</p><br>
 		
 		</div>
 	</div>
