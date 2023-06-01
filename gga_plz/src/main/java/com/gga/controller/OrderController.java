@@ -21,7 +21,10 @@ public class OrderController {
 	@RequestMapping(value="/orderconProc.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void orderconProc(String impuid, String merchantuid, String pgtype, String oid) {
-		orderService.getimp(impuid, merchantuid, pgtype,oid);
+
+		OrderVo orderVo = orderService.select(oid);
+		orderService.getimp(impuid, merchantuid, pgtype,orderVo);
+
 	}
 
 	/**
@@ -29,7 +32,8 @@ public class OrderController {
 	 */
 	@RequestMapping(value="/seatProc.do", method=RequestMethod.POST)
 	@ResponseBody
-	public void seatProc(String seat, int price, String oid) {
+	public void seatProc(String seat, String price, String oid) {
+		
 		orderService.getSeatPrice(seat, price, oid);
 	}
 	/**

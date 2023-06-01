@@ -1,4 +1,38 @@
 $(document).ready(function(){
+/***********************************
+	mypage
+*************************************/
+
+ $(".mypage_ticket").click(function() {
+ var oconid = $(this).data('oconid');
+ location.replace("http://localhost:9000/gga_plz/mypage_ticket.do?oconid="+oconid);
+                    	});
+                    	
+ $(".openmypage").click(function() {
+ location.replace("http://localhost:9000/gga_plz/mypage.do");
+                    	});
+                    	
+$(".refundticket").click(function() {
+
+		function getParameterValue(parameterName) {
+ 		 var params = new URLSearchParams(window.location.search);
+  		return params.get(parameterName);
+			}
+		
+		var oconid = getParameterValue('oconid');
+		alert(oconid);
+ 		 var result = confirm("정말 예매를 취소하시겠습니까?");
+  		if (result) {
+  		jQuery.ajax({
+ 			url: "http://localhost:9000/gga_plz/mypage_ticket_refund.do?oconid="+oconid	
+ 			}).done(function(){
+  			alert("환불이 완료되었습니다.");
+  			location.replace("http://localhost:9000/gga_plz/mypage.do");
+  			});
+    
+  		}
+});                	
+
 	/***********************************
 	store
 	*************************************/
@@ -263,22 +297,25 @@ $(document).on('click', '.cartclosebtn', function() {
 	            /* m_redirect_url: "http://localhost:9000/gga_plz/ordercon.do"  */
             }, function (rsp) { // callback
                 if (rsp.success) {
-                	  $.ajax({
-          				url:"http://localhost:9000/gga_plz/orderconProc.do?seat="+seatcom+"&price="+seattotal+"&oid="+oid,
-          				success: function(result){
-          					if(result==1){
-          						location.href="http://localhost:9000/gga_plz/ordercon.do";
-          					}else if(result==0){
-          						alert("오류가 발생했습니다. 잠시후 다시 시도해 주세요.");
-          							}
-          						}
-          					});
-             
-                } else {
+                	  jQuery.ajax({
+        				url:"seatProc.do?seat="+seatcom+"&price="+seattotal+"&oid="+oid,
+        				method:"POST",
+        				headers: { "Content-Type": "application/json" },
+        			    data: {
+        			          imp_uid: rsp.imp_uid,            // 결제 고유번호
+        			          merchant_uid: rsp.merchant_uid,   // 주문번호
+        			          pg_type: rsp.pg //pg사 이름
+        			        }
+                    	}).done(function (data) {
+                        // 성공시 로직
+                        alert(imp_uid+merchant_uid+pg_type);
+                    		location.replace("http://localhost:9000/gga_plz/ordercon.do?oid="+oid);
+                    	})
+                    } else {
                     console.log(rsp);
                     alert("결제를 실패했습니다. 잠시후 다시 시도해 주세요.");
                     
-                }
+              	  }
             });
 			
 			
@@ -299,6 +336,10 @@ $(document).on('click', '.cartclosebtn', function() {
         var seconds = today.getSeconds();  // 초
         var milliseconds = today.getMilliseconds();
         var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+        
+        var impuid = "";
+        var merchantuid="";
+        var pgtype ="";        
 		
 		if(seatcom == ""){
 			alert("좌석을 선택해 주세요.");
@@ -318,18 +359,27 @@ $(document).on('click', '.cartclosebtn', function() {
             }, function (rsp) { // callback
                 if (rsp.success) {
                     console.log(rsp);
-                    jQuery.ajax({
-        				url:"orderconProc.do?seat="+seatcom+"&price="+seattotal+"&oid="+oid,
-        				method:"POST",
-        				headers: { "Content-Type": "application/json" },
-        			    data: {
-        			          imp_uid: rsp.imp_uid,            // 결제 고유번호
-        			          merchant_uid: rsp.merchant_uid   // 주문번호
-        			        }
-                    	}).done(function (data) {
-                        // 성공시 로직
-                    		location.replace("http://localhost:9000/gga_plz/ordercon.do?oid="+oid);
-                    	})
+        			          impuid = rsp.imp_uid,            // 결제 고유번호
+        			          merchantuid = rsp.merchant_uid,   // 주문번호
+        			          pgtype = 'kakaopay',
+        			          
+        			 // 첫 번째 AJAX 요청
+					$.ajax({
+ 					 url: "http://localhost:9000/gga_plz/seatProc.do?seat=" + seatcom + "&price=" + seattotal + "&oid=" + oid,
+ 					 method: "POST",
+						}).done(function (data) {
+  						// 첫 번째 AJAX 요청 완료 후 실행될 코드
+  
+  						// 두 번째 AJAX 요청
+  					$.ajax({
+ 					   url: "http://localhost:9000/gga_plz/orderconProc.do?impuid=" + impuid + "&merchantuid=" + merchantuid + "&pgtype=" + pgtype + "&oid=" + oid,
+   						 method: "POST",
+ 					 }).done(function (data) {
+  						  // 두 번째 AJAX 요청 완료 후 실행될 코드
+  						  location.replace("http://localhost:9000/gga_plz/ordercon.do?merchantuid=" + merchantuid);
+  						});
+					});
+                  
                     } else {
                     console.log(rsp);
                     alert("결제를 실패했습니다. 잠시후 다시 시도해 주세요.");
@@ -348,6 +398,7 @@ $(document).on('click', '.cartclosebtn', function() {
 	$(".orderseltitle").click(function(){
 		$("#movieid").val($(this).val());
 		$("#movieordertitle").val($(this).text());
+		$("#movieorderposter").val($(this).data('poster'));
 		const urlParams = new URL(location.href).searchParams;
 		const oid = urlParams.get('oid');
 		$("#oid").val(oid);
@@ -710,5 +761,59 @@ $(document).on('click', '.cartclosebtn', function() {
 			});
 		}
 	});
+	
+	
+/***********************
+관리자 공지사항 검색 
+************************/	
+$("#btnAdminNoticeSearch").click(function(){
+		if($("#ntitle").val() == "" ){
+			alert("공지사항 제목을 입력해주세요.");
+			$("#ntitle").focus();
+			return false;
+		} else{
+			$.ajax({
+		          url:"http://localhost:9000/gga_plz/Searchnoticeproc.do?ntitle="+$("#ntitle").val(),
+		          success: function(nid){
+		          	if(nid == ""){
+						alert("존재하지 않는 게시글입니다.다시 입력해주세요.");
+		          	}else{
+		           	 location.href="http://localhost:9000/gga_plz/admin_notice_content.do?nid="+nid; }
+		         	}
+				
+			});
+		}
+	});
+	
+/*대관문의-김소윤*/
+$("#btnConfirm").click(function(){
+	if($("#cname").val() == ""){
+		alert("성함을 입력해주세요.");
+		$("#cname").focus();
+		return false;
+	}else if($("#cphone1").val() == ""){
+		alert("첫번째 핸드폰 번호를 입력해주세요.");
+		$("#cphone1").focus();
+		return false;
+	}else if($("#cphone2").val() == ""){
+		alert("두번째 핸드폰 번호를 입력해주세요.");
+		$("#cphone2").focus();
+		return false;
+	}else if($("#cphone3").val() == ""){
+		alert("마지막 핸드폰 번호를 입력해주세요.");
+		$("#cphone3").focus();
+		return false;
+	}else if($("#csize").val() == ""){
+		alert("총 인원수를 입력해주세요.");
+		$("#csize").focus();
+		return false;
+	}else{
+		coronationForm.submit();
+		alert("신청이 완료되었습니다.");
+	}
+});	
+	
+	
+	
 }); //ready
 	

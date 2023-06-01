@@ -301,7 +301,7 @@ div.content section.myorder div.myorder_add { /* 영화 포스터 */
 	position:relative;
 	float:left;
 	right: 5px; top:65px;
-	opacity:0.3;
+	opacity:1.0;
 	margin-top:20px;
 	margin-left:20px;
 }
@@ -311,14 +311,44 @@ div.content section.myorder div.myorder_add:hover { /* 칸 커서 이벤트  */
 	
 div.content section.myorder div.myorder_add img ,
 div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
-	width:60px;
+
+border:3px groove lightgray;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
 	position:relative;
-	top:120px;
-	opacity:0.3;
+	float:left;
+	opacity:1.0;
+	position:relative;
+	width:220px; height:330px;
+	/* top:120px; */
+	opacity:1.0;
 }
 div.content section.myorder div.myorder_add img:hover, 
 div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+	opacity:0.3;
+	cursor:pointer;
+}
+div.content section.myorder div.myorder_add2 img ,
+div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
+	top:65px;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
+	position:relative;
+	float:left;
 	opacity:1.0;
+	position:relative;
+	width:220px; height:330px;
+	/* top:120px; */
+	opacity:1.0;
+	margin-top:20px;
+	margin-left:20px;
+}
+div.content section.myorder div.myorder_add2 img:hover, 
+div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+	opacity:0.3;
+	cursor:pointer;
 }
 .myorder_all{
 	color:gray;
@@ -348,7 +378,31 @@ div.content section.myreview table {
 }
 
 
+/*********************************
+mypage ticket
+********************************/
 
+.openmypage{
+	margin-top:25px;
+	margin-left:300px;
+	background-color:white;
+	border:1px solid white;
+}
+.openmypage img{
+	width:150px;
+	height:80px;
+	}
+	
+.refundticket{
+	margin-left:25px;
+	background-color:white;
+	border:1px solid white;
+	
+}
+.refundticket img{
+	width:150px;
+	height:80px;
+}
 
 /*******************************
  占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎈읂占쎌뵠筌욑옙
@@ -1110,7 +1164,7 @@ height:100px;
   margin-top:50px;
   display : block;
   text-decoration : none;
-  color : rgb(37, 37, 37);
+  color : rgb(37, 37, 37); 
   font-size: 15px;
  	padding : 12px 20px; 
 	background-image:url("http://localhost:9000/gga_plz/images/ticket2.png");
@@ -1125,7 +1179,7 @@ height:100px;
 margin-top:50px;
   display : block;
   text-decoration : none;
-  color : rgb(37, 37, 37);
+color : rgb(37, 37, 37);
   font-size: 15px;
   padding : 12px 20px;
 	background-image:url("http://localhost:9000/gga_plz/images/ticket2.png");
@@ -1136,7 +1190,7 @@ margin-top:50px;
 }
 .ticketcon_bac1 p {
 display:inline;
-	color:gray;
+
 } 
 .ticketcon_bac1 label:first-child{
 margin-top:100px;
@@ -1146,11 +1200,11 @@ margin-top:100px;
 width:100px;
 margin-left:80px;
 margin-top:10px;
-color:gray;
+
 }
 .ticketcon_bac2 p {
 display:inline;
-	color:gray;
+	
 
 }
 .ticketcon_bac2 label:first-child{
@@ -1161,7 +1215,7 @@ margin-top:100px;
 width:100px;
 margin-left:80px;
 margin-top:15px;
-	color:gray;
+
 }
 
 /***************************

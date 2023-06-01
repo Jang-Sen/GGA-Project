@@ -3,7 +3,7 @@ package com.gga.vo;
 public class OrderVo {
 	
 	String movieid, movieordertitle, oid, seat, otime, 
-	odate, id, oname, ocarnum, oemail, ophone, orderdate;
+	odate, id, oname, ocarnum, oemail, ophone, orderdate, movieorderposter;
 	
 	int price;
 
@@ -13,6 +13,14 @@ public class OrderVo {
 
 	public void setMovieordertitle(String movieordertitle) {
 		this.movieordertitle = movieordertitle;
+	}
+
+	public String getMovieorderposter() {
+		return movieorderposter;
+	}
+
+	public void setMovieorderposter(String movieorderposter) {
+		this.movieorderposter = movieorderposter;
 	}
 
 	public String getId() {

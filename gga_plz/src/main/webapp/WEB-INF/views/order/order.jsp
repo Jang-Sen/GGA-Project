@@ -50,12 +50,12 @@
 	<article class="cont-select">
         <button class="btn-select">영화를 선택해 주세요.</button>
         <ul class="list-member">
-            <li><button type="button" class="orderseltitle" value="MOVIE_0001">다크 나이트 라이즈</button></li>
-            <li><button type="button" class="orderseltitle" value="MOVIE_0002">스즈메의 문단속</button></li>
-            <li><button type="button" class="orderseltitle" value="MOVIE_0003">듄</button></li>
-            <li><button type="button" class="orderseltitle" value="MOVIE_0004">인셉션</button></li>
-            <li><button type="button" class="orderseltitle" value="MOVIE_0007">반지의 제왕: 왕의 귀환</button></li>
-            <li><button type="button" class="orderseltitle" value="MOVIE_0009">더 퍼스트 슬램덩크</button></li>
+            <li><button type="button" class="orderseltitle" value="MOVIE_0001" data-poster="darknight">다크 나이트 라이즈</button></li>
+            <li><button type="button" class="orderseltitle" value="MOVIE_0002" data-poster="door">스즈메의 문단속</button></li>
+            <li><button type="button" class="orderseltitle" value="MOVIE_0003" data-poster="dune">듄</button></li>
+            <li><button type="button" class="orderseltitle" value="MOVIE_0004" data-poster="inception">인셉션</button></li>
+            <li><button type="button" class="orderseltitle" value="MOVIE_0007" data-poster="ringsking">반지의 제왕: 왕의 귀환</button></li>
+            <li><button type="button" class="orderseltitle" value="MOVIE_0009" data-poster="slamdunk">더 퍼스트 슬램덩크</button></li>
         </ul>
     </article>
 
@@ -73,11 +73,12 @@
     </article>
 		</div>
 		<form name="orderForm" action="orderProc.do" method="post">
-		<input type="text" name="movieid" id="movieid">
-		<input type="text" name="movieordertitle" id="movieordertitle">
-		<input type="text" name="odate" id="odate">
-		<input type="text" name="otime" id="otime">
-		<input type="text" name="oid" id="oid">
+		<input type="hidden" name="movieid" id="movieid">
+		<input type="hidden" name="movieordertitle" id="movieordertitle">
+		<input type="hidden" name="odate" id="odate">
+		<input type="hidden" name="otime" id="otime">
+		<input type="hidden" name="oid" id="oid">
+		<input type="text" name="movieorderposter" id="movieorderposter">
 		
 		<div class="ticket_bac2">
 		<ul>
