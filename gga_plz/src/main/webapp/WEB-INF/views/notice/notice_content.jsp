@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,6 +62,7 @@ text-align:center;
 	<!-- content -->
 	<div class="container text-center">
 		<section class="notice">
+		<form enctype="multipart/form-data">
 			<h1>공지사항</h1>
 				<table class="table table-bordered" style="width: 90%;">
 					<tr>
@@ -69,6 +73,9 @@ text-align:center;
 						<th>내용</th>
 						<td>
 							${noticeVo.ncontent }<br><br><br>
+							<c:if test="${noticeVo.nsfile != null}">
+								<img src="http://localhost:9000/gga_plz/upload/${noticeVo.nsfile}">
+							</c:if>
 						</td>
 					</tr>
 					<tr>

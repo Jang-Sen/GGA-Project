@@ -14,10 +14,11 @@
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
 <script src="http://localhost:9000/gga_plz/js/am-pagination.js"></script>
+<script src="http://localhost:9000/gga_plz/js/gga_admin_notice_list.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
 	<!-- 부트스트랩 -->
-<script>
+<!-- <script>
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
 		
@@ -40,7 +41,7 @@
 	    });
 		
  	});
-</script> 
+</script> -->
 </head>
 <style>
 @media (min-width: 768px) {
@@ -124,7 +125,12 @@ table tr:first-child {
 		<img src="http://localhost:9000/gga_plz/images/adminnoticetitle.png">
 		</div>
 		<section class="admin_notice">
-			<table class="table table-bordered" style="width: 90%;">
+			<div class="notice_search">
+				<input type="text" placeholder="공지사항 제목을 검색해 주세요." id="ntitle" name="ntitle" class="n_searchbox">
+				<button type="submit" id="btnAdminNoticeSearch"  class="n_searchbutton"><p>검색</p></button>
+			</div>
+			
+			<%-- <table class="table table-bordered" style="width: 90%;">
 				<tr>
 					<td colspan="4">
 						<a href="admin_notice_write.do" class="writebtn">
@@ -151,8 +157,8 @@ table tr:first-child {
 						<div id = "ampaginationsm"></div>
 					</td>
 				</tr>
-			</table>
-		</section>
+			</table>	 --%>	
+ 		</section>
 	</div>
 	<!-- content -->
 
