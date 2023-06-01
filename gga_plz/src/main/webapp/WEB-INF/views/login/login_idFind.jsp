@@ -47,11 +47,11 @@
 		</div>
 		<p>회원 정보에 등록된 이름과 휴대전화를 입력해주세요.</p>
 		<section class="login">
-			<form name="findIdForm" action="#" method="post" class="loginForm">
+			<form name="findIdForm" action="login_idFind_proc.do" method="get" class="loginForm">
 				<ul>
 					<li>
 						<label>이름</label>
-						<input type="text" name="name" id="name" class="imput1">
+						<input type="text" name="name" id="name" class="input1">
 					</li>
 					<li>
 						<label>생년월일</label>

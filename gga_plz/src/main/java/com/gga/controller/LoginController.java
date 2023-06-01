@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.MemberService;
@@ -56,6 +58,18 @@ public class LoginController {
 	@RequestMapping(value="/login_idFind.do", method=RequestMethod.GET)
 	public String login_idFind() {
 		return "/login/login_idFind";
+	}
+	
+	/*
+	 * login_idFind_proc
+	 */
+	@RequestMapping(value="/login_idFind_proc.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String login_idFind_proc(@RequestParam("name") String name, @RequestParam("birth") String birth, @RequestParam("phone") String phone) {
+		
+		String result = memberService.findId(name, birth, phone);
+		
+		return result;
 	}
 	
 	/*

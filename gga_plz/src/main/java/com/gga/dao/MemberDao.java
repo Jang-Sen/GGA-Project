@@ -119,7 +119,6 @@ public class MemberDao extends DBConn {
    public int idCheck(String id) {
 	   
 	   return sqlSession.selectOne("mapper.member.idCheck", id);
-	   
 	   /*
       int result = 0;
       String sql = "SELECT COUNT(*) FROM GGA_MEMBER WHERE ID = ?";
@@ -198,11 +197,19 @@ public class MemberDao extends DBConn {
    }
    
    /*
+    * delete - 마이페이지 회원 탈퇴
+    */
+   public int delete(String id) {
+	   
+	   return sqlSession.delete("mapper.member.delete", id);
+   }
+   
+   /*
     * insert - 회원 가입
     */
    public int insert(MemberVo memberVo) {
 	   
-	   return sqlSession.insert("join", memberVo);
+	   return sqlSession.insert("mapper.member.join", memberVo);
 	   
 	   /*
       int result = 0;
@@ -265,7 +272,10 @@ public class MemberDao extends DBConn {
    /*
     * select(memberVo) - 아이디 찾기
     */
-   public void select_id(MemberVo memberVo) {
+   public String select_id(String name, String birth, String phone) {
+	   return sqlSession.selectOne("mapper.member.findId", name, birth, phone);
+	   
+	   /*
 	   String sql = "SELECT ID FROM GGA_MEMBER"
 	   		+ " WHERE NAME = ? AND BIRTH = ? AND PHONE = ?";
 	   getPreparedStatement(sql);
@@ -277,13 +287,18 @@ public class MemberDao extends DBConn {
 	} catch (Exception e) {
 		e.printStackTrace();
 	}
+	*/
 	   
    }
    
    /*
-    * select(memberVo) - 비밀번호 찾기
+    * select(memberVo) - 비밀번호 찾기	
     */
-   public void select_pw(MemberVo memberVo) {
+   public int select_pw(MemberVo memberVo) {
+	   
+	   return sqlSession.selectOne("mapper.member.findPw", memberVo);
+	   
+	   /*
 	   String sql = "SELECT PASS FROM GGA_MEMBER"
 			   + " WHERE ID = ? AND NAME = ? AND BIRTH = ? AND PHONE = ?";
 	   getPreparedStatement(sql);
@@ -296,6 +311,7 @@ public class MemberDao extends DBConn {
 	   } catch (Exception e) {
 		   e.printStackTrace();
 	   }
+	   */
 	   
    }
    
