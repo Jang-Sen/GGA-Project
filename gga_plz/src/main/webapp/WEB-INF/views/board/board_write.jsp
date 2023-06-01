@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>gga_plz</title>
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css"> <!-- gga.css -->
-<script src="http://localhost:9000/gga_plz/jquery/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" 
 integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -49,7 +49,7 @@ section.board table {
 	<div class="container text-center">
 		<section class="board">
 			<h1>글쓰기</h1>
-			<form name="writeForm" action="board_write_proc.do"  method="post">
+			<form name="writeForm" action="board_write_proc.do"  method="post" enctype="multipart/form-data">
 				<table class="table table-bordered" style="width: 90%;">
 					<tr>
 						<th>제목</th>
@@ -60,10 +60,10 @@ section.board table {
 					<tr>
 						<th>영화 제목</th>
 						<td>
-							<select class="btn btn-outline-secondary" name="bmovie" id="bmovie">
+							<select class="btn btn-outline-secondary" name="movieName" id="movieName">
 								<option value="default">영화 제목</option>
 								<option value="suzume">스즈메의 문단속</option>
-								<option value="darkknight">다크나이트</option>
+								<option value="darknight">다크나이트</option>
 								<option value="dune">듄</option>
 								<option value="slamdunk">슬램덩크</option>
 								<option value="inception">인셉션</option>
@@ -72,7 +72,7 @@ section.board table {
 						</td>
 						<th>평점</th>
 						<td>
-							<select class="btn btn-outline-secondary"name="bscore" id="bscore">
+							<select class="btn btn-outline-secondary"name="score" id="bscore">
 								<option value="default">평점</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -82,12 +82,20 @@ section.board table {
 							</select>
 						</td>
 					</tr>
+					
 					<tr>
 						<th>내용</th>
 						<td colspan="3">
 							<textarea rows="20" cols="80%" name="bcontent" class="btextarea" id="btextarea"></textarea>
 						</td>
-					</tr>					
+					</tr>		
+					<tr>
+						<th>파일첨부</th>
+						<td>
+							<input type="file" name="file1" >
+							<input type="hidden" name="file1" >
+						</td>
+					</tr>			
 					<tr>
 						<td colspan="4">
 							<button class="btn btn-outline-secondary" type="button" id="btnBoardWrite">등록완료</button>

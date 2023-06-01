@@ -12,4 +12,12 @@ public class CoronationController {
 	public String coronation() {
 		return "/coronation/coronation";
 	}
+	
+	/*
+	 * coronation_confirm.do
+	 */
+	@RequestMapping(value="/coronation_confirm.do", method=RequestMethod.GET)
+	public String coronation_confirm() {
+		return "/coronation/coronation_confirm";
+	}
 }

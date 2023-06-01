@@ -39,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
 	
 	public void getimp(String impuid, String merchantuid, String pgtype, OrderVo orderVo) {
 		orderDao.insert(impuid, merchantuid, pgtype, orderVo);
+
 	}
 	
 	

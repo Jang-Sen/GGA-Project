@@ -21,8 +21,10 @@ public class OrderController {
 	@RequestMapping(value="/orderconProc.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void orderconProc(String impuid, String merchantuid, String pgtype, String oid) {
+
 		OrderVo orderVo = orderService.select(oid);
 		orderService.getimp(impuid, merchantuid, pgtype,orderVo);
+
 	}
 
 	/**

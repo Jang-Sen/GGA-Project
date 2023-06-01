@@ -51,7 +51,7 @@ section.admin_notice table {
 		<img src="http://localhost:9000/gga_plz/images/adminnoticetitle.png">
 		</div>
 		<section class="admin_notice">
-			<form name="writeForm" action="admin_notice_write_proc.do"  method="post">
+			<form name="writeForm" action="admin_notice_write_proc.do"  method="post" enctype="multipart/form-data">
 				<table class="table table-bordered" style="width: 90%;">
 					<tr>
 						<th>제목</th>
@@ -64,7 +64,13 @@ section.admin_notice table {
 						<td colspan="3">
 							<textarea rows="20" cols="80%" name="ncontent" class="ntextarea" id="ntextarea">${noticevo.ncontent }</textarea>
 						</td>
-					</tr>					
+					</tr>	
+					<tr>
+						<th>파일업로드</th>
+						<td>
+							<input type="file" name="file1" >
+						</td>
+					</tr>			
 					<tr>
 						<td colspan="4">
 							<button class="btn btn-outline-secondary" type="button" id="btnNoticeWrite">등록완료</button>

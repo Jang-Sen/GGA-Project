@@ -1,9 +1,30 @@
 package com.gga.vo;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class BoardVo {
-	String bid, btitle, bcontent, bdate, mid, movieName; 
-	int rno, views, score;
+	String bid, btitle, bcontent, bdate, mid, movieName, bfile, bsfile; 
+	int rno, bhits, score;
+	CommonsMultipartFile file1;
 	
+	public String getBfile() {
+		return bfile;
+	}
+	public void setBfile(String bfile) {
+		this.bfile = bfile;
+	}
+	public void setFile1(CommonsMultipartFile file1) {
+		this.file1 = file1;
+	}
+	public String getBsfile() {
+		return bsfile;
+	}
+	public void setBsfile(String bsfile) {
+		this.bsfile = bsfile;
+	}
+	public CommonsMultipartFile getFile1() {
+		return file1;
+	}
 	public int getScore() {
 		return score;
 	}
@@ -52,10 +73,10 @@ public class BoardVo {
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
-	public int getViews() {
-		return views;
+	public int getBhits() {
+		return bhits;
 	}
-	public void setViews(int views) {
-		this.views = views;
+	public void setBhits(int bhits) {
+		this.bhits = bhits;
 	}
 }

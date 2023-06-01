@@ -7,6 +7,7 @@ import com.gga.vo.OrderconVo;
 
 public class OrderDao extends DBConn{
 	
+
 	public void deleteOrdercon(String oconid) {
 		String sql = "delete from gga_ordercon "+ 
 				" where oconid = ?";
@@ -62,6 +63,7 @@ public class OrderDao extends DBConn{
 		OrderconVo orderconVo = new OrderconVo();
 		String sql = "select oconid, movieid, movieordertitle, price,seat, otime, odate," +
 				" oname, ocarnum,  oemail, ophone, orderdate, impuid, merchantuid, pgtype, movieorderposter"+
+
 				" from GGA_ordercon where merchantuid = ?";
 		getPreparedStatement(sql);
 		try {
@@ -84,6 +86,7 @@ public class OrderDao extends DBConn{
 			orderconVo.setMerchantuid(rs.getString(14));
 			orderconVo.setPgtype(rs.getString(15));
 			orderconVo.setMovieorderposter(rs.getString(16));
+
 			}
 			
 		} catch (Exception e) {
@@ -93,6 +96,7 @@ public class OrderDao extends DBConn{
 		
 		return orderconVo;
 	}
+
 	public ArrayList<OrderconVo> selectOrdercon() {
 		ArrayList<OrderconVo> list = new ArrayList<OrderconVo>();
 		String sql = "select oconid, movieid, movieordertitle, price,seat, otime, odate," +
@@ -142,6 +146,7 @@ public class OrderDao extends DBConn{
 				" )";
 		getPreparedStatement(sql);
 		try {
+
 			pstmt.setString(1, orderVo.getMovieid());
 			pstmt.setString(2, orderVo.getMovieordertitle());
 			pstmt.setInt(3, orderVo.getPrice());
@@ -156,11 +161,13 @@ public class OrderDao extends DBConn{
 			pstmt.setString(12, impuid);
 			pstmt.setString(13, merchantuid);
 			pstmt.setString(14, pgtype);
+
 			pstmt.setString(15, orderVo.getMovieorderposter());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 	
 	
@@ -237,8 +244,10 @@ public class OrderDao extends DBConn{
 		int result = 0;
 		
 		String sql=" insert into gga_order"
+
 				+ " (movieid, otime, odate, oname, ocarnum, oemail, ophone, orderdate, oid, movieordertitle, movieorderposter) "
 				+ " values(?, ?, ?, ?, ?, ?, ?, sysdate, ?,?,?)";
+
 		getPreparedStatement(sql);
 		
 		try {

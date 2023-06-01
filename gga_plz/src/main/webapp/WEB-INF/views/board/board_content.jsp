@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +10,7 @@
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css"> <!-- gga.css -->
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
+<script src="http://localhost:9000/gga_plz/js/gga_javascript.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
 	<!-- 부트스트랩 -->
@@ -45,7 +47,9 @@ text-align:left;
 text-align:center;
 }
 
-img{
+section.board form table img#boardUpdate,
+section.board form table img#boardList,
+section.board form table img#boardDelete{ /* 버튼이미지 */
 	height:50px;
 	width:117px;
 	cursor:pointer;
@@ -54,7 +58,7 @@ img{
 <body>
 	<!-- header -->
 	<header>
-		<jsp:include page="../header.jsp" />
+		<jsp:include page="/header.do" />
 	</header>
 	<!-- header -->
 	
@@ -71,7 +75,10 @@ img{
 					<tr>
 						<th>내용</th>
 						<td>
-							${boardVo.bcontent}<br>
+							${boardVo.bcontent}<br><br><br><br>
+							<c:if test="${boardVo.bsfile != null }">
+								<img id="content_img"src="http://localhost:9000/gga_plz/upload/${boardVo.bsfile }">
+							</c:if>
 						</td>
 					</tr>
 					<tr>
@@ -85,7 +92,7 @@ img{
 					</tr>
 					<tr>
 						<th>작성자</th>
-						<td>${boardVo.id }</td>
+						<td>${boardVo.mid }</td>
 					</tr>
 					<tr>
 						<th>작성일자</th>
@@ -97,7 +104,7 @@ img{
 							<img id="boardUpdate" src="http://localhost:9000/gga_plz/images/editbtn.png"></a>
 							<img id="boardDelete" src="http://localhost:9000/gga_plz/images/deletebtn.png">
 							<a href="board_list.do">
-								<img src="http://localhost:9000/gga_plz/images/listbtn.png"></a>
+								<img id="boardList"src="http://localhost:9000/gga_plz/images/listbtn.png"></a>
 						</td>				
 					</tr>
 				</table>
