@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.board">
+	<select id="list" parameterType="map" resultType="com.gga.vo.BoardVo">
+		SELECT RNO, BID, BTITLE, BCONTENT, Bhits, MID, MOVIENAME, BDATE
+			FROM (SELECT ROWNUM RNO, BID, BTITLE, BCONTENT, BHITS, MID, MOVIENAME, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE FROM 
+				(SELECT BID, BTITLE, BCONTENT, BHITS, MID, MOVIENAME, BDATE FROM GGA_BOARD ORDER BY BDATE DESC))
+				WHERE RNO BETWEEN #{startCount} AND #{endCount}
+	</select>
+	
+	<insert id="insert" parameterType="com.gga.vo.BoardVo">
+		INSERT INTO GGA_BOARD(BID,BTITLE,SCORE,BCONTENT,Bhits,MID,MOVIENAME,BDATE,BFILE,BSFILE)
+			VALUES('b_'||LTRIM(TO_CHAR(SEQU_GGA_BOARD_BID.NEXTVAL, '0000')),#{btitle},#{score},#{bcontent},0,#{mid, jdbcType=VARCHAR},#{movieName},SYSDATE,#{bfile, jdbcType=VARCHAR},#{bsfile})
+	</insert>
+	
+	<select id="content" parameterType="String" resultType="com.gga.vo.BoardVo">
+		SELECT BID,BTITLE,SCORE,BCONTENT,Bhits,MID,MOVIENAME,BDATE,BFILE,BSFILE FROM GGA_BOARD WHERE BID=#{bid}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM GGA_BOARD WHERE BID=#{bid}
+	</delete>
+	
+	<update id="update" parameterType="com.gga.vo.BoardVo">
+		UPDATE GGA_BOARD SET BTITLE=#{btitle}, MOVIENAME=#{movieName}, SCORE=#{score}, BCONTENT=#{bcontent} WHERE BID=#{bid}
+	</update>
+	
+	<select id="searchList" parameterType="map" resultType="com.gga.vo.BoardVo">
+		SELECT RNO, BID, BTITLE, BCONTENT, Bhits, MID, MOVIENAME, BDATE
+			FROM (SELECT ROWNUM RNO, BID, BTITLE, BCONTENT, BHITS, MID, MOVIENAME, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE FROM
+				(SELECT BID, BTITLE, BCONTENT, BHITS, MID, MOVIENAME, BDATE FROM GGA_BOARD ORDER BY BDATE DESC)WHERE BTITLE LIKE '%'||#{btitle}||'%')
+				WHERE RNO BETWEEN #{startCount} AND #{endCount}
+	</select>
+	
+	<select id="updateHits" parameterType="String">
+		UPDATE GGA_BOARD SET BHITS=BHITS+1 WHERE BID =#{bid}
+	</select>
+	
+	<select id="searchRowCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM GGA_BOARD WHERE BTITLE LIKE '%'||#{btitle}||'%'
+	</select>
+	
+	<select id="totalRowCount" resultType="int">
+		SELECT COUNT(*) FROM GGA_BOARD
+	</select>
+	
+	
+	
+	
+	
+</mapper>
