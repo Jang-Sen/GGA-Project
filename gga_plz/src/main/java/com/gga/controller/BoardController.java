@@ -1,33 +1,129 @@
 package com.gga.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gga.dao.BoardDao;
+import com.gga.service.BoardService;
+import com.gga.service.PageServiceImpl;
 import com.gga.vo.BoardVo;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 @Controller
 public class BoardController {
-	@RequestMapping(value="/faq.do", method=RequestMethod.GET)
-	public String faq() {
-		return "/board/faq";
+	
+	@Autowired
+	private BoardService boardService;
+	
+	@Autowired
+	private PageServiceImpl pageService;
+	
+	
+	// file_upload_proc.do - 파일 업로드
+	@RequestMapping(value="/board_write_proc.do", method=RequestMethod.POST)
+	public String board_write_proc(BoardVo boardVo, HttpServletRequest request) throws Exception{
+		String viewName = "";
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "\\resources\\upload\\";
+		if(boardVo.getFile1().getOriginalFilename() != null) {
+			UUID uuid = UUID.randomUUID();
+			String bfile = boardVo.getFile1().getOriginalFilename();
+			String bsfile = uuid + "_" + bfile;
+			
+			boardVo.setBsfile(bsfile);
+		}else {
+			//파일 없음
+		}
+		int result = boardService.getWriteResult(boardVo);
+		if(result == 1) {
+			File file = new File(root_path + attach_path + boardVo.getBsfile());
+			boardVo.getFile1().transferTo(file);
+			viewName = "redirect:/board_list.do";
+		}
+		return viewName;
 	}
-	// board_wirte.do - 게시글 저장
-		@RequestMapping(value="/board_write_proc.do",method=RequestMethod.POST)
-		public String board_write_proc(BoardVo boardVo) {
-			String viewName ="";
-			BoardDao boardDao = new BoardDao();
-			int result = boardDao.insert(boardVo);
-			if(result == 1) {
-				viewName = "redirect:/board_list.do";
-			}else {
-				//실패 페이지 이동
-			}	
-			return viewName;
+	
+	// 보드 검색 기능 
+	@RequestMapping(value="/board_search_json_data.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String board_search_json_data(String btitle,String page) {
+		
+		Map<String, Integer> param = pageService.getPageResult(page, "boardSearch", boardService, btitle);
+		ArrayList<BoardVo> list = boardService.getList(param.get("startCount"), param.get("endCount") , btitle);
+		
+		JsonObject jlist = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		
+		for(BoardVo boardVo : list) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("rno", boardVo.getRno());
+			jobj.addProperty("btitle", boardVo.getBtitle());
+			jobj.addProperty("bhits", boardVo.getBhits());
+			jobj.addProperty("bid", boardVo.getBid());
+			jobj.addProperty("movieName", boardVo.getMovieName());
+			jobj.addProperty("mid", boardVo.getMid());
+			jobj.addProperty("bdate", boardVo.getBdate());
+			jarray.add(jobj);
+		}
+		jlist.add("jlist", jarray);
+		jlist.addProperty("totals", param.get("totals"));
+		jlist.addProperty("pageSize", param.get("pageSize"));
+		jlist.addProperty("maxSize", param.get("maxSize"));
+		jlist.addProperty("page", param.get("page"));
+		
+		return new Gson().toJson(jlist);
+	}
+	
+	// Json용 매핑
+	@RequestMapping(value="/board_list.do", method=RequestMethod.GET)
+	public String board_list() {
+		return "board/board_list";
+	}
+	
+	@RequestMapping(value="/board_list_json_data.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String board_list_json_data(String page) {
+		Map<String, Integer> param = pageService.getPageResult(page, "board", boardService);
+		ArrayList<BoardVo> list = boardService.getList(param.get("startCount"), param.get("endCount"));
+		
+		JsonObject jlist = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		for(BoardVo boardVo : list) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("rno", boardVo.getRno());
+			jobj.addProperty("btitle", boardVo.getBtitle());
+			jobj.addProperty("bhits", boardVo.getBhits());
+			jobj.addProperty("mid", boardVo.getMid());
+			jobj.addProperty("bid", boardVo.getBid());
+			jobj.addProperty("bdate", boardVo.getBdate());
+			jobj.addProperty("movieName", boardVo.getMovieName());
+			jarray.add(jobj);
+		}
+		jlist.add("jlist", jarray);
+		jlist.addProperty("totals", param.get("totals"));
+		jlist.addProperty("pageSize", param.get("pageSize"));
+		jlist.addProperty("maxSize", param.get("maxSize"));
+		jlist.addProperty("page", param.get("page"));
+		
+		return new Gson().toJson(jlist);
+	}
+	
+		//FAQ
+		@RequestMapping(value="/faq.do", method=RequestMethod.GET)
+		public String faq() {
+			return "/board/faq";
 		}
 		
 		// board_write.do - 게시글 글쓰기 
@@ -41,9 +137,7 @@ public class BoardController {
 		@RequestMapping(value="/board_delete_proc.do", method=RequestMethod.POST)
 		public String board_delete_proc(String bid) {
 			String viewName = "";
-			BoardDao boardDao = new BoardDao();
-			int result = boardDao.delete(bid);
-			if(result == 1) {
+			if(boardService.getDeleteResult(bid) == 1) {
 				viewName = "redirect:/board_list.do";
 			}else {
 				//실패 페이지이동
@@ -53,11 +147,28 @@ public class BoardController {
 		
 		// board_update - 업데이트 로직
 		@RequestMapping(value="/board_update_proc.do", method=RequestMethod.POST)
-		public String board_update_proc(BoardVo boardVo) {
+		public String board_update_proc(BoardVo boardVo, HttpServletRequest request) throws Exception {
+//			String viewName = "";
+//			String root_path = request.getSession().getServletContext().getRealPath("/");
+//			String attach_path = "\\resources\\upload\\";
+//			if(boardVo.getFile1().getOriginalFilename() != null) {
+//				UUID uuid = UUID.randomUUID();
+//				String bfile = boardVo.getFile1().getOriginalFilename();
+//				String bsfile = uuid + "_" + bfile;
+//				
+//				boardVo.setBsfile(bsfile);
+//			}else {
+//				//파일 없음
+//			}
+//			int result = boardService.getUpdateResult(boardVo);
+//			if(result == 1) {
+//				File file = new File(root_path + attach_path + boardVo.getBsfile());
+//				boardVo.getFile1().transferTo(file);
+//				viewName = "redirect:/board_list.do";
+//			}
+//			return viewName;
 			String viewName = "";
-			BoardDao boardDao = new BoardDao();
-			int result = boardDao.update(boardVo);
-			if(result == 1) {
+			if(boardService.getUpdateResult(boardVo) == 1) {
 				viewName = "redirect:/board_list.do";
 			}else {
 				//실패 페이지 이동
@@ -69,34 +180,18 @@ public class BoardController {
 		@RequestMapping(value="/board_update.do",method=RequestMethod.GET)
 		public ModelAndView board_update(String bid) {
 			ModelAndView model = new ModelAndView();
-			BoardDao boardDao = new BoardDao();
-			BoardVo boardVo = boardDao.select(bid);
+			BoardVo boardVo = boardService.getUpdatePage(bid);
 			model.addObject("bvo", boardVo);
 			model.setViewName("/board/board_update");
 			return model;
 		}
-		
-		// board_content.do
-		@RequestMapping(value="/board_content.do",method=RequestMethod.GET)
+
+		@RequestMapping(value="/board_content.do",method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
 		public ModelAndView board_content(String bid) {
 			ModelAndView model = new ModelAndView();
-			BoardDao boardDao = new BoardDao();
-			BoardVo boardVo = boardDao.select(bid);
+			BoardVo boardVo = boardService.getContentPage(bid);
 			model.addObject("boardVo", boardVo);
 			model.setViewName("/board/board_content");
-			return model;
-		}
-		
-		// board_list.do
-
-		@RequestMapping(value="/board_list.do", method=RequestMethod.GET)
-		public ModelAndView board_list() {
-			ModelAndView model = new ModelAndView();
-			BoardDao boardDao = new BoardDao();
-			ArrayList<BoardVo> list = boardDao.select();
-			model.addObject("list", list);
-			model.setViewName("/board/board_list");
-			
 			return model;
 		}
 }

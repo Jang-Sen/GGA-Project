@@ -16,6 +16,7 @@
 	<resources mapping="images/**" location="/resources/images/" />
 	<resources mapping="js/**" location="/resources/js/" />
 	<resources mapping="css/**" location="/resources/css/" />
+	<resources mapping="upload/**" location="/resources/upload/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,7 +26,7 @@
 	
 	<!-- Service -->
 	<beans:bean id="memberService" class="com.gga.service.MemberServiceImpl" />
-	<!-- <beans:bean id="boardService" class="com.gga.service.BoardServiceImpl" /> -->
+	<beans:bean id="boardService" class="com.gga.service.BoardServiceImpl" />
 	<beans:bean id="noticeService" class="com.gga.service.NoticeServiceImpl" />
 	<beans:bean id="orderService" class="com.gga.service.OrderServiceImpl" />
 	<beans:bean id="movieService" class="com.gga.service.MovieServiceImpl" />
@@ -33,10 +34,11 @@
 	<beans:bean id="cartService" class="com.gga.service.CartServiceImpl" />
 	
 	<!-- multipartResolver -->
-	<!-- <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	
 	<context:component-scan base-package="com.gga.controller" />
 	<context:component-scan base-package="com.gga.dao" />
+	<context:component-scan base-package="com.gga.service" />
 	
 	
 	
