@@ -14,6 +14,11 @@
  <script src="http://localhost:9000/gga_plz/js/gga_javascript.js"></script> 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>	
+	
 	<!-- 부트스트랩 -->
 </head>
 <style>
@@ -58,6 +63,7 @@
 			<p class="ticket_orderseat">${orderconVo.seat}</p>
 			<label>예매번호 :</label>
 			<p class="ticket_ordernum">${orderconVo.oconid}</p><br>
+			<input type="hidden" class="ticket_impuid" data-id="${orderconVo.impuid}">
 		
 		</div>
 		
@@ -72,6 +78,9 @@
 			<p class="ticket_number">${orderconVo.ophone}</p><br>
 		
 		</div>
+		
+		<button type="button" class="openmypage"><img src="http://localhost:9000/gga_plz/images/backbtn.png"></button>
+		<button type="button" class="refundticket"><img src="http://localhost:9000/gga_plz/images/refundticketbtn.png"></button>
 	</div>
 	<!-- content -->
 

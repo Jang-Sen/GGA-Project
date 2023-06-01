@@ -34,12 +34,15 @@
 				<h1>My예매</h1>
 				<a href="#" class="myorder_all"><h5>전체보기</h5></a>
 			</div>
-			<%-- <% if(${movidOrderVo.mainPoster != null) { %> --%>
-			<%-- <c:forEach var="movieOrderVo" items="${movieOrderVo }" end="3"> 
-				<div class="myorder_add">
-					<img src="http://localhost:9000/gga_test2/images/${movieOrderVo.mainPoster}.png">				
+		     
+			 <c:forEach var="orderconVo" items="${ticketlist}" end="3"> 
+				<div class="myorder_add2">
+				<a class="mypage_ticket" data-oconid="${orderconVo.oconid}">
+					<img src="http://localhost:9000/gga_plz/images/${orderconVo.movieorderposter}.jpg">				
+				</a>
 				</div>			
-			</c:forEach> --%>
+			</c:forEach> 
+			<%--
 			<div class="myorder_add">
 				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
 			</div>			
@@ -52,6 +55,8 @@
 			<div class="myorder_add">
 				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
 			</div>	
+			 --%>
+		   
 			<%-- <% }else { %> --%>		
 			<!-- <div class="myorder_text">
 				<p>아직 예매한 영화가 없습니다. 
@@ -72,6 +77,7 @@
 					<th>조회수</th>
 					<th>작성일자</th>
 				</tr>
+			 
 				<c:forEach var="boardVo" items="${list}">
 				<tr>
 					<td>${boardVo.rno }</td>
@@ -80,6 +86,7 @@
 					<td>${boardVo.bdate }</td>
 				</tr>
 				</c:forEach>
+				
 				<!-- <tr>
 					<td colspan="5">
 					<p>아직 작성한 리뷰가 없습니다. 리뷰를 쓰러 갈까요?</p>
