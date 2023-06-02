@@ -296,7 +296,7 @@ public class MemberDao extends DBConn {
    /*
     * select(memberVo) - 비밀번호 찾기	
     */
-   public int select_pw(MemberVo memberVo) {
+   public String select_pw(MemberVo memberVo) {
 	   
 	   return sqlSession.selectOne("mapper.member.findPw", memberVo);
 	   

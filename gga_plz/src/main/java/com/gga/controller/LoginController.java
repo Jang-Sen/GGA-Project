@@ -78,4 +78,13 @@ public class LoginController {
 		return "/login/login_pwFind";
 	}
 	
+	/*
+	 * login_pwFind_proc 비밀번호 찾기 후 수정
+	 */
+	@RequestMapping(value="/login_pwFind_proc.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String login_pwFind_proc(MemberVo memberVo) {
+		return memberService.findPw(memberVo);
+	}
+	
 }

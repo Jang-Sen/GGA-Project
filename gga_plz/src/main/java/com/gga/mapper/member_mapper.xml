@@ -46,7 +46,7 @@
 		SELECT ID FROM GGA_MEMBER WHERE NAME = #{name} AND BIRTH = #{birth} AND PHONE = #{phone}
 	</select>
 	
-	<select id="findPw" parameterType="com.gga.vo.MemberVo" resultType="int">
+	<select id="findPw" parameterType="com.gga.vo.MemberVo" resultType="String">
 		SELECT PASS FROM GGA_MEMBER WHERE ID = #{id} AND NAME = #{name} AND BIRTH = #{birth} AND PHONE = #{phone}
 	</select>
 	
