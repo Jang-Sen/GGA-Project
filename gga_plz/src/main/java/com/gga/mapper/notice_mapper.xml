@@ -6,30 +6,30 @@
     
 <mapper namespace="mapper.notice">
 	
-	<select id="list" parameterType="map" resultType="com.gga_plz.vo.NoticeVo">
+	<select id="list" parameterType="map" resultType="com.gga.vo.NoticeVo">
 		select rno, nid, ntitle, nhits, ndate 
 			from (select rownum rno, nid, ntitle, nhits, ndate
 			from (select nid, ntitle, nhits, ndate from gga_notice order by ndate desc))
 			where rno between #{start} and #{end}	
 	</select>
 	
-	<select id="content" parameterType="String" resultType="com.gga_plz.vo.NoticeVo">
+	<select id="content" parameterType="String" resultType="com.gga.vo.NoticeVo">
 		SELECT NID,NTITLE,NCONTENT,NHITS,NDATE, nfile, nsfile
 		 FROM GGA_NOTICE WHERE NID=#{nid}
 	</select>
 	
-	<insert id="insert" parameterType="com.gga_plz.vo.NoticeVo">
+	<insert id="insert" parameterType="com.gga.vo.NoticeVo">
 		insert into gga_notice(nid, ntitle, ncontent, nhits, ndate, nfile, nsfile) 
 		values('n_'||ltrim(to_char(sequ_gga_notice_nid.nextval,'0000')), #{ntitle}, #{ncontent}, 0, sysdate, 
 		 #{nfile, jdbcType=VARCHAR},#{nsfile, jdbcType=VARCHAR})
 	</insert>
 	
-	<select id = "list2" resultType="com.gga_plz.vo.NoticeVo">
+	<select id = "list2" resultType="com.gga.vo.NoticeVo">
 		select rownum rno, ntitle, nhits, ndate, nid 
 			from (select ntitle, nhits, ndate, nid from gga_notice order by ndate desc)
 	</select>
 
-	<update id="update" parameterType="com.gga_plz.vo.NoticeVo" >
+	<update id="update" parameterType="com.gga.vo.NoticeVo" >
 		update gga_notice set ntitle=#{ntitle}, ncontent=#{ncontent} where nid=#{nid}
 	</update>
 	
@@ -41,7 +41,7 @@
 		update gga_notice set nhits = nhits+1 where nid=#{nid}
 	</update>
 	
-	<select id="n_select" parameterType="String" resultType="com.gga_plz.NoticeVo">
+	<select id="n_select" parameterType="String" resultType="com.gga.vo.NoticeVo">
 		select nid, ntitle, ncontent, nhits, ndate from gga_notice where ntitle like #{ntitle}
 	</select>
 	
