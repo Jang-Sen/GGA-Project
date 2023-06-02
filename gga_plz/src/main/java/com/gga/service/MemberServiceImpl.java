@@ -46,7 +46,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int findPw(MemberVo memberVo) {
+	public String findPw(MemberVo memberVo) {
 		return memberDao.select_pw(memberVo);
 	}
 

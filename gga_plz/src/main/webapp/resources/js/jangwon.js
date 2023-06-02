@@ -5,7 +5,6 @@ $(document).ready(function(){
 		var name = $("#name").val();
 		var birth = $("#birth").val();
 		var phone = $("#phone").val();
-		var id = $("#id2").val();
 		
 		if (name == ""){
 			alert("이름을 입력해주세요.");
@@ -56,7 +55,23 @@ $(document).ready(function(){
 			$("#phone").focus();
 			return false;
 		} else {
-			findPwForm.submit();
+			var id = $("#id").val();
+			var name = $("#name").val();
+			var birth = $("#birth").val();
+			var phone = $("#phone").val();
+			
+			$.ajax({
+				url : "login_pwFind_proc.do?id=" + id + "&name=" + name + "&birth=" + birth + "&phone=" + phone ,
+				success : function(result){
+					if (result == ""){
+						alert("존재하지 않는 정보입니다.");
+						location.href="login_pwFind.do";
+					} else {
+						alert(result);
+						location.href="login.do";
+					}
+				}
+			}); // ajax
 		}
 					
 	}); // btnFindPw

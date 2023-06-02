@@ -11,5 +11,5 @@ public interface MemberService {
 	int getTotalRowCount();
 	ArrayList<MemberVo> getSelect(int startCount, int endCount);
 	String findId(MemberVo memberVo);
-	int findPw(MemberVo memberVo);
+	String findPw(MemberVo memberVo);
 }
