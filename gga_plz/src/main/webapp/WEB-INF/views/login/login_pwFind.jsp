@@ -67,7 +67,7 @@
 					</li>
 				</ul>
 					<div class="findbtn">
-						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindId" class="btnfindproc">
+						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindPw" class="btnfindproc">
 					</div>
 			</form>
 		</section>
