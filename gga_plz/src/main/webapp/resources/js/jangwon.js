@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var name = $("#name").val();
 		var birth = $("#birth").val();
 		var phone = $("#phone").val();
-		var id = $("#id").val();
+		var id = $("#id2").val();
 		
 		if (name == ""){
 			alert("이름을 입력해주세요.");
@@ -21,13 +21,14 @@ $(document).ready(function(){
 			return false;
 		} else {
 			$.ajax({
-				url : "http://localhost:9000/gga_plz/login_idFind_proc.do?name=" + name + "&birth=" + birth + "&phone=" + phone ,
+				url : "login_idFind_proc.do?name=" + name + "&birth=" + birth + "&phone=" + phone ,
 				success : function(result){
-					if (result == 1){
-						alert(id);
-						location.replace("http://localhost:9000/gga_plz/login.do");
-					} else {
+					if (result == ""){
 						alert("존재하지 않는 정보입니다.");
+						location.href="login_idFind.do";
+					} else {
+						alert(result);
+						location.href="login.do";
 					}
 				}
 				

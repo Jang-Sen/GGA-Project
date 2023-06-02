@@ -272,8 +272,10 @@ public class MemberDao extends DBConn {
    /*
     * select(memberVo) - 아이디 찾기
     */
-   public String select_id(String name, String birth, String phone) {
-	   return sqlSession.selectOne("mapper.member.findId", name, birth, phone);
+   public String select_id(MemberVo memberVo) {
+	   
+	   
+	   return sqlSession.selectOne("mapper.member.findId", memberVo);
 	   
 	   /*
 	   String sql = "SELECT ID FROM GGA_MEMBER"

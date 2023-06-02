@@ -40,15 +40,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public String findId(String name, String birth, String phone) {
-		
-		String result = "";
-		
-		try {
-			result = memberDao.select_id(memberVo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public String findId(MemberVo memberVo) {
+		return memberDao.select_id(memberVo);
 		
 	}
 	

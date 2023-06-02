@@ -1,10 +1,11 @@
 package com.gga.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,11 +66,8 @@ public class LoginController {
 	 */
 	@RequestMapping(value="/login_idFind_proc.do", method=RequestMethod.GET)
 	@ResponseBody
-	public String login_idFind_proc(@RequestParam("name") String name, @RequestParam("birth") String birth, @RequestParam("phone") String phone) {
-		
-		String result = memberService.findId(name, birth, phone);
-		
-		return result;
+	public String login_idFind_proc(MemberVo memberVo) {
+		return memberService.findId(memberVo);
 	}
 	
 	/*
