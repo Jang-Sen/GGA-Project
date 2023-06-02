@@ -1,0 +1,82 @@
+$(document).ready(function(){
+
+	initAjax(1);
+
+	function initAjax(page){
+		$.ajax({
+			url: "admin_notice_list_json_data.do?page="+page ,
+			success : function(result){
+				let jdata = JSON.parse(result);
+				
+				let output = "<table class='table table-bordered'  id='admin_notice_json' style='width: 90%;'>";
+				output += "<tr><td colspan='4'>";
+				output += "<a href='admin_notice_write.do' class='writebtn'>";
+				output += "	<img src='http://localhost:9000/gga_plz/images/writebtn.png'></a>";
+				output += "</td></tr>";
+				output += "<tr><th>번호</th><th>제목</th><th>조회수</th><th>작성일자</th></tr>";
+				
+				for(obj of jdata.jlist){
+					output += "<tr>";
+					output += "<td>"+ obj.rno +"</td>";
+					output += "<td><a href="+"'"+"admin_notice_content.do?nid="+obj.nid+"'>"+obj.ntitle+"</a></td>";
+					output += "<td>"+ obj.nhits +"</td>";
+					output += "<td>"+ obj.ndate +"</td>";
+					output += "</tr>";
+				}
+				
+				output += "<tr>";
+				output += "<td colspan='5'><div id ='ampaginationsm'></div></td>";
+				output += "</tr>";
+				output += "</table>";
+				
+				
+				//output을 출력
+				$("#admin_notice_json").remove();
+				$("div.notice_search").after(output);
+				
+				//페이징 처리 함수 호출
+				pager(jdata.totals, jdata.maxSize, jdata.pageSize, jdata.page);
+				
+				//페이지 번호 클릭 이벤트 처리
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+			   		jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           	//$(location).attr('href', "http://localhost:9000/gga_plz/admin_notice_list_json_data.do?page="+e.page);
+	           	
+	           	initAjax(e.page);         
+	    });
+				
+			}//success
+		
+		});//ajax
+	}//initAjax
+	
+		/* 페이징 처리 함수 */
+		function pager(totals, maxSize, pageSize, page){
+			//alert(totals+","+maxSize+","+pageSize+","+page);
+			
+			var pager = jQuery('#ampaginationsm').pagination({
+			
+			    maxSize: maxSize,	    	
+			    totals: totals,		
+			    page: page,		
+			    pageSize: pageSize,		
+			
+			    // custom labels		
+			    lastText: '&raquo;&raquo;', 		
+			    firstText: '&laquo;&laquo;',		
+			    prevText: '&laquo;',		
+			    nextText: '&raquo;',
+					     
+			    btnSize:'sm'	
+			});
+		}
+	
+
+}); //ready
+
+
+
+
+
+
+
