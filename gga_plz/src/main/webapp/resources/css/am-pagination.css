@@ -4,7 +4,6 @@
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.3333333;
-
 }
 .am-pagination-sm > li > a, .am-pagination-sm > li > span {
 	padding: 5px 10px;
@@ -35,6 +34,7 @@ font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "
 }
 .am-pagination-default > li:first-child > a,
 .am-pagination-default > li:first-child > span {
+	
   margin-left: 0;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
@@ -107,4 +107,8 @@ font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "
 .am-pagination-default-sm > li:last-child > span {
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
+}
+.am-pagination-default{
+	position:relative;
+	bottom:20px;
 }
