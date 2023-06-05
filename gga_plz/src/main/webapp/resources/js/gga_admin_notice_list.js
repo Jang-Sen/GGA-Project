@@ -25,14 +25,14 @@ $(document).ready(function(){
 				}
 				
 				output += "<tr>";
-				output += "<td colspan='5'><div id ='ampaginationsm'></div></td>";
+				output += "<td colspan='5'><div id='ampaginationsm'></div></td>";
 				output += "</tr>";
 				output += "</table>";
 				
 				
 				//output을 출력
 				$("#admin_notice_json").remove();
-				$("div.notice_search").after(output);
+				$("div.admin_notice_search").after(output);
 				
 				//페이징 처리 함수 호출
 				pager(jdata.totals, jdata.maxSize, jdata.pageSize, jdata.page);
@@ -40,8 +40,7 @@ $(document).ready(function(){
 				//페이지 번호 클릭 이벤트 처리
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   		jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           	//$(location).attr('href', "http://localhost:9000/gga_plz/admin_notice_list_json_data.do?page="+e.page);
-	           	
+			   		
 	           	initAjax(e.page);         
 	    });
 				

@@ -50,6 +50,14 @@ img {
 width:460px;
 height:600px;
 }
+
+.admin_content{
+border-color:white;
+}
+
+.admin_content1{
+border-color:white;
+}
 </style>
 <!-- <script>
 function cdelete(){
@@ -100,8 +108,8 @@ function cupdate(){
 						<th>작성일자</th>
 						<td>${noticeVo.ndate }</td>
 					</tr>					
-					<tr>
-						<td colspan="3">
+					<tr class="admin_content1">
+						<td colspan="3" class="admin_content">
 							<a href="admin_notice_update.do?nid=${noticeVo.nid }">
 							<button class="btn btn-outline-secondary" type="button" id="btnNoticeUpdate" >수정하기</button></a>
 							

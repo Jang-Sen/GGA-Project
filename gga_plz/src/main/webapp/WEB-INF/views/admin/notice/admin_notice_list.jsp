@@ -81,11 +81,15 @@ table tr:first-child {
 	border-right:1px solid white;
 	border-left:1px solid white;
 	text-align:right;
+	position:relative;
 }
 
 
-.notice_search {
-	margin-left : 600px;
+.admin_notice_search {
+	position:absolute;
+	margin-left : 50px;
+	margin-top : 130px;
+	z-index:1;
 }
 
 .n_searchbox {
@@ -122,12 +126,12 @@ table tr:first-child {
 	<!-- content -->
 	<div class="container text-center">
 		<div class="admin_notice_list_title">
-		<img src="http://localhost:9000/gga_plz/images/adminnoticetitle.png">
+			<img src="http://localhost:9000/gga_plz/images/adminnoticetitle.png">
 		</div>
 		<section class="admin_notice">
-			<div class="notice_search">
-				<input type="text" placeholder="공지사항 제목을 검색해 주세요." id="ntitle" name="ntitle" class="n_searchbox">
-				<button type="submit" id="btnAdminNoticeSearch"  class="n_searchbutton"><p>검색</p></button>
+			<div class="admin_notice_search">
+				<input type="text" placeholder="공지사항 제목을 검색해 주세요." id="ntitle" name="ntitle" class="n_searchbox" >
+				<button type="submit" id="btnAdminNoticeSearch" class="n_searchbutton" ><p>검색</p></button>
 			</div>
 			
 			<%-- <table class="table table-bordered" style="width: 90%;">

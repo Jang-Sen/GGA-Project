@@ -1,5 +1,7 @@
 $(document).ready(function(){
-
+	/******************************
+		notice_list paging
+	******************************/
 	initAjax(1);
 
 	function initAjax(page){
