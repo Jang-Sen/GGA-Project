@@ -10,4 +10,6 @@ public interface MemberService {
 	int getLogin(MemberVo memberVo);
 	int getTotalRowCount();
 	ArrayList<MemberVo> getSelect(int startCount, int endCount);
+	String findId(MemberVo memberVo);
+	String findPw(MemberVo memberVo);
 }

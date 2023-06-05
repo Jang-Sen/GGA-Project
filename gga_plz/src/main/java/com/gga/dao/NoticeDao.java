@@ -1,13 +1,24 @@
 package com.gga.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import com.gga.vo.MovieVo;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.gga.vo.NoticeVo;
-
+@Repository
 public class NoticeDao extends DBConn{
 	
-	/*전체 로우 카운트 (페이징 처리)*/
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
+	/*
+	 * notice total row count
+	 */
 	public int totalRowCount() {
 		int count = 0;
 		String sql = "select count(*) from gga_notice";
@@ -25,9 +36,11 @@ public class NoticeDao extends DBConn{
 	}
 	
 	/*
-	 * 공지사항 조회수 업데이트
+	 * notice update hits
 	 */
 	public void updateHits(String nid) {
+		sqlSession.update("mapper.notice.updateHits", nid);
+		/*
 		String sql = "update gga_notice set nhits = nhits+1 where nid=?";
 		getPreparedStatement(sql);
 		
@@ -38,6 +51,7 @@ public class NoticeDao extends DBConn{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		*/
 	}
 	
 	
@@ -46,6 +60,8 @@ public class NoticeDao extends DBConn{
 	 * delete
 	 */
 	public int delete(String nid) {
+		return sqlSession.delete("mapper.notice.delete", nid);
+		/*
 		int result = 0;
 		String sql = "delete from gga_notice where nid=?";
 		getPreparedStatement(sql);
@@ -57,12 +73,15 @@ public class NoticeDao extends DBConn{
 			e.printStackTrace();
 		}
 		return result;
+		*/
 	}
 	
 	/**
 	 * update
 	 */
 	public int update(NoticeVo noticeVo) {
+		return sqlSession.update("mapper.notice.update", noticeVo);
+		/*
 		int result = 0;
 		String sql = "update gga_notice set ntitle=?, ncontent=? where nid=?";
 		getPreparedStatement(sql);
@@ -78,12 +97,15 @@ public class NoticeDao extends DBConn{
 			e.printStackTrace();
 		}
 		return result;
+		*/
 	}
 	
 	/**
-	 * select- 
+	 * select - detailed information about notice(content)
 	 */
 	public NoticeVo select(String nid) {
+		return sqlSession.selectOne("mapper.notice.content", nid);
+		/*
 		NoticeVo noticeVo = new NoticeVo();
 		String sql = "SELECT NID,NTITLE,NCONTENT,NHITS,NDATE FROM GGA_NOTICE WHERE NID=?";
 		getPreparedStatement(sql);
@@ -103,15 +125,20 @@ public class NoticeDao extends DBConn{
 				e.printStackTrace();
 			}
 		return noticeVo;
+		*/
 		}
 	
 	
 	
 	
 	/**
-	 * select - 관리자 공지사항 게시글 전체 리스트
+	 * select - notice, whole list
 	 */
 	public ArrayList<NoticeVo> select(){
+		List<NoticeVo> list = sqlSession.selectList("mapper.notice.list2");
+				
+		return (ArrayList<NoticeVo>)list;
+		/*
 		ArrayList<NoticeVo> list = new ArrayList<NoticeVo>();
 		String sql = "select rownum rno, ntitle, nhits, ndate, nid "
 				+ " from (select ntitle, nhits, ndate, nid from gga_notice order by ndate desc)";
@@ -133,11 +160,22 @@ public class NoticeDao extends DBConn{
 			e.printStackTrace();
 		}
 		return list;
-		
+		*/
 	}
 	
-	//notice list 페이징 처리 오버로딩
-	public ArrayList<NoticeVo> select(int startCount, int endCount){
+	/*
+	 * select - notice, whole list (paging)
+	 */
+	public ArrayList<NoticeVo> select(int startCount, int endCount){	
+		Map<String, Integer> param = new HashMap<String, Integer>();
+		param.put("start", startCount);
+		param.put("end", endCount);
+		
+		List<NoticeVo> list = sqlSession.selectList("mapper.notice.list", param);
+		
+		return (ArrayList<NoticeVo>)list;
+		
+		/*
 		ArrayList<NoticeVo> list = new ArrayList<NoticeVo>();
 		String sql = "select rno, nid, ntitle, nhits, ndate " 
 				+ " from (select rownum rno, nid, ntitle, nhits, ndate"
@@ -163,13 +201,16 @@ public class NoticeDao extends DBConn{
 			e.printStackTrace();
 		}
 		return list;
+		*/
 	}
 	
 	
 	/**
-	 * insert - 게시글 등록
+	 * insert - enroll notice
 	 */
 	public int insert(NoticeVo noticeVo) {
+		return sqlSession.insert("mapper.notice.insert", noticeVo);
+		/*
 		int result = 0;
 		String sql=" insert into gga_notice(nid, ntitle, ncontent, nhits, ndate) values('n_'||ltrim(to_char(sequ_gga_notice.nextval,'0000')), ?, ?, 0, sysdate)";
 		getPreparedStatement(sql);
@@ -185,16 +226,38 @@ public class NoticeDao extends DBConn{
 		}
 		
 		return result; 
-		
+		*/
 		
 		
 	}
 	
 	
 	/*
-	 * notice_list 검색 기능 n_select
+	 * notice_list (about Search)-> n_select
 	 */
 	public NoticeVo n_select(String ntitle) {
+		NoticeVo fynull = new NoticeVo();
+		if(sqlSession.selectOne("mapper.notice.n_select", ntitle) == null) {
+			fynull.setNid("");
+			fynull.setNtitle("");
+			fynull.setNhits(1);
+			fynull.setNcontent("");
+			fynull.setNdate("");
+		}else {
+			fynull = sqlSession.selectOne("mapper.notice.n_select", ntitle);
+		}
+		return fynull;
+//		return sqlSession.selectOne("mapper.notice.n_select", ntitle);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		NoticeVo noticeVo = new NoticeVo();
 		
 		String sql="select nid, ntitle, ncontent, nhits, ndate from gga_notice where ntitle like ?";
@@ -215,6 +278,7 @@ public class NoticeDao extends DBConn{
 			e.printStackTrace();
 		}
 		return noticeVo;
+		*/
 	}
 	
 	

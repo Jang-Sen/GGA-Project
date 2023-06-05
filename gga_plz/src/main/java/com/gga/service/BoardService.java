@@ -7,7 +7,7 @@ import com.gga.vo.BoardVo;
 
 public interface BoardService {
 	
-	//º¸µå ¿µ¿ª
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public BoardVo getContentPage(String bid);
 	public BoardVo getUpdatePage(String bid);
 	public int getUpdateResult(BoardVo boardVo);
@@ -18,7 +18,7 @@ public interface BoardService {
 	public int getSearchRowCount(String btitle);
 	public int getTotalRowCount();
  	
-	//µ«±Û ¿µ¿ª
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public ArrayList<BoardCommentVo> getCommentList(int startCount,int endCount,String bid);
 	public int getCommentRowCount(String bid);
 	public int getCommentWriteResult(BoardCommentVo commentVo);

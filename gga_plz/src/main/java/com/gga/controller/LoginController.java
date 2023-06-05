@@ -1,9 +1,12 @@
 package com.gga.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.MemberService;
@@ -59,11 +62,29 @@ public class LoginController {
 	}
 	
 	/*
+	 * login_idFind_proc
+	 */
+	@RequestMapping(value="/login_idFind_proc.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String login_idFind_proc(MemberVo memberVo) {
+		return memberService.findId(memberVo);
+	}
+	
+	/*
 	 * login_pwFind - 비밀번호 찾기
 	 */
 	@RequestMapping(value="/login_pwFind.do", method=RequestMethod.GET)
 	public String login_pwFind() {
 		return "/login/login_pwFind";
+	}
+	
+	/*
+	 * login_pwFind_proc 비밀번호 찾기 후 수정
+	 */
+	@RequestMapping(value="/login_pwFind_proc.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String login_pwFind_proc(MemberVo memberVo) {
+		return memberService.findPw(memberVo);
 	}
 	
 }

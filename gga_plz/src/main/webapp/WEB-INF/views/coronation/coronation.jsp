@@ -9,6 +9,14 @@
 	<script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
 	<link rel="stylesheet" href="http://localhost:9000/test_gga/css/mycgv.css" type="text/css">
 </head>
+<style>
+
+.size{
+	width : 80px;
+}
+
+</style>
+
 <body>
 		<!-- header -->
 		<jsp:include page="../header.jsp" />
@@ -25,21 +33,22 @@
 				<img src="http://localhost:9000/gga_plz/images/corondetail.png">
 			</div>
 		<section class="coron_2">
+		<form name = "coronationForm">
 			<div class="coron_input">
 				<ul>
 				<li>
 					<label>이름</label>
-					<input type="text" class="name">
+					<input type="text" id="cname">
 				</li>
 				<li>
 					<label>연락처</label>
-					<input type="text" class="phone"> - 
-					<input type="text" class="phone"> - 
-					<input type="text" class="phone">
+					<input type="text" id="cphone1"> - 
+					<input type="text" id="cphone2"> - 
+					<input type="text" id="cphone3">
 				</li>
 				<li>
-					<label>규모</label>
-					<input type="text" class="name">
+					<label>총 인원수</label>
+					<input type="text" id="csize">명
 				</li>
 				<li>
 					<label>문의내용</label>
@@ -47,13 +56,15 @@
 				</li>
 				</ul>
 			</div>
+			</form>
 		</section>
 		<section class="coron_3">
 		</section>
 	</div>
 	<div>
 		<section class="enroll">
-			<button type ="button" class="coronbtn"><img src="http://localhost:9000/gga_plz/images/qnabtn.png"></button>
+			<a href = "coronation_confirm.do">
+			<button type ="submit" id = "btnConfirm" class="coronbtn"><img src="http://localhost:9000/gga_plz/images/qnabtn.png"></button></a>
 		</section>
 	</div>
 

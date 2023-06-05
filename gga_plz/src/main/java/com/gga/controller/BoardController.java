@@ -1,3 +1,4 @@
+
 package com.gga.controller;
 
 import java.io.File;
@@ -32,7 +33,7 @@ public class BoardController {
 	@Autowired
 	private PageServiceImpl pageService;
 	
-	// board_comment_proc.do - º¸µå µ«±Û Form
+	// board_comment_proc.do - ë³´ë“œ ëƒê¸€ Form
 	@RequestMapping(value="/board_comment_proc.do", method=RequestMethod.POST)
 	public String board_comment_proc(BoardCommentVo commentVo) {
 		String viewName = "";
@@ -41,12 +42,12 @@ public class BoardController {
 		if(result == 1) {
 			viewName = "redirect:/board_content.do?bid="+commentVo.getBid();
 		}else {
-			//½ÇÆĞ ÆäÀÌÁö ÀÌµ¿
+			//ì‹¤íŒ¨ í˜ì´ì§€ ì´ë™
 		}
 		return viewName;
 	}
 	
-	// file_upload_proc.do - ÆÄÀÏ ¾÷·Îµå
+	// file_upload_proc.do - íŒŒì¼ ì—…ë¡œë“œ
 	@RequestMapping(value="/board_write_proc.do", method=RequestMethod.POST)
 	public String board_write_proc(BoardVo boardVo, HttpServletRequest request) throws Exception{
 		String viewName = "";
@@ -59,7 +60,7 @@ public class BoardController {
 			
 			boardVo.setBsfile(bsfile);
 		}else {
-			//ÆÄÀÏ ¾øÀ½
+			//íŒŒì¼ ì—†ìŒ
 		}
 		int result = boardService.getWriteResult(boardVo);
 		if(result == 1) {
@@ -70,7 +71,7 @@ public class BoardController {
 		return viewName;
 	}
 	
-	// º¸µå °Ë»ö ±â´É 
+	// ë³´ë“œ ê²€ìƒ‰ ê¸°ëŠ¥ 
 	@RequestMapping(value="/board_search_json_data.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String board_search_json_data(String btitle,String page) {
@@ -101,7 +102,7 @@ public class BoardController {
 		return new Gson().toJson(jlist);
 	}
 	
-	// Json¿ë ¸ÅÇÎ
+	// Jsonìš© ë§¤í•‘
 	@RequestMapping(value="/board_list.do", method=RequestMethod.GET)
 	public String board_list() {
 		return "board/board_list";
@@ -141,26 +142,26 @@ public class BoardController {
 			return "/board/faq";
 		}
 		
-		// board_write.do - °Ô½Ã±Û ±Û¾²±â 
+		// board_write.do - ê²Œì‹œê¸€ ê¸€ì“°ê¸° 
 		@RequestMapping(value="/board_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "/board/board_write";
 		}
 		
 		
-		// board_delete - »èÁ¦
+		// board_delete - ì‚­ì œ
 		@RequestMapping(value="/board_delete_proc.do", method=RequestMethod.POST)
 		public String board_delete_proc(String bid) {
 			String viewName = "";
 			if(boardService.getDeleteResult(bid) == 1) {
 				viewName = "redirect:/board_list.do";
 			}else {
-				//½ÇÆĞ ÆäÀÌÁöÀÌµ¿
+				//ì‹¤íŒ¨ í˜ì´ì§€ì´ë™
 			}
 			return viewName;
 		}
 		
-		// board_update - ¾÷µ¥ÀÌÆ® ·ÎÁ÷
+		// board_update - ì—…ë°ì´íŠ¸ ë¡œì§
 		@RequestMapping(value="/board_update_proc.do", method=RequestMethod.POST)
 		public String board_update_proc(BoardVo boardVo, HttpServletRequest request) throws Exception {
 //			String viewName = "";
@@ -173,7 +174,7 @@ public class BoardController {
 //				
 //				boardVo.setBsfile(bsfile);
 //			}else {
-//				//ÆÄÀÏ ¾øÀ½
+//				//íŒŒì¼ ì—†ìŒ
 //			}
 //			int result = boardService.getUpdateResult(boardVo);
 //			if(result == 1) {
@@ -186,12 +187,12 @@ public class BoardController {
 			if(boardService.getUpdateResult(boardVo) == 1) {
 				viewName = "redirect:/board_list.do";
 			}else {
-				//½ÇÆĞ ÆäÀÌÁö ÀÌµ¿
+				//ì‹¤íŒ¨ í˜ì´ì§€ ì´ë™
 			}
 			return viewName;
 		}
 		
-		// board_update.do - °í¸¥ content °ª Default
+		// board_update.do - ê³ ë¥¸ content ê°’ Default
 		@RequestMapping(value="/board_update.do",method=RequestMethod.GET)
 		public ModelAndView board_update(String bid) {
 			ModelAndView model = new ModelAndView();

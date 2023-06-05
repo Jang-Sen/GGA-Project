@@ -1,9 +1,31 @@
 package com.gga.vo;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class NoticeVo {
 	int rno, nhits;
-	String nid, ntitle, ncontent, ndate;
+	String nid, ntitle, ncontent, ndate, nfile, nsfile;
+	CommonsMultipartFile file1;
 	
+	
+	public CommonsMultipartFile getFile1() {
+		return file1;
+	}
+	public void setFile1(CommonsMultipartFile file1) {
+		this.file1 = file1;
+	}
+	public String getNfile() {
+		return nfile;
+	}
+	public void setNfile(String nfile) {
+		this.nfile = nfile;
+	}
+	public String getNsfile() {
+		return nsfile;
+	}
+	public void setNsfile(String nsfile) {
+		this.nsfile = nsfile;
+	}
 	public int getRno() {
 		return rno;
 	}

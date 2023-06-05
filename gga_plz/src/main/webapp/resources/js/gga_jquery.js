@@ -94,7 +94,7 @@ $(document).ready(function(){
 	 });
 	  $("#gocartbtn").click(function(){
 		 $('#buyModal').modal('hide');
-		
+	
 		 $('#CartModal .modal-content').load('cartModal.do');
 		 $('#CartModal').modal('show');
 		 
@@ -401,6 +401,7 @@ $(document).ready(function(){
 	              	  }
 	            
 	            });
+
 		}
 				
 			
@@ -825,6 +826,8 @@ $(document).ready(function(){
 			coronationForm.submit();
 			alert("신청이 완료되었습니다.");
 		}
+
 	});	
+
 }); //ready
 	

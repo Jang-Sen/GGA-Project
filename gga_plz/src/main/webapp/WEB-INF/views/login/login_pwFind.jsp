@@ -47,7 +47,7 @@
 		</div>
 		<p>찾으실 아이디와 이름, 생년월일 및 휴대전화를 입력해주세요.</p>
 		<section class="login">
-			<form name="findPwForm" action="#" method="post" class="loginForm">
+			<form name="findPwForm" action="login_pwFind_proc.do" method="get" class="loginForm">
 				<ul>
 					<li>
 						<label>아이디</label>
@@ -67,7 +67,7 @@
 					</li>
 				</ul>
 					<div class="findbtn">
-						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindId" class="btnfindproc">
+						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindPw" class="btnfindproc">
 					</div>
 			</form>
 		</section>

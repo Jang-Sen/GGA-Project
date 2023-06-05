@@ -2,12 +2,17 @@ package com.gga.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.gga.dao.NoticeDao;
 import com.gga.vo.NoticeVo;
 
+@Service
 public class NoticeServiceImpl implements NoticeService{
 	
-	NoticeDao noticeDao = new NoticeDao();
+	@Autowired
+	private NoticeDao noticeDao;
 	
 	@Override
 	public int getInsert(NoticeVo noticeVo) {

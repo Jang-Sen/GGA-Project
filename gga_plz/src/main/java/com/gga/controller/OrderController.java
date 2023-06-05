@@ -9,27 +9,45 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.OrderService;
 import com.gga.vo.OrderVo;
+import com.gga.vo.OrderconVo;
 
 @Controller
 public class OrderController {
 	@Autowired
 	OrderService orderService;
-	
 	/**
 	 *	orderconProc.do 
 	 */
 	@RequestMapping(value="/orderconProc.do", method=RequestMethod.POST)
 	@ResponseBody
-	public void orderconProc(String seat, int price, String oid) {
+	public void orderconProc(String impuid, String merchantuid, String pgtype, String oid) {
+
+		OrderVo orderVo = orderService.select(oid);
+		orderService.getimp(impuid, merchantuid, pgtype,orderVo);
+
+	}
+
+	/**
+	 *	seatProc.do 
+	 */
+	@RequestMapping(value="/seatProc.do", method=RequestMethod.POST)
+	@ResponseBody
+	public void seatProc(String seat, String price, String oid) {
+		
 		orderService.getSeatPrice(seat, price, oid);
 	}
 	/**
 	 *	ordercon.do 
 	 */
 	@RequestMapping(value="/ordercon.do", method=RequestMethod.GET)
-	public String ordercon() {
+	public ModelAndView ordercon(String merchantuid) {
+		ModelAndView model = new ModelAndView();
+		OrderconVo orderconVo = new OrderconVo();
+		orderconVo = orderService.selectOrdercon(merchantuid);
+		model.addObject("orderconVo", orderconVo);
+		model.setViewName("/order/ordercon");
 		
-		return "/order/ordercon";
+		return model;
 	}
 	/**
 	 *	seat.do 

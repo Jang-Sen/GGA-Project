@@ -38,5 +38,16 @@ public class MemberServiceImpl implements MemberService {
 	public ArrayList<MemberVo> getSelect(int startCount, int endCount){
 		return memberDao.select(startCount, endCount);
 	}
+	
+	@Override
+	public String findId(MemberVo memberVo) {
+		return memberDao.select_id(memberVo);
+		
+	}
+	
+	@Override
+	public String findPw(MemberVo memberVo) {
+		return memberDao.select_pw(memberVo);
+	}
 
 }
