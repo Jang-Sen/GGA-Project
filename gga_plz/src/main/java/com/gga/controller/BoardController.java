@@ -2,6 +2,7 @@ package com.gga.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.BoardService;
 import com.gga.service.PageServiceImpl;
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -30,6 +32,19 @@ public class BoardController {
 	@Autowired
 	private PageServiceImpl pageService;
 	
+	// board_comment_proc.do - 보드 뎃글 Form
+	@RequestMapping(value="/board_comment_proc.do", method=RequestMethod.POST)
+	public String board_comment_proc(BoardCommentVo commentVo) {
+		String viewName = "";
+		int result = boardService.getCommentWriteResult(commentVo);
+		
+		if(result == 1) {
+			viewName = "redirect:/board_content.do?bid="+commentVo.getBid();
+		}else {
+			//실패 페이지 이동
+		}
+		return viewName;
+	}
 	
 	// file_upload_proc.do - 파일 업로드
 	@RequestMapping(value="/board_write_proc.do", method=RequestMethod.POST)
@@ -187,10 +202,20 @@ public class BoardController {
 		}
 
 		@RequestMapping(value="/board_content.do",method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
-		public ModelAndView board_content(String bid) {
+		public ModelAndView board_content(String bid, String page) {
 			ModelAndView model = new ModelAndView();
+			Map<String, Integer> param = pageService.getPageResult(page, "boardComment", boardService, bid);
+			
 			BoardVo boardVo = boardService.getContentPage(bid);
+			ArrayList<BoardCommentVo> bcVo = boardService.getCommentList(param.get("startCount"),param.get("endCount"),bid);
+			
 			model.addObject("boardVo", boardVo);
+			model.addObject("bcVo", bcVo);
+			model.addObject("totals", param.get("totals"));
+			model.addObject("maxSize", param.get("maxSize"));
+			model.addObject("pageSize", param.get("pageSize"));
+			model.addObject("page", param.get("page"));
+			
 			model.setViewName("/board/board_content");
 			return model;
 		}

@@ -301,7 +301,7 @@ div.content section.myorder div.myorder_add { /* 영화 포스터 */
 	position:relative;
 	float:left;
 	right: 5px; top:65px;
-	opacity:0.3;
+	opacity:1.0;
 	margin-top:20px;
 	margin-left:20px;
 }
@@ -311,14 +311,44 @@ div.content section.myorder div.myorder_add:hover { /* 칸 커서 이벤트  */
 	
 div.content section.myorder div.myorder_add img ,
 div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
-	width:60px;
+
+border:3px groove lightgray;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
 	position:relative;
-	top:120px;
-	opacity:0.3;
+	float:left;
+	opacity:1.0;
+	position:relative;
+	width:220px; height:330px;
+	/* top:120px; */
+	opacity:1.0;
 }
 div.content section.myorder div.myorder_add img:hover, 
 div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+	opacity:0.3;
+	cursor:pointer;
+}
+div.content section.myorder div.myorder_add2 img ,
+div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
+	top:65px;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
+	position:relative;
+	float:left;
 	opacity:1.0;
+	position:relative;
+	width:220px; height:330px;
+	/* top:120px; */
+	opacity:1.0;
+	margin-top:20px;
+	margin-left:20px;
+}
+div.content section.myorder div.myorder_add2 img:hover, 
+div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+	opacity:0.3;
+	cursor:pointer;
 }
 .myorder_all{
 	color:gray;
@@ -348,7 +378,31 @@ div.content section.myreview table {
 }
 
 
+/*********************************
+mypage ticket
+********************************/
 
+.openmypage{
+	margin-top:25px;
+	margin-left:300px;
+	background-color:white;
+	border:1px solid white;
+}
+.openmypage img{
+	width:150px;
+	height:80px;
+	}
+	
+.refundticket{
+	margin-left:25px;
+	background-color:white;
+	border:1px solid white;
+	
+}
+.refundticket img{
+	width:150px;
+	height:80px;
+}
 
 /*******************************
  占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎈읂占쎌뵠筌욑옙
@@ -1110,7 +1164,7 @@ height:100px;
   margin-top:50px;
   display : block;
   text-decoration : none;
-  color : rgb(37, 37, 37);
+  color : rgb(37, 37, 37); 
   font-size: 15px;
  	padding : 12px 20px; 
 	background-image:url("http://localhost:9000/gga_plz/images/ticket2.png");
@@ -1125,7 +1179,7 @@ height:100px;
 margin-top:50px;
   display : block;
   text-decoration : none;
-  color : rgb(37, 37, 37);
+color : rgb(37, 37, 37);
   font-size: 15px;
   padding : 12px 20px;
 	background-image:url("http://localhost:9000/gga_plz/images/ticket2.png");
@@ -1136,7 +1190,7 @@ margin-top:50px;
 }
 .ticketcon_bac1 p {
 display:inline;
-	color:gray;
+
 } 
 .ticketcon_bac1 label:first-child{
 margin-top:100px;
@@ -1146,11 +1200,11 @@ margin-top:100px;
 width:100px;
 margin-left:80px;
 margin-top:10px;
-color:gray;
+
 }
 .ticketcon_bac2 p {
 display:inline;
-	color:gray;
+	
 
 }
 .ticketcon_bac2 label:first-child{
@@ -1161,7 +1215,7 @@ margin-top:100px;
 width:100px;
 margin-left:80px;
 margin-top:15px;
-	color:gray;
+
 }
 
 /***************************
@@ -1576,3 +1630,144 @@ footer .container{
 	text-decoration:none;
 	font-size:12pt;
 }
+
+
+
+/*******
+ 날씨 api - 여기부터보내야함
+*******/
+
+div.section4 div.col-3{ /* 날씨영역 div */
+	position:relative;
+	float:left;
+	width:300px;	height:800px;
+	left:0px;
+}
+div.section4 div.col-9 { /* 지도영역  div */
+	border:2px solid black;
+	border-radius:3px;
+	width:680px; height:405px;
+}
+div.section4 div.weather_api { /* api영역 div */
+	border:1px groove black;
+	border-radius : 5px;
+	background-image:url("http://localhost:9000/gga_spring1/images/weatherbackground.jpg");
+	height:50%;
+}
+div.section4 div.weather_api div.weather_icon { /* 날씨 아이콘 div */
+	width:120px; height:120px;
+	margin:10px 0px 0px 30px;
+}
+div.section4 div.weather_api div button { /* 날짜 버튼 */
+	/* border:1px groove #0080c0; */
+	border:none;
+	display: inline-block;
+	background:none;
+	margin: 20px 10px 0px 10px;
+	font-size:12pt;
+	color:white;
+	font-weight:700;
+	float:top;
+}
+div.section4 div.weather_api div button:hover { /* 날짜 버튼 이벤트 */
+	color: blue;
+}
+div.section4 div.weather_api img { /* 날씨 아이콘  */
+	position:relative;
+	left:48px; top:20px;
+	width:120px; height:120px;
+}
+div.section4 div#weather_icon div:nth-child(2) { /* 날씨 영역 div  */
+	position:relative;
+	right:20px; top:30px;
+	width:200%; float:left;
+	height:110%;
+}
+div.section4 div#weather_icon div#weather_info ul li{ /* 날씨 상세 공통 */
+	list-style-type:none;
+	text-align:center;	
+	color:white;
+	margin:5px 0px;
+}
+div.section4 div#weather_icon div#weather_info ul li:nth-child(2),
+div.section4 div#weather_icon div#weather_info ul li:nth-child(3) { /* 날씨, 풍속  */
+	font-style:italic;
+	font-weight:200;
+	font-size:18pt;
+}
+div.section4 div#weather_icon div#weather_info ul li:first-child { /* 기온 */
+	font-size:40pt;
+	font-weight:700;
+}
+
+/*******
+ 	차타고 오세요
+*******/
+
+div.section4 div.card {
+	position:relative;
+	right:680px;
+	margin-top:10px;
+	width:955px; height:50px;
+}
+
+
+
+/*******************
+	뎃글창 - css - 송지웅
+*******************/
+
+section.board form table.comment_box tr textarea {
+	border:1px solid lightgray;
+	margin-top:10px;
+	width:100%; height:100%;
+}
+section.board form table.comment_box {
+	border:1px solid black;
+	width: 880px; height:30%;
+	margin-top:20px;
+}
+section.board form table.comment_box tr:first-child {
+	background-image:url("http://localhost:9000/gga_plz/images/commentbackground.PNG");
+}
+
+section.board form table.comment_box tr td:first-child,
+section.board form table.comment_box tr td:nth-child(3) {
+	border: 1px solid gray;
+	padding:10px;
+	width:150px;	
+}
+section.board form table.table th {
+	width:20%;
+	background-image:url("http://localhost:9000/gga_plz/images/commentbackground.PNG");
+}
+section.board form table.comment_box td {
+	border:1px solid gray;
+}
+section.board form table.comment_box div{
+	height:30px;
+}
+
+/* 뎃글 샘플 이미지 */
+section.board img#commentSample {
+	border:1px solid red;
+	filter: blur(3px);
+}
+section.board div#commentLogin {
+	position:relative;
+	bottom:70px;
+}
+section.board div#commentLogin a {
+	text-decoration-line:none;
+	font-size:18pt;
+	color: #13dbcc;
+}
+section.board form button.btn {
+	width:100px; height:40px;
+}
+
+
+
+
+
+

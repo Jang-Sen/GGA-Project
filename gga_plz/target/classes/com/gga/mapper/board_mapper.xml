@@ -5,6 +5,23 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="mapper.board">
+	
+	<insert id="commentInsert" parameterType="com.gga.vo.BoardCommentVo">
+		INSERT INTO GGA_BOARD_COMMENT(BCID,BID,SID,BCCONTENT,BCDATE) 
+		VALUES('bc_'||LTRIM(TO_CHAR(SEQU_GGA_BOARD_COMMENT_BCID.NEXTVAL,'0000')),#{bid, jdbcType=VARCHAR},#{sid},#{bccontent},SYSDATE)
+	</insert>
+	
+	<select id="commentCount" parameterType="java.lang.String" resultType="int">
+		SELECT COUNT(*) FROM GGA_BOARD_COMMENT WHERE BID = #{bid, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="comment" parameterType="map" resultType="com.gga.vo.BoardCommentVo">
+		SELECT RNO, BCID, BID, SID, BCCONTENT, BCDATE FROM
+			(SELECT ROWNUM RNO , BCID, BID, SID, BCCONTENT, TO_CHAR(BCDATE, 'YYYY-MM-DD') BCDATE FROM 
+				(SELECT BCID, BID, SID, BCCONTENT, BCDATE FROM GGA_BOARD_COMMENT WHERE BID = #{bid, jdbcType=VARCHAR} ORDER BY BCDATE DESC))
+		WHERE RNO BETWEEN #{startCount} AND #{endCount}
+	</select>
+	
 	<select id="list" parameterType="map" resultType="com.gga.vo.BoardVo">
 		SELECT RNO, BID, BTITLE, BCONTENT, Bhits, MID, MOVIENAME, BDATE
 			FROM (SELECT ROWNUM RNO, BID, BTITLE, BCONTENT, BHITS, MID, MOVIENAME, TO_CHAR(BDATE, 'YYYY-MM-DD') BDATE FROM 

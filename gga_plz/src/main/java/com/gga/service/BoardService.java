@@ -2,10 +2,12 @@ package com.gga.service;
 
 import java.util.ArrayList;
 
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
 
 public interface BoardService {
 	
+	//보드 영역
 	public BoardVo getContentPage(String bid);
 	public BoardVo getUpdatePage(String bid);
 	public int getUpdateResult(BoardVo boardVo);
@@ -16,4 +18,8 @@ public interface BoardService {
 	public int getSearchRowCount(String btitle);
 	public int getTotalRowCount();
  	
+	//뎃글 영역
+	public ArrayList<BoardCommentVo> getCommentList(int startCount,int endCount,String bid);
+	public int getCommentRowCount(String bid);
+	public int getCommentWriteResult(BoardCommentVo commentVo);
 }

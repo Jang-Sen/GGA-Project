@@ -81,6 +81,8 @@ public class PageServiceImpl {
 		}else if(serviceName.equals("boardSearch")) {
 			boardService = (BoardServiceImpl)serviceType;
 			dbCount = boardService.getSearchRowCount(btitle);
+		}else if(serviceName.equals("boardComment")) {
+			dbCount = boardService.getCommentRowCount(btitle); // 
 		}
 		
 		if(dbCount % pageSize == 0) {

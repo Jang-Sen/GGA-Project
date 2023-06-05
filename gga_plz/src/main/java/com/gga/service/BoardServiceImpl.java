@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gga.dao.BoardDao;
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
 
 @Service
@@ -13,6 +14,24 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardDao boardDao;
+	
+	// Board_comment_write (뎃글 작성 저장)
+	@Override
+	public int getCommentWriteResult(BoardCommentVo commentVo) {
+		return boardDao.commentInsert(commentVo);
+	}
+	
+	// Board_comment (페이징카운트)
+	@Override
+	public int getCommentRowCount(String bid) {
+		return boardDao.commentRowCount(bid);
+	}
+	
+	// Board_comment (리스트조회)
+	@Override
+	public ArrayList<BoardCommentVo> getCommentList(int startCount, int endCount, String bid) {
+		return boardDao.commentSelect(startCount, endCount, bid);
+	}
 	
 	// Board_Content (페이지)
 	@Override

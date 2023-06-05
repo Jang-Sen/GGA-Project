@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
 
 @Repository
@@ -16,6 +17,28 @@ public class BoardDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	// 뎃글 작성 저장
+	public int commentInsert(BoardCommentVo commentVo) {
+		System.out.println(commentVo.getBid());
+		System.out.println(commentVo.getBccontent());
+		return sqlSession.insert("mapper.board.commentInsert", commentVo);
+	}
+	
+	// 뎃글 갯수 조회
+	public int commentRowCount(String bid) {
+		return sqlSession.selectOne("mapper.board.commentCount", bid);
+	}
+	
+	// 뎃글 조회
+	public ArrayList<BoardCommentVo> commentSelect(int startCount, int endCount, String bid) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("startCount", startCount);
+		param.put("endCount", endCount);
+		param.put("bid", bid);
+		List<BoardCommentVo> list = sqlSession.selectList("mapper.board.comment", param);
+		return (ArrayList<BoardCommentVo>)list;
+	}
 	
 	// 조회수 증가
 	public void updateHits(String bid) {
