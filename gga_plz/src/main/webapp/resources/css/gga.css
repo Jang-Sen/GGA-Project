@@ -133,7 +133,7 @@ font-size:11pt;
 
 
 /*******************************
- 내 정보 수정 페이지
+ �궡 �젙蹂� �닔�젙 �럹�씠吏�
 *************************************/
 
 .mypage_title img{
@@ -215,25 +215,25 @@ font-size:11pt;
 }
 
 
-/*                            송지웅 마이페이지 디자인 5월19일 */
+/*                            �넚吏��썒 留덉씠�럹�씠吏� �뵒�옄�씤 5�썡19�씪 */
 
-div.content section.mypage { /* section 고정 */
+div.content section.mypage { /* section 怨좎젙 */
 	width:980px; height:200px;
 	margin:auto;
 	text-align:center;
 	border-bottom: 1px solid lightgray;
 }
-div.content section.mypage div.mypage_header { /* 마이페이지 타이틀 영역  */
+div.content section.mypage div.mypage_header { /* 留덉씠�럹�씠吏� ���씠�� �쁺�뿭  */
 /* margin:10px; */
 /* 	float:left; */
 text-align:left;
 }
 
-div.content section.mypage div.mypage_header img { /* 마이페이지 이미지 영역  */
+div.content section.mypage div.mypage_header img { /* 留덉씠�럹�씠吏� �씠誘몄� �쁺�뿭  */
 	width:300px;
 }
 
-div.content section.mypage div.mypage_menu_info { /* 메뉴 div 위치 영역 */
+div.content section.mypage div.mypage_menu_info { /* 硫붾돱 div �쐞移� �쁺�뿭 */
 	margin-left: 20px;
 /* 	margin:0px 0px 0px 60px; */
 	position:relative;
@@ -243,7 +243,7 @@ div.content section.mypage div.mypage_menu_info { /* 메뉴 div 위치 영역 */
 	display:inline-block;
 }
 
-div.content section.mypage div.mypage_menu_info { /* 인포 오더 위치 */
+div.content section.mypage div.mypage_menu_info { /* �씤�룷 �삤�뜑 �쐞移� */
 	font-size:30pt;
 	 float:left; 
 	/* margin:70px; */
@@ -254,34 +254,34 @@ div.content section.mypage div.mypage_menu_info { /* 인포 오더 위치 */
 	color:gray;
 }
 
-/*                           내 예매 내역                           */
+/*                           �궡 �삁留� �궡�뿭                           */
 
-div.content section.myorder { /* section 고정 */
+div.content section.myorder { /* section 怨좎젙 */
 	width: 1200px; height:460px;
 	margin:auto;
 	text-align:center;
 	/* border-bottom: 5px double black; */
 }
-div.content section.myorder div.myorder_header h1 { /* My예매  타이틀 영역 */
+div.content section.myorder div.myorder_header h1 { /* My�삁留�  ���씠�� �쁺�뿭 */
 	position:relative;
 	left:100px;
 	margin:30px;
 	float:left;
 	font-size:20pt;
 }
-div.content section.myorder div.myorder_header h5 { /* My예매  타이틀 영역 */
+div.content section.myorder div.myorder_header h5 { /* My�삁留�  ���씠�� �쁺�뿭 */
 	position:relative;
 	right:100px;
 	float:right;
 	padding:10px; margin:10px;
 	margin-top:20px; 
 }
-div.content section.myorder div.myorder_text { /* My예매 정보 유무 출력 */
+div.content section.myorder div.myorder_text { /* My�삁留� �젙蹂� �쑀臾� 異쒕젰 */
 	position:relative;
 	display:inline-block;
 	top: 80px;
 }
-div.content section.myorder div.myorder_text span { /* 정보 유무 글씨  */
+div.content section.myorder div.myorder_text span { /* �젙蹂� �쑀臾� 湲��뵪  */
 	text-align:center;
 	color:tomato;
 }
@@ -292,7 +292,7 @@ div.content section.myorder div.myorder_add:nth-child(5) {
 	bottom:500px;
 }
 
-div.content section.myorder div.myorder_add { /* 영화 포스터 */
+div.content section.myorder div.myorder_add { /* �쁺�솕 �룷�뒪�꽣 */
 	border:3px groove lightgray;
 	background:lightgray;
 	border-radius:3px;
@@ -305,12 +305,12 @@ div.content section.myorder div.myorder_add { /* 영화 포스터 */
 	margin-top:20px;
 	margin-left:20px;
 }
-div.content section.myorder div.myorder_add:hover { /* 칸 커서 이벤트  */
+div.content section.myorder div.myorder_add:hover { /* 移� 而ㅼ꽌 �씠踰ㅽ듃  */
 	opacity:0.5;
 }
 	
 div.content section.myorder div.myorder_add img ,
-div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
+div.content section.myorder div.myorder_add_plus img  { /* �씠誘몄� �겕湲� & �쐞移� */
 
 border:3px groove lightgray;
 	background:lightgray;
@@ -325,12 +325,12 @@ border:3px groove lightgray;
 	opacity:1.0;
 }
 div.content section.myorder div.myorder_add img:hover, 
-div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+div.content section.myorder div.myorder_add_plus img:hover { /* �뵆�윭�뒪 踰꾪듉 而ㅼ꽌 �씠踰ㅽ듃 */
 	opacity:0.3;
 	cursor:pointer;
 }
 div.content section.myorder div.myorder_add2 img ,
-div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
+div.content section.myorder div.myorder_add_plus img  { /* �씠誘몄� �겕湲� & �쐞移� */
 	top:65px;
 	background:lightgray;
 	border-radius:3px;
@@ -346,28 +346,28 @@ div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & �
 	margin-left:20px;
 }
 div.content section.myorder div.myorder_add2 img:hover, 
-div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+div.content section.myorder div.myorder_add_plus img:hover { /* �뵆�윭�뒪 踰꾪듉 而ㅼ꽌 �씠踰ㅽ듃 */
 	opacity:0.3;
 	cursor:pointer;
 }
 .myorder_all{
 	color:gray;
 }
-/* div.content section.myorder div.myorder_add_plus img { 플러스 이미지 (마지막)
+/* div.content section.myorder div.myorder_add_plus img { �뵆�윭�뒪 �씠誘몄� (留덉�留�)
 	position:relative;
 	right:40px; top:115px;
 } */
 
-/*                   My 리뷰 영역                 */
+/*                   My 由щ럭 �쁺�뿭                 */
 
-div.content section.myreview { /* section 고정 */
+div.content section.myreview { /* section 怨좎젙 */
 	border-top:1px solid lightgray;
 	width:980px; height:460px;
 	margin:auto;
 	text-align:center;
 }
 
-div.content section.myreview div.myreview_header h1 { /* My리뷰  타이틀 영역 */
+div.content section.myreview div.myreview_header h1 { /* My由щ럭  ���씠�� �쁺�뿭 */
 	margin:30px;
 	float:left;
 	font-size:20pt;
@@ -405,7 +405,7 @@ mypage ticket
 }
 
 /*******************************
- 占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎈읂占쎌뵠筌욑옙
+ �뜝�럩�뤂�뜝�럩�쐸�뤆�룊�삕�뜝�럩肉� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 *************************************/
 
 .join_title img{
@@ -493,7 +493,7 @@ mypage ticket
 }
 
 /*******************************
- 嚥≪뮄�젃占쎌뵥 占쎈읂占쎌뵠筌욑옙
+ �슖�돦裕꾬옙�쟽�뜝�럩逾� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 *************************************/
   .container{
 	font-family: 'GangwonEdu_OTFBoldA';
@@ -559,13 +559,13 @@ mypage ticket
 	border-radius:4px;
 }
 /*******************************
- 占쎌굙筌랃옙 占쎈읂占쎌뵠筌욑옙
+ �뜝�럩援숂춯�엪�삕 �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 *************************************/
 
-/*                占쏙옙�꽴占썼눧紐꾩벥 - 占쎈꽊筌욑옙占쎌뜏 05-02                            */
+/*                �뜝�룞�삕占쎄슈�뜝�띁�닱筌뤾쑴踰� - �뜝�럥苑딁춯�쉻�삕�뜝�럩�쐪 05-02                            */
 
-/* 占쏙옙�꽴占썼눧紐꾩벥 - 占쎈ご筌욑옙 */
-div.content section.coron_1 { /* section �⑥쥙�젟  */
+/* �뜝�룞�삕占쎄슈�뜝�띁�닱筌뤾쑴踰� - �뜝�럥�걫嶺뚯쉻�삕 */
+div.content section.coron_1 { /* section 占썩뫁伊숋옙�젧  */
 	border:1px solid red;
 	width:1000px; height:600px;
 	margin:auto;
@@ -584,12 +584,12 @@ div.content section.coron_1 div.con {
 	text-align:center;
 	margin-top:130px;
 }
-/* 占쏙옙�꽴占썼눧紐꾩벥 - 占쎄땀占쎌뒠 */
+/* �뜝�룞�삕占쎄슈�뜝�띁�닱筌뤾쑴踰� - �뜝�럡���뜝�럩�뮔 */
 	.ask_title img{
 	width:280px;
 	height:100px;
 	}
-div.container section.coron_2 { /* section �⑥쥙�젟  */
+div.container section.coron_2 { /* section 占썩뫁伊숋옙�젧  */
 	width:1000px; height:300px;
 	margin:auto;
 	position:relative;
@@ -609,13 +609,30 @@ div.container section.coron_2 div:nth-child(4) {
 	width:70%;
 	text-align:left;
 }
+div.coron_input {
+	margin-left:40px;
+	display:lnline-block;
+}
 .coron_input ul li input{
 	margin-left:15px;
 	margin-right:15px;
 }
+.coron_input ul li input#cname,
+.coron_input ul li input#csize {
+	width:260px;
+}
+.coron_input ul li input#cphone1,
+.coron_input ul li input#cphone2,
+.coron_input ul li input#cphone3 {
+	width:140px;
+}
+.coron_input ul li:nth-child(4) label {
+	position:relative;
+	bottom:78px;
+}
 .coron_input textarea{
 	margin-left:15px;
-	width:400px;
+	width:516px;
 	height:100px;
 	border:1px solid lightgray;
 }
@@ -624,7 +641,7 @@ div.container section.coron_2 div:nth-child(4) {
 	width:1000px;
 }
 .coronbtn{
-	margin-left:500px;
+	margin-left:670px;
 	width:200px;
 	height:100px;
 	border:1px solid white;
@@ -736,7 +753,7 @@ div.container section.coron_2 div:nth-child(4) {
 } 
 .buycartmodal_footer{
 	display:flex;
-	flex-direction: row; /*수평 정렬*/
+	flex-direction: row; /*�닔�룊 �젙�젹*/
       align-items: center;
       justify-content: center;
       margin-bottom:30px;
@@ -840,7 +857,7 @@ div.container section.coron_2 div:nth-child(4) {
 	border-radius:4px;
 }
 
-/*占쎌굙筌랃옙*/
+/*�뜝�럩援숂춯�엪�삕*/
 
  		.cont-select {
  		display:inline-block;
@@ -863,7 +880,7 @@ div.container section.coron_2 div:nth-child(4) {
             cursor: pointer;
             text-align: left;
         /*     background: url("images/icon-Triangle-down.png") center right 14px no-repeat; */
-            /* 筌띾Ŋ夷わ옙�뿫 */
+            /* 嶺뚮씭흮鸚룔굩�삕占쎈엮 */
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -911,7 +928,7 @@ div.container section.coron_2 div:nth-child(4) {
             border-radius: 8px;
             cursor: pointer;
             text-align: left;
-            /* 筌띾Ŋ夷わ옙�뿫 */
+            /* 嶺뚮씭흮鸚룔굩�삕占쎈엮 */
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -944,7 +961,7 @@ div.container section.coron_2 div:nth-child(4) {
             cursor: pointer;
             text-align: left;
         /*     background: url("images/icon-Triangle-down.png") center right 14px no-repeat; */
-            /* 筌띾Ŋ夷わ옙�뿫 */
+            /* 嶺뚮씭흮鸚룔굩�삕占쎈엮 */
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -992,7 +1009,7 @@ div.container section.coron_2 div:nth-child(4) {
             border-radius: 8px;
             cursor: pointer;
             text-align: left;
-            /* 筌띾Ŋ夷わ옙�뿫 */
+            /* 嶺뚮씭흮鸚룔굩�삕占쎈엮 */
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -1152,7 +1169,7 @@ border-radius:4px;
 	
 }
 /**********************************
- 占쎌굙筌띲끉�끏�뙴占� 占쎈읂占쎌뵠筌욑옙
+ �뜝�럩援숂춯�씞�걠占쎈걦占쎈쇀�뜝占� �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 *************************************/
 
 .ordercon_title img{
@@ -1219,9 +1236,10 @@ margin-top:15px;
 }
 
 /***************************
-	野껊슣�뻻占쎈솇 占쎈읂占쎌뵠筌욑옙
+	�뇦猿딆뒩占쎈뻣�뜝�럥�냷 �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 *****************************/
-.writebtn img{
+.writebtn img,
+.writebtncancel img{
 	width:110px;
 	height:50px;
 }
@@ -1234,8 +1252,13 @@ margin-top:15px;
 	width:300px;
 	height:100px;
 	}
+section.board div.board_choose {
+	margin-left:500px;
+	margin-top:20px;
+	display:inline-block;
+} 
 /***************************
-	�⑤벊占쏙옙沅쀯옙鍮�
+	占썩뫀踰듿뜝�룞�삕亦낆���삕�뜮占�
 *****************************/
 .notice{
 	margin-top:30px;
@@ -1284,7 +1307,7 @@ margin-top:15px;
 	margin-top:30px;
 }
 /***************************
-	占쏙옙�꽴占썼눧紐꾩벥
+	�뜝�룞�삕占쎄슈�뜝�띁�닱筌뤾쑴踰�
 *****************************/
 .coron_2{
 	font-family: 'GangwonEdu_OTFBoldA';
@@ -1314,7 +1337,7 @@ margin-top:15px;
 	padding:5px 10px;
 }
 /***************************
-	占쎌겫占쎌넅 占쎈읂占쎌뵠筌욑옙
+	�뜝�럩寃ュ뜝�럩�꼨 �뜝�럥�쓡�뜝�럩逾좂춯�쉻�삕
 *****************************/
 
 
@@ -1445,10 +1468,10 @@ a{
 } 
 
 
-/*                      占쎈꽊筌욑옙占쎌뜏 : 占쎌겫占쎌넅 占쎄맒占쎄쉭占쎌넅筌롳옙 : MovieInfo               */
+/*                      �뜝�럥苑딁춯�쉻�삕�뜝�럩�쐪 : �뜝�럩寃ュ뜝�럩�꼨 �뜝�럡留믣뜝�럡�돪�뜝�럩�꼨嶺뚮〕�삕 : MovieInfo               */
 
 /* section 1 */
-div.content section.movie_info1 { /* section �⑥쥙�젟  */
+div.content section.movie_info1 { /* section 占썩뫁伊숋옙�젧  */
 	/* border:1px solid red; */
 	width:1000px; height:800px;
 	margin:auto;
@@ -1458,10 +1481,10 @@ div.content section.movie_info1 div { /* div relative */
 	 position:relative; 
 	display:inline-block;
 }
-div.content section.movie_info1 div img { /* 筌롫뗄�뵥 占쎈７占쎈뮞占쎄숲 占쎌뵠沃섎챷占� default:鈺곕똻�맅4*/
+div.content section.movie_info1 div img { /* 嶺뚮∥�뾼占쎈데 �뜝�럥竊쀥뜝�럥裕욃뜝�럡�댉 �뜝�럩逾졿쾬�꼶梨룟뜝占� default:�댖怨뺣샍占쎈쭋4*/
 	width:400px;
 }
-div.content section.movie_info1 div:nth-child(2) { /* 占쎌젫筌륅옙,揶쏅Ŧ猷놅옙踰� 占쎄맒占쎄쉭 占쎌젟癰귨옙 占쎈퉮筌륅옙 */
+div.content section.movie_info1 div:nth-child(2) { /* �뜝�럩�젷嶺뚮쪋�삕,�뤆�룆큔�뙴�냵�삕甕곤옙 �뜝�럡留믣뜝�럡�돪 �뜝�럩�젧�솻洹⑥삕 �뜝�럥�돫嶺뚮쪋�삕 */
 	position:relative;
 	display:inline-block;
 	padding:20px;
@@ -1470,11 +1493,11 @@ div.content section.movie_info1 div:nth-child(2) { /* 占쎌젫筌륅옙,揶쏅�
 	bottom:30%;
 	width:150px; height:650px;
 }
-div.content section.movie_info1 div:nth-child(2) nav ul li{ /* 占쎄맒占쎄쉭占쎌젟癰귨옙 疫뀐옙占쎈뎁 占쎈탵占쎌쁽占쎌뵥 */
+div.content section.movie_info1 div:nth-child(2) nav ul li{ /* �뜝�럡留믣뜝�럡�돪�뜝�럩�젧�솻洹⑥삕 �뼨�먯삕�뜝�럥�럞 �뜝�럥�꺏�뜝�럩�겱�뜝�럩逾� */
 	padding:5px;
 	list-style-type:none;
 }
-div.content section.movie_info1 div:nth-child(2) nav ul li label { /* 占쎄맒占쎄쉭占쎌젟癰귨옙 占쎌뵬甕곤옙 占쎈탵占쎌쁽占쎌뵥 */
+div.content section.movie_info1 div:nth-child(2) nav ul li label { /* �뜝�럡留믣뜝�럡�돪�뜝�럩�젧�솻洹⑥삕 �뜝�럩逾х뵓怨ㅼ삕 �뜝�럥�꺏�뜝�럩�겱�뜝�럩逾� */
 	display:inline-block;
 	color:black;
 	border-radius:4px;
@@ -1488,12 +1511,12 @@ div.content section.movie_info1 div:nth-child(2) nav ul li label { /* 占쎄맒�
 	clear:both;
 	background:lightgray;
 }
-div.content section.movie_info1 div:last-child { /* 占쎌굙筌띲끋釉�疫뀐옙 甕곌쑵�뱣 占쎌맄燁삼옙  */
+div.content section.movie_info1 div:last-child { /* �뜝�럩援숂춯�씞�걢�뇡占썹뼨�먯삕 �뵓怨뚯뫓占쎈괏 �뜝�럩留꾤뇖�궪�삕  */
 	display:block;
 	margin-left:100px;
 	padding:20px;
 }
-div.content section.movie_info1 div:last-child button { /* 占쎌굙筌띲끋釉�疫뀐옙 甕곌쑵�뱣 占쎈탵占쎌쁽占쎌뵥 */
+div.content section.movie_info1 div:last-child button { /* �뜝�럩援숂춯�씞�걢�뇡占썹뼨�먯삕 �뵓怨뚯뫓占쎈괏 �뜝�럥�꺏�뜝�럩�겱�뜝�럩逾� */
 	border:3px double white;
 	padding:5px 40px;
 	background:tomato;
@@ -1501,15 +1524,15 @@ div.content section.movie_info1 div:last-child button { /* 占쎌굙筌띲끋釉
 	color:white;
 	font-size:16pt;
 }
-div.content section.movie_info1 div:last-child button:hover { /* 占쎌굙筌띲끋釉�疫뀐옙 甕곌쑵�뱣 占쎌뵠甕겹끋�뱜 */
+div.content section.movie_info1 div:last-child button:hover { /* �뜝�럩援숂춯�씞�걢�뇡占썹뼨�먯삕 �뵓怨뚯뫓占쎈괏 �뜝�럩逾좂뵓寃밸걢占쎈콦 */
 	background:red;
 }
-div.content section.movie_info1 div:nth-child(3) { /* 占쎄맒占쎄쉭占쎌젟癰귨옙 占쎄땀�겫占� 占쎄땀占쎌뒠 */
+div.content section.movie_info1 div:nth-child(3) { /* �뜝�럡留믣뜝�럡�돪�뜝�럩�젧�솻洹⑥삕 �뜝�럡��占쎄껀�뜝占� �뜝�럡���뜝�럩�뮔 */
 	width:300px; height:700px;
 	margin-top:10px;
 	margin-left:10px;
 }
-div.content section.movie_info1 div:nth-child(3) table { /* 占쎄땀�겫占� 占쎄땀占쎌뒠 占쎈�믭옙�뵠�뇡占� 占쎄텢占쎌뵠筌앾옙 */
+div.content section.movie_info1 div:nth-child(3) table { /* �뜝�럡��占쎄껀�뜝占� �뜝�럡���뜝�럩�뮔 �뜝�럥占쎈���삕占쎈턄占쎈눀�뜝占� �뜝�럡�뀬�뜝�럩逾좂춯�빢�삕 */
 	padding:2px;
 	height:90%;
 	margin-top:70px;
@@ -1522,7 +1545,7 @@ div.content section.movie_info1 div:nth-child(3) tr {
 
 /* section 2 */
 
-div.content section.movie_info2 { /* section �⑥쥙�젟  */
+div.content section.movie_info2 { /* section 占썩뫁伊숋옙�젧  */
 	/* border:1px solid orange; */
 	width:1000px; height:800px;
 	margin:auto;
@@ -1534,7 +1557,7 @@ div.content section.movie_info2 div:first-child {
 	padding:10px;
 	margin:50px 0; 
 }
-div.content section.movie_info2 td {	/*  �넫�슣瑜� 占쎌겫占쎌넅占쎄퐬筌륅옙 �겫占썽겫占� */
+div.content section.movie_info2 td {	/*  占쎈꽞占쎌뒩�몴占� �뜝�럩寃ュ뜝�럩�꼨�뜝�럡�맟嶺뚮쪋�삕 占쎄껀�뜝�띂寃ュ뜝占� */
 	text-align:center;
 	width:1000px; height:180px;
 	margin-left:80px;
@@ -1543,44 +1566,44 @@ div.content section.movie_info2 td {	/*  �넫�슣瑜� 占쎌겫占쎌넅�
 div.content section.movie_info2 table{
 	margin:auto;	
 }
-/* div.content section.movie_info2 div:first-child { 占쎌겫占쎌넅占쎄퐬筌륅옙 占쎈�믭옙�뵠�뇡占� 占쎄텢占쎌뵠筌앾옙 
+/* div.content section.movie_info2 div:first-child { �뜝�럩寃ュ뜝�럩�꼨�뜝�럡�맟嶺뚮쪋�삕 �뜝�럥占쎈���삕占쎈턄占쎈눀�뜝占� �뜝�럡�뀬�뜝�럩逾좂춯�빢�삕 
 	width:1150px; height:200px;
 	padding:10px;
 	margin:50px;
 }
 div.content section.movie_info2 div:first-child table { 
 }
-div.content section.movie_info2 td {   占쎌뒭筌ο옙 占쎌겫占쎌넅占쎄땀占쎌뒠 �겫占썽겫占� 
+div.content section.movie_info2 td {   �뜝�럩�뮡嶺뚋우삕 �뜝�럩寃ュ뜝�럩�꼨�뜝�럡���뜝�럩�뮔 占쎄껀�뜝�띂寃ュ뜝占� 
 	padding:80px;
 	width:800px;
 }
-div.content section.movie_info2 th {	�넫�슣瑜� 占쎌겫占쎌넅占쎄퐬筌륅옙 �겫占썽겫占�
+div.content section.movie_info2 th {	占쎈꽞占쎌뒩�몴占� �뜝�럩寃ュ뜝�럩�꼨�뜝�럡�맟嶺뚮쪋�삕 占쎄껀�뜝�띂寃ュ뜝占�
 	padding:50px;
 } */
-div.content section.movie_info2 div:nth-child(2) iframe { /* 占쎌굙�⑥쥚�젶 占쎌겫占쎄맒 占쎌맄燁삼옙 */ /* 占쎄쾿疫꿸퀡�뮉 占쎈늄占쎌쟿占쎌뿫 占쎈툧占쎈퓠  */
+div.content section.movie_info2 div:nth-child(2) iframe { /* �뜝�럩援숋옙�뫁伊싷옙�졅 �뜝�럩寃ュ뜝�럡留� �뜝�럩留꾤뇖�궪�삕 */ /* �뜝�럡苡욜뼨轅명�∽옙裕� �뜝�럥�뒆�뜝�럩�읉�뜝�럩肉� �뜝�럥�닱�뜝�럥�뱺  */
 	margin:0px;
 }
 
 /*               section 3                */
-div.content section.movie_info3 { /* section �⑥쥙�젟  */
+div.content section.movie_info3 { /* section 占썩뫁伊숋옙�젧  */
 	/* border:1px solid yellow; */
 	width:1000px; height:400px;
 	margin:auto;
 }
 
-div.content section.movie_info3 div { /* 占쎌뵠沃섎챷占� 獄쏅벡�뮞 占쎌맄燁삼옙  */
+div.content section.movie_info3 div { /* �뜝�럩逾졿쾬�꼶梨룟뜝占� �뛾�룆踰∽옙裕� �뜝�럩留꾤뇖�궪�삕  */
 	display:inline-block;
 	margin:100px 0px;
 	float:left;
 
 }
-div.content section.movie_info3 div img { /* 占쎌뵠沃섎챷占� �겫�뜇�떮筌뤿굞荑귞뵳占� */
+div.content section.movie_info3 div img { /* �뜝�럩逾졿쾬�꼶梨룟뜝占� 占쎄껀占쎈쐡占쎈뼫嶺뚮ㅏ援욆뜎洹욌뎨�뜝占� */
 	opacity:0.7;
 }
-div.content section.movie_info3 div img:hover { /* 占쎌뵠沃섎챷占� 占쎌뵠甕겹끋�뱜 筌ｌ꼶�봺 */
+div.content section.movie_info3 div img:hover { /* �뜝�럩逾졿쾬�꼶梨룟뜝占� �뜝�럩逾좂뵓寃밸걢占쎈콦 嶺뚳퐣瑗띰옙遊� */
 	opacity:1.0;
 }
-.still_cut { /* 占쎈뮞占쎈뼢�뚳옙 疫뀐옙占쎈뎁 */
+.still_cut { /* �뜝�럥裕욃뜝�럥堉�占쎈슪�삕 �뼨�먯삕�뜝�럥�럞 */
 	/* border:3px double red;
 	position:relative; */
 	margin:0 auto;
@@ -1596,7 +1619,7 @@ div.content section.movie_info3 div img:hover { /* 占쎌뵠沃섎챷占� 占�
 }
 
 /***************************
-	占쎌궎�몴�꼹�읂占쎌뵠筌욑옙
+	�뜝�럩沅롳옙紐댐옙瑗뱄옙�쓡�뜝�럩逾좂춯�쉻�삕
 *****************************/
 
 .error img{
@@ -1634,31 +1657,31 @@ footer .container{
 
 
 /*******
- 날씨 api - 여기부터보내야함
+ �궇�뵪 api - �뿬湲곕��꽣蹂대궡�빞�븿
 *******/
 
-div.section4 div.col-3{ /* 날씨영역 div */
+div.section4 div.col-3{ /* �궇�뵪�쁺�뿭 div */
 	position:relative;
 	float:left;
 	width:300px;	height:800px;
 	left:0px;
 }
-div.section4 div.col-9 { /* 지도영역  div */
+div.section4 div.col-9 { /* 吏��룄�쁺�뿭  div */
 	border:2px solid black;
 	border-radius:3px;
 	width:680px; height:405px;
 }
-div.section4 div.weather_api { /* api영역 div */
+div.section4 div.weather_api { /* api�쁺�뿭 div */
 	border:1px groove black;
 	border-radius : 5px;
 	background-image:url("http://localhost:9000/gga_spring1/images/weatherbackground.jpg");
 	height:50%;
 }
-div.section4 div.weather_api div.weather_icon { /* 날씨 아이콘 div */
+div.section4 div.weather_api div.weather_icon { /* �궇�뵪 �븘�씠肄� div */
 	width:120px; height:120px;
 	margin:10px 0px 0px 30px;
 }
-div.section4 div.weather_api div button { /* 날짜 버튼 */
+div.section4 div.weather_api div button { /* �궇吏� 踰꾪듉 */
 	/* border:1px groove #0080c0; */
 	border:none;
 	display: inline-block;
@@ -1669,39 +1692,39 @@ div.section4 div.weather_api div button { /* 날짜 버튼 */
 	font-weight:700;
 	float:top;
 }
-div.section4 div.weather_api div button:hover { /* 날짜 버튼 이벤트 */
+div.section4 div.weather_api div button:hover { /* �궇吏� 踰꾪듉 �씠踰ㅽ듃 */
 	color: blue;
 }
-div.section4 div.weather_api img { /* 날씨 아이콘  */
+div.section4 div.weather_api img { /* �궇�뵪 �븘�씠肄�  */
 	position:relative;
 	left:48px; top:20px;
 	width:120px; height:120px;
 }
-div.section4 div#weather_icon div:nth-child(2) { /* 날씨 영역 div  */
+div.section4 div#weather_icon div:nth-child(2) { /* �궇�뵪 �쁺�뿭 div  */
 	position:relative;
 	right:20px; top:30px;
 	width:200%; float:left;
 	height:110%;
 }
-div.section4 div#weather_icon div#weather_info ul li{ /* 날씨 상세 공통 */
+div.section4 div#weather_icon div#weather_info ul li{ /* �궇�뵪 �긽�꽭 怨듯넻 */
 	list-style-type:none;
 	text-align:center;	
 	color:white;
 	margin:5px 0px;
 }
 div.section4 div#weather_icon div#weather_info ul li:nth-child(2),
-div.section4 div#weather_icon div#weather_info ul li:nth-child(3) { /* 날씨, 풍속  */
+div.section4 div#weather_icon div#weather_info ul li:nth-child(3) { /* �궇�뵪, �뭾�냽  */
 	font-style:italic;
 	font-weight:200;
 	font-size:18pt;
 }
-div.section4 div#weather_icon div#weather_info ul li:first-child { /* 기온 */
+div.section4 div#weather_icon div#weather_info ul li:first-child { /* 湲곗삩 */
 	font-size:40pt;
 	font-weight:700;
 }
 
 /*******
- 	차타고 오세요
+ 	李⑦�怨� �삤�꽭�슂
 *******/
 
 div.section4 div.card {
@@ -1714,7 +1737,7 @@ div.section4 div.card {
 
 
 /*******************
-	뎃글창 - css - 송지웅
+	�럠湲�李� - css - �넚吏��썒
 *******************/
 
 section.board form table.comment_box tr textarea {
@@ -1748,7 +1771,7 @@ section.board form table.comment_box div{
 	height:30px;
 }
 
-/* 뎃글 샘플 이미지 */
+/* �럠湲� �깦�뵆 �씠誘몄� */
 section.board img#commentSample {
 	border:1px solid red;
 	filter: blur(3px);
@@ -1766,7 +1789,10 @@ section.board form button.btn {
 	width:100px; height:40px;
 }
 
-
+section.board table.comment_box tr td input[name="sid"],
+section.board table.comment_box tr td input[name="commentSid"] {
+	text-align:center;
+}
 
 
 
