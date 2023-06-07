@@ -49,4 +49,10 @@ public class CartController {
 		model.setViewName("/store/cartModal");
 		return model;
 	}
+	
+	@RequestMapping(value="/cart_update_proc.do", method=RequestMethod.GET)
+	@ResponseBody
+	public String cart_update_proc(int qty, String pid){
+		return String.valueOf(cartService.getUpdate(qty, pid));
+	}
 }

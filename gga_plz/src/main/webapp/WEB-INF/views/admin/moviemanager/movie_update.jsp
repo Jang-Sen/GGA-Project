@@ -32,8 +32,7 @@ section.moviemanager table input {
 		width:70%;
 } 
 section.moviemanager table button {
-	margin-right:100px;
-	padding: 10px;
+	border:1px solid black;
 }
 </style>
 
@@ -107,9 +106,9 @@ section.moviemanager table button {
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button type="button" id="btnMovieUpdate">수정완료</button>
-						<a href="http://localhost:9000/gga_plz/movie_content.do">
-						<button type="button">이전으로</button></a>
+						<button type="button" id="btnMovieUpdate" class="btn btn-outline-secondary">수정완료</button>
+						<a href="http://localhost:9000/gga_plz/movie_content.do?movieid=${movieVo.movieid}">
+						<button type="button" class="btn btn-outline-secondary">이전으로</button></a>
 					</td>
 				</tr>
 			</table>

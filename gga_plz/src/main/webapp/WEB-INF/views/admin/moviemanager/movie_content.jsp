@@ -31,13 +31,13 @@ section.moviemanager th {
 
 section.moviemanager table {
 		margin:auto;
+		vertical-align:middle
 } 
 section.moviemanager table input {
 		width:70%;
 } 
 section.moviemanager table button {
-	margin-right:100px;
-	padding: 10px;
+	border:1px solid black;
 }
 </style>
 
@@ -112,10 +112,10 @@ section.moviemanager table button {
 				<tr>
 					<td colspan="2">
 						<a href="movie_update.do?movieid=${movieVo.movieid}">
-							<button type="button">수정하기</button></a>
-						<button type="button" id="btnMovieDelete">삭제하기</button>
+							<button type="button" class="btn btn-outline-secondary">수정하기</button></a>
+						<button type="button" id="btnMovieDelete" class="btn btn-outline-secondary">삭제하기</button>
 						<a href="http://localhost:9000/gga_plz/movie_list.do">
-						<button type="button">이전으로</button></a>
+						<button type="button" class="btn btn-outline-secondary">이전으로</button></a>
 					</td>
 				</tr>
 			</table>
