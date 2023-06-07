@@ -2,29 +2,32 @@ package com.gga.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.dao.MovieDao;
-import com.gga.vo.BoardVo;
+import com.gga.service.MovieServiceImpl;
 import com.gga.vo.MovieVo;
 
 @Controller
 public class MovieController {
+	
+	@Autowired
+	private MovieServiceImpl movieService;
 	/**
 	 * admin => movie_delete_proc.do
 	 */
 	@RequestMapping(value="/movie_delete_proc.do", method=RequestMethod.POST)
 	public String movie_delete_proc(String movieid) {
 		String viewName ="";
-		MovieDao movieDao = new MovieDao();
-		int result = movieDao.delete(movieid);
+		int result = movieService.getMovieDelete(movieid);
 		if(result == 1) {
 			viewName="redirect:/movie_list.do";
 		}else {
-			//»èÁ¦ ½ÇÆÐ ÆäÀÌÁö
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 		
 		return viewName;
@@ -35,12 +38,11 @@ public class MovieController {
 	@RequestMapping(value="/movie_update_proc.do", method=RequestMethod.POST)
 	public String movie_update_proc(MovieVo movieVo) {
 		String viewName ="";
-		MovieDao movieDao = new MovieDao();
-		int result = movieDao.update(movieVo);
+		int result = movieService.getMovieUpdate(movieVo);
 		if(result == 1) {
 			viewName="redirect:/movie_list.do";
 		}else {
-			//¾÷µ¥ÀÌÆ® ½ÇÆÐ ÆäÀÌÁö
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 		
 		return viewName;
@@ -51,8 +53,7 @@ public class MovieController {
 	@RequestMapping(value="/movie_update.do", method=RequestMethod.GET)
 	public ModelAndView moive_update(String movieid) {
 		ModelAndView model = new ModelAndView();
-		MovieDao movieDao = new MovieDao();
-		MovieVo movieVo = movieDao.mselect(movieid);
+		MovieVo movieVo = movieService.getMovieSelect(movieid);
 		
 		model.addObject("movieVo", movieVo);
 		model.setViewName("/admin/moviemanager/movie_update");
@@ -65,8 +66,7 @@ public class MovieController {
 	@RequestMapping(value="/movie_content.do", method=RequestMethod.GET)
 	public ModelAndView movie_content(String movieid) {
 		ModelAndView model = new ModelAndView();
-		MovieDao movieDao = new MovieDao();
-		MovieVo movieVo = movieDao.mselect(movieid);
+		MovieVo movieVo = movieService.getMovieSelect(movieid);
 		
 		model.addObject("movieVo", movieVo);
 		model.setViewName("/admin/moviemanager/movie_content");
@@ -79,13 +79,12 @@ public class MovieController {
 	@RequestMapping(value="/movie_register_proc.do", method=RequestMethod.POST)
 	public String movie_register_proc(MovieVo movieVo) {
 		String viewName = "";
-		MovieDao movieDao = new MovieDao();
-		int result = movieDao.insert(movieVo);
+		int result = movieService.getMovieInsert(movieVo);
 		
 		if(result == 1) {
 			viewName = "redirect:/movie_list.do";
 		} else {
-			//µî·Ï ½ÇÆÐ ÆäÀÌÁö
+			//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		}
 		return viewName;
 	}
@@ -115,29 +114,29 @@ public class MovieController {
 	*/
 	
 	/**
-	 * movie_list -> ÆäÀÌÂ¡Ã³¸®
+	 * movie_list -> ï¿½ï¿½ï¿½ï¿½Â¡Ã³ï¿½ï¿½
 	 */
 	@RequestMapping(value="/movie_list.do", method=RequestMethod.GET)
 	public ModelAndView movie_list(String page) {
 		ModelAndView model = new ModelAndView();		
 		MovieDao movieDao = new MovieDao();
 		
-		//ÆäÀÌÂ¡ Ã³¸® - startCount, endCount ±¸ÇÏ±â
+		//ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½ - startCount, endCount ï¿½ï¿½ï¿½Ï±ï¿½
 		int startCount = 0;
 		int endCount = 0;
-		int pageSize = 5;	//ÇÑÆäÀÌÁö´ç °Ô½Ã¹° ¼ö
-		int reqPage = 1;	//¿äÃ»ÆäÀÌÁö	
-		int pageCount = 1;	//ÀüÃ¼ ÆäÀÌÁö ¼ö
-		int dbCount = movieDao.totalRowCount();	//DB¿¡¼­ °¡Á®¿Â ÀüÃ¼ Çà¼ö
+		int pageSize = 5;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã¹ï¿½ ï¿½ï¿½
+		int reqPage = 1;	//ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
+		int pageCount = 1;	//ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+		int dbCount = movieDao.totalRowCount();	//DBï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½
 		
-		//ÃÑ ÆäÀÌÁö ¼ö °è»ê
+		//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if(dbCount % pageSize == 0){
 			pageCount = dbCount/pageSize;
 		}else{
 			pageCount = dbCount/pageSize+1;
 		}
 
-		//¿äÃ» ÆäÀÌÁö °è»ê
+		//ï¿½ï¿½Ã» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		if(page != null){
 			reqPage = Integer.parseInt(page);
 			startCount = (reqPage-1) * pageSize+1; 
@@ -147,7 +146,7 @@ public class MovieController {
 			endCount = 5;
 		}
 		
-		ArrayList<MovieVo> list = movieDao.getResultList(startCount, endCount);
+		ArrayList<MovieVo> list = movieService.getMovieList(startCount, endCount);
 	
 		model.addObject("movieList", list);
 		model.addObject("totals", dbCount);
@@ -183,8 +182,7 @@ public class MovieController {
 	public ModelAndView movieinfo(String movieid) {
 		ModelAndView model = new ModelAndView();
 		
-		MovieDao movieDao = new MovieDao();
-		MovieVo movieVo = movieDao.mselect(movieid);
+		MovieVo movieVo = movieService.getMovieSelect(movieid);
 		
 		model.addObject("movieVo", movieVo);
 		model.setViewName("/movie/movieinfo");

@@ -1,20 +1,32 @@
 package com.gga.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gga.dao.MovieDao;
 import com.gga.vo.MovieVo;
 
-@Service
+@Service("MovieService")
 public class MovieServiceImpl implements MovieService{
 
-	private MovieDao movieDao = new MovieDao();
+	@Autowired
+	private MovieDao movieDao;
 	
 	@Override
 	public ArrayList<MovieVo> getMovieList(int startCount, int endCount) {
-		return movieDao.getResultList(startCount, endCount);
+		ArrayList<MovieVo> mlist = new ArrayList<MovieVo>();
+		
+		List<Object> list = movieDao.getResultList(startCount, endCount);
+		
+		for(Object obj : list) {
+			MovieVo movieVo = (MovieVo)obj;
+			
+			mlist.add(movieVo);
+		}
+		return mlist;
 	}
 
 	@Override

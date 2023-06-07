@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.cart">
+	<select id="list" resultType="com.gga.vo.CartVo">
+		select p.pid pid, pname, pprice, qty, (pprice*qty) totalprice, p.pfile pfile, cid 
+		from gga_cart c, gga_product p 
+		where c.pid=p.pid
+	</select>
+	
+	<update id="update" parameterType="map">
+		update gga_cart set qty=#{qty} where pid=#{pid}
+	</update>
+	
+	<select id="pidselect" resultType="int">
+		select count(*) from gga_cart where pid=#{pid}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		delete from gga_cart where pid =#{pid}
+	</delete>
+	
+	<insert id="insert" parameterType="String">
+		insert into gga_cart(cid, qty, pid, id) values
+					('C_'||to_char(sequ_gga_cart_cid.nextval, 'fm0000'), 1, #{pid}, null)
+	</insert>
+	
+	<update id="pidupdate" parameterType="String">
+		update gga_cart set qty=qty+1 where pid=#{pid}
+	</update>
+</mapper>
