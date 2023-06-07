@@ -24,8 +24,8 @@
             	FROM GGA_MEMBER ORDER BY MDATE DESC)
 	</select>
 	
-	<select id="login" parameterType="com.gga.vo.MemberVo" resultType="int">
-		SELECT COUNT(*) FROM GGA_MEMBER WHERE ID = #{id} AND PASS = #{pass}
+	<select id="login" parameterType="com.gga.vo.MemberVo" resultType="com.gga.vo.SessionVo">
+		SELECT COUNT(*) LOGINRESULT, NAME, ID FROM GGA_MEMBER WHERE ID = #{id} AND PASS = #{pass} GROUP BY NAME, ID
 	</select>
 	
 	<update id="update" parameterType="com.gga.vo.MemberVo">
