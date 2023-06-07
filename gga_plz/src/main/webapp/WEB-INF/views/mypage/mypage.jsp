@@ -25,7 +25,7 @@
 			</div>
 			<br>
 				<div class="mypage_menu_info">
-					<span>m_001님</span> <!-- el태그 memberVo.mid -->
+					<span>${ sessionScope.svo.name } </span> <!-- el태그 memberVo.mid -->
 					<a href= "http://localhost:9000/gga_plz/mypage_update.do">내 정보 수정</a> <!-- el태그 memberVo.mid -->
 			</div>
 		</section>
