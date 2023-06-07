@@ -20,6 +20,8 @@ public class NoticeDao extends DBConn{
 	 * notice total row count
 	 */
 	public int totalRowCount() {
+		return sqlSession.selectOne("mapper.notice.totalRowCount");
+		/*
 		int count = 0;
 		String sql = "select count(*) from gga_notice";
 		getPreparedStatement(sql);
@@ -33,6 +35,7 @@ public class NoticeDao extends DBConn{
 			e.printStackTrace();
 		}	
 		return count;
+		*/
 	}
 	
 	/*

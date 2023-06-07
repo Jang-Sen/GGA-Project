@@ -75,7 +75,9 @@ table td:nth-child(2){
 }
 
 .notice_search {
-	margin-left : 600px;
+	margin-right : 600px;
+	margin-top : 20px;
+	margin-bottom : 7px;
 }
 
 .n_searchbox {
@@ -110,8 +112,8 @@ table td:nth-child(2){
 	
 	<!-- content -->
 	<div class="container text-center">
-	<div class="board_title">
-		<img src="http://localhost:9000/gga_plz/images/noticetitle.png">
+		<div class="board_title">
+			<img src="http://localhost:9000/gga_plz/images/noticetitle.png">
 		</div>
 		<section class="notice">
 			<div class="notice_search">
