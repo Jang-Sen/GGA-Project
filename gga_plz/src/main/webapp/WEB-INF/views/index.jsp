@@ -86,8 +86,8 @@
 	height:55px;
 }
  .fixed_weather_btn{
-	width:90%;
-	height:50px;
+	width:155px;
+	height:65px;
  	margin-left : 20px;
  	margin-bottom:15px;
  }
