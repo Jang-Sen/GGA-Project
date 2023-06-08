@@ -499,13 +499,13 @@ $("#seatkakaobtn").click(function() {
 		 **********************************/
 		
 		$("#btnSearch").click(function(){
-			if($("#mtitle").val() =="" ){
+			if($("#movietitle").val() =="" ){
 				alert("영화 제목을 입력해주세요.");
-				$("#mtitle").focus();
+				$("#movietitle").focus();
 				return false;
 			} else{
 				$.ajax({
-			          url:"http://localhost:9000/gga_plz/searchproc.do?mtitle="+$("#mtitle").val(),
+			          url:"http://localhost:9000/gga_plz/searchproc.do?movietitle="+$("#movietitle").val(),
 			          success: function(movieid){
 			          	if(movieid == ""){
 							alert("상영 예정 없는 영화입니다 다른검색어를 입력해주세요");
