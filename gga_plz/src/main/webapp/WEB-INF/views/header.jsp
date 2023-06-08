@@ -102,7 +102,7 @@
 				 </div>
 			</div>
 				      <div class="mov_search">
-				          <input type="text" placeholder=" 영화 제목을 검색해 주세요." id="mtitle">
+				          <input type="text" placeholder=" 영화 제목을 검색해 주세요." id="movietitle">
 				          <button type="submit" id="btnSearch"><p>검색</p></button>
 				     </div>
 			</div>

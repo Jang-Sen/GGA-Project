@@ -10,4 +10,5 @@ public interface ProductOrderService {
 	int getInsert(List<Map<String, String>> paramList);
 	ArrayList<ProductOrderVo> getList();
 	int getDelete();
+	int getNowInsert(Map<String, String> param);
 }

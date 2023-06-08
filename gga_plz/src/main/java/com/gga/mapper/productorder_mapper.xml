@@ -22,4 +22,9 @@
 		select poid, pname, pprice, qty, (pprice*qty) totalprice, pfile, to_char(podate, 'yy-mm-dd') podate 
 		from gga_product_order
 	</select>
+	
+	<insert id="oneInsert" parameterType="map">
+		insert into gga_product_order(poid, pid, podate, pname, pprice, qty, pfile)
+		 values(#{poid}, #{pid},  sysdate, #{pname}, #{pprice}, 1, #{pfile}) 
+	</insert>
 </mapper>

@@ -76,7 +76,6 @@ public class MovieDao extends DBConn {
 	 * header.jsp�� �˻���� seaselect()
 	 */
 	public MovieVo seaselect(String movietitle) {
-		
 		return sqlSession.selectOne("mapper.movie.titleselect", movietitle);
 	}
 	

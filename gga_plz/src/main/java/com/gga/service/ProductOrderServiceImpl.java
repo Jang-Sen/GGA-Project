@@ -31,5 +31,10 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		return productOrderDao.delete();
 	}
 
+	@Override
+	public int getNowInsert(Map<String, String> param) {
+		return productOrderDao.insert(param);
+	}
+
 
 }

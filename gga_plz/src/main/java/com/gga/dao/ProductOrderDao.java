@@ -28,4 +28,8 @@ public class ProductOrderDao {
 		List<ProductOrderVo> list = sqlSession.selectList("mapper.productorder.list");
 		return (ArrayList<ProductOrderVo>) list;
 	}
+	
+	public int insert(Map<String, String> param) {
+		return sqlSession.insert("mapper.productorder.oneInsert", param);
+	}
 }

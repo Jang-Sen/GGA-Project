@@ -79,7 +79,8 @@
 					    <div class="storebtns">
 					    <a class="cartbtn" data-id="P_0001" id="popcorncombobtn">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0001" data-price="15000">
+							<a id="buybtn" class="cartbtn2" data-id="P_0001" data-price="15000" data-pname="팝콘 콤보"
+							data-pfile="http://localhost:9000/gga_plz/images/comboset.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					    </div>
 					  </div>
@@ -94,7 +95,8 @@
 					    <div class="storebtns">
 					   <a class="cartbtn" data-id="P_0002" id="popcorncombobtn">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0002" data-price="5000">
+							<a id="buybtn" class="cartbtn2" data-id="P_0002" data-price="5000" data-pname="팝콘 단품"
+							data-pfile="http://localhost:9000/gga_plz/images/popcorn.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -109,7 +111,8 @@
 					    <div class="storebtns">
 					    <a class="cartbtn" data-id="P_0003">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0003" data-price="3000">
+							<a id="buybtn" class="cartbtn2" data-id="P_0003" data-price="3000" data-pname="콜라 단품"
+							data-pfile="http://localhost:9000/gga_plz/images/coke.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -127,7 +130,8 @@
 					    <div class="storebtns">
 					   <a class="cartbtn" data-id="P_0004">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0004" data-price="5000">
+							<a id="buybtn" class="cartbtn2" data-id="P_0004" data-price="5000" data-pname="솜사탕"
+							data-pfile="http://localhost:9000/gga_plz/images/cottoncandy.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -142,7 +146,8 @@
 					    <div class="storebtns">
 					    <a class="cartbtn" data-id="P_0005">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0005" data-price="30000">
+							<a id="buybtn" class="cartbtn2" data-id="P_0005" data-price="30000" data-pname="GGA 기프트카드"
+							data-pfile="http://localhost:9000/gga_plz/images/ggagiftcard.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 					  </div>
 					  </div>
@@ -157,7 +162,8 @@
 				    <div class="storebtns">
 				   			 <a class="cartbtn" data-id="P_0006">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0006" data-price="5000">
+							<a id="buybtn" class="cartbtn2" data-id="P_0006" data-price="5000" data-pname="GGA 기프트카드"
+							data-pfile="http://localhost:9000/gga_plz/images/snack.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
 				  </div>
 				  </div>
