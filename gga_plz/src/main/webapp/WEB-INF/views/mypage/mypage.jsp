@@ -18,6 +18,7 @@
 		</header>
 	<!-- Header -->
 	<!-- Content -->
+<c:if test="${sessionScope.svo != null}">
 	<div class= "content" >
 		<section class= "mypage">
 			<div class= "mypage_header">
@@ -25,7 +26,7 @@
 			</div>
 			<br>
 				<div class="mypage_menu_info">
-					<span>m_001님</span> <!-- el태그 memberVo.mid -->
+					<span>${sessionScope.svo.name}님</span> <!-- el태그 memberVo.mid -->
 					<a href= "http://localhost:9000/gga_plz/mypage_update.do">내 정보 수정</a> <!-- el태그 memberVo.mid -->
 			</div>
 		</section>
@@ -45,22 +46,7 @@
 			</c:forEach> 
 		     </c:when>
 		     <c:otherwise>
-			<%--
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>			
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>			
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>			
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>	
-			 --%>
-		   
-			<%-- <% }else { %> --%>	
+		
 			<div class="myorder_header">
 				<h1>My예매</h1>
 			</div>	
@@ -72,10 +58,10 @@
 			<br>
 				<p>아직 예매한 영화가 없습니다. 
 				영화를 예매하러 갈까요?</p>
-				<a href="http://localhost:9000/gga_plz/order.do" class="orderbtn">
+				<a id="mypagegoorder" class="orderbtn">
 					<img src="http://localhost:9000/gga_plz/images/neworderbtn.png"></a>
 			</div>		
-			<%-- <% } %> --%>
+
 	</c:otherwise>
 		     </c:choose>
 		</section>
@@ -133,6 +119,14 @@
 		
 	</div>
 	<!-- Content -->
+	
+</c:if>
+<c:if test="${sessionScope.svo == null}">
+  <script>
+    // 세션이 null인 경우 리다이렉트 실행
+    window.location.href = 'http://localhost:9000/gga_plz/login.do';
+  </script>
+</c:if>
 	<!-- Footer -->
 		<footer>
 			<jsp:include page="../footer.jsp" />

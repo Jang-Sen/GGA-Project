@@ -79,6 +79,7 @@
 		<input type="hidden" name="otime" id="otime">
 		<input type="hidden" name="oid" id="oid">
 		<input type="hidden" name="movieorderposter" id="movieorderposter">
+		<input type="hidden" name="id" id="orderid" value="${sessionScope.svo.id}">
 		
 		<div class="ticket_bac2">
 		<ul>
