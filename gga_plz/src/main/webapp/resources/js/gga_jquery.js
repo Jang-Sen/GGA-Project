@@ -114,11 +114,16 @@ $(document).ready(function(){
 	  $("#cartclosebtn2").click(function(){
 		 $('#buyModal').modal('hide');
 	 });
-	  $(".cartbtn2").click(function(){
+	  
+	$(".cartbtn2").click(function(){
 		 $('#buycartModal').modal('show');
 		 $("#cartkakaopay").data('price',$(this).data('price'));
+		 $("#cartkakaopay").data('id',$(this).data('id'));
+		 $("#cartkakaopay").data('pfile',$(this).data('pfile'));
+		 $("#cartkakaopay").data('pname',$(this).data('pname'));
 		 $("#cartcardpay").data('price',$(this).data('price'));
 	 });
+
 	  $("#cartclosebtn3").click(function(){
 		 $('#buycartModal').modal('hide');
 	 });
@@ -177,9 +182,13 @@ $(document).ready(function(){
 		}
 	
 	 });
+	 
 	  $("#cartkakaopay").click(function(){
 			var price = $(this).data('price');
-	
+			var pid = $(this).data('id');
+			var pname = $(this).data('pname');
+			var pfile = $(this).data('pfile');
+			
 			var IMP = window.IMP; 
 	        IMP.init("imp71285848"); 
 	      
@@ -209,16 +218,18 @@ $(document).ready(function(){
 	                if (rsp.success) {
 	                    console.log(rsp);
 	                    jQuery.ajax({
-	        				url:"cart_order_proc.do?price="+price,
+	        				url:"product_order_proc.do?pprice="+price+"&pid="+pid+"&pname="+pname+"&pfile="+pfile,
+	        				/*
 	        				method:"POST",
 	        				headers: { "Content-Type": "application/json" },
 	        			    data: {
 	        			          imp_uid: rsp.imp_uid,            // 결제 고유번호
 	        			          merchant_uid: rsp.merchant_uid   // 주문번호
 	        			        }
+	        			     */
 	                    	}).done(function (data) {
 	                        // 성공시 로직
-	                    		location.replace("http://localhost:9000/gga_plz/index.do");
+	                    		location.replace("http://localhost:9000/gga_plz/productordercon.do");
 	                    	})
 	                    } else {
 	                    console.log(rsp);
@@ -229,8 +240,7 @@ $(document).ready(function(){
 	            });
 		}
 	 });
-	 
-	 
+
 	 
 		/*********************************
 		 영화 CRUD
@@ -769,10 +779,10 @@ $("#seatkakaobtn").click(function() {
 			
 		});
 		$("#btnNoticeDelete").click(function(){
-			
-				deleteForm.submit();
-			
+			deleteForm.submit();
+			alert("삭제가 완료되었습니다.");
 		});
+	
 	
 	/***********************
 	소윤 - 공지사항 검색 
@@ -847,6 +857,17 @@ $("#seatkakaobtn").click(function() {
 		}
 
 	});	
+	
+	/*********************************
+	  search _ using enter key 김소윤
+	*********************************/
+	$(".n_searchbox").on("keydown", function(e){
+		if(e.code == "Enter"){
+		 $(".n_searchbutton").click();
+		 $(this).off(e);
+		}
+	});
+	
 
 }); //ready
 	
