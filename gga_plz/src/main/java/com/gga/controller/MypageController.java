@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.OrderService;
+import com.gga.service.ProductOrderService;
 import com.gga.vo.BoardVo;
 import com.gga.vo.OrderconVo;
+import com.gga.vo.ProductOrderVo;
 import com.gga.vo.SessionVo;
 
 @Controller
@@ -22,6 +24,8 @@ public class MypageController {
 	@Autowired
 	OrderService orderService;
 	
+	@Autowired
+	ProductOrderService productOrderService;
 	/**
 	 *	mypage_poster_proc.do
 	 */
@@ -66,9 +70,12 @@ public class MypageController {
 		SessionVo svo = (SessionVo)session.getAttribute("svo");
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderconVo> list = new ArrayList<OrderconVo>();
+		ArrayList<ProductOrderVo> polist = new ArrayList<ProductOrderVo>();
 		if(svo != null) {
 		list = orderService.selectOrderconMypage(svo);
+		polist = productOrderService.selectProductOrderMypage(svo.getId());
 		model.addObject("ticketlist", list);
+		model.addObject("polist", polist);
 		}
 		model.setViewName("/mypage/mypage");
 		

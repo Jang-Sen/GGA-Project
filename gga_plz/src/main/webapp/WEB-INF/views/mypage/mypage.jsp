@@ -10,6 +10,38 @@
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_javascript.js"></script> <!-- gga_javascript.js -->
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
+
+<style>
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+.productordercon td img{
+	width: 170px;
+}
+
+.productordercon table{
+	margin:auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.productordercon table tr td:nth-child(5){
+	width : 200px;
+}
+
+.productordercon h1{
+	font-size:20pt;
+}
+</style>
 </head>
 <body>
 	<!-- Header -->
@@ -116,7 +148,34 @@
 				</tr> -->
 			</table>
 		</section>
-		
+		<div class="container">
+		<hr>
+			<section class="productordercon">
+				<div class="myreview_header">
+						<h1>My상품구매내역</h1>
+				</div>
+				<table class="table table-bordered" style="width: 90%;">
+					<tr>
+							<th>이미지</th>
+							<th>상품명</th>
+							<th>수량</th>
+							<th>결제 금액</th>
+							<th>주문 번호</th>
+							<th>구매 일자</th>
+					</tr>
+					<c:forEach var="productOrderVo" items="${polist}">
+					<tr>
+						<td><img src="${productOrderVo.pfile}"></td>
+						<td>${productOrderVo.pname}</td>
+						<td>${productOrderVo.qty}</td>
+						<td>${productOrderVo.totalprice}</td>
+						<td>${productOrderVo.poid}</td>
+						<td>${productOrderVo.podate}</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</section>
+		</div>
 	</div>
 	<!-- Content -->
 	

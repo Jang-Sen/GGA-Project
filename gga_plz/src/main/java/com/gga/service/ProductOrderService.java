@@ -11,4 +11,5 @@ public interface ProductOrderService {
 	ArrayList<ProductOrderVo> getList();
 	int getDelete();
 	int getNowInsert(Map<String, String> param);
+	ArrayList<ProductOrderVo> selectProductOrderMypage(String id);
 }

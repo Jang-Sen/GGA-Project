@@ -22,8 +22,8 @@ public class CartDao extends DBConn{
 		return sqlSession.update("mapper.cart.update", param);
 	}
 	
-	public List<Object> select(){
-		return sqlSession.selectList("mapper.cart.list");
+	public List<Object> select(String id){
+		return sqlSession.selectList("mapper.cart.list", id);
 	}
 	
 	public int checkPid(String pid) {
@@ -35,12 +35,14 @@ public class CartDao extends DBConn{
 	}
 	
 	
-	public int insert(String pid) {
+	public int insert(String pid, String id) {
 		int result = 0;
 		int check = checkPid(pid);
-		
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("pid", pid);
+		param.put("id", id);
 		if(check == 0) {
-			result = sqlSession.insert("mapper.cart.insert", pid);
+			result = sqlSession.insert("mapper.cart.insert", param);
 		}else {
 			result = sqlSession.update("mapper.cart.pidupdate", pid);
 		}

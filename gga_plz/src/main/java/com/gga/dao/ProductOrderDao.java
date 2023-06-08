@@ -16,6 +16,9 @@ public class ProductOrderDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	public List<Object> select(String id){
+		return sqlSession.selectList("mapper.productorder.myselect", id);
+	}
 	public int delete() {
 		return sqlSession.delete("mapper.productorder.delete");
 	}
