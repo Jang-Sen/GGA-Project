@@ -19,7 +19,15 @@ function reloadModalContent() {
 
 $(document).on('click', '#modalkakaopay', function() {
 		var totalprice = $(".totaltotalprice").text();
-
+		
+		var data = {
+		  cidArray: $('.cid').map(function() { return $(this).val(); }).get(),
+		  pidArray: $('.pid').map(function() { return $(this).val(); }).get(),
+		  pnameArray: $('.pname').map(function() { return $(this).val(); }).get(),
+		  ppriceArray: $('.pprice').map(function() { return $(this).val(); }).get(),
+		  qtyArray: $('.qtyy').map(function() { return $(this).val(); }).get(),
+		  pfileArray: $('.pfile').map(function() { return $(this).val(); }).get()
+		};
 		var IMP = window.IMP; 
         IMP.init("imp71285848"); 
       
@@ -49,16 +57,26 @@ $(document).on('click', '#modalkakaopay', function() {
                 if (rsp.success) {
                     console.log(rsp);
                     jQuery.ajax({
-        				url:"cart_order_proc.do?price="+totalprice,
+        				url:"product_order_proc.do",
         				method:"POST",
+        				dataType: "json",
+						data: JSON.stringify(data),
+						contentType: "application/json"
+        				/*
         				headers: { "Content-Type": "application/json" },
         			    data: {
         			          imp_uid: rsp.imp_uid,            // 결제 고유번호
         			          merchant_uid: rsp.merchant_uid   // 주문번호
         			        }
+        			      */
                     	}).done(function (data) {
                         // 성공시 로직
-                    		location.replace("http://localhost:9000/gga_plz/index.do");
+                        	$.ajax({
+                        		url:"product_delete_proc.do",
+                        		success:function(result){
+                    				location.replace("http://localhost:9000/gga_plz/productordercon.do");
+                        		}
+                        	});
                     	})
                     } else {
                     console.log(rsp);
@@ -126,5 +144,16 @@ $(document).on('click', '#modalcardpay', function() {
 			
 		
 	});
+	
+$(document).on('change', '.form-control', function() {
+    var did = $(this).data('id');
+    var qty = $(this).val();
+     $.ajax({
+	    url: "cart_update_proc.do?qty="+qty+"&pid="+did,
+	    success: function(result) {
+	    reloadModalContent();
+			}
+  		});
+});
 
 });

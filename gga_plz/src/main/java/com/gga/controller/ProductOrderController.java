@@ -35,7 +35,6 @@ public class ProductOrderController {
 	@RequestMapping(value = "/product_order_proc.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String product_order_proc(@RequestBody String data) {
-	    System.out.println(data);
 	    Gson gson = new Gson();
 	    String uuid = UUID.randomUUID().toString();
 
@@ -61,48 +60,25 @@ public class ProductOrderController {
 	        paramList.add(param);
 	    }
 
-	    System.out.println(paramList);
 	    return String.valueOf(productOrderService.getInsert(paramList));
 	}
 
-
-
-
-	/*
 	@RequestMapping(value = "/product_order_proc.do", method = RequestMethod.GET)
-
 	@ResponseBody
-	public String product_order_proc(String cid, String pid, String pname, String pprice, String qty) {
-		List<String> pidList = Arrays.asList(pid.split(","));
-		List<String> cidList = Arrays.asList(cid.split(","));
-		List<String> pnameList = Arrays.asList(pname.split(","));
-		List<String> ppriceList = Arrays.asList(pprice.split(","));
-		List<String> qtyList = Arrays.asList(qty.split(","));
-		System.out.println(cidList);
-
-		List<Map<String, String>> paramList = new ArrayList<>();
-
+	public String product_order_proc(String pprice, String pid, String pname, String pfile) {
+		
+		Map<String, String> param = new HashMap<String, String>();
 		String uuid = UUID.randomUUID().toString();
-
-		if (pidList.size() == cidList.size()) {
-			for (int i = 0; i < pidList.size(); i++) {
-				Map<String, String> param = new HashMap<>();
-				param.put("poid", uuid);
-				param.put("pid", pidList.get(i));
-				param.put("cid", cidList.get(i));
-				param.put("pname", pnameList.get(i));
-				param.put("pprice", ppriceList.get(i));
-				param.put("qty", qtyList.get(i));
-				paramList.add(param);
-			}
-		} else { // Handleerror: pid와 cid의 개수가 다를 경우 예외 처리
-
-		}
-
-		System.out.println(paramList);
-		return String.valueOf(productOrderService.getInsert(paramList));
+		
+		param.put("pprice", pprice);
+		param.put("pid", pid);
+		param.put("pname", pname);
+		param.put("pfile", pfile);
+		param.put("poid", uuid);
+		
+		return String.valueOf(productOrderService.getNowInsert(param));
 	}
-	*/
+
 	@RequestMapping(value = "/productordercon.do", method = RequestMethod.GET)
 	public ModelAndView productordercon() {
 		ModelAndView model = new ModelAndView();

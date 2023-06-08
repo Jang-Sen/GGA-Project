@@ -15,7 +15,7 @@
 	<select id="titleselect" parameterType="String" resultType="com.gga.vo.MovieVo">
 		select movieid, movietitle, genre, moviedday, runtime, audience, 
 			   movieinfo, actor, director, mainposter, stillcut1, stillcut2, stillcut3,
-			   stillcut4, youtube from gga_movie where movietitle like '%#{mtitle}%'
+			   stillcut4, youtube from gga_movie where movietitle like '%'||#{movietitle}||'%'
 	
 	</select>
 	
