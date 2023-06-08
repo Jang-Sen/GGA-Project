@@ -85,6 +85,18 @@
 	width:125px;
 	height:55px;
 }
+ .fixed_weather_btn{
+	width:155px;
+	height:65px;
+ 	margin-left : 20px;
+ 	margin-bottom:15px;
+ }
+
+.fixed_top_btn {
+	width:80%;
+	height:90px;
+	margin-left : 20px;
+}
 
 
 
@@ -107,11 +119,20 @@
 			</div>
 		</div>
 		
+		<!-- 고정 버튼 -->
 		<div class="fixed_button">
-		<!-- 예매하기 고정 버튼 -->
-			<div class="fixed">
 			
+			<div class = "fixed" onclick="window.scrollTo(0,0);">
+			<img src="http://localhost:9000/gga_plz/images/top.png" class="fixed_top_btn">
+			</div>
+		
+			<div class="fixed">
 			<button type="button" class="fixed_order_btn" id="indexOrderBtn"><img src="http://localhost:9000/gga_plz/images/indexorderbtn.png"></button>
+			</div>
+			
+			<!-- 날씨 부분으로 하단 이동 -->
+			<div class="fixed" onclick="window.scrollBy(1600,1600);">
+			<img src="http://localhost:9000/gga_plz/images/weather_checkbtn.png" class="fixed_weather_btn">
 			</div>
 			
 		<!-- 카카오톡 채널 추가 버튼 -->
@@ -128,7 +149,7 @@
 			  data-channel-public-id="_CIxkYxj"
 			  data-title="consult"
 			  data-size="large"
-			  data-color="yellow"
+			  data-color="mono"
 			  data-shape="pc"
 			  data-support-multiple-densities="true"
 			></div>
