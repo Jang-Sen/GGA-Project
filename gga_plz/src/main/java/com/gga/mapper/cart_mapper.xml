@@ -5,10 +5,10 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="mapper.cart">
-	<select id="list" resultType="com.gga.vo.CartVo">
+	<select id="list" resultType="com.gga.vo.CartVo" parameterType="String">
 		select p.pid pid, pname, pprice, qty, (pprice*qty) totalprice, p.pfile pfile, cid 
 		from gga_cart c, gga_product p 
-		where c.pid=p.pid
+		where c.pid=p.pid and id=#{id}
 	</select>
 	
 	<update id="update" parameterType="map">
@@ -23,9 +23,9 @@
 		delete from gga_cart where pid =#{pid}
 	</delete>
 	
-	<insert id="insert" parameterType="String">
+	<insert id="insert" parameterType="map">
 		insert into gga_cart(cid, qty, pid, id) values
-					('C_'||to_char(sequ_gga_cart_cid.nextval, 'fm0000'), 1, #{pid}, null)
+					('C_'||to_char(sequ_gga_cart_cid.nextval, 'fm0000'), 1, #{pid}, #{id})
 	</insert>
 	
 	<update id="pidupdate" parameterType="String">

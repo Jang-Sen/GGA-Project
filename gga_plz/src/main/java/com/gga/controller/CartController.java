@@ -2,6 +2,10 @@ package com.gga.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import com.gga.dao.BoardDao;
 import com.gga.service.CartService;
 import com.gga.vo.BoardVo;
 import com.gga.vo.CartVo;
+import com.gga.vo.SessionVo;
 
 @Controller
 public class CartController {
@@ -22,9 +27,13 @@ public class CartController {
 	
 	@RequestMapping(value="/cart_insert_proc.do", method=RequestMethod.GET)
 	@ResponseBody
-	public String cart_insert_proc(String pid) {
+	public String cart_insert_proc(String pid, HttpServletRequest request, 
+			HttpServletResponse response, 
+			Object handler) {
 		int result =0;
-		result = cartService.getInsert(pid);
+		HttpSession session = request.getSession();
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
+		result = cartService.getInsert(pid, svo.getId());
 		return String.valueOf(result);
 	}
 	@RequestMapping(value="/cart_delete_proc.do", method=RequestMethod.GET)
@@ -42,9 +51,14 @@ public class CartController {
 	}
 	
 	@RequestMapping(value="/cartModal.do", method=RequestMethod.GET)
-	public ModelAndView cartModal() {
+	public ModelAndView cartModal(HttpServletRequest request, 
+			HttpServletResponse response, 
+			Object handler) {
 		ModelAndView model = new ModelAndView();
-		ArrayList<CartVo> list = cartService.getList();
+		HttpSession session = request.getSession();
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
+		ArrayList<CartVo> list = cartService.getList(svo.getId());
+		
 		model.addObject("list", list);
 		model.setViewName("/store/cartModal");
 		return model;

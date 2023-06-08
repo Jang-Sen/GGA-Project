@@ -36,5 +36,19 @@ public class ProductOrderServiceImpl implements ProductOrderService{
 		return productOrderDao.insert(param);
 	}
 
+	@Override
+	public ArrayList<ProductOrderVo> selectProductOrderMypage(String id) {
+		ArrayList<ProductOrderVo> plist = new ArrayList<ProductOrderVo>();
+		
+		List<Object> list = productOrderDao.select(id);
+		
+		for(Object obj : list) {
+			ProductOrderVo productOrderVo = (ProductOrderVo) obj;
+			
+			plist.add(productOrderVo);
+		}
+		return plist;
+	}
+
 
 }

@@ -6,14 +6,19 @@
     
 <mapper namespace="mapper.productorder">
 
+	<select id="myselect" parameterType="String" resultType="com.gga.vo.ProductOrderVo">
+		select poid, pname, pprice, qty, (pprice*qty) totalprice, pfile, to_char(podate, 'yy-mm-dd') podate 
+		from gga_product_order where id=#{id}
+	</select>
+	
 	<delete id="delete">
 		delete from gga_cart
 	</delete>
 	
 	<insert id="insert" parameterType="list">
 	    <foreach collection="list" item="list" open="INSERT ALL" close="SELECT * FROM DUAL" separator=" ">
-	        into gga_product_order(poid, pid, cid, podate, pname, pprice, qty, pfile) 
-	        values(#{list.poid}, #{list.pid}, #{list.cid}, sysdate, #{list.pname}, #{list.pprice}, #{list.qty}, #{list.pfile})
+	        into gga_product_order(poid, pid, cid, podate, pname, pprice, qty, pfile, id) 
+	        values(#{list.poid}, #{list.pid}, #{list.cid}, sysdate, #{list.pname}, #{list.pprice}, #{list.qty}, #{list.pfile}, #{list.id})
 	    </foreach>
 	</insert>
 		
@@ -24,7 +29,7 @@
 	</select>
 	
 	<insert id="oneInsert" parameterType="map">
-		insert into gga_product_order(poid, pid, podate, pname, pprice, qty, pfile)
-		 values(#{poid}, #{pid},  sysdate, #{pname}, #{pprice}, 1, #{pfile}) 
+		insert into gga_product_order(poid, pid, podate, pname, pprice, qty, pfile, id)
+		 values(#{poid}, #{pid},  sysdate, #{pname}, #{pprice}, 1, #{pfile}, #{id}) 
 	</insert>
 </mapper>

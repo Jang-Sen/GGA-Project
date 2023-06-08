@@ -16,8 +16,8 @@ public class CartServiceImpl implements CartService{
 	private CartDao cartDao;
 	
 	@Override
-	public int getInsert(String pid) {
-		return cartDao.insert(pid);
+	public int getInsert(String pid, String id) {
+		return cartDao.insert(pid, id);
 	}
 	@Override
 	public int getDelete(String pid) {
@@ -25,10 +25,10 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public ArrayList<CartVo> getList() {
+	public ArrayList<CartVo> getList(String id) {
 		ArrayList<CartVo> clist = new ArrayList<CartVo>();
 		
-		List<Object> list = cartDao.select();
+		List<Object> list = cartDao.select(id);
 		
 		for(Object obj : list) {
 			CartVo cartVo = (CartVo)obj;
