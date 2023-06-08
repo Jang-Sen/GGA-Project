@@ -61,9 +61,9 @@
 		<section class="coron_3">
 		</section>
 	</div>
-	<div>
+	<div id="coron_btn">
 		<section class="enroll">
-			<a href = "coronation_confirm.do">
+			<a href = "index.do">
 			<button type ="submit" id = "btnConfirm" class="coronbtn"><img src="http://localhost:9000/gga_plz/images/qnabtn.png"></button></a>
 		</section>
 	</div>

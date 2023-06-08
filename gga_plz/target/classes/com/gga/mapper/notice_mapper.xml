@@ -10,7 +10,7 @@
 		select rno, nid, ntitle, nhits, ndate 
 			from (select rownum rno, nid, ntitle, nhits, ndate
 			from (select nid, ntitle, nhits, ndate from gga_notice order by ndate desc))
-			where rno between #{start} and #{end}	
+			where rno between #{startCount} and #{endCount}	
 	</select>
 	
 	<select id="content" parameterType="String" resultType="com.gga.vo.NoticeVo">
@@ -41,11 +41,18 @@
 		update gga_notice set nhits = nhits+1 where nid=#{nid}
 	</update>
 	
-	<select id="n_select" parameterType="String" resultType="com.gga.vo.NoticeVo">
-		select nid, ntitle, ncontent, nhits, ndate from gga_notice where ntitle like #{ntitle}
+	<select id="n_select" parameterType="map" resultType="com.gga.vo.NoticeVo">
+		select rno, nid, ntitle, nhits, ndate 
+			from (select rownum rno, nid, ntitle, nhits, to_char(ndate, 'yyyy-mm-dd') ndate
+			from (select nid, ntitle, nhits, ndate from gga_notice order by ndate desc) where ntitle like '%'||#{ntitle}||'%')
+			where rno between #{startCount} and #{endCount}	
 	</select>
 	
 	<select id="totalRowCount" resultType="int">
+		select count(*) from gga_notice
+	</select>
+	
+	<select id="ntotalRowCount" resultType="int">
 		select count(*) from gga_notice
 	</select>
 	

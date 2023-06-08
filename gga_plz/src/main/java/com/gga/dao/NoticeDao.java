@@ -16,6 +16,23 @@ public class NoticeDao extends DBConn{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
+	/*
+	 * admin_notice_search total row count
+	 */
+	public int antotalRowCount() {
+		return sqlSession.selectOne("mapper.notice.antotalRowCount");
+	}
+	
+	
+	/*
+	 * notice_search total row count
+	 */
+	public int ntotalRowCount() {
+		return sqlSession.selectOne("mapper.notice.ntotalRowcount");
+	}
+	
+	
 	/*
 	 * notice total row count
 	 */
@@ -171,8 +188,8 @@ public class NoticeDao extends DBConn{
 	 */
 	public ArrayList<NoticeVo> select(int startCount, int endCount){	
 		Map<String, Integer> param = new HashMap<String, Integer>();
-		param.put("start", startCount);
-		param.put("end", endCount);
+		param.put("startCount", startCount);
+		param.put("endCount", endCount);
 		
 		List<NoticeVo> list = sqlSession.selectList("mapper.notice.list", param);
 		
@@ -238,23 +255,14 @@ public class NoticeDao extends DBConn{
 	/*
 	 * notice_list (about Search)-> n_select
 	 */
-	public NoticeVo n_select(String ntitle) {
-		NoticeVo fynull = new NoticeVo();
-		if(sqlSession.selectOne("mapper.notice.n_select", ntitle) == null) {
-			fynull.setNid("");
-			fynull.setNtitle("");
-			fynull.setNhits(1);
-			fynull.setNcontent("");
-			fynull.setNdate("");
-		}else {
-			fynull = sqlSession.selectOne("mapper.notice.n_select", ntitle);
-		}
-		return fynull;
-//		return sqlSession.selectOne("mapper.notice.n_select", ntitle);
-		
-		
-		
-		
+	public ArrayList<NoticeVo> n_select(int startCount, int endCount, String ntitle) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("startCount", startCount);
+		param.put("endCount", endCount);
+		param.put("ntitle", ntitle);
+		List<NoticeVo> list = sqlSession.selectList("mapper.notice.n_select", param);
+		return (ArrayList<NoticeVo>)list;
+
 		
 		
 		
