@@ -2,6 +2,10 @@ package com.gga.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gga.service.OrderService;
 import com.gga.vo.BoardVo;
 import com.gga.vo.OrderconVo;
+import com.gga.vo.SessionVo;
 
 @Controller
 public class MypageController {
@@ -54,11 +59,17 @@ public class MypageController {
 	 *	mypage.do
 	 */
 	@RequestMapping(value="/mypage.do", method=RequestMethod.GET)
-	public ModelAndView mypage(BoardVo boardVo) {
+	public ModelAndView mypage(BoardVo boardVo, HttpServletRequest request, 
+			HttpServletResponse response, 
+			Object handler) {
+		HttpSession session = request.getSession();
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
 		ModelAndView model = new ModelAndView();
 		ArrayList<OrderconVo> list = new ArrayList<OrderconVo>();
-		list = orderService.selectOrdercon();
+		if(svo != null) {
+		list = orderService.selectOrderconMypage(svo);
 		model.addObject("ticketlist", list);
+		}
 		model.setViewName("/mypage/mypage");
 		
 		
@@ -68,11 +79,17 @@ public class MypageController {
 	 *	mypage_allticekt.do
 	 */
 	@RequestMapping(value="/mypage_allticket.do", method=RequestMethod.GET)
-	public ModelAndView mypage_allticket(BoardVo boardVo) {
+	public ModelAndView mypage_allticket(BoardVo boardVo,HttpServletRequest request, 
+			HttpServletResponse response, 
+			Object handler) {
 		ModelAndView model = new ModelAndView();
+		HttpSession session = request.getSession();
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
 		ArrayList<OrderconVo> list = new ArrayList<OrderconVo>();
-		list = orderService.selectOrdercon();
+		if(svo != null) {
+		list = orderService.selectOrderconMypage(svo);
 		model.addObject("ticketlist", list);
+		}
 		model.setViewName("/mypage/mypage_allticket");
 		
 		return model;

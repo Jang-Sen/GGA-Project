@@ -283,6 +283,17 @@ $(document).ready(function(){
 			}
 	});
 	});
+
+		$("#mypagegoorder").click(function(){
+		var oid = "";
+		$.ajax({
+			url:"http://localhost:9000/gga_plz/oidProc.do",
+			success:function(result){
+				oid = result;
+				location.replace("http://localhost:9000/gga_plz/order.do?oid="+oid);
+			}
+	});
+	});
 		
 		$(".headerorderbtn").click(function(){
 			var oid = "";
@@ -352,7 +363,6 @@ $(document).ready(function(){
 	        			        }
 	                    	}).done(function (data) {
 	                        // 성공시 로직
-	                        alert(imp_uid+merchant_uid+pg_type);
 	                    		location.replace("http://localhost:9000/gga_plz/ordercon.do?oid="+oid);
 	                    	})
 	                    } else {
@@ -460,7 +470,10 @@ $("#seatkakaobtn").click(function() {
 		 * */
 		$("#orderformbtn").click(function(){
 			
-			if($("#movieid").val()==""){
+			if($("#orderid").val()==""){
+				alert("로그인 해주세요.");
+				$(location).attr("href", "http://localhost:9000/gga_plz/login.do");
+			}else if($("#movieid").val()==""){
 				alert("영화를 선택해 주세요.");
 				$(".orderseltitle").focus();
 				return false;
