@@ -152,4 +152,51 @@ public class PageServiceImpl {
 		return param;	
 		
 	}
+	
+	
+	public Map<String, Integer> getPageResult(String page, String serviceName, String ntitle) {
+		Map<String, Integer> param = new HashMap<String, Integer>();
+		
+		int startCount = 0;
+		int endCount = 0;
+		int pageSize = 5;	
+		int reqPage = 1;	
+		int pageCount = 1;	
+		int dbCount = 0;	
+		
+		if(serviceName.equals("notice")) {			
+			dbCount = noticeService.getTotalRowCount();
+		}else if(serviceName.equals("noticeSearch")) {
+			dbCount = noticeService.getNtotalRowCount();
+		}else if(serviceName.equals("noticeSearch")) {
+			dbCount = noticeService.getAntotalRowCount();
+		}
+		
+		if(dbCount % pageSize == 0) {
+			pageCount = dbCount/pageSize;
+		}else {
+			pageCount = dbCount/pageSize+1;
+		}
+		
+		if(page != null) {
+			reqPage = Integer.parseInt(page);
+			startCount = (reqPage-1) * pageSize+1;
+			endCount = reqPage * pageSize;
+		}else {
+			startCount = 1;
+			endCount = pageSize;
+		}
+		
+		param.put("totals", dbCount);
+		param.put("maxSize", pageCount);
+		param.put("pageSize", pageSize);
+		param.put("page", reqPage);
+		param.put("startCount", startCount);
+		param.put("endCount", endCount);
+		
+		return param;	
+		
+	}		
+		
+	
 }

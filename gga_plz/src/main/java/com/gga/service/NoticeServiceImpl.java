@@ -46,13 +46,23 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	@Override
+	public int getNtotalRowCount() {
+		return noticeDao.ntotalRowCount();
+	}
+	
+	@Override
+	public int getAntotalRowCount() {
+		return noticeDao.antotalRowCount();
+	}
+	
+	@Override
 	public void getUpdateHits(String nid) {
 		noticeDao.updateHits(nid);
 	}
 
 	@Override
-	public NoticeVo getN_select(String ntitle) {
-		return noticeDao.n_select(ntitle);
+	public ArrayList<NoticeVo> getN_select(int startCount, int endCount, String ntitle) {
+		return noticeDao.n_select(startCount, endCount, ntitle);
 	}
 
 }
