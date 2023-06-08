@@ -4,10 +4,48 @@ import java.util.ArrayList;
 
 import com.gga.vo.OrderVo;
 import com.gga.vo.OrderconVo;
+import com.gga.vo.SeatVo;
 
 public class OrderDao extends DBConn{
 	
-
+	public ArrayList<SeatVo> getSeat(){
+		ArrayList<SeatVo> list = new ArrayList<SeatVo>();
+		String sql = "select sid, snumber, status from gga_seat";
+		getPreparedStatement(sql);
+		try {
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				SeatVo seatVo = new SeatVo();
+				seatVo.setSid(rs.getString(1));
+				seatVo.setSnumber(rs.getString(2));
+				seatVo.setStatus(rs.getString(3));
+				list.add(seatVo);
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public int resetSeat(String seat) {
+		String[] seatList = seat.split(",");
+		String sql = "";
+		int result = 0;
+		for(int i=0;i<seatList.length;i++) {
+			sql = "update gga_seat set status = 'seat' where snumber=?";
+			getPreparedStatement(sql);
+			try {
+				pstmt.setString(1, seatList[i]);
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+		
+	}
+	
 	public void deleteOrdercon(String oconid) {
 		String sql = "delete from gga_ordercon "+ 
 				" where oconid = ?";
@@ -63,7 +101,6 @@ public class OrderDao extends DBConn{
 		OrderconVo orderconVo = new OrderconVo();
 		String sql = "select oconid, movieid, movieordertitle, price,seat, otime, odate," +
 				" oname, ocarnum,  oemail, ophone, orderdate, impuid, merchantuid, pgtype, movieorderposter"+
-
 				" from GGA_ordercon where merchantuid = ?";
 		getPreparedStatement(sql);
 		try {
@@ -86,7 +123,6 @@ public class OrderDao extends DBConn{
 			orderconVo.setMerchantuid(rs.getString(14));
 			orderconVo.setPgtype(rs.getString(15));
 			orderconVo.setMovieorderposter(rs.getString(16));
-
 			}
 			
 		} catch (Exception e) {
@@ -96,7 +132,6 @@ public class OrderDao extends DBConn{
 		
 		return orderconVo;
 	}
-
 	public ArrayList<OrderconVo> selectOrdercon() {
 		ArrayList<OrderconVo> list = new ArrayList<OrderconVo>();
 		String sql = "select oconid, movieid, movieordertitle, price,seat, otime, odate," +
@@ -146,7 +181,6 @@ public class OrderDao extends DBConn{
 				" )";
 		getPreparedStatement(sql);
 		try {
-
 			pstmt.setString(1, orderVo.getMovieid());
 			pstmt.setString(2, orderVo.getMovieordertitle());
 			pstmt.setInt(3, orderVo.getPrice());
@@ -161,15 +195,29 @@ public class OrderDao extends DBConn{
 			pstmt.setString(12, impuid);
 			pstmt.setString(13, merchantuid);
 			pstmt.setString(14, pgtype);
-
 			pstmt.setString(15, orderVo.getMovieorderposter());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-	
+	public int updateseatstatus(String seat) {
+		String[] seatList = seat.split(",");
+		String sql = "";
+		int result = 0;
+		for(int i=0;i<seatList.length;i++) {
+			sql = "update gga_seat set status = 'seat occupied' where snumber=?";
+			getPreparedStatement(sql);
+			try {
+				pstmt.setString(1, seatList[i]);
+				result = pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+		
+	}
 	
 	public OrderVo select(String oid) {
 		OrderVo orderVo = new OrderVo();
@@ -201,10 +249,57 @@ public class OrderDao extends DBConn{
 		
 		return orderVo;
 	}
-	
+	public int searchSeat(String seat) {
+		int result = 0;
+		String[] seatList = seat.split(",");
+		// 각 좌석 번호를 하나씩 가져와서 비교
+		for (String seatNumber : seatList) {
+		    // 해당 좌석 번호와 비교하여 일치하는 좌석을 찾는 쿼리 작성
+		    String sql = "select sid, snumber, status from gga_seat where snumber =?";
+		    
+		    // 쿼리 실행을 위해 PreparedStatement 객체 생성
+		    getPreparedStatement(sql);
+		    
+		    try {
+				
+		    // 쿼리 매개변수 설정
+		    pstmt.setString(1, seatNumber);
+		    
+		    // 쿼리 실행 및 결과 가져오기
+		    rs = pstmt.executeQuery();
+		    
+		    // 결과 처리
+		    if (rs.next()) {
+		        String seatStatus = rs.getString(3);
+		        
+		        if ("seat".equals(seatStatus)) {
+		          result =1;
+		        } else {
+		        	//좌석이 사용 불가능한 경우
+		            result=0;
+		            break;
+		        }
+		    } else {
+		        // 일치하는 좌석을 찾지 못했을 때의 처리 로직
+		    	System.out.println("좌석을 찾지 못했습니다.");
+		    	break;
+		    }
+		    
+		    // ResultSet, PreparedStatement 닫기
+		    rs.close();
+		    pstmt.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+		    }
+		}
+		
+		
+		return result;
+	}
 	
 	
 	public int insert(String seat, String price, String oid) {
+		
 		int result = 0;
 		String sql = "update gga_order set price = ?, seat= ? " + 
 				" where oid = ?";
@@ -244,10 +339,8 @@ public class OrderDao extends DBConn{
 		int result = 0;
 		
 		String sql=" insert into gga_order"
-
 				+ " (movieid, otime, odate, oname, ocarnum, oemail, ophone, orderdate, oid, movieordertitle, movieorderposter) "
 				+ " values(?, ?, ?, ?, ?, ?, ?, sysdate, ?,?,?)";
-
 		getPreparedStatement(sql);
 		
 		try {

@@ -253,35 +253,86 @@ div.content section.mypage div.mypage_menu_info { /* �씤�룷 �삤�뜑 �
 	text-decoration:none;
 	color:gray;
 }
+div.content section.mypage2 { /* section 고정 */
+	width:980px; height:130px;
+	margin:auto;
+	text-align:center;
+	border-bottom: 1px solid lightgray;
+}
+div.content section.mypage2 div.mypage_header { /* 마이페이지 타이틀 영역  */
+/* margin:10px; */
+/* 	float:left; */
+text-align:left;
+}
 
-/*                           �궡 �삁留� �궡�뿭                           */
+div.content section.mypage2 div.mypage_header img { /* 마이페이지 이미지 영역  */
+	width:300px;
+}
 
-div.content section.myorder { /* section 怨좎젙 */
-	width: 1200px; height:460px;
+div.content section.mypage2 div.mypage_menu_info { /* 메뉴 div 위치 영역 */
+	margin-left: 20px;
+/* 	margin:0px 0px 0px 60px; */
+	position:relative;
+/* 	top:40px;
+	left:30px;
+	right:20px; */
+	display:inline-block;
+}
+
+div.content section.mypage2 div.mypage_menu_info { /* 인포 오더 위치 */
+	font-size:30pt;
+	 float:left; 
+	/* margin:70px; */
+} 
+.mypage_menu_info a{
+	margin-left:30px;
+	text-decoration:none;
+	color:gray;
+}
+.allticket_back{
+	margin-top:30px;
+	width: 980px; height:200px;
+	margin:auto;
+	text-align:center;
+	display:block;
+}
+
+/*                           내 예매 내역                           */
+
+div.content section.myorder { /* section 고정 */
+margin-top:30px;
+	width: 1200px; height:450px;
 	margin:auto;
 	text-align:center;
 	/* border-bottom: 5px double black; */
 }
-div.content section.myorder div.myorder_header h1 { /* My�삁留�  ���씠�� �쁺�뿭 */
+div.content section.myorder2 { /* section 고정 */
+	width: 1200px; height:100%;
+	margin:auto;
+	text-align:center;
+	margin-bottom:50px;
+	/* border-bottom: 5px double black; */
+}
+div.content section.myorder div.myorder_header h1 { /* My예매  타이틀 영역 */
 	position:relative;
 	left:100px;
 	margin:30px;
 	float:left;
 	font-size:20pt;
 }
-div.content section.myorder div.myorder_header h5 { /* My�삁留�  ���씠�� �쁺�뿭 */
+div.content section.myorder div.myorder_header h5 { /* My예매  타이틀 영역 */
 	position:relative;
 	right:100px;
 	float:right;
 	padding:10px; margin:10px;
 	margin-top:20px; 
 }
-div.content section.myorder div.myorder_text { /* My�삁留� �젙蹂� �쑀臾� 異쒕젰 */
+div.content section.myorder div.myorder_text { /* My예매 정보 유무 출력 */
 	position:relative;
 	display:inline-block;
 	top: 80px;
 }
-div.content section.myorder div.myorder_text span { /* �젙蹂� �쑀臾� 湲��뵪  */
+div.content section.myorder div.myorder_text span { /* 정보 유무 글씨  */
 	text-align:center;
 	color:tomato;
 }
@@ -291,8 +342,37 @@ div.content section.myorder div.myorder_add:nth-child(5) {
 	float:right;
 	bottom:500px;
 }
+div.content section.myorder2 div.myorder_header h1 { /* My예매  타이틀 영역 */
+	position:relative;
+	left:100px;
+	margin:30px;
+	float:left;
+	font-size:20pt;
+}
+div.content section.myorder2 div.myorder_header h5 { /* My예매  타이틀 영역 */
+	position:relative;
+	right:100px;
+	float:right;
+	padding:10px; margin:10px;
+	margin-top:20px; 
+}
+div.content section.myorder2 div.myorder_text { /* My예매 정보 유무 출력 */
+	position:relative;
+	display:inline-block;
+	top: 80px;
+}
+div.content section.myorder2 div.myorder_text span { /* 정보 유무 글씨  */
+	text-align:center;
+	color:tomato;
+}
 
-div.content section.myorder div.myorder_add { /* �쁺�솕 �룷�뒪�꽣 */
+div.content section.myorder2 div.myorder_add:nth-child(5) {
+	position:relative;
+	float:right;
+	bottom:500px;
+}
+
+div.content section.myorder2 div.myorder_add { /* 영화 포스터 */
 	border:3px groove lightgray;
 	background:lightgray;
 	border-radius:3px;
@@ -305,12 +385,40 @@ div.content section.myorder div.myorder_add { /* �쁺�솕 �룷�뒪�꽣
 	margin-top:20px;
 	margin-left:20px;
 }
-div.content section.myorder div.myorder_add:hover { /* 移� 而ㅼ꽌 �씠踰ㅽ듃  */
+div.content section.myorder2 div.myorder_add { /* 영화 포스터 */
+	border:3px groove lightgray;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
+	width:220px; height:330px;
+	position:relative;
+	float:left;
+	right: 5px; top:65px;
+	opacity:1.0;
+	margin-top:20px;
+	margin-left:20px;
+}
+div.content section.myorder div.myorder_add:hover { /* 칸 커서 이벤트  */
 	opacity:0.5;
 }
 	
 div.content section.myorder div.myorder_add img ,
-div.content section.myorder div.myorder_add_plus img  { /* �씠誘몄� �겕湲� & �쐞移� */
+div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
+
+border:3px groove lightgray;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
+	position:relative;
+	float:left;
+	opacity:1.0;
+	position:relative;
+	width:220px; height:330px;
+	/* top:120px; */
+	opacity:1.0;
+}
+div.content section.myorder2 div.myorder_add img ,
+div.content section.myorder2 div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
 
 border:3px groove lightgray;
 	background:lightgray;
@@ -325,13 +433,34 @@ border:3px groove lightgray;
 	opacity:1.0;
 }
 div.content section.myorder div.myorder_add img:hover, 
-div.content section.myorder div.myorder_add_plus img:hover { /* �뵆�윭�뒪 踰꾪듉 而ㅼ꽌 �씠踰ㅽ듃 */
+div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
 	opacity:0.3;
 	cursor:pointer;
 }
 div.content section.myorder div.myorder_add2 img ,
-div.content section.myorder div.myorder_add_plus img  { /* �씠誘몄� �겕湲� & �쐞移� */
+div.content section.myorder div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
 	top:65px;
+	background:lightgray;
+	border-radius:3px;
+	display:inline-block;
+	position:relative;
+	float:left;
+	opacity:1.0;
+	position:relative;
+	width:220px; height:330px; 
+	/* top:120px; */
+	opacity:1.0;
+	margin-top:20px;
+	margin-left:20px;
+}
+div.content section.myorder div.myorder_add2 img:hover, 
+div.content section.myorder div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
+	opacity:0.3;
+	cursor:pointer;
+}
+div.content section.myorder2 div.myorder_add3 img ,
+div.content section.myorder2 div.myorder_add_plus img  { /* 이미지 크기 & 위치 */
+	top:40px;
 	background:lightgray;
 	border-radius:3px;
 	display:inline-block;
@@ -342,23 +471,26 @@ div.content section.myorder div.myorder_add_plus img  { /* �씠誘몄� ��
 	width:220px; height:330px;
 	/* top:120px; */
 	opacity:1.0;
-	margin-top:20px;
+	margin-top:50px;
 	margin-left:20px;
+	margin-bottom:10px;
 }
-div.content section.myorder div.myorder_add2 img:hover, 
-div.content section.myorder div.myorder_add_plus img:hover { /* �뵆�윭�뒪 踰꾪듉 而ㅼ꽌 �씠踰ㅽ듃 */
+div.content section.myorder2 div.myorder_add3 img:hover, 
+div.content section.myorder2 div.myorder_add_plus img:hover { /* 플러스 버튼 커서 이벤트 */
 	opacity:0.3;
 	cursor:pointer;
 }
 .myorder_all{
 	color:gray;
 }
-/* div.content section.myorder div.myorder_add_plus img { �뵆�윭�뒪 �씠誘몄� (留덉�留�)
+
+/* div.content section.myorder div.myorder_add_plus img { 플러스 이미지 (마지막)
 	position:relative;
 	right:40px; top:115px;
 } */
 
-/*                   My 由щ럭 �쁺�뿭                 */
+
+/*                   My review                */
 
 div.content section.myreview { /* section 怨좎젙 */
 	border-top:1px solid lightgray;
@@ -377,11 +509,48 @@ div.content section.myreview table {
 	margin-left:60px;
 }
 
+/**************************
+seat
+******************************/
 
+.seatcontainer{
+	justify-content: center;
+  align-items: center;
+	
+}
+.seatcontainer > .container, .seatcontainer > .container2{
+	justify-content: center;
+  align-items: center;
+	text-align: center;
+}
+.seatcontainer + footer {
+	margin-top:20px;
+	display:block;
+	}
+	
+.seatbtn{
+	border:1px solid white;
+	background-color:white;
+}
+.seatbtn img{
+	width:100px;
+	height:50px;
+}
 /*********************************
 mypage ticket
 ********************************/
-
+#allticket_back{
+	background-color:white;
+	border:1px solid white;
+}
+#allticket_back img{
+margin-top:80px;
+	width:150px;
+	height:80px;
+	}
+#allticket_back img:hover{
+	cursor:pointer;
+	}
 .openmypage{
 	margin-top:25px;
 	margin-left:300px;
@@ -392,7 +561,19 @@ mypage ticket
 	width:150px;
 	height:80px;
 	}
-	
+.openmypage img:hover{
+cursor:pointer;
+}	
+.openallticket{
+	margin-top:25px;
+	margin-left:300px;
+	background-color:white;
+	border:1px solid white;
+}
+.openallticket img{
+	width:150px;
+	height:80px;
+	}
 .refundticket{
 	margin-left:25px;
 	background-color:white;
@@ -593,6 +774,9 @@ div.container section.coron_2 { /* section 占썩뫁伊숋옙�젧  */
 	width:1000px; height:300px;
 	margin:auto;
 	position:relative;
+	display:flex;
+	justify-content: center;
+  align-items: center;
 	
 }
 /* div.container section.coron_2 div {
@@ -641,7 +825,7 @@ div.coron_input {
 	width:1000px;
 }
 .coronbtn{
-	margin-left:670px;
+	margin-left:600px;
 	width:200px;
 	height:100px;
 	border:1px solid white;

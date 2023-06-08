@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.gga.dao.OrderDao;
 import com.gga.vo.OrderVo;
 import com.gga.vo.OrderconVo;
+import com.gga.vo.SeatVo;
 
 public class OrderServiceImpl implements OrderService {
 	OrderDao orderDao = new OrderDao();
@@ -17,6 +18,14 @@ public class OrderServiceImpl implements OrderService {
 	};
 	public void deleteOrdercon(String oconid) {
 		orderDao.deleteOrdercon(oconid);
+	}
+	public int resetSeat(String seat) {
+		return orderDao.resetSeat(seat);
+		
+	}
+	public int updateseatstatus(String seat) {
+
+		return orderDao.updateseatstatus(seat);
 	}
 
 	
@@ -39,7 +48,12 @@ public class OrderServiceImpl implements OrderService {
 	
 	public void getimp(String impuid, String merchantuid, String pgtype, OrderVo orderVo) {
 		orderDao.insert(impuid, merchantuid, pgtype, orderVo);
-
+	}
+	public int searchSeat(String seat) {
+		return orderDao.searchSeat(seat);
+	}
+	public ArrayList<SeatVo> getSeat(){
+		return orderDao.getSeat();
 	}
 	
 	

@@ -21,10 +21,20 @@ $(document).ready(function(){
 	 var oconid = $(this).data('oconid');
 	 location.replace("http://localhost:9000/gga_plz/mypage_ticket.do?oconid="+oconid);
 	                    	});
+	 $(".mypage_ticket2").click(function() {
+ var oconid = $(this).data('oconid');
+ location.replace("http://localhost:9000/gga_plz/mypage_ticket2.do?oconid="+oconid);
+                    	});
 	                    	
 	 $(".openmypage").click(function() {
 	 location.replace("http://localhost:9000/gga_plz/mypage.do");
 	                    	});
+	 $(".openmypage2").click(function() {
+ location.replace("http://localhost:9000/gga_plz/mypage.do");
+                    	});
+ $(".openallticket").click(function() {
+ location.replace("http://localhost:9000/gga_plz/mypage_allticket.do");
+                    	});
 	                    	
 	$(".refundticket").click(function() {
 	
@@ -253,6 +263,16 @@ $(document).ready(function(){
 		희정짱 order 부분!!
 		 **********************************/
 	/*예매 버튼이 눌릴 때 예매번호 생성해서 폼에 같이 넘기기*/
+		$("#indexOrderBtn").click(function(){
+		var oid = "";
+		$.ajax({
+			url:"http://localhost:9000/gga_plz/oidProc.do",
+			success:function(result){
+				oid = result;
+				location.replace("http://localhost:9000/gga_plz/order.do?oid="+oid);
+			}
+	});
+	});
 		
 		$(".headerorderbtn").click(function(){
 			var oid = "";
@@ -336,76 +356,75 @@ $(document).ready(function(){
 			}
 			
 		});
-		$("#seatkakaobtn").click(function(){
-			var seatcom = $("#seatcom").html();
-			var seattotal = $("#seattotal").html();
-			var oid = $("#oidinput").val();
-			
-			var IMP = window.IMP; 
-	        IMP.init("imp71285848"); 
-	      
-	        var today = new Date();   
-	        var hours = today.getHours(); // 시
-	        var minutes = today.getMinutes();  // 분
-	        var seconds = today.getSeconds();  // 초
-	        var milliseconds = today.getMilliseconds();
-	        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
-	        
-	        var impuid = "";
-	        var merchantuid="";
-	        var pgtype ="";        
-			
-			if(seatcom == ""){
-				alert("좌석을 선택해 주세요.");
-			}else{
-				IMP.request_pay({
-	                pg : 'kakaopay',
-	                pay_method : 'card',
-	                merchant_uid: "IMP"+makeMerchantUid, 
-	                name : 'GGA 영화 티켓',
-	                amount : seattotal,
-	                buyer_email : 'Iamport@chai.finance',
-	                buyer_name : '아임포트 기술지원팀',
-	                buyer_tel : '010-1234-5678',
-	                buyer_addr : '서울특별시 강남구 삼성동',
-	                buyer_postcode : '123-456'
-		           /* m_redirect_url: "http://localhost:9000/gga_plz/ordercon.do" */
-	            }, function (rsp) { // callback
-	                if (rsp.success) {
-	                    console.log(rsp);
-	        			          impuid = rsp.imp_uid,            // 결제 고유번호
-	        			          merchantuid = rsp.merchant_uid,   // 주문번호
-	        			          pgtype = 'kakaopay',
-	        			          
-	        			 // 첫 번째 AJAX 요청
-						$.ajax({
-	 					 url: "http://localhost:9000/gga_plz/seatProc.do?seat=" + seatcom + "&price=" + seattotal + "&oid=" + oid,
-	 					 method: "POST",
-							}).done(function (data) {
-	  						// 첫 번째 AJAX 요청 완료 후 실행될 코드
-	  
-	  						// 두 번째 AJAX 요청
-	  					$.ajax({
-	 					   url: "http://localhost:9000/gga_plz/orderconProc.do?impuid=" + impuid + "&merchantuid=" + merchantuid + "&pgtype=" + pgtype + "&oid=" + oid,
-	   						 method: "POST",
-	 					 }).done(function (data) {
-	  						  // 두 번째 AJAX 요청 완료 후 실행될 코드
-	  						  location.replace("http://localhost:9000/gga_plz/ordercon.do?merchantuid=" + merchantuid);
-	  						});
-						});
-	                  
-	                    } else {
-	                    console.log(rsp);
-	                    alert("결제를 실패했습니다. 잠시후 다시 시도해 주세요.");
-	                    
-	              	  }
-	            
-	            });
+$("#seatkakaobtn").click(function() {
+    var seatcom = $("#seatcom").html();
+    var seattotal = $("#seattotal").html();
+    var oid = $("#oidinput").val();
 
-		}
-				
-			
-		});
+    var IMP = window.IMP;
+    IMP.init("imp71285848");
+
+    var today = new Date();
+    var hours = today.getHours(); // 시
+    var minutes = today.getMinutes(); // 분
+    var seconds = today.getSeconds(); // 초
+    var milliseconds = today.getMilliseconds();
+    var makeMerchantUid = hours + minutes + seconds + milliseconds;
+
+    var impuid = "";
+    var merchantuid = "";
+    var pgtype = "";
+
+    if (seatcom == "") {
+        alert("좌석을 선택해 주세요.");
+    } else {
+        IMP.request_pay({
+            pg: 'kakaopay',
+            pay_method: 'card',
+            merchant_uid: "IMP" + makeMerchantUid,
+            name: 'GGA 영화 티켓',
+            amount: seattotal,
+            buyer_email: 'Iamport@chai.finance',
+            buyer_name: '아임포트 기술지원팀',
+            buyer_tel: '010-1234-5678',
+            buyer_addr: '서울특별시 강남구 삼성동',
+            buyer_postcode: '123-456'
+        }, function(rsp) { // callback
+            if (rsp.success) {
+                console.log(rsp);
+                impuid = rsp.imp_uid, // 결제 고유번호
+                    merchantuid = rsp.merchant_uid, // 주문번호
+                    pgtype = 'kakaopay',
+                    $.ajax({
+                        url: "http://localhost:9000/gga_plz/seatProc.do?seat=" + seatcom + "&price=" + seattotal + "&oid=" + oid,
+                        method: "POST",
+                    }).done(function(data) {
+                        if (data == '0') {
+                            // 반환된 int 값이 0인 경우의 처리 로직
+                            alert("이미 선택된 좌석입니다.");
+                        } else if (data == '1') {
+
+                            $.ajax({
+                                url: "http://localhost:9000/gga_plz/orderconProc.do?impuid=" + impuid + "&merchantuid=" + merchantuid + "&pgtype=" + pgtype + "&oid=" + oid,
+                                method: "POST",
+                            }).done(function(data) {
+                                // 두 번째 AJAX 요청 완료 후 실행될 코드
+                                location.replace("http://localhost:9000/gga_plz/ordercon.do?merchantuid=" + merchantuid);
+                            });
+                        } else {
+                            alert("알 수 없는 에러가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+                        }
+                    });
+
+            } else {
+                console.log(rsp);
+                alert("결제를 실패했습니다. 잠시후 다시 시도해 주세요.");
+            }
+
+        });
+    }
+
+});		
 		/*
 		 * 예매 폼 입력
 		 * */

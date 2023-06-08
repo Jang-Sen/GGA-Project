@@ -59,7 +59,7 @@
         </ul>
     </article>
 
-		<input type="date" value="2023-04-26" min="2023-04-01" max="2023-06-31"
+		<input type="date" value="today" min="2023-04-01" max="2023-08-31"
 		id="orderdate" name="orderdate">
 	       
 			<article class="time-select">
@@ -78,7 +78,7 @@
 		<input type="hidden" name="odate" id="odate">
 		<input type="hidden" name="otime" id="otime">
 		<input type="hidden" name="oid" id="oid">
-		<input type="text" name="movieorderposter" id="movieorderposter">
+		<input type="hidden" name="movieorderposter" id="movieorderposter">
 		
 		<div class="ticket_bac2">
 		<ul>
