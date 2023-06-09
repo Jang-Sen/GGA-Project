@@ -106,7 +106,7 @@ table tr:first-child {
 .n_searchbutton {
 	padding:2px 15px;
 	height:25px;
-	background: #b2dfdb;
+	background: #aed581;
 	border-radius:5px;
 	border-color:white;
 	color: black;
