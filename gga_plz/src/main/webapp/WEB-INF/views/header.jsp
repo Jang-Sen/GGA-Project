@@ -14,6 +14,10 @@
 	<!-- 부트스트랩 -->
 </head>
 <style>
+#header_name{
+	color: lightYellow;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -55,7 +59,7 @@
 		      	</c:when>
 		      	<c:otherwise>
 			      	<ul>
-			      		<li>
+			      		<li id="header_name">
 			      			${ sessionScope.svo.name } 님 환영합니다.
 			      		</li>
 						<li>

@@ -15,6 +15,22 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	
+	
+	// Board_comment_update_result (뎃글 업데이트 결과)
+	public int getCommentUpdateResult(String bcid, String updateComment) {
+		return boardDao.commentUpdateResult(bcid,updateComment);
+	}
+	
+	// Board_comment_delete_result (뎃글 삭제 결과)
+	public int getCommentDeleteResult(String bcid) {
+		return boardDao.commentDeleteResult(bcid);
+	}
+	
+	// Board_comment_delete_select (뎃글 삭제전 Bid 값 추출)
+	public String getCommentSelect(String bcid) {
+		return boardDao.commentSelect(bcid);
+	}
+	
 	// Board_comment_write (뎃글 작성 저장)
 	@Override
 	public int getCommentWriteResult(BoardCommentVo commentVo) {

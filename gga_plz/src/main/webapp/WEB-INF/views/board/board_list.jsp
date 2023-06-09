@@ -36,13 +36,6 @@ section.board table tr td a { /* 텍스트 언더라인 X */
 	text-decoration-line:none;
 }
 
-table tr:first-child {
-	border-top:1px solid white;
-	border-right:1px solid white;
-	border-left:1px solid white;
-	text-align:right;
-}
-
 table tr:last-child {
 	border:1px solid white;
 }
@@ -58,6 +51,9 @@ table tr{
 
 table td:nth-child(2){
 	text-align:left;
+}
+div.board_title img {
+	width:230px;
 }
 
 img {
@@ -76,7 +72,8 @@ section.board div.board_search { /* 검색창 영역 */
 	float:left;
 	position:relative;
 	padding:3px;
-	left:50px; top:50px;
+	margin-top:20px;
+	left:50px; top:0px;
 }
 section.board div.board_search button{ /* 검색&처음 버튼 */
 	border:3px groove skyblue;
@@ -112,14 +109,21 @@ section.board div.board_search button:hover { /* 커서이벤트 */
 				<button type="submit" id="btnBoardSearch" ><p>검색</p></button>
 				<a href="board_list.do"><button type="submit"><p>처음으로</p></button></a>
 			</div>
+			<div class="board_choose">
+						<c:choose>
+							<c:when test="${sessionScope.svo == null }">
+								<a href="http://localhost:9000/gga_plz/login.do" class="writebtncancel">
+									<img src="http://localhost:9000/gga_plz/images/writebtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="board_write.do" class="writebtn">
+									<img src="http://localhost:9000/gga_plz/images/writebtn.png">
+								</a>
+							</c:otherwise>
+						</c:choose>
+			</div>
 			<%-- <table class="table table-bordered" id="board_table_init" style="width: 90%;">
-				<tr>
-					<td colspan="5">
-						<a href="board_write.do" class="writebtn">
-							<img src="http://localhost:9000/gga_plz/images/writebtn.png">
-						</a>
-					</td>
-				</tr>
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -141,7 +145,7 @@ section.board div.board_search button:hover { /* 커서이벤트 */
 				<tr>
 					<td colspan="5"><div id="ampaginationsm"></div></td>
 				</tr>
-			</table> --%> 
+			</table>  --%>
 		</section>
 	</div>
 	<!-- content -->
