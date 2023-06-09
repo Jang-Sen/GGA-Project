@@ -8,18 +8,21 @@ import com.gga.vo.BoardVo;
 public interface BoardService {
 	
 	//���� ����
-	public BoardVo getContentPage(String bid);
-	public BoardVo getUpdatePage(String bid);
-	public int getUpdateResult(BoardVo boardVo);
-	public int getDeleteResult(String bid);
-	public int getWriteResult(BoardVo boardVo);
-	public ArrayList<BoardVo> getList(int startCount, int endCount, String btitle);
-	public ArrayList<BoardVo> getList(int startCount, int endCount);
-	public int getSearchRowCount(String btitle);
-	public int getTotalRowCount();
+	BoardVo getContentPage(String bid);
+	BoardVo getUpdatePage(String bid);
+	int getUpdateResult(BoardVo boardVo);
+	int getDeleteResult(String bid);
+	int getWriteResult(BoardVo boardVo);
+	ArrayList<BoardVo> getList(int startCount, int endCount, String btitle);
+	ArrayList<BoardVo> getList(int startCount, int endCount);
+	int getSearchRowCount(String btitle);
+	int getTotalRowCount();
  	
 	//���� ����
-	public ArrayList<BoardCommentVo> getCommentList(int startCount,int endCount,String bid);
-	public int getCommentRowCount(String bid);
-	public int getCommentWriteResult(BoardCommentVo commentVo);
+	ArrayList<BoardCommentVo> getCommentList(int startCount,int endCount,String bid);
+	int getCommentRowCount(String bid);
+	int getCommentWriteResult(BoardCommentVo commentVo);
+	int getCommentDeleteResult(String bcid);
+	int getCommentUpdateResult(String bcid,String updateComment);
+	String getCommentSelect(String bcid);
 }

@@ -794,6 +794,7 @@ div.container section.coron_2 div:nth-child(4) {
 	text-align:left;
 }
 div.coron_input {
+	padding-top:50px;
 	margin-left:40px;
 	display:lnline-block;
 }
@@ -825,7 +826,7 @@ div.coron_input {
 	width:1000px;
 }
 .coronbtn{
-	margin-left:600px;
+	margin-left:20px;
 	width:200px;
 	height:100px;
 	border:1px solid white;
@@ -834,6 +835,7 @@ div.coron_input {
 .coronbtn img{
 	width:180px;
 	height:80px;
+	margin:auto;
 }
 /*admin*/
 .admin_index_title img{
@@ -1497,6 +1499,12 @@ section.board div.board_choose {
 	font-family: 'GangwonEdu_OTFBoldA';
 	
 }
+div.coron_input{
+	margin-right:200px;
+	position:relative;
+	right:10px;
+	bottom:30px;
+} 
 .coron_input ul li:nth-child(2) input{
 	width:100px;
 }
@@ -1858,7 +1866,7 @@ div.section4 div.col-9 { /* 吏��룄�쁺�뿭  div */
 div.section4 div.weather_api { /* api�쁺�뿭 div */
 	border:1px groove black;
 	border-radius : 5px;
-	background-image:url("http://localhost:9000/gga_spring1/images/weatherbackground.jpg");
+	background-image:url("http://localhost:9000/gga_plz/images/weatherbackground.jpg");
 	height:50%;
 }
 div.section4 div.weather_api div.weather_icon { /* �궇�뵪 �븘�씠肄� div */
@@ -1926,8 +1934,8 @@ div.section4 div.card {
 
 section.board form table.comment_box tr textarea {
 	border:1px solid lightgray;
-	margin-top:10px;
-	width:100%; height:100%;
+	margin-bottom:5px;
+	width:96.5%; height:100%;
 }
 section.board form table.comment_box {
 	border:1px solid black;
@@ -1935,7 +1943,7 @@ section.board form table.comment_box {
 	margin-top:20px;
 }
 section.board form table.comment_box tr:first-child {
-	background-image:url("http://localhost:9000/gga_plz/images/commentbackground.PNG");
+	background-image:url("http://localhost:9000/gga_plz/images/commentbackground2.PNG");
 }
 
 section.board form table.comment_box tr td:first-child,
@@ -1978,6 +1986,85 @@ section.board table.comment_box tr td input[name="commentSid"] {
 	text-align:center;
 }
 
+section.board table.table tr th {
+	text-align:center;
+}
+section.board table.table tr:nth-child(2) span {
+	position:relative;
+	bottom:15px;
+}
+
+div#coron_btn section.enroll button { /* 보내줘야함 */
+	display:block;
+	margin:auto;
+}
+
+section.board table#board_table div.maxSize {
+	display:inline-block;
+	width:350px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	position:relative;
+	top:11px;
+} 
+
+section.board form#commentForm table.comment_box tr td:nth-child(2) textarea{ 
+	position:relative;
+	height:80px;
+	bottom:40px;	
+	resize:none;
+}
+section.board form#commentForm table.comment_box tr td:nth-child(2) {
+	position:relative;
+	top:50px;
+}
+section.board form#commentForm table.comment_box tr img:hover {
+	background: gray;	
+}
+section.board form#commentForm table.comment_box tr img {
+	border: 1px solid lightgray;
+	display:inline-block;
+	width:25px; height:25px;
+	float:right;
+	margin-top:30px;
+	margin-right:5px;
+	padding:2px;
+	border-radius:3px;
+	position:relative;
+	bottom:15px;
+}
+section.board form#commentForm table.comment_box tr td a:nth-child(3) img {
+	position:relative;
+	bottom:43px;
+	right:30px;
+}
+section.board form#commentForm table.comment_box tr td a:nth-child(3) img:hover{
+	background: powderblue;
+}
+section.board form#commentForm table.comment_box tr td a:nth-child(4) img:hover{
+	background: red;
+}
+section.board form#commentForm table.comment_box div.hiddenEdit textarea#editComment1,
+section.board form#commentForm table.comment_box div.hiddenEdit textarea#editComment2, 
+section.board form#commentForm table.comment_box div.hiddenEdit textarea#editComment3,
+section.board form#commentForm table.comment_box div.hiddenEdit textarea#editComment4,
+section.board form#commentForm table.comment_box div.hiddenEdit textarea#editComment5 {
+	position:relative;
+	bottom:43px;
+	margin-left:5px;
+	height:55px;
+}	
+	
+section.board form#commentForm table.comment_box div.hiddenEdit {
+	width:460px; height:70px;
+}
+section.board form#commentForm table.comment_box div#commentArea{
+	width:570px; height:60px;
+	position:relative;
+	bottom:35px;
+	text-align:center;
+}
 
 
 

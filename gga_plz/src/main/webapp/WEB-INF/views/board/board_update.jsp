@@ -56,6 +56,7 @@ section.board table {
 						<td colspan="3">
 							<input type="text" name="btitle" class="binput" id="btitle" value="${bvo.btitle }">
 							<input type="hidden" name="bid" value="${bvo.bid}">
+							<span id="btmsg"></span>
 						</td>
 					</tr>
 					<tr>
@@ -70,6 +71,7 @@ section.board table {
 								<option value="inception">인셉션</option>
 								<option value="rings">반지의 제왕</option>
 							</select>
+							<span id="bmmsg"></span>
 						</td>
 						<th>평점</th>
 						<td>
@@ -81,12 +83,14 @@ section.board table {
 								<option value="4">4</option>
 								<option value="5">5</option>
 							</select>
+							<span id="bsmsg"></span>
 						</td>
 					</tr>
 					<tr>
 						<th>내용</th>
 						<td colspan="3">
-							<textarea rows="20" cols="80%" name="bcontent" class="btextarea" id="btextarea">${bvo.bcontent }</textarea>
+							<textarea maxlength="200" rows="20" cols="80%" name="bcontent" class="btextarea" id="btextarea">${bvo.bcontent }</textarea>
+							<span id="bcmsg"></span>
 						</td>
 					</tr>	
 				<!-- 	<tr>

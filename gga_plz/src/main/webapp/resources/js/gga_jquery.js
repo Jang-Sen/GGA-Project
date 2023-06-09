@@ -1,5 +1,54 @@
 $(document).ready(function(){
 
+/**********************************
+ 6월 7일 추가 타이틀내용 갯수 제한 확인 로직
+**********************************/
+	$("#btitle").on("blur", function(){
+		var blength = $("#btitle").val();
+		if ($("#btitle").val() == ""){
+			$("#btmsg").text("제목을 입력해주세요.").css("color", "red")
+			.css("font-size", "12px").css("display", "block");
+		}else if(blength.length >= 50){
+			$("#btmsg").text("50자 이내!").css("color", "red")
+			.css("font-size", "12px").css("display", "block");
+		}else{
+			$("#btmsg").text("✔").css("color", "blue")
+			.css("font-size", "12px").css("display", "block");
+		}
+	}); 
+	$("#movieName").on("blur", function(){
+		if ($("#movieName").val() == "default"){
+			$("#bmmsg").text("영화를 선택해주세요.").css("color", "red")
+			.css("font-size", "12px").css("display", "block");
+		}else {
+			$("#bmmsg").text("✔").css("color", "blue")
+			.css("font-size", "12px").css("display", "block");
+		}
+	});
+	$("#score").on("blur", function(){
+		if($("#score").val() == "default" ) {
+			$("#bsmsg").text("평점을 선택해주세요").css("color", "red")
+			.css("font-size", "12px").css("display", "block");
+		}else {
+			$("#bsmsg").text("✔").css("color", "blue")
+			.css("font-size", "12px").css("display", "block");
+		}
+	});
+	$("#btextarea").on("blur", function(){
+		var bclength = $("#btextarea").val();
+		if($("#btextarea").val() == "" ) {
+			$("#bcmsg").text("내용을 입력해주세요").css("color", "red")
+			.css("font-size", "12px").css("display", "block");
+		}else if(bclength.length >= 200){
+			$("#bcmsg").text("200자 이내!").css("color", "red")
+			.css("font-size", "12px").css("display", "block");
+		}else {
+			$("#bcmsg").text("✔").css("color", "blue")
+			.css("font-size", "12px").css("display", "block");
+		}
+	});
+	
+
 	/***********************************
 	 보내줘야함 - 희정님
 	*************************************/

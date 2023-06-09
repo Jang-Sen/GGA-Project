@@ -133,7 +133,7 @@
 			</div>
 			
 			<!-- 날씨 부분으로 하단 이동 -->
-			<div class="fixed" onclick="window.scrollBy(1600,1600);">
+			<div class="fixed" onclick="window.scrollTo(1600,1600);">
 			<img src="http://localhost:9000/gga_plz/images/weather_checkbtn.png" class="fixed_weather_btn">
 			</div>
 			
@@ -151,7 +151,7 @@
 			  data-channel-public-id="_CIxkYxj"
 			  data-title="consult"
 			  data-size="large"
-			  data-color="mono"
+			  data-color="yellow"
 			  data-shape="pc"
 			  data-support-multiple-densities="true"
 			></div>

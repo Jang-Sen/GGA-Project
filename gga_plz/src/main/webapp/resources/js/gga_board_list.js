@@ -9,15 +9,7 @@ $(document).ready(function(){
 				url:"board_list_json_data.do?page="+page,
 				success : function(result) {
 				let jdata = JSON.parse(result);
-				
 		          	let output = "<table class='table table-bordered' id='board_table'style='width: 90%;'>";
-		          	output += "<tr>";
-		          	output += "<td colspan='5'>";
-		          	output += "<a href='board_write.do' class='writebtn'>";
-		          	output += "<img src='http://localhost:9000/gga_plz/images/writebtn.png'>";
-		          	output += "</a>";
-		          	output += "</td>";
-		          	output += "</tr>";
 		          	output += "<tr>";
 		          	output += "<th>번호</th>";
 		          	output += "<th>제목</th>";
@@ -29,19 +21,23 @@ $(document).ready(function(){
 			          	output += "<tr>";
 			          	output += "<td>"+obj.rno+"</td>";
 			          	if(obj.movieName == "suzume"){
-			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[스즈매의 문단속]</a>";
+			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[스즈매의 문단속]&nbsp</a>";
 			          	}else if (obj.movieName == "darknight"){
-			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[다크나이트]</a>";
+			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[다크나이트]&nbsp</a>";
 			          	}else if (obj.movieName == "dune"){
-			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[듄]</a>";
+			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[듄]&nbsp</a>";
 			          	}else if (obj.movieName == "slamdunk"){
-			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[슬램덩크]</a>";
+			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[슬램덩크]&nbsp</a>";
 			          	}else if (obj.movieName == "inception"){
-			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[인셉션]</a>";
+			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[인셉션]&nbsp</a>";
 			          	}else if (obj.movieName == "rings"){
-			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[반지의제왕]</a>";
+			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[반지의제왕]&nbsp</a>";
 			          	}
-			          	output += "<a href="+"'"+"board_content.do?bid="+obj.bid+"'>"+obj.btitle+"</a></td>";
+			          	if(obj.commentCount > 0){
+			          		output += "<div class='maxSize'><a href="+"'"+"board_content.do?bid="+obj.bid+"'>"+obj.btitle+"</a>&nbsp("+obj.commentCount+")</td></div>";
+			          	}else{
+			          		output += "<div class='maxSize'><a href="+"'"+"board_content.do?bid="+obj.bid+"'>"+obj.btitle+"</a></td></div>";
+			          	}
 			          	output += "<td>"+obj.bhits+"</td>";
 			          	output += "<td>"+obj.mid+"</td>";
 			          	output += "<td>"+obj.bdate+"</td>";
@@ -52,7 +48,7 @@ $(document).ready(function(){
 		          	output += "</tr></table>";
 				
 					$("#board_table").remove();
-					$("section.board div.board_search").after(output);
+					$("div.board_choose").after(output);
 					
 					pager(jdata.totals, jdata.maxSize, jdata.pageSize, jdata.page);
 			
@@ -88,13 +84,6 @@ $(document).ready(function(){
 			          let jdata = JSON.parse(result);
 			          	let output = "<table class='table table-bordered' id='board_table'style='width: 90%;'>";
 			          	output += "<tr>";
-			          	output += "<td colspan='5'>";
-			          	output += "<a href='board_write.do' class='writebtn'>";
-			          	output += "<img src='http://localhost:9000/gga_plz/images/writebtn.png'>";
-			          	output += "</a>";
-			          	output += "</td>";
-			          	output += "</tr>";
-			          	output += "<tr>";
 			          	output += "<th>번호</th>";
 			          	output += "<th>제목</th>";
 			          	output += "<th>조회수</th>";
@@ -117,7 +106,11 @@ $(document).ready(function(){
 			          	}else if (obj.movieName == "rings"){
 			  	        	output += "<td><a href="+"'"+"board_content.do?bid="+obj.bid+"'>[반지의제왕]</a>";
 			          	}
-			          	output += "<a href="+"'"+"board_content.do?bid="+obj.bid+"'>"+obj.btitle+"</a></td>";
+			          	if(obj.commentCount > 0){
+			          		output += "<div class='maxSize'><a href="+"'"+"board_content.do?bid="+obj.bid+"'>"+obj.btitle+"</a>&nbsp("+obj.commentCount+")</td></div>";
+			          	}else{
+			          		output += "<div class='maxSize'><a href="+"'"+"board_content.do?bid="+obj.bid+"'>"+obj.btitle+"</a></td></div>";
+			          	}
 			          	output += "<td>"+obj.bhits+"</td>";
 			          	output += "<td>"+obj.mid+"</td>";
 			          	output += "<td>"+obj.bdate+"</td>";
@@ -128,7 +121,7 @@ $(document).ready(function(){
 			          	output += "</tr></table>";
 			          		
 						$("#board_table").remove();
-			          	$("section.board div.board_search").after(output);
+			          	$("div.board_choose").after(output);
 			          	
 			          	pager(jdata.totals, jdata.maxSize, jdata.pageSize, jdata.page);
 				
