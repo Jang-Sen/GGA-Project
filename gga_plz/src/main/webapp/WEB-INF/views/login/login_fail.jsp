@@ -13,6 +13,14 @@
 	
 
 </head>
+
+<script>
+	let loginFail = "${loginFail}";
+	if (loginFail == 'nope'){
+		alert("존재하지 않는 아이디 혹은 비밀번호 입니다.");
+	}
+</script>
+
 <style>
 @media (min-width: 768px) {
   .container {

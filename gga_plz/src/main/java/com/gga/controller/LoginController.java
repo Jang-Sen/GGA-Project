@@ -1,6 +1,5 @@
 package com.gga.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,12 +62,13 @@ public class LoginController {
 		
 		SessionVo svo = memberService.getLogin(memberVo);
 		
-		if(svo.getLoginResult() == 1) {
+		if(svo == null) {
+			model.addObject("loginFail", "nope");
+			model.setViewName("login/login_fail");
+		} else if (svo.getLoginResult() == 1) {
 			session.setAttribute("svo", svo);
 			model.addObject("loginResult", "ok");
 			model.setViewName("index");
-		} else {
-			model.setViewName("redirect:/login_fail.do");
 		}
 		
 		return model; 

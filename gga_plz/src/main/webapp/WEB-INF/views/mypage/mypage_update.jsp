@@ -33,11 +33,12 @@
 	<div class= "container">
 		<section class= "mp_update">
 			<h1 class= "mypage_title">내 정보 수정</h1>
-			<form name= "mp_updateForm" action="#" method= "get">
+			<form name= "mp_updateForm" action="mypage_update_proc.do" method= "post">
+			<input type="hidden" name="id" value="${ sessionScope.svo.id }">
 				<ul>
 					<li>
 						<label>아이디</label>
-						<input type="text" name="id" class="input1" id="id" placeholder="저장값" disabled>
+						<input type="text" name="id" class="input1" id="id" value="${ memberVo.id }" placeholder="저장값" disabled>
 					</li>
 					<li>
 						<label>비밀번호</label>
@@ -50,11 +51,11 @@
 					</li>
 					<li>
 						<label>이름</label>
-						<input type="text" name="name" class="input1" id="name" placeholder="저장값" disabled>
+						<input type="text" name="name" class="input1" id="name" value="${ memberVo.name }" placeholder="저장값" disabled>
 					</li>
 					<li>
 						<label>생년월일</label>
-						<input type="text" name="birth" class="input1" id="birth" numberOnly placeholder="저장값" disabled>
+						<input type="text" name="birth" class="input1" id="birth" value="${ memberVo.birth }" numberOnly placeholder="저장값" disabled>
 					</li>
 					<li>
 						<label>성별</label>
@@ -66,7 +67,7 @@
 						<input type="radio" name="tel" value="skt"><span>SKT</span>
 						<input type="radio" name="tel" value="kt"><span>KT</span>
 						<input type="radio" name="tel" value="lgu+"><span>LG U+</span>
-						<input type="text" name="phone" id="phone" numberOnly>				
+						<input type="text" name="phone" id="phone" value="${ memberVo.phone }" numberOnly>				
 					</li>
 					<li>
 						<label>이메일</label>
@@ -85,21 +86,10 @@
 						<input type="text" name="car1" id="car1" class="input1" placeholder= "예) 00가">
 						<input type="text" name="car2" id="car2" class="input1" numberOnly placeholder= "예) 0000">
 					</li>
-					<li>
-					<li>
-						<label>영화 장르</label>
-						11
-						<input type="checkbox" name="genre" value="범죄/스릴러"><span>범죄/스릴러</span>
-						<input type="checkbox" name="genre" value="멜로/로맨스"><span>멜로/로맨스</span>
-						<input type="checkbox" name="genre" value="판타지/코미디"><span>판타지/코미디</span>
-						<input type="checkbox" name="genre" value="액션/SF"><span>액션/SF</span><br>
-						<input type="checkbox" name="genre" value="전쟁/재난"><span>전쟁/재난</span>
-						<input type="checkbox" name="genre" value="느와르/첩보"><span>느와르/첩보</span>
-						<input type="checkbox" name="genre" value="애니메이션"><span>애니메이션</span>
-						<input type="checkbox" name="genre" value="가족/음악"><span>가족/음악</span>
-						
-					</li>
 				</ul>
+					<a href="mypage.do">
+						<button type="button" class="btn_style">취소</button>
+					</a>
 					<button type="submit" class= "btn_style">저장</button>
 			</form>
 		</section>
