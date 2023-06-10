@@ -274,6 +274,41 @@ public class AdminController {
 		return "admin/admin_index";
 	}
 	
+	/*
+	 * admin_notice_list -> notice search
+	 */
+	@RequestMapping(value="/admin_notice_search_json_data.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String admin_notice_search_json_data(String ntitle, String page) {
+		
+		Map<String, Integer> param = pageService.getPageResult(page, "noticeSearch", noticeService, ntitle);
+		ArrayList<NoticeVo> list = noticeService.getN_select(param.get("startCount"), param.get("endCount"), ntitle);
+		
+		JsonObject jlist = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		
+		for(NoticeVo noticeVo : list) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("rno", noticeVo.getRno());
+			jobj.addProperty("nid", noticeVo.getNid());
+			jobj.addProperty("ntitle", noticeVo.getNtitle());
+			jobj.addProperty("nhits", noticeVo.getNhits());
+			jobj.addProperty("ndate", noticeVo.getNdate());
+			
+			jarray.add(jobj);
+		}
+		
+		jlist.add("jlist", jarray);
+		jlist.addProperty("totals", param.get("dbCount"));
+		jlist.addProperty("pageSize", param.get("pageSize"));
+		jlist.addProperty("maxSize", param.get("maxSize"));
+		jlist.addProperty("page", param.get("page"));
+		
+		return new Gson().toJson(jlist);
+	
+	}
+	
+	
 
 	/*
 	 * admin_notice__list_json_data.do

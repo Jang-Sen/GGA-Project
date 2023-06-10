@@ -12,6 +12,33 @@
 integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<!-- 부트스트랩 -->
 </head>
+
+<style>
+.delete_table{
+	margin:auto;
+}
+
+table tr:first-child{
+padding:none;
+text-align:center;
+font-size:27px;
+position:relative;
+}
+
+table tr:last-child td {
+text-align:center;
+}
+.admin_notice{
+margin:auto;
+}
+.oscar{
+width:150px;
+height:270px;
+position:relative;
+}
+
+</style>
+
 <body>
 	<!-- header -->
 	<header>
@@ -26,20 +53,21 @@ integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG
 		</div>
 		<section class="admin_notice">
 			<form name="deleteForm" action="admin_notice_delete_proc.do" method="post">
-			<input type = "text" name="nid" value = "${nid}">
-				<table border=1>
+			<input type = "hidden" name="nid" value = "${nid}">
+				<table class="delete_table"style="width: 60%;">
 					<tr>					
 						<td>정말로 삭제 하시겠습니까?</td>
+						<img src="http://localhost:9000/gga_plz/images/delete_oscar.png" class="oscar">
 					</tr>				
 					<tr>
-						<td colspan="3">
-							<button type="button" id="btnNoticeDelete">삭제완료</button>
-							<a href="admin_notice_content.do">
-								<button type="button">이전페이지</button></a>
+						<td colspan="5" >
+							<button class="btn btn-outline-secondary" type="button" id="btnNoticeDelete" >삭제하기</button>
+							<a href="admin_notice_content.do?nid=${nid}">
+							<button class="btn btn-outline-secondary" type="button">이전으로</button></a>
 							<a href="admin_notice_list.do">
-								<button type="button">리스트</button></a>							
+							<button class="btn btn-outline-secondary" type="button">리스트</button></a>
 						</td>				
-					</tr>
+					</tr>				
 				</table>
 			</form>
 		</section>

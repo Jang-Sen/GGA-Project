@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gga.dao.BoardDao;
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
 
 @Service
@@ -14,7 +15,41 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	
-	// Board_Content (ÆäÀÌÁö)
+	
+	// Board_comment_update_result (ëƒê¸€ ì—…ë°ì´íŠ¸ ê²°ê³¼)
+	public int getCommentUpdateResult(String bcid, String updateComment) {
+		return boardDao.commentUpdateResult(bcid,updateComment);
+	}
+	
+	// Board_comment_delete_result (ëƒê¸€ ì‚­ì œ ê²°ê³¼)
+	public int getCommentDeleteResult(String bcid) {
+		return boardDao.commentDeleteResult(bcid);
+	}
+	
+	// Board_comment_delete_select (ëƒê¸€ ì‚­ì œì „ Bid ê°’ ì¶”ì¶œ)
+	public String getCommentSelect(String bcid) {
+		return boardDao.commentSelect(bcid);
+	}
+	
+	// Board_comment_write (ëƒê¸€ ì‘ì„± ì €ì¥)
+	@Override
+	public int getCommentWriteResult(BoardCommentVo commentVo) {
+		return boardDao.commentInsert(commentVo);
+	}
+	
+	// Board_comment (í˜ì´ì§•ì¹´ìš´íŠ¸)
+	@Override
+	public int getCommentRowCount(String bid) {
+		return boardDao.commentRowCount(bid);
+	}
+	
+	// Board_comment (ë¦¬ìŠ¤íŠ¸ì¡°íšŒ)
+	@Override
+	public ArrayList<BoardCommentVo> getCommentList(int startCount, int endCount, String bid) {
+		return boardDao.commentSelect(startCount, endCount, bid);
+	}
+	
+	// Board_Content (í˜ì´ì§€)
 	@Override
 	public BoardVo getContentPage(String bid) {
 		if(boardDao.select(bid) != null) {
@@ -23,43 +58,43 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.select(bid);
 	}
 	
-	// Board_Update (ÆäÀÌÁö)
+	// Board_Update (í˜ì´ì§€)
 	@Override
 	public BoardVo getUpdatePage(String bid) {
 		return boardDao.select(bid);
 		
 	}
-	// Board_Update (ÀúÀå)
+	// Board_Update (ì €ì¥)
 	@Override
 	public int getUpdateResult(BoardVo boardVo) {
 		return boardDao.update(boardVo);
 	}
 	
-	// Board_delete (ÀúÀå)
+	// Board_delete (ì €ì¥)
 	@Override
 	public int getDeleteResult(String bid) {
 		return boardDao.delete(bid);
 	}
 	
-	// Board_write (ÀúÀå)
+	// Board_write (ì €ì¥)
 	@Override
 	public int getWriteResult(BoardVo boardVo) {
 		return boardDao.insert(boardVo);
 	}
 	
-	// Board_list (+ÆäÀÌÂ¡)
+	// Board_list (+í˜ì´ì§•)
 	@Override
 	public ArrayList<BoardVo> getList(int startCount, int endCount, String btitle){
 		return boardDao.select(startCount, endCount, btitle);
 	}
-	// Board_list (+ÆäÀÌÂ¡, Ã¹¹øÂ°È­¸é)
+	// Board_list (+í˜ì´ì§•, ì²«ë²ˆì§¸í™”ë©´)
 	@Override
 	public ArrayList<BoardVo> getList(int startCount, int endCount){
 		return boardDao.select(startCount, endCount);
 	}
 	
 	
-	// dbCount(ÆäÀÌÂ¡)
+	// dbCount(í˜ì´ì§•)
 	@Override
 	public int getSearchRowCount(String btitle) {
 		return boardDao.searchRowCount(btitle);

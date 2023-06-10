@@ -10,6 +10,38 @@
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_javascript.js"></script> <!-- gga_javascript.js -->
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
+
+<style>
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+.productordercon td img{
+	width: 170px;
+}
+
+.productordercon table{
+	margin:auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.productordercon table tr td:nth-child(5){
+	width : 200px;
+}
+
+.productordercon h1{
+	font-size:20pt;
+}
+</style>
 </head>
 <body>
 	<!-- Header -->
@@ -18,6 +50,7 @@
 		</header>
 	<!-- Header -->
 	<!-- Content -->
+<c:if test="${sessionScope.svo != null}">
 	<div class= "content" >
 		<section class= "mypage">
 			<div class= "mypage_header">
@@ -25,16 +58,17 @@
 			</div>
 			<br>
 				<div class="mypage_menu_info">
-					<span>m_001님</span> <!-- el태그 memberVo.mid -->
+					<span>${sessionScope.svo.name}님</span> <!-- el태그 memberVo.mid -->
 					<a href= "http://localhost:9000/gga_plz/mypage_update.do">내 정보 수정</a> <!-- el태그 memberVo.mid -->
 			</div>
 		</section>
 		<section class="myorder">
+		     <c:choose>
+		     <c:when test="${not empty ticketlist}">
 			<div class="myorder_header">
 				<h1>My예매</h1>
-				<a href="#" class="myorder_all"><h5>전체보기</h5></a>
+				<a href="http://localhost:9000/gga_plz/mypage_allticket.do" class="myorder_all"><h5>전체보기</h5></a>
 			</div>
-		     
 			 <c:forEach var="orderconVo" items="${ticketlist}" end="3"> 
 				<div class="myorder_add2">
 				<a class="mypage_ticket" data-oconid="${orderconVo.oconid}">
@@ -42,29 +76,26 @@
 				</a>
 				</div>			
 			</c:forEach> 
-			<%--
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>			
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>			
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
-			</div>			
-			<div class="myorder_add">
-				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circled_plus.svg/1200px-Circled_plus.svg.png">				
+		     </c:when>
+		     <c:otherwise>
+		
+			<div class="myorder_header">
+				<h1>My예매</h1>
 			</div>	
-			 --%>
-		   
-			<%-- <% }else { %> --%>		
-			<!-- <div class="myorder_text">
+			<div class="myorder_text">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 				<p>아직 예매한 영화가 없습니다. 
 				영화를 예매하러 갈까요?</p>
-				<a href="http://localhost:9000/gga_plz/order/order.jsp" class="orderbtn">
+				<a id="mypagegoorder" class="orderbtn">
 					<img src="http://localhost:9000/gga_plz/images/neworderbtn.png"></a>
-			</div>	 -->		
-			<%-- <% } %> --%>
+			</div>		
+
+	</c:otherwise>
+		     </c:choose>
 		</section>
 		<section class="myreview">
 			<div class="myreview_header">
@@ -117,9 +148,44 @@
 				</tr> -->
 			</table>
 		</section>
-		
+		<div class="container">
+		<hr>
+			<section class="productordercon">
+				<div class="myreview_header">
+						<h1>My상품구매내역</h1>
+				</div>
+				<table class="table table-bordered" style="width: 90%;">
+					<tr>
+							<th>이미지</th>
+							<th>상품명</th>
+							<th>수량</th>
+							<th>결제 금액</th>
+							<th>주문 번호</th>
+							<th>구매 일자</th>
+					</tr>
+					<c:forEach var="productOrderVo" items="${polist}">
+					<tr>
+						<td><img src="${productOrderVo.pfile}"></td>
+						<td>${productOrderVo.pname}</td>
+						<td>${productOrderVo.qty}</td>
+						<td>${productOrderVo.totalprice}</td>
+						<td>${productOrderVo.poid}</td>
+						<td>${productOrderVo.podate}</td>
+					</tr>
+					</c:forEach>
+				</table>
+			</section>
+		</div>
 	</div>
 	<!-- Content -->
+	
+</c:if>
+<c:if test="${sessionScope.svo == null}">
+  <script>
+    // 세션이 null인 경우 리다이렉트 실행
+    window.location.href = 'http://localhost:9000/gga_plz/login.do';
+  </script>
+</c:if>
 	<!-- Footer -->
 		<footer>
 			<jsp:include page="../footer.jsp" />

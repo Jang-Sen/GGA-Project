@@ -1,6 +1,6 @@
 package com.gga.controller;
 
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +11,31 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.MemberService;
 import com.gga.vo.MemberVo;
+import com.gga.vo.SessionVo;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	/**
+	 * logout.do - 로그아웃 매핑
+	 */
+	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
+		
+		if (svo != null) {
+			session.invalidate();
+			mav.addObject("logout_result", "success");
+		}
+		
+		mav.setViewName("index");
+		
+		return mav;
+	}
 	
 	/**
 	 * login.do - 로그인
@@ -38,16 +57,18 @@ public class LoginController {
 	 * loginProc - 로그인 처리
 	 */
 	@RequestMapping(value="/loginProc.do", method=RequestMethod.POST)
-	public ModelAndView loginProc(MemberVo memberVo) {
+	public ModelAndView loginProc(MemberVo memberVo, HttpSession session) {
 		ModelAndView model = new ModelAndView();
 		
-		int result = memberService.getLogin(memberVo);
+		SessionVo svo = memberService.getLogin(memberVo);
 		
-		if(result ==1) {
+		if(svo == null) {
+			model.addObject("loginFail", "nope");
+			model.setViewName("login/login_fail");
+		} else if (svo.getLoginResult() == 1) {
+			session.setAttribute("svo", svo);
 			model.addObject("loginResult", "ok");
 			model.setViewName("index");
-		} else {
-			model.setViewName("redirect:/login_fail.do");
 		}
 		
 		return model; 

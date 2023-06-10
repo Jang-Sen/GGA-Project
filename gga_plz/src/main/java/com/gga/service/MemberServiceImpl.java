@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.gga.dao.MemberDao;
 import com.gga.vo.MemberVo;
+import com.gga.vo.SessionVo;
 
 public class MemberServiceImpl implements MemberService {
 	
@@ -25,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int getLogin(MemberVo memberVo) {
+	public SessionVo getLogin(MemberVo memberVo) {
 		return memberDao.loginCheck(memberVo);
 	}
 	
@@ -49,5 +50,16 @@ public class MemberServiceImpl implements MemberService {
 	public String findPw(MemberVo memberVo) {
 		return memberDao.select_pw(memberVo);
 	}
+	
+	@Override
+	public MemberVo getMypageUpdate(String id) {
+		return memberDao.select(id);
+	}
+	
+	@Override
+	public int getUpdate(MemberVo memberVo) {
+		return memberDao.update(memberVo);
+	}
+
 
 }

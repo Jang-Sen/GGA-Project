@@ -1,3 +1,4 @@
+
 package com.gga.controller;
 
 import java.io.File;
@@ -6,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.service.BoardService;
 import com.gga.service.PageServiceImpl;
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
+import com.gga.vo.SessionVo;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -30,8 +34,43 @@ public class BoardController {
 	@Autowired
 	private PageServiceImpl pageService;
 	
+	// board_comment_update.do - ë³´ë“œ ëƒê¸€ ì—…ë°ì´íŠ¸
+	@ResponseBody
+	@RequestMapping(value="/board_comment_update.do", method=RequestMethod.GET)
+	public String board_comment_update(String bcid, String updateComment) {
+		String bid = "";
+		String saveBid = boardService.getCommentSelect(bcid);
+		int result = boardService.getCommentUpdateResult(bcid, updateComment);
+		if(result == 1) bid = saveBid;
+		return bid;
+	}
 	
-	// file_upload_proc.do - ÆÄÀÏ ¾÷·Îµå
+	// board_comment_delete.do - ë³´ë“œ ëƒê¸€ì‚­ì œ
+	@ResponseBody
+	@RequestMapping(value="/board_comment_delete.do", method=RequestMethod.GET)
+	public String board_comment_delete(String bcid) {
+		String bid = "";
+		String saveBid = boardService.getCommentSelect(bcid);
+		int result = boardService.getCommentDeleteResult(bcid);
+		if(result == 1) bid = saveBid;
+		return bid;
+	}
+	
+	// board_comment_proc.do - è¹‚ëŒ€ë±¶ ï¿½ëŸ æ¹²ï¿½ Form
+	@RequestMapping(value="/board_comment_proc.do", method=RequestMethod.POST)
+	public String board_comment_proc(BoardCommentVo commentVo) {
+		String viewName = "";
+		int result = boardService.getCommentWriteResult(commentVo);
+		
+		if(result == 1) {
+			viewName = "redirect:/board_content.do?bid="+commentVo.getBid();
+		}else {
+			//ï¿½ë–ï¿½ë™£ ï¿½ëŸ¹ï¿½ì” ï§ï¿½ ï¿½ì” ï¿½ë£
+		}
+		return viewName;
+	}
+	
+	// file_upload_proc.do - ï¿½ë™†ï¿½ì”ª ï¿½ë¾½æ¿¡ì’•ë±¶
 	@RequestMapping(value="/board_write_proc.do", method=RequestMethod.POST)
 	public String board_write_proc(BoardVo boardVo, HttpServletRequest request) throws Exception{
 		String viewName = "";
@@ -44,7 +83,7 @@ public class BoardController {
 			
 			boardVo.setBsfile(bsfile);
 		}else {
-			//ÆÄÀÏ ¾øÀ½
+			//ï¿½ë™†ï¿½ì”ª ï¿½ë¾¾ï¿½ì“¬
 		}
 		int result = boardService.getWriteResult(boardVo);
 		if(result == 1) {
@@ -55,7 +94,7 @@ public class BoardController {
 		return viewName;
 	}
 	
-	// º¸µå °Ë»ö ±â´É 
+	// è¹‚ëŒ€ë±¶ å¯ƒï¿½ï¿½ê¹‹ æ¹²ê³•ë’« 
 	@RequestMapping(value="/board_search_json_data.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
 	@ResponseBody
 	public String board_search_json_data(String btitle,String page) {
@@ -75,6 +114,7 @@ public class BoardController {
 			jobj.addProperty("movieName", boardVo.getMovieName());
 			jobj.addProperty("mid", boardVo.getMid());
 			jobj.addProperty("bdate", boardVo.getBdate());
+			jobj.addProperty("commentCount", boardService.getCommentRowCount(boardVo.getBid()));
 			jarray.add(jobj);
 		}
 		jlist.add("jlist", jarray);
@@ -86,7 +126,7 @@ public class BoardController {
 		return new Gson().toJson(jlist);
 	}
 	
-	// Json¿ë ¸ÅÇÎ
+	// Jsonï¿½ìŠœ ï§ã…½ë¸¨
 	@RequestMapping(value="/board_list.do", method=RequestMethod.GET)
 	public String board_list() {
 		return "board/board_list";
@@ -97,7 +137,6 @@ public class BoardController {
 	public String board_list_json_data(String page) {
 		Map<String, Integer> param = pageService.getPageResult(page, "board", boardService);
 		ArrayList<BoardVo> list = boardService.getList(param.get("startCount"), param.get("endCount"));
-		
 		JsonObject jlist = new JsonObject();
 		JsonArray jarray = new JsonArray();
 		for(BoardVo boardVo : list) {
@@ -109,6 +148,7 @@ public class BoardController {
 			jobj.addProperty("bid", boardVo.getBid());
 			jobj.addProperty("bdate", boardVo.getBdate());
 			jobj.addProperty("movieName", boardVo.getMovieName());
+			jobj.addProperty("commentCount", boardService.getCommentRowCount(boardVo.getBid()));
 			jarray.add(jobj);
 		}
 		jlist.add("jlist", jarray);
@@ -126,26 +166,26 @@ public class BoardController {
 			return "/board/faq";
 		}
 		
-		// board_write.do - °Ô½Ã±Û ±Û¾²±â 
+		// board_write.do - å¯ƒëš¯ë–†æ¹²ï¿½ æ¹²ï¿½ï¿½ë²æ¹²ï¿½ 
 		@RequestMapping(value="/board_write.do", method=RequestMethod.GET)
 		public String board_write() {
 			return "/board/board_write";
 		}
 		
 		
-		// board_delete - »èÁ¦
+		// board_delete - ï¿½ê¶˜ï¿½ì £
 		@RequestMapping(value="/board_delete_proc.do", method=RequestMethod.POST)
 		public String board_delete_proc(String bid) {
 			String viewName = "";
 			if(boardService.getDeleteResult(bid) == 1) {
 				viewName = "redirect:/board_list.do";
 			}else {
-				//½ÇÆĞ ÆäÀÌÁöÀÌµ¿
+				//ï¿½ë–ï¿½ë™£ ï¿½ëŸ¹ï¿½ì” ï§ï¿½ï¿½ì” ï¿½ë£
 			}
 			return viewName;
 		}
 		
-		// board_update - ¾÷µ¥ÀÌÆ® ·ÎÁ÷
+		// board_update - ï¿½ë¾½ï¿½ëœ²ï¿½ì” ï¿½ë“ƒ æ¿¡ì’–ì­…
 		@RequestMapping(value="/board_update_proc.do", method=RequestMethod.POST)
 		public String board_update_proc(BoardVo boardVo, HttpServletRequest request) throws Exception {
 //			String viewName = "";
@@ -158,7 +198,7 @@ public class BoardController {
 //				
 //				boardVo.setBsfile(bsfile);
 //			}else {
-//				//ÆÄÀÏ ¾øÀ½
+//				//ï¿½ë™†ï¿½ì”ª ï¿½ë¾¾ï¿½ì“¬
 //			}
 //			int result = boardService.getUpdateResult(boardVo);
 //			if(result == 1) {
@@ -171,12 +211,12 @@ public class BoardController {
 			if(boardService.getUpdateResult(boardVo) == 1) {
 				viewName = "redirect:/board_list.do";
 			}else {
-				//½ÇÆĞ ÆäÀÌÁö ÀÌµ¿
+				//ï¿½ë–ï¿½ë™£ ï¿½ëŸ¹ï¿½ì” ï§ï¿½ ï¿½ì” ï¿½ë£
 			}
 			return viewName;
 		}
 		
-		// board_update.do - °í¸¥ content °ª Default
+		// board_update.do - æ€¨ì¢Šâ…¨ content åª›ï¿½ Default
 		@RequestMapping(value="/board_update.do",method=RequestMethod.GET)
 		public ModelAndView board_update(String bid) {
 			ModelAndView model = new ModelAndView();
@@ -187,10 +227,30 @@ public class BoardController {
 		}
 
 		@RequestMapping(value="/board_content.do",method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
-		public ModelAndView board_content(String bid) {
+		public ModelAndView board_content(String bid, String page, HttpSession session) {
 			ModelAndView model = new ModelAndView();
+			Map<String, Integer> param = pageService.getPageResult(page, "boardComment", boardService, bid);
+			
 			BoardVo boardVo = boardService.getContentPage(bid);
+			ArrayList<BoardCommentVo> bcVo = boardService.getCommentList(param.get("startCount"),param.get("endCount"),bid);
+			
+			int authCheck = 0;
+			SessionVo svo = (SessionVo)session.getAttribute("svo");
+			if(svo != null) {
+				if(boardVo.getMid().equals(svo.getId())) {
+					authCheck = 1;
+				}else if(svo.getId().equals("admin")) {
+					authCheck = 1;
+				}
+			}
 			model.addObject("boardVo", boardVo);
+			model.addObject("bcVo", bcVo);
+			model.addObject("authCheck", authCheck);
+			model.addObject("totals", param.get("totals"));
+			model.addObject("maxSize", param.get("maxSize"));
+			model.addObject("pageSize", param.get("pageSize"));
+			model.addObject("page", param.get("page"));
+			
 			model.setViewName("/board/board_content");
 			return model;
 		}

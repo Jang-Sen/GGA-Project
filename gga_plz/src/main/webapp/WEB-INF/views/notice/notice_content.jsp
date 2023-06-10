@@ -49,6 +49,11 @@ text-align:center;
 .table tr:last-child{
 	border:1px solid white;
 }
+img {
+width:460px;
+height:600px;
+}
+
 </style>
 
 <body>

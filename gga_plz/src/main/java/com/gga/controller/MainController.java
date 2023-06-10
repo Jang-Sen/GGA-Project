@@ -1,25 +1,26 @@
 package com.gga.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.gga.dao.MovieDao;
+import com.gga.service.MovieService;
 import com.gga.vo.MovieVo;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private MovieService movieService;
 	/**
-	 * header.jsp -> ¿µÈ­ Á¦¸ñ °Ë»ö
+	 * header.jsp -> ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 	 */
 	@RequestMapping(value="/searchproc.do", method=RequestMethod.GET)
 	@ResponseBody
-	public String searchproc(String mtitle) {
-		MovieDao movieDao = new MovieDao();
-		MovieVo movieVo = movieDao.seaselect(mtitle);
-		
+	public String searchproc(String movietitle) {
+		MovieVo movieVo = movieService.getMovieSearchSelect(movietitle);
 		return movieVo.getMovieid();
 	}
 	/**

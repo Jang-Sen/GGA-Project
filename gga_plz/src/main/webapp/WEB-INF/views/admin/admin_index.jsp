@@ -37,6 +37,15 @@
 .section4{
     margin-top: 20px;
 }
+.admin_index_btn1 {
+  display: flex;
+  justify-content: center;
+}
+
+.admin_index_btn1 img {
+  width: 300px;
+  margin: auto;
+}
 </style>
 
 <body>
@@ -59,8 +68,11 @@
 			<br>
 				<a href="http://localhost:9000/gga_plz/admin_notice_list.do"><img src="http://localhost:9000/gga_plz/images/noticeedit.png"></a>
 				<a href="http://localhost:9000/gga_plz/movie_list.do"><img src="http://localhost:9000/gga_plz/images/movieedit.png"></a>
+			<br>
 			</div>
-			
+			<div class="admin_index_btn1">
+				<a href="http://localhost:9000/gga_plz/admin_product_list.do"><img src="http://localhost:9000/gga_plz/images/storeedit.png"></a>
+			</div>
 		</div>
 	</div>
 	<!-- content -->

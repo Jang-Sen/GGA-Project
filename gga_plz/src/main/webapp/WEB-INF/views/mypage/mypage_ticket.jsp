@@ -78,9 +78,10 @@
 			<p class="ticket_number">${orderconVo.ophone}</p><br>
 		
 		</div>
-		
+
 		<button type="button" class="openmypage"><img src="http://localhost:9000/gga_plz/images/backbtn.png"></button>
 		<button type="button" class="refundticket"><img src="http://localhost:9000/gga_plz/images/refundticketbtn.png"></button>
+
 	</div>
 	<!-- content -->
 

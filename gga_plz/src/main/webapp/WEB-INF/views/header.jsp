@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,10 @@
 	<!-- 부트스트랩 -->
 </head>
 <style>
+#header_name{
+	color: lightYellow;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -37,21 +43,39 @@
 		      	</div>
 		      	
 		      	<div class="header_menu">
-		      	<ul>
-			        <li>
-			        	<a href="http://localhost:9000/gga_plz/login.do">로그인</a>
-			        </li>
-					<li>
-						<a href="http://localhost:9000/gga_plz/join.do">회원가입</a>
-					</li>
-					<li>
-						<a href="http://localhost:9000/gga_plz/mypage.do">마이페이지</a>
-					</li>
-					<li>
-						<a href="http://localhost:9000/gga_plz/admin_index.do">관리자</a>
-					</li>
-					
-		      	</ul>
+		      	<c:choose>
+		      	<c:when test="${ sessionScope.svo == null }">
+			      	<ul>
+				        <li>
+				        	<a href="http://localhost:9000/gga_plz/login.do">로그인</a>
+				        </li>
+						<li>
+							<a href="http://localhost:9000/gga_plz/join.do">회원가입</a>
+						</li>
+						<li>
+							<a href="http://localhost:9000/gga_plz/mypage.do">마이페이지</a>
+						</li>
+					</ul>
+		      	</c:when>
+		      	<c:otherwise>
+			      	<ul>
+			      		<li id="header_name">
+			      			${ sessionScope.svo.name } 님 환영합니다.
+			      		</li>
+						<li>
+							<a href="http://localhost:9000/gga_plz/logout.do">로그아웃</a>
+						</li>
+						<li>
+							<a href="http://localhost:9000/gga_plz/mypage.do">마이페이지</a>
+						</li>
+					<c:if test="${ sessionScope.svo.id == 'admin' }">
+						<li>
+							<a href="http://localhost:9000/gga_plz/admin_index.do">관리자</a>
+						</li>
+					</c:if>
+			      	</ul>
+		      	</c:otherwise>
+		      	</c:choose>
 		       </div>
 		     </div>
 			
@@ -82,7 +106,7 @@
 				 </div>
 			</div>
 				      <div class="mov_search">
-				          <input type="text" placeholder=" 영화 제목을 검색해 주세요." id="mtitle">
+				          <input type="text" placeholder=" 영화 제목을 검색해 주세요." id="movietitle">
 				          <button type="submit" id="btnSearch"><p>검색</p></button>
 				     </div>
 			</div>

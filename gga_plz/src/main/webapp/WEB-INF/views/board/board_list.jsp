@@ -36,13 +36,6 @@ section.board table tr td a { /* 텍스트 언더라인 X */
 	text-decoration-line:none;
 }
 
-table tr:first-child {
-	border-top:1px solid white;
-	border-right:1px solid white;
-	border-left:1px solid white;
-	text-align:right;
-}
-
 table tr:last-child {
 	border:1px solid white;
 }
@@ -59,6 +52,9 @@ table tr{
 table td:nth-child(2){
 	text-align:left;
 }
+div.board_title img {
+	width:230px;
+}
 
 img {
 	width:95px;
@@ -68,26 +64,30 @@ img {
 /* 검색  */
 section.board div.board_search input { /* 검색창 */
 	position:relative;
-	top:3px;
-	margin:3px;
-	height:30px;
+	height:30px;width:160px;
+	border-radius: 5px;
+	opacity:80%;
+	border:white;
 }
 section.board div.board_search { /* 검색창 영역 */
 	float:left;
 	position:relative;
-	padding:3px;
-	left:50px; top:50px;
+	margin-top:32px;
+	left:50px; top:0px;
 }
-section.board div.board_search button{ /* 검색&처음 버튼 */
-	border:3px groove skyblue;
-	width:50px; height:30px;
-	font-size:10pt;
-	font-align:center;
-	margin-bottom:0px;
-	background:skyblue;
-	color:white;
-	border-radius:3px;
+
+.boardbtn1, .boardbtn2{
+	border-color:white;
+	height:25px;
+	background: #aed581;
+	border-radius:5px;
+	color: black;
+	font-size:14px;
+	width:60px;
+	padding-top:3px;
+	position:relative;
 }
+
 section.board div.board_search button:hover { /* 커서이벤트 */
 	background: powderblue;
 }
@@ -97,7 +97,7 @@ section.board div.board_search button:hover { /* 커서이벤트 */
 <body>
 	<!-- header -->
 	<header>
-		<jsp:include page="/header.do" />
+		<jsp:include page="../header.jsp" />
 	</header>
 	<!-- header -->
 	
@@ -109,17 +109,24 @@ section.board div.board_search button:hover { /* 커서이벤트 */
 		<section class="board">
 			<div class="board_search">
 				<input type="text" placeholder=" 게시물 검색" id="btitle" >
-				<button type="submit" id="btnBoardSearch" ><p>검색</p></button>
-				<a href="board_list.do"><button type="submit"><p>처음으로</p></button></a>
+				<button type="submit" id="btnBoardSearch" class = "boardbtn1"><p>검색</p></button>
+				<a href="board_list.do"><button type="submit" class = "boardbtn2"><p>처음으로</p></button></a>
+			</div>
+			<div class="board_choose">
+						<c:choose>
+							<c:when test="${sessionScope.svo == null }">
+								<a href="http://localhost:9000/gga_plz/login.do" class="writebtncancel">
+									<img src="http://localhost:9000/gga_plz/images/writebtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="board_write.do" class="writebtn">
+									<img src="http://localhost:9000/gga_plz/images/writebtn.png">
+								</a>
+							</c:otherwise>
+						</c:choose>
 			</div>
 			<%-- <table class="table table-bordered" id="board_table_init" style="width: 90%;">
-				<tr>
-					<td colspan="5">
-						<a href="board_write.do" class="writebtn">
-							<img src="http://localhost:9000/gga_plz/images/writebtn.png">
-						</a>
-					</td>
-				</tr>
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -141,7 +148,7 @@ section.board div.board_search button:hover { /* 커서이벤트 */
 				<tr>
 					<td colspan="5"><div id="ampaginationsm"></div></td>
 				</tr>
-			</table> --%> 
+			</table>  --%>
 		</section>
 	</div>
 	<!-- content -->

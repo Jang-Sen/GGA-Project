@@ -61,22 +61,43 @@
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
-	margin : 50px 230px;
+	margin : 50px 230px; 
 	border: none;
-	padding: 10px;
+	padding: 10px; 
 	font-weight: bold;
 	z-index : 1;
 	
 }
 
+
 .fixed_button .fixed{
-	padding: 10px;
+	/* padding: 10px; */
 	cursor: pointer;
 }
 .fixed_button .fixed .fixed_order_btn{
 	border-radius: 30px;
-	padding: 11px 35px;
-	opacity:0.5;
+	/* padding: 11px 35px; */
+	border:1px solid white;
+	margin-bottom:15px;
+}
+.fixed_button .fixed .fixed_order_btn img{
+	border-radius: 30px;
+	width:125px;
+	height:55px;
+}
+ .fixed_weather_btn{
+	width:155px;
+	height:60px;
+ 	margin-left : 20px;
+ 	margin-bottom:15px;
+ }
+
+.fixed_top_btn {
+	width:80px;
+	height:70px;
+	margin-left : 40px;
+	opacity : 0.5;
+	margin-bottom:15px;
 }
 
 
@@ -100,11 +121,20 @@
 			</div>
 		</div>
 		
+		<!-- 고정 버튼 -->
 		<div class="fixed_button">
-		<!-- 예매하기 고정 버튼 -->
+			
+			<div class = "fixed" onclick="window.scrollTo(0,0);">
+			<img src="http://localhost:9000/gga_plz/images/top.png" class="fixed_top_btn">
+			</div>
+		
 			<div class="fixed">
-			<a href = "http://localhost:9000/gga_plz/order.do">
-			<button type="button" class="fixed_order_btn">예매하기</button></a>
+			<button type="button" class="fixed_order_btn" id="indexOrderBtn"><img src="http://localhost:9000/gga_plz/images/indexorderbtn.png"></button>
+			</div>
+			
+			<!-- 날씨 부분으로 하단 이동 -->
+			<div class="fixed" onclick="window.scrollTo(1600,1600);">
+			<img src="http://localhost:9000/gga_plz/images/weather_checkbtn.png" class="fixed_weather_btn">
 			</div>
 			
 		<!-- 카카오톡 채널 추가 버튼 -->

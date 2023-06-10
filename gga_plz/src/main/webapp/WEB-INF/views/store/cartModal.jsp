@@ -84,13 +84,19 @@
               </td>
               <td>${cartVo.pname}</td>
               <td>${cartVo.pprice}</td>
-              <td class="qty"><input type="text" class="form-control" id="qtyinput" value="${cartVo.qty}"></td>
+              <td class="qty"><input type="text" class="form-control" id="qtyinput" data-id="${cartVo.pid}" value="${cartVo.qty}"></td>
               <td class="cartpprice">${cartVo.totalprice}</td>
               <c:set var= "total" value="${total + cartVo.totalprice}"/>
               <td>
                 <button type="button" class="cartitemdelete" data-id="${cartVo.pid}">삭제</button>
               </td>
-            </tr>     
+            </tr>
+		          <input type="hidden" class="cid" value="${cartVo.cid}">
+		          <input type="hidden" class="pid" value="${cartVo.pid}">
+		          <input type="hidden" class="pname" value="${cartVo.pname}">
+		          <input type="hidden" class="pprice" value="${cartVo.pprice}">
+		          <input type="hidden" class="qtyy" value="${cartVo.qty}">
+		          <input type="hidden" class="pfile" value="${cartVo.pfile}">
             </c:forEach>
           </tbody>
         </table> 

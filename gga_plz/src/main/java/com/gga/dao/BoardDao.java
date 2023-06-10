@@ -1,3 +1,4 @@
+
 package com.gga.dao;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.gga.vo.BoardCommentVo;
 import com.gga.vo.BoardVo;
 
 @Repository
@@ -17,7 +19,46 @@ public class BoardDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	// Á¶È¸¼ö Áõ°¡
+	
+	// ëƒê¸€ ì—…ë°ì´íŠ¸ ê²°ê³¼
+	public int commentUpdateResult(String bcid, String updateComment) {
+		Map<String, String> param = new HashMap<String,String>();
+		param.put("bcid", bcid);
+		param.put("updateComment", updateComment);
+		return sqlSession.update("mapper.board.commentUpdate", param);
+	}
+	
+	// ëƒê¸€ ì‚­ì œ ê²°ê³¼
+	public int commentDeleteResult(String bcid) {
+		return sqlSession.delete("mapper.board.commentDelete", bcid);
+	}
+	
+	// ëƒê¸€ ì‚­ì œ ì „ Bid ì¶”ì¶œ
+	public String commentSelect(String bcid) {
+		return sqlSession.selectOne("mapper.board.commentSelect", bcid);
+	}
+	
+	// ï¿½ëŸ æ¹²ï¿½ ï¿½ì˜‰ï¿½ê½¦ ï¿½ï¿½ï¿½ì˜£
+	public int commentInsert(BoardCommentVo commentVo) {
+		return sqlSession.insert("mapper.board.commentInsert", commentVo);
+	}
+	
+	// ï¿½ëŸ æ¹²ï¿½ åª›ï¿½ï¿½ë‹” è­°ê³ ì‰¶
+	public int commentRowCount(String bid) {
+		return sqlSession.selectOne("mapper.board.commentCount", bid);
+	}
+	
+	// ï¿½ëŸ æ¹²ï¿½ è­°ê³ ì‰¶
+	public ArrayList<BoardCommentVo> commentSelect(int startCount, int endCount, String bid) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("startCount", startCount);
+		param.put("endCount", endCount);
+		param.put("bid", bid);
+		List<BoardCommentVo> list = sqlSession.selectList("mapper.board.comment", param);
+		return (ArrayList<BoardCommentVo>)list;
+	}
+	
+	// è­°ê³ ì‰¶ï¿½ë‹” ï§ì•·ï¿½
 	public void updateHits(String bid) {
 		sqlSession.selectOne("mapper.board.updateHits", bid);
 	}
@@ -31,28 +72,28 @@ public class BoardDao {
 	}
 	
 	
-	// °Ô½ÃÆÇ ³»¿ë ¼öÁ¤
+	// å¯ƒëš¯ë–†ï¿½ë™‹ ï¿½ê¶¡ï¿½ìŠœ ï¿½ë‹”ï¿½ì ™
 	public int update(BoardVo boardVo) {
 		return sqlSession.update("mapper.board.update", boardVo);
 	}
 	
-	// °Ô½ÃÆÇ ³»¿ë »èÁ¦
+	// å¯ƒëš¯ë–†ï¿½ë™‹ ï¿½ê¶¡ï¿½ìŠœ ï¿½ê¶˜ï¿½ì £
 	public int delete(String bid) {
 		return sqlSession.delete("mapper.board.delete", bid);
 	}
 	
-	// °Ô½ÃÆÇ »ó¼¼³»¿ë Á¶È¸
+	// å¯ƒëš¯ë–†ï¿½ë™‹ ï¿½ê¸½ï¿½ê½­ï¿½ê¶¡ï¿½ìŠœ è­°ê³ ì‰¶
 	
 	public BoardVo select(String bid) {
 		return sqlSession.selectOne("mapper.board.content", bid);
 	}
 	
-	// °Ô½Ã¹° ¾²±â
+	// å¯ƒëš¯ë–†è‡¾ï¿½ ï¿½ë²æ¹²ï¿½
 	public int insert(BoardVo boardVo) {
 		return sqlSession.insert("mapper.board.insert", boardVo);
 	}
 	
-	// board_list_json °Ë»ö °á°ú Á¶È¸
+	// board_list_json å¯ƒï¿½ï¿½ê¹‹ å¯ƒê³Œë‚µ è­°ê³ ì‰¶
 	public ArrayList<BoardVo> select(int startCount, int endCount, String btitle){
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("startCount", startCount);
@@ -63,7 +104,7 @@ public class BoardDao {
 
 	}
 	
-	// board_list ÃÖÃÊ ÀüÃ¼ Á¶È¸
+	// board_list ï§¤ì’–í¹ ï¿½ìŸ¾ï§£ï¿½ è­°ê³ ì‰¶
 	public ArrayList<BoardVo> select(int startCount, int endCount){
 		Map<String, Integer> param = new HashMap<String, Integer>();
 		param.put("startCount", startCount);
