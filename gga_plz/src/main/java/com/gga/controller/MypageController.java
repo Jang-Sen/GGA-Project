@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gga.service.MemberService;
 import com.gga.service.OrderService;
 import com.gga.service.ProductOrderService;
 import com.gga.vo.BoardVo;
+import com.gga.vo.MemberVo;
 import com.gga.vo.OrderconVo;
 import com.gga.vo.ProductOrderVo;
 import com.gga.vo.SessionVo;
@@ -26,6 +28,42 @@ public class MypageController {
 	
 	@Autowired
 	ProductOrderService productOrderService;
+	
+	@Autowired
+	MemberService memberService;
+	
+	/**
+	 * mypage_update_proc.do
+	 */
+	@RequestMapping(value="/mypage_update_proc.do", method=RequestMethod.POST)
+	public String mypage_update_proc(MemberVo memberVo) {
+		String viewName = "";
+		
+		if (memberService.getUpdate(memberVo) == 1) {
+			viewName = "redirect:/mypage.do";
+		} else if (memberVo == null) {
+			// error
+			viewName = "redirect:/error.do";
+		}
+		
+		return viewName;
+	}
+	
+	/**
+	 * mypage_update.do
+	 */
+	@RequestMapping(value="/mypage_update.do", method=RequestMethod.GET)
+	public ModelAndView mypage_update(HttpSession session) {
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
+		ModelAndView mav = new ModelAndView();
+		MemberVo memberVo = memberService.getMypageUpdate(svo.getId());
+		
+		mav.addObject("memberVo", memberVo);
+		mav.setViewName("/mypage/mypage_update");
+		
+		return mav;
+	}
+	
 	/**
 	 *	mypage_poster_proc.do
 	 */

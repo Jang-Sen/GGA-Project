@@ -169,6 +169,30 @@ public class MemberDao extends DBConn {
    }
    
    /*
+	 * select - 마이페이지 정보 수정 화면
+	 */
+	public MemberVo select(String id) {
+
+		return sqlSession.selectOne("mapper.member.selectMypage", id);
+
+		/*
+		 * int result = 0; String sql =
+		 * "UPDATE GGA_MEMBER SET PASS = ?, PHONE = ?, EMAIL = ?, CARNUM = ?" +
+		 * " WHERE ID = ?"; getPreparedStatement(sql);
+		 * 
+		 * try { pstmt.setString(1, memberVo.getPass()); pstmt.setString(2,
+		 * memberVo.getPhone()); pstmt.setString(3, memberVo.getEmail());
+		 * pstmt.setString(4, memberVo.getCarnum()); pstmt.setString(5,
+		 * memberVo.getId());
+		 * 
+		 * result = pstmt.executeUpdate(); } catch (Exception e) { e.printStackTrace();
+		 * }
+		 * 
+		 * return result;
+		 */
+	}
+   
+   /*
     * update - 마이페이지 정보 수정
     */
    public int update(MemberVo memberVo) {
@@ -243,6 +267,7 @@ public class MemberDao extends DBConn {
    /*
     * select(mid) - 회원 리스트
     */
+   /*
    public MemberVo select(String mid) {
       MemberVo memberVo = new MemberVo();
       String sql = "SELECT ID, PASS, NAME, GENDER, PHONE, EMAIL, CARNUM FROM GGA_MEMBER"
@@ -269,6 +294,7 @@ public class MemberDao extends DBConn {
       
       return memberVo;
    }
+   */
    
    /*
     * select(memberVo) - 아이디 찾기
