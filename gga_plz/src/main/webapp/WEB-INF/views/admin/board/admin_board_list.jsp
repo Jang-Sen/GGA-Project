@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/am-pagination.css"> <!-- am-pagination.css -->
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script> <!-- gga_javascript.js -->
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script> <!-- gga_jquery.js -->
+<script src="http://localhost:9000/gga_plz/js/gga_board_list.js"></script> <!-- gga_jquery.js -->
 <script src="http://localhost:9000/mycgv_jsp/js/am-pagination.js"></script> <!-- am-pagination.js -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
@@ -62,7 +63,7 @@ img {
 }
 </style>
 
-<script>
+<!-- <script>
 	$(document).ready(function(){
 		var pager = jQuery('#ampaginationsm').pagination({
 		
@@ -86,7 +87,7 @@ img {
 	    });
 		
  	});
-</script> 
+</script>  -->
 
 <body>
 	<!-- header -->
@@ -99,36 +100,27 @@ img {
 	<div class="container text-center">
 	<div class="board_title">
 		<img src="http://localhost:9000/gga_plz/images/adminreviewtitle.png">
-		</div>
+	</div>
 		<section class="board">
-			<table class="table table-bordered" style="width: 90%;">
-				<tr>
-					<td colspan="5">
-					</td>
-				</tr>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>조회수</th>
-					<th>작성자</th>
-					<th>작성일자</th>
-				</tr>
-				<c:forEach var="boardVo" items="${list}">
-				<tr>
-					<td>${boardVo.rno }</td>
-					<td><a href="board_content.do?bid=${boardVo.bid}">${boardVo.btitle }</a></td>
-					<td>${boardVo.views }</td>
-					<td>${boardVo.mid }</td>
-					<td>${boardVo.bdate }</td>
-				</tr>
-				</c:forEach>
-				
-				<tr>
-					<td colspan="5">
-						<div id="ampaginationsm"></div>
-					</td>
-				</tr>
-			</table>
+			<div class="board_search">
+				<input type="text" placeholder=" 게시물 검색" id="btitle" >
+				<button type="submit" id="btnBoardSearch" ><p>검색</p></button>
+				<a href="board_list.do"><button type="submit"><p>처음으로</p></button></a>
+			</div>
+			<div class="board_choose">
+						<c:choose>
+							<c:when test="${sessionScope.svo == null }">
+								<a href="http://localhost:9000/gga_plz/login.do" class="writebtncancel">
+									<img src="http://localhost:9000/gga_plz/images/writebtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="board_write.do" class="writebtn">
+									<img src="http://localhost:9000/gga_plz/images/writebtn.png">
+								</a>
+							</c:otherwise>
+						</c:choose>
+			</div>
 		</section>
 	</div>
 	<!-- content -->
