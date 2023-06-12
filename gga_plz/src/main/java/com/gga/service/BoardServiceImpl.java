@@ -15,6 +15,15 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardDao boardDao;
 	
+	public int getCommentMasterRowCount(String id) {
+		return boardDao.commentMasterRowCount(id);
+		
+	}
+	
+	public ArrayList<BoardVo> getCommentMaster(int startCount, int endCount, String id) {
+		return (ArrayList<BoardVo>)boardDao.commentMaster(startCount, endCount, id);
+	}
+	
 	
 	// Board_comment_update_result (뎃글 업데이트 결과)
 	public int getCommentUpdateResult(String bcid, String updateComment) {

@@ -34,7 +34,36 @@ public class BoardController {
 	@Autowired
 	private PageServiceImpl pageService;
 	
-	// board_comment_update.do - 보드 뎃글 업데이트
+	// board_master_json_data.do - 마이페이지 보드 뎃글
+	@ResponseBody
+	@RequestMapping(value="/board_master_json_data.do", method=RequestMethod.GET)
+	public String board_master_json_data(String page, String id) {
+		Map<String, Integer> param = pageService.getPageResult(page, "boardMaster", boardService, id);
+		ArrayList<BoardVo> list = boardService.getCommentMaster(param.get("startCount"), param.get("endCount"), id);
+		
+		JsonObject jlist = new JsonObject();
+		JsonArray jarray = new JsonArray();
+		
+		for(BoardVo boardVo : list) {
+			JsonObject jobj = new JsonObject();
+			jobj.addProperty("rno", boardVo.getRno());
+			jobj.addProperty("btitle", boardVo.getBtitle());
+			jobj.addProperty("bhits", boardVo.getBhits());
+			jobj.addProperty("bdate", boardVo.getBdate());
+			jobj.addProperty("movieName", boardVo.getMovieName());
+			jobj.addProperty("bid", boardVo.getBid());
+			jarray.add(jobj);
+		}
+		jlist.add("jlist", jarray);
+		jlist.addProperty("totals", param.get("totals"));
+		jlist.addProperty("pageSize", param.get("pageSize"));
+		jlist.addProperty("maxSize", param.get("maxSize"));
+		jlist.addProperty("page", param.get("page"));
+		
+		return new Gson().toJson(jlist);
+	}
+	
+//	 board_comment_update.do - 보드 뎃글 업데이트
 	@ResponseBody
 	@RequestMapping(value="/board_comment_update.do", method=RequestMethod.GET)
 	public String board_comment_update(String bcid, String updateComment) {

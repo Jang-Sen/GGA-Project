@@ -1999,7 +1999,9 @@ div#coron_btn section.enroll button { /* 보내줘야함 */
 	margin:auto;
 }
 
-section.board table#board_table div.maxSize {
+
+section.board table#board_table div.maxSize,
+section.myreview table#boardMaster div.maxSize{ /* @ */
 	display:inline-block;
 	width:350px;
 	overflow:hidden;
@@ -2065,6 +2067,13 @@ section.board form#commentForm table.comment_box div#commentArea{
 	bottom:35px;
 	text-align:center;
 }
+/* mypage - 리뷰 영역 */
+section.myreview table#boardMaster div.maxSize { /* @ */
+	text-align:left;
+}
 
-
+section.myreview table#boardMaster tr td:nth-child(2) {
+	text-align:left;
+	word-spacing : 3px;
+}
 

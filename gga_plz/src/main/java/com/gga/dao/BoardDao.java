@@ -19,6 +19,18 @@ public class BoardDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	public int commentMasterRowCount(String id) {
+		return sqlSession.selectOne("mapper.board.commentMasterRowCount", id);
+	}
+	
+	// 마이페이지 뎃글 조회
+	public List<BoardVo> commentMaster(int startCount, int endCount, String id) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("startCount", startCount);
+		param.put("endCount", endCount);
+		param.put("id", id);
+		return sqlSession.selectList("mapper.board.commentMaster", param);
+	}
 	
 	// 뎃글 업데이트 결과
 	public int commentUpdateResult(String bcid, String updateComment) {

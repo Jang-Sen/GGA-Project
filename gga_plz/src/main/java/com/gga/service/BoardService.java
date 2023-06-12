@@ -25,4 +25,7 @@ public interface BoardService {
 	int getCommentDeleteResult(String bcid);
 	int getCommentUpdateResult(String bcid,String updateComment);
 	String getCommentSelect(String bcid);
+	ArrayList<BoardVo> getCommentMaster(int startCount, int endCount, String id);
+	int getCommentMasterRowCount(String id);
+	
 }
