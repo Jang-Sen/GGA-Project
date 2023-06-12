@@ -21,7 +21,6 @@ public class PageServiceImpl {
 	@Autowired
 	private NoticeService noticeService;
 	
-	
 	public Map<String, Integer> getPageResult(String page, String serviceName) {
 		
 		Map<String, Integer> param = new HashMap<String, Integer>();
@@ -83,6 +82,8 @@ public class PageServiceImpl {
 			dbCount = boardService.getSearchRowCount(btitle);
 		}else if(serviceName.equals("boardComment")) {
 			dbCount = boardService.getCommentRowCount(btitle); // 
+		}else if(serviceName.equals("boardMaster")) {
+			dbCount = boardService.getCommentMasterRowCount(btitle);
 		}
 		
 		if(dbCount % pageSize == 0) {

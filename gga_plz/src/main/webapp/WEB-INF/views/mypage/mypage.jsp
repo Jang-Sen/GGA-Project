@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css">
+<link rel="stylesheet" href="http://localhost:9000/gga_plz/css/am-pagination.css">
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_javascript.js"></script> <!-- gga_javascript.js -->
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
+<script src="http://localhost:9000/gga_plz/js/gga_mypage_boardMaster.js"></script>
+<script src="http://localhost:9000/gga_plz/js/am-pagination.js"></script>
 
 <style>
 @media (min-width: 768px) {
@@ -41,6 +44,10 @@
 .productordercon h1{
 	font-size:20pt;
 }
+#ampaginationsm {
+	height:30px;
+}
+
 </style>
 </head>
 <body>
@@ -98,10 +105,11 @@
 		     </c:choose>
 		</section>
 		<section class="myreview">
-			<div class="myreview_header">
+			<div class="myreview_header" id="myreview_header_json" data-id="${sessionScope.svo.id}">
 				<h1>My리뷰</h1>
 			</div>
-			<table class="table table-bordered" style="width: 90%;">
+			
+			<%-- <table class="table table-bordered" style="width: 90%;">
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -109,14 +117,14 @@
 					<th>작성일자</th>
 				</tr>
 			 
-				<c:forEach var="boardVo" items="${list}">
+				<c:forEach var="boardMaster" items="${boardMaster}">
 				<tr>
-					<td>${boardVo.rno }</td>
-					<td><a href="board_content.do?bid=${boardVo.bid }">[${boardVo.movieTitle}]${boardVo.btitle }</a></td>
-					<td>${boardVo.bhits}</td>
-					<td>${boardVo.bdate }</td>
+					<td>${boardMaster.rno}</td>
+					<td><a href="board_content.do?bid=${boardMaster.mid }">[${boardMaster.movieName}]${boardMaster.btitle}</a></td>
+					<td>${boardMaster.bhits}</td>
+					<td>${boardMaster.bdate}</td>
 				</tr>
-				</c:forEach>
+				</c:forEach> --%>
 				
 				<!-- <tr>
 					<td colspan="5">
@@ -146,7 +154,7 @@
 					</nav>
 					</td>
 				</tr> -->
-			</table>
+			<!-- </table> -->
 		</section>
 		<div class="container">
 		<hr>

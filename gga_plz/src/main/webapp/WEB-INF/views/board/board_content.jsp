@@ -36,11 +36,11 @@ $(document).ready(function(){
 			     
 	    btnSize:'sm'	// 'sm'  or 'lg'		
 	});
-	var bid = ${boardVo.bid}; 
+	var bid = '${boardVo.bid}'; 
 	
 	jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 		   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-           $(location).attr('href', "http://localhost:9000/gga_plz/board_content.do?page="+e.page+"&bid="+bid);       /* 페이징 해야함 */
+           $(location).attr('href', "http://localhost:9000/gga_plz/board_content.do?page="+e.page+"&bid="+bid);      /* 페이징 해야함 */
     });
 	
 	});
@@ -109,7 +109,7 @@ section.board form table.table img.scoreImg {
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td>
+						<td style = "word-break: break-all">
 							${boardVo.bcontent}<br><br><br><br>
 							<c:set var="imgName" value="${boardVo.bsfile}"></c:set>
 							<c:set var="imgLength" value="${fn:length(imgName)}"></c:set>
@@ -177,7 +177,7 @@ section.board form table.table img.scoreImg {
 					<c:if test="${totals == 0}">
 					<tr>
 						<td><input type="text" name="sid" value="${sessionScope.svo.id }" disabled></td>
-						<td><textarea id="bccontent" name="bccontent" placeholder="*200자 이내로 작성해주세요"></textarea></td>
+						<td><textarea maxlength="199" id="bccontent" name="bccontent" placeholder="*200자 이내로 작성해주세요"></textarea></td>
 						<td>
 							<script>
 								date = new Date().toLocaleDateString();
@@ -212,7 +212,7 @@ section.board form table.table img.scoreImg {
 					</c:forEach>
 					<tr>
 						<td><input type="text" name="commentSid" value="${sessionScope.svo.id }" disabled></td>
-						<td><textarea id="bccontent" name="bccontent" placeholder="*200자 이내로 작성해주세요"></textarea></td>
+						<td><textarea maxlength="199" id="bccontent" name="bccontent" placeholder="*200자 이내로 작성해주세요"></textarea></td>
 						<td>
 							<script>
 								date = new Date().toLocaleDateString();

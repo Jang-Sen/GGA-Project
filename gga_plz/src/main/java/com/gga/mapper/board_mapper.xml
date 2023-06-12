@@ -6,6 +6,16 @@
     
 <mapper namespace="mapper.board">
 	
+	<select id="commentMasterRowCount" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM GGA_BOARD WHERE MID = #{id} 
+	
+	</select>
+	
+	<select id="commentMaster" parameterType="map" resultType="com.gga.vo.BoardVo">
+		SELECT RNO,BTITLE,BHITS,BDATE,MID,MOVIENAME,BID FROM 
+		(SELECT RNO,BTITLE,BHITS,TO_CHAR(BDATE, 'YYYY.MM.DD') BDATE,MID,MOVIENAME,BID FROM 
+		(SELECT ROWNUM RNO,BTITLE,BHITS,BDATE,MID,MOVIENAME,BID FROM GGA_BOARD) WHERE MID = #{id}) WHERE RNO BETWEEN #{startCount} AND #{endCount}
+	</select>
 	
 	<update id="commentUpdate" parameterType="map">
 		UPDATE GGA_BOARD_COMMENT SET BCCONTENT=#{updateComment} WHERE BCID=#{bcid}	
