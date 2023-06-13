@@ -34,6 +34,8 @@ public class PageServiceImpl {
 		
 		if(serviceName.equals("movie")) {
 			dbCount = movieService.getTotalRowCount();
+		}else if(serviceName.equals("notice")) {			
+			dbCount = noticeService.getTotalRowCount();
 		}
 	//�럹�씠吏� 泥섎━ - startCount, endCount 援ы븯湲�
 			//珥� �럹�씠吏� �닔 怨꾩궛
@@ -165,9 +167,7 @@ public class PageServiceImpl {
 		int pageCount = 1;	
 		int dbCount = 0;	
 		
-		if(serviceName.equals("notice")) {			
-			dbCount = noticeService.getTotalRowCount();
-		}else if(serviceName.equals("noticeSearch")) {
+		if(serviceName.equals("noticeSearch")) {
 			dbCount = noticeService.getNtotalRowCount();
 		}else if(serviceName.equals("noticeSearch")) {
 			dbCount = noticeService.getAntotalRowCount();
@@ -187,7 +187,6 @@ public class PageServiceImpl {
 			startCount = 1;
 			endCount = pageSize;
 		}
-		
 		param.put("totals", dbCount);
 		param.put("maxSize", pageCount);
 		param.put("pageSize", pageSize);
