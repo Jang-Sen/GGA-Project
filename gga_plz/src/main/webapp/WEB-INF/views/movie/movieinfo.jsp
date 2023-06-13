@@ -118,22 +118,22 @@ table img{
 			</div>
 			<section class="movie_info3">
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut1.jpg">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut1}">
 					<img alt="cut1" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut1}" width="250" height="210">
 				</a>
 			</div>		
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut2.jpg">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut2}">
 					<img alt="cut2" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut2}" width="250" height="210">
 				</a>
 			</div>		
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut3.jpg">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut3}">
 					<img alt="cut3" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut3}" width="250" height="210">
 				</a>
 			</div>		
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut4.jpg">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut4}">
 					<img alt="cut4" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut4}" width="250" height="210">
 				</a>
 			</div>		
