@@ -2077,3 +2077,306 @@ section.myreview table#boardMaster tr td:nth-child(2) {
 	word-spacing : 3px;
 }
 
+/* 통합검색 페이지 - 송지웅 0613 */
+
+/* 결과물 없을때 모양 */
+section.indexSearch {
+	width:1000px; height:auto;
+	margin:auto;
+}
+
+section.indexSearch div.noneResultGuide {
+	border-top:2px solid gray;
+	position:relative;
+	bottom:190px;
+	padding:10px;
+}
+section.indexSearch div.noneResultGuide span {
+	position:relative;
+	left:285px; top:0px;
+	color:gray;
+	font-size:12pt;
+}
+
+section.indexSearch div.noneResult img {
+	position:relative;
+	left:350px; bottom:190px;
+	width:300px; height:400px;
+}
+section.indexSearch div.noneResult span.result1 {
+	padding:5px;
+	display:block;
+	position:relative;
+	bottom:200px;
+	text-align:center;
+	font-weight:700;
+	font-size:20pt;
+}
+section.indexSearch div.noneResult span.result2 {
+	position:relative;
+	left:315px;
+	bottom:220px;
+	font-size:15pt;
+}
+
+/* 영화 검색 영역 */
+
+section.indexSearch div.movieSearch {
+	height:auto;
+}
+section.indexSearch div.movieSearchTitle {
+	border-bottom:3px solid lightgray;
+	height:130px;	
+}
+section.indexSearch div.movieSearch img {
+	width:300px;
+	height:120px;
+}
+section.indexSearch div.movieSearchResult {
+	height:450px;
+}
+section.indexSearch div.movieSearchInfo {
+	border:2px groove black;
+	height:384.5px; width:234px;
+	margin:20px 0px 0px 30px;	
+	display:inline-block;
+	border-radius:4px;
+}
+section.indexSearch div.movieSearchResult div.movieSearchInfo a#movieTitle {
+	width:auto;
+	display:block;
+	font-size:14pt;
+	font-weight:700;
+	text-align:center;
+	color:#0fc4ff;
+	text-shadow:2px 2px 2px black;
+	padding:8px;
+	text-decoration-line:none;
+}
+section.indexSearch div.movieSearchResult div.movieSearchInfo p {
+	text-align:center;
+	color:gray;
+	font-style:italic;
+	padding:2px;
+	font-weight:700;
+}
+section.indexSearch div.movieSearchResult a#moreResult {
+	position:relative;
+	left:40px; bottom:150px;/* top:50px; */ 
+	font-size:12pt;
+	color:gray;
+	text-decoration-line:none;
+	font-style:italic;
+	font-weight:700;
+}
+section.indexSearch div.movieSearchResult a:hover {
+	color:black;
+	font-weight:700;
+}
+section.indexSearch div.movieSearchResult div.movieSearchInfo img {
+	height:300px; width:230px;
+}
+
+/* 통합검색 공지사항 영역 */
+section.indexSearch div.noticeSearch {
+	height:auto;
+}
+section.indexSearch div.noticeSearch div.noticeSearchResult div.noticeSearchTitle {
+	margin-top:60px;
+	border-bottom:3px solid lightgray;
+	height:110px;	
+}
+section.indexSearch div.noticeSearchResult div.noticeSearchTitle img {
+	width:250px;
+	height:100px;
+	
+}
+section.indexSearch div.noticeSearchResult table {
+	border:1px solid lightgray;
+	margin:20px 0px 5px 17px;
+	width:96.5%; height:100%;
+	text-align:center;
+}
+section.indexSearch div.noticeSearchResult table th {
+	padding:5px;
+	background-image:url("http://localhost:9000/gga_plz/images/commentbackground2.PNG");
+}
+section.indexSearch div.noticeSearchResult table th:first-child,
+section.indexSearch div.noticeSearchResult table td:first-child,
+section.indexSearch div.noticeSearchResult table td:nth-child(3),
+section.indexSearch div.noticeSearchResult table th:nth-child(3) {
+	border-right:1px solid lightgray;
+	width:10px;
+}
+section.indexSearch table td {
+	font-weight:700;	
+}
+section.indexSearch div.noticeSearchResult table td:nth-child(2) a{
+	text-decoration-line:none;
+	font-size:14pt;
+}
+section.indexSearch div.noticeSearchResult table td:nth-child(2){
+	text-align:left;
+	padding:5px;
+}
+section.indexSearch div.noticeSearchResult table td:nth-child(1),
+section.indexSearch div.boardSearchResult table td:nth-child(1){
+	color:gray;
+	font-style:italic;
+	font-weight:700;	
+}
+section.indexSearch div.noticeSearchResult table td:nth-child(2),
+section.indexSearch div.noticeSearchResult table th:nth-child(2) {
+	border-right:1px solid lightgray;
+	width:150px;
+}
+section.indexSearch div.noticeSearchResult table th:nth-child(4) {
+	width:20px;
+}
+
+section.indexSearch div.noticeSearchResult table td {
+	border-top:1px solid lightgray;
+}
+
+section.indexSearch div.noticeSearchResult span {
+	display:block;
+	text-align:center;
+	font-size:13pt;
+	color:gray;
+	text-decoration-line:none;
+	font-style:italic;
+	font-weight:700;
+}
+section.indexSearch div.noticeSearchResult a#moreResult2 {
+	position:relative;
+	left:280px;
+	font-size:11pt;
+	color:gray;
+	text-decoration-line:none;
+	font-style:italic;
+	font-weight:700;
+}
+
+/* 통합검색 보드 영역  */
+section.indexSearch div.boardSearch {
+	height:auto;
+}
+section.indexSearch div.boardSearch div.boardSearchResult div.boardSearchTitle {
+	margin-top:60px;
+	border-bottom:3px solid lightgray;
+	height:110px;	
+}
+section.indexSearch div.boardSearchResult div.boardSearchTitle img {
+	width:200px;
+	height:100px;
+	
+}
+section.indexSearch div.boardSearchResult table {
+	border:1px solid lightgray;
+	margin:20px 0px 5px 17px;
+	width:96.5%; height:100%;
+	text-align:center;
+}
+section.indexSearch div.boardSearchResult table th {
+	padding:5px;
+	background-image:url("http://localhost:9000/gga_plz/images/commentbackground2.PNG");
+}
+section.indexSearch div.boardSearchResult table td,
+section.indexSearch div.boardSearchResult table th {
+	border-right:1px solid lightgray;
+	width:10px;
+}
+section.indexSearch div.boardSearchResult table td:nth-child(2){
+	text-align:left;
+	padding:5px;
+}
+section.indexSearch div.boardSearchResult table td:nth-child(2),
+section.indexSearch div.boarSearchResult table th:nth-child(2) {
+	border-right:1px solid lightgray;
+	width:150px;
+}
+section.indexSearch div.boardSearchResult table th:last-child{
+	width:20px;
+}
+section.indexSearch div.boardSearchResult table th:nth-child(4) {
+	width:20px;
+}
+
+section.indexSearch div.boardSearchResult table td {
+	border-top:1px solid lightgray;
+}
+
+section.indexSearch div.boardSearchResult span {
+	display:block;
+	text-align:center;
+	font-size:13pt;
+	color:gray;
+	text-decoration-line:none;
+	font-style:italic;
+	font-weight:700;
+}
+section.indexSearch div.boardSearchResult a#moreResult2 {
+	position:relative;
+	left:280px;
+	font-size:11pt;
+	color:gray;
+	text-decoration-line:none;
+	font-style:italic;
+	font-weight:700;
+}
+section.indexSearch div.boardSearch a {
+	text-decoration-line:none;
+}
+section.indexSearch div.boardSearch div#boardSearchBox {
+	display: inline-block;
+}
+
+/* 통합검색 스토어 영역 */
+section.indexSearch div.movieSearch div#storeSearchTitle {
+	margin-top:50px;
+}
+section.indexSearch div.movieSearchResult div#storeSearchInfo img {
+	border-bottom:2px dotted lightgray;
+}
+section.indexSearch div.movieSearchResult div#storeSearchInfo a#movieTitle {
+	font-size:18pt;
+	margin:10px;
+}
+
+/* 통합검색 정렬 P태그 */
+section.indexSearch div.noticeSearch p{
+	display:inline-block;
+	position:relative;
+	top:47px; left:630px;
+	color:gray;
+	font-size:10pt;
+	font-weight:700;
+	font-style:italic;
+}
+section.indexSearch div.boardSearch p {
+	display:inline-block;
+	position:relative;
+	top:47px; left:680px;
+	color:gray;
+	font-size:10pt;
+	font-weight:700;
+	font-style:italic;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

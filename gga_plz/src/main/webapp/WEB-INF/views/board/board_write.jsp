@@ -95,13 +95,6 @@ section.board table {
 						</td>
 					</tr>		
 					<tr>
-						<th>파일첨부</th>
-						<td>
-							<input type="file" name="file1" >
-							<input type="hidden" name="file1" >
-						</td>
-					</tr>			
-					<tr>
 						<td colspan="4">
 							<button class="btn btn-outline-secondary" type="button" id="btnBoardWrite">등록완료</button>
 							<button class="btn btn-outline-secondary" type="reset">다시쓰기</button>

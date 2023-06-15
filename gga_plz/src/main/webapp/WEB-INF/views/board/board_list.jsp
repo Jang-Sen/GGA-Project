@@ -123,29 +123,6 @@ section.board div.board_search button:hover { /* 커서이벤트 */
 							</c:otherwise>
 						</c:choose>
 			</div>
-			<%-- <table class="table table-bordered" id="board_table_init" style="width: 90%;">
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>조회수</th>
-					<th>작성자</th>
-					<th>작성일자</th>
-				</tr>
-				<c:forEach var="boardVo" items="${list}">
-				<tr>
-					<td>${boardVo.rno }</td>
-					<td><a href="board_content.do?bid=${boardVo.bid}" id="list_moive_name" >[${boardVo.movieName }]</a>
-					<a href="board_content.do?bid=${boardVo.bid}" >${boardVo.btitle }</a></td>
-					<td>${boardVo.bhits }</td>
-					<td>${boardVo.mid }</td>
-					<td>${boardVo.bdate }</td>
-				</tr>
-				</c:forEach>
-				
-				<tr>
-					<td colspan="5"><div id="ampaginationsm"></div></td>
-				</tr>
-			</table>  --%>
 		</section>
 	</div>
 	<!-- content -->

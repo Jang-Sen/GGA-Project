@@ -1,10 +1,8 @@
 
 package com.gga.controller;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -103,21 +101,8 @@ public class BoardController {
 	@RequestMapping(value="/board_write_proc.do", method=RequestMethod.POST)
 	public String board_write_proc(BoardVo boardVo, HttpServletRequest request) throws Exception{
 		String viewName = "";
-		String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "\\resources\\upload\\";
-		if(boardVo.getFile1().getOriginalFilename() != null) {
-			UUID uuid = UUID.randomUUID();
-			String bfile = boardVo.getFile1().getOriginalFilename();
-			String bsfile = uuid + "_" + bfile;
-			
-			boardVo.setBsfile(bsfile);
-		}else {
-			//�뙆�씪 �뾾�쓬
-		}
 		int result = boardService.getWriteResult(boardVo);
 		if(result == 1) {
-			File file = new File(root_path + attach_path + boardVo.getBsfile());
-			boardVo.getFile1().transferTo(file);
 			viewName = "redirect:/board_list.do";
 		}
 		return viewName;

@@ -13,8 +13,8 @@
 	
 	<select id="commentMaster" parameterType="map" resultType="com.gga.vo.BoardVo">
 		SELECT RNO,BTITLE,BHITS,BDATE,MID,MOVIENAME,BID FROM 
-		(SELECT RNO,BTITLE,BHITS,TO_CHAR(BDATE, 'YYYY.MM.DD') BDATE,MID,MOVIENAME,BID FROM 
-		(SELECT ROWNUM RNO,BTITLE,BHITS,BDATE,MID,MOVIENAME,BID FROM GGA_BOARD) WHERE MID = #{id}) WHERE RNO BETWEEN #{startCount} AND #{endCount}
+		(SELECT ROWNUM RNO,BTITLE,BHITS,TO_CHAR(BDATE, 'YYYY.MM.DD') BDATE,MID,MOVIENAME,BID FROM 
+		(SELECT BTITLE,BHITS,BDATE,MID,MOVIENAME,BID FROM GGA_BOARD) WHERE MID = #{id}) WHERE RNO BETWEEN #{startCount} AND #{endCount}
 	</select>
 	
 	<update id="commentUpdate" parameterType="map">
@@ -53,12 +53,12 @@
 	</select>
 	
 	<insert id="insert" parameterType="com.gga.vo.BoardVo">
-		INSERT INTO GGA_BOARD(BID,BTITLE,SCORE,BCONTENT,Bhits,MID,MOVIENAME,BDATE,BFILE,BSFILE)
-			VALUES('b_'||LTRIM(TO_CHAR(SEQU_GGA_BOARD_BID.NEXTVAL, '0000')),#{btitle},#{score},#{bcontent},0,#{mid, jdbcType=VARCHAR},#{movieName},SYSDATE,#{bfile, jdbcType=VARCHAR},#{bsfile})
+		INSERT INTO GGA_BOARD(BID,BTITLE,SCORE,BCONTENT,Bhits,MID,MOVIENAME,BDATE)
+			VALUES('b_'||LTRIM(TO_CHAR(SEQU_GGA_BOARD_BID.NEXTVAL, '0000')),#{btitle},#{score},#{bcontent},0,#{mid, jdbcType=VARCHAR},#{movieName},SYSDATE)
 	</insert>
 	
 	<select id="content" parameterType="String" resultType="com.gga.vo.BoardVo">
-		SELECT BID,BTITLE,SCORE,BCONTENT,Bhits,MID,MOVIENAME,BDATE,BFILE,BSFILE FROM GGA_BOARD WHERE BID=#{bid}
+		SELECT BID,BTITLE,SCORE,BCONTENT,Bhits,MID,MOVIENAME,BDATE FROM GGA_BOARD WHERE BID=#{bid}
 	</select>
 	
 	<delete id="delete" parameterType="String">

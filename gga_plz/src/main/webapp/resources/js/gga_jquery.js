@@ -560,24 +560,6 @@ $("#seatkakaobtn").click(function() {
 		header 부분 검색 
 		 **********************************/
 		
-		$("#btnSearch").click(function(){
-			if($("#movietitle").val() =="" ){
-				alert("영화 제목을 입력해주세요.");
-				$("#movietitle").focus();
-				return false;
-			} else{
-				$.ajax({
-			          url:"http://localhost:9000/gga_plz/searchproc.do?movietitle="+$("#movietitle").val(),
-			          success: function(movieid){
-			          	if(movieid == ""){
-							alert("상영 예정 없는 영화입니다 다른검색어를 입력해주세요");
-			          	}else{
-			           	 location.href="http://localhost:9000/gga_plz/movieinfo.do?movieid="+movieid; }
-			         	}
-					
-				});
-			}
-		});
 		/**********************************
 		영화 포스터 클릭시 -> movieinfo 이동
 		 **********************************/

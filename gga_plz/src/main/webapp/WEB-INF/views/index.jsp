@@ -269,7 +269,7 @@
 			    	</div>
 			    	<div class="card mb-4 rounded-3 shadow-sm">
 			        	<div class="card-body">
-			          	<p class="card-text">차타고 오세용</p>
+			          	<p class="card-text">서울 강남구 강남대로 78길 8 한국빌딩 4F, 8F</p>
 			        	</div>
 			     	</div>
 			    </div>

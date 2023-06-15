@@ -111,11 +111,6 @@ section.board form table.table img.scoreImg {
 						<th>내용</th>
 						<td style = "word-break: break-all">
 							${boardVo.bcontent}<br><br><br><br>
-							<c:set var="imgName" value="${boardVo.bsfile}"></c:set>
-							<c:set var="imgLength" value="${fn:length(imgName)}"></c:set>
-							<c:if test="${imgLength != 37}">
-								<img id="content_img"src="http://localhost:9000/gga_plz/upload/${boardVo.bsfile }">
-							</c:if>
 						</td>
 					</tr>
 					<tr>
