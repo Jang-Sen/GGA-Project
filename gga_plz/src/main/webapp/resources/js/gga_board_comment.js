@@ -81,16 +81,21 @@ $(document).ready(function(){
 		$("#commentEditSuccess1").click(function(){
 			var bcid = $("#hiddenBcid1").text();
 			var updateComment = $("#editComment1").val();
-			var confirmResult = confirm("수정 하시겠습니까?");
-			if(confirmResult){
-				$.ajax({
-					url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
-					success:function(result) {
-						bid = result;
-						location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
-					}
-				});
-			}
+			if(updateComment != ""){
+				var confirmResult = confirm("수정 하시겠습니까?");
+				if(confirmResult){
+					$.ajax({
+						url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
+						success:function(result) {
+							bid = result;
+							location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
+						}
+					});
+				}
+			}else {
+				alert("내용을 입력하세요.");
+				$("#editComment1").focus();
+			}	
 		});
 		$("#commentEditStop1").click(function(){
 			$("#editComment1").css("display","none");
@@ -106,16 +111,21 @@ $(document).ready(function(){
 		$("#commentEditSuccess2").click(function(){
 			var bcid = $("#hiddenBcid2").text();
 			var updateComment = $("#editComment2").val();
-			var confirmResult = confirm("수정 하시겠습니까?");
-			if(confirmResult){
-				$.ajax({
-					url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
-					success:function(result) {
-						bid = result;
-						location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
-					}
-				});
-			}
+			if(updateComment != ""){
+				var confirmResult = confirm("수정 하시겠습니까?");
+				if(confirmResult){
+					$.ajax({
+						url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
+						success:function(result) {
+							bid = result;
+							location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
+						}
+					});
+				}
+			}else {
+				alert("내용을 입력하세요.");
+				$("#editComment2").focus();
+			}	
 		});
 		$("#commentEditStop2").click(function(){
 			$("#editComment2").css("display","none");
@@ -131,16 +141,21 @@ $(document).ready(function(){
 		$("#commentEditSuccess3").click(function(){
 			var bcid = $("#hiddenBcid3").text();
 			var updateComment = $("#editComment3").val();
-			var confirmResult = confirm("수정 하시겠습니까?");
-			if(confirmResult){
-				$.ajax({
-					url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
-					success:function(result) {
-						bid = result;
-						location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
-					}
-				});
-			}
+			if(updateComment != ""){
+				var confirmResult = confirm("수정 하시겠습니까?");
+				if(confirmResult){
+					$.ajax({
+						url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
+						success:function(result) {
+							bid = result;
+							location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
+						}
+					});
+				}
+			}else {
+				alert("내용을 입력하세요.");
+				$("#editComment3").focus();
+			}	
 		});
 		$("#commentEditStop3").click(function(){
 			$("#editComment3").css("display","none");
@@ -156,16 +171,21 @@ $(document).ready(function(){
 		$("#commentEditSuccess4").click(function(){
 			var bcid = $("#hiddenBcid4").text();
 			var updateComment = $("#editComment4").val();
-			var confirmResult = confirm("수정 하시겠습니까?");
-			if(confirmResult){
-				$.ajax({
-					url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
-					success:function(result) {
-						bid = result;
-						location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
-					}
-				});
-			}
+			if(updateComment != ""){
+				var confirmResult = confirm("수정 하시겠습니까?");
+				if(confirmResult){
+					$.ajax({
+						url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
+						success:function(result) {
+							bid = result;
+							location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
+						}
+					});
+				}
+			}else {
+				alert("내용을 입력하세요.");
+				$("#editComment4").focus();
+			}	
 		});
 		$("#commentEditStop4").click(function(){
 			$("#editComment4").css("display","none");
@@ -181,16 +201,21 @@ $(document).ready(function(){
 		$("#commentEditSuccess5").click(function(){
 			var bcid = $("#hiddenBcid5").text();
 			var updateComment = $("#editComment5").val();
-			var confirmResult = confirm("수정 하시겠습니까?");
-			if(confirmResult){
-				$.ajax({
-					url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
-					success:function(result) {
-						bid = result;
-						location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
-					}
-				});
-			}
+			if(updateComment != ""){
+				var confirmResult = confirm("수정 하시겠습니까?");
+				if(confirmResult){
+					$.ajax({
+						url:"http://localhost:9000/gga_plz/board_comment_update.do?bcid="+bcid+"&updateComment="+updateComment,
+						success:function(result) {
+							bid = result;
+							location.replace("http://localhost:9000/gga_plz/board_content.do?bid="+bid+"&page=1");
+						}
+					});
+				}
+			}else {
+				alert("내용을 입력하세요.");
+				$("#editComment5").focus();
+			}	
 		});
 		$("#commentEditStop5").click(function(){
 			$("#editComment5").css("display","none");

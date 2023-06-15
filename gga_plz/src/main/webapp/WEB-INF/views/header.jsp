@@ -7,9 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>gga_plz</title>
-<!-- <script src ="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script> -->
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css"> <!-- gga.css -->
+<script src="http://localhost:9000/gga_plz/js/gga_searchContent.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<!-- 부트스트랩 -->
 </head>
@@ -106,7 +105,7 @@
 				 </div>
 			</div>
 				      <div class="mov_search">
-				          <input type="text" placeholder=" 영화 제목을 검색해 주세요." id="movietitle">
+				          <input type="text" placeholder="검색어를 입력해 주세요." id="searchContent">
 				          <button type="submit" id="btnSearch"><p>검색</p></button>
 				     </div>
 			</div>

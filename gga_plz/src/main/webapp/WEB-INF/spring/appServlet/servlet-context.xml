@@ -32,6 +32,7 @@
 	<beans:bean id="movieService" class="com.gga.service.MovieServiceImpl" />
 	<beans:bean id="pageService" class="com.gga.service.PageServiceImpl" />
 	<beans:bean id="cartService" class="com.gga.service.CartServiceImpl" />
+	<beans:bean id="searchService" class="com.gga.service.SearchServiceImpl" />
 	
 	<!-- multipartResolver -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
