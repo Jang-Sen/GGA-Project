@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page errorPage = "../errorpage.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이페이지 - 내 정보 수정</title>
-<link rel="stylesheet" href="http://localhost:9000/gga_test2/css/gga.css">
-<script src="http://localhost:9000/gga_test2/js/jquery-3.6.4.min.js"></script>
-<script src="http://localhost:9000/gga_test2/js/gga_javascript.js"></script> <!-- gga_javascript.js -->
-<script src="http://localhost:9000/gga_test2/js/gga_jquery.js"></script>
+<link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css">
+<script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
+<script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
+<script src="http://localhost:9000/gga_plz/js/jangwon.js"></script> <!-- gga_jquery.js -->
+<script src="http://localhost:9000/gga_plz/js/gga_javascript.js"></script> <!-- gga_javascript.js -->
 </head>
 <style>
 @media (min-width: 768px) {
@@ -51,11 +53,11 @@
 					</li>
 					<li>
 						<label>이름</label>
-						<input type="text" name="name" class="input1" id="name" value="${ memberVo.name }" placeholder="저장값" disabled>
+						<input type="text" name="name" class="input1" id="name" value="${ memberVo.name }" disabled>
 					</li>
 					<li>
 						<label>생년월일</label>
-						<input type="text" name="birth" class="input1" id="birth" value="${ memberVo.birth }" numberOnly placeholder="저장값" disabled>
+						<input type="text" name="birth" class="input1" id="birth" value="${ memberVo.birth }" numberOnly disabled>
 					</li>
 					<li>
 						<label>성별</label>
@@ -67,7 +69,7 @@
 						<input type="radio" name="tel" value="skt"><span>SKT</span>
 						<input type="radio" name="tel" value="kt"><span>KT</span>
 						<input type="radio" name="tel" value="lgu+"><span>LG U+</span>
-						<input type="text" name="phone" id="phone" value="${ memberVo.phone }" numberOnly>				
+						<input type="text" name="phone" id="phone" value="${ memberVo.phone }" maxlength="11" numberOnly placeholder="'-'없이 모두 입력">				
 					</li>
 					<li>
 						<label>이메일</label>
@@ -83,14 +85,15 @@
 					</li>
 					<li>
 						<label>차량번호</label>
-						<input type="text" name="car1" id="car1" class="input1" placeholder= "예) 00가">
-						<input type="text" name="car2" id="car2" class="input1" numberOnly placeholder= "예) 0000">
+						<input type="text" name="car1" id="car1" class="input1" maxlength="3" placeholder= "예) 00가">
+						<input type="text" name="car2" id="car2" class="input1" maxlength="4" numberOnly placeholder= "예) 0000">
 					</li>
 				</ul>
+				<div class="container text-center">
 					<a href="mypage.do">
-						<button type="button" class="btn_style">취소</button>
-					</a>
-					<button type="submit" class= "btn_style">저장</button>
+						<button type="button" class="btn btn-outline-secondary">취소</button></a>
+					<button type="submit" id="updatebtn" class= "btn btn-outline-secondary">저장</button>
+				</div>
 			</form>
 		</section>
 	</div>
