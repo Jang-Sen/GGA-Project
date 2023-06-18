@@ -40,7 +40,10 @@
 		<div class="login_title">
 			<img src="http://localhost:9000/gga_plz/images/idschtitle.png">
 		</div>
-		<p>입력하신 회원님의 아이디 정보입니다.</p>${ id }
+		<p>입력하신 회원님의 아이디 정보입니다.</p>
+		<div style="text-align : center;">
+			<h3>${ id }</h3>
+		</div>
 	</div>
 	<!-- content -->
 	
