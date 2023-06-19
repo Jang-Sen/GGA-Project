@@ -1,11 +1,17 @@
 package com.gga.vo;
 
 public class CartVo {
-	String cid, pid, id, pname, pfile;
+	String cid, pid, id, pname, pfile, psfile;
 	int rno, qty, totalprice, pprice;
 	
 	
 	
+	public String getPsfile() {
+		return psfile;
+	}
+	public void setPsfile(String psfile) {
+		this.psfile = psfile;
+	}
 	public String getPfile() {
 		return pfile;
 	}

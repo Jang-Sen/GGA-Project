@@ -80,7 +80,7 @@
           <c:forEach var="cartVo" items="${list}">
             <tr>
               <td class="w-25">
-                <img src="${cartVo.pfile}" class="img-fluid img-thumbnail" alt="Sheep">
+                <img src="http://localhost:9000/gga_plz/upload/${cartVo.psfile}" class="img-fluid img-thumbnail" alt="Sheep">
               </td>
               <td>${cartVo.pname}</td>
               <td>${cartVo.pprice}</td>

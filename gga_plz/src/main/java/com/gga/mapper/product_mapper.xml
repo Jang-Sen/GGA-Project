@@ -6,12 +6,12 @@
     
 <mapper namespace="mapper.product">
 	<select id="list" resultType="com.gga.vo.ProductVo">
-		select rownum rno, pid, pname, pprice, pfile from
-		(select pid, pname, pprice, pfile from gga_product order by pid)
+		select rownum rno, pid, pname, pprice, pfile, psfile from
+		(select pid, pname, pprice, pfile, psfile from gga_product order by pid)
 	</select>
 	
 	<select id="content" parameterType="String" resultType="com.gga.vo.ProductVo">
-		select pid, pname, pprice, pfile from gga_product where pid=#{pid}
+		select pid, pname, pprice, pfile, psfile from gga_product where pid=#{pid}
 	</select>
 	
 	<update id="update" parameterType="com.gga.vo.ProductVo">
@@ -19,8 +19,8 @@
 	</update>
 	
 	<insert id="insert" parameterType="com.gga.vo.ProductVo">
-		insert into gga_product(pid, pname, pprice, pfile) 
-		values('P_'||to_char(sequ_gga_product_pid.nextval, 'fm0000'), #{pname}, #{pprice}, #{pfile})
+		insert into gga_product(pid, pname, pprice, pfile, psfile) 
+		values('P_'||to_char(sequ_gga_product_pid.nextval, 'fm0000'), #{pname}, #{pprice}, #{pfile, jdbcType=VARCHAR},#{psfile, jdbcType=VARCHAR})
 	</insert>
 	
 	<delete id="delete" parameterType="String">
