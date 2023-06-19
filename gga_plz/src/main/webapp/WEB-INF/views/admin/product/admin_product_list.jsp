@@ -96,9 +96,7 @@
 					<td>${productVo.pid}</td>
 					<td><a href="admin_product_content.do?pid=${productVo.pid}">${productVo.pname}</a></td>
 					<td>${productVo.pprice}</td>
-					<c:if test="${productVo.psfile != null}">
-						<td><img src="http://localhost:9000/gga_plz/images/${productVo.pfile}"></td>
-					</c:if>
+					<td><c:if test="${productVo.psfile != null}"><img src="http://localhost:9000/gga_plz/images/${productVo.pfile}"></c:if></td>
 				</tr>
 				</c:forEach>
 			</table>

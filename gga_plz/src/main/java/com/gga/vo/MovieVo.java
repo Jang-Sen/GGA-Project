@@ -1,9 +1,66 @@
 package com.gga.vo;
 
+import java.util.ArrayList;
+
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class MovieVo {
 	String movieid, movietitle, genre, moviedday, runtime, audience, movieinfo,
-		director, actor, mainposter, stillcut1, stillcut2, stillcut3, stillcut4, youtube;
+		director, actor, mainposter, stillcut1, stillcut2, stillcut3, stillcut4, youtube
+		, smainposter, sstillcut1, sstillcut2, sstillcut3, sstillcut4;
 	int rno;
+	CommonsMultipartFile[] files;
+	ArrayList<String> mfiles = new ArrayList<String>();
+	ArrayList<String> msfiles = new ArrayList<String>();
+	public CommonsMultipartFile[] getFiles() {
+		return files;
+	}
+	public void setFiles(CommonsMultipartFile[] files) {
+		this.files = files;
+	}
+	public ArrayList<String> getMfiles() {
+		return mfiles;
+	}
+	public void setMfiles(ArrayList<String> mfiles) {
+		this.mfiles = mfiles;
+	}
+	public ArrayList<String> getMsfiles() {
+		return msfiles;
+	}
+	public void setMsfiles(ArrayList<String> msfiles) {
+		this.msfiles = msfiles;
+	}
+	public String getSmainposter() {
+		return smainposter;
+	}
+	public void setSmainposter(String smainposter) {
+		this.smainposter = smainposter;
+	}
+	public String getSstillcut1() {
+		return sstillcut1;
+	}
+	public void setSstillcut1(String sstillcut1) {
+		this.sstillcut1 = sstillcut1;
+	}
+	public String getSstillcut2() {
+		return sstillcut2;
+	}
+	public void setSstillcut2(String sstillcut2) {
+		this.sstillcut2 = sstillcut2;
+	}
+	public String getSstillcut3() {
+		return sstillcut3;
+	}
+	public void setSstillcut3(String sstillcut3) {
+		this.sstillcut3 = sstillcut3;
+	}
+	public String getSstillcut4() {
+		return sstillcut4;
+	}
+	public void setSstillcut4(String sstillcut4) {
+		this.sstillcut4 = sstillcut4;
+	}
+	
 	public String getMovieid() {
 		return movieid;
 	}

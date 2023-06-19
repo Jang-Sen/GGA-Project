@@ -1,13 +1,18 @@
 package com.gga.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.gga.vo.BoardVo;
+import com.gga.vo.MovieVo;
+import com.gga.vo.NoticeVo;
+import com.gga.vo.ProductOrderVo;
 import com.gga.vo.ProductVo;
 
 @Service("fileService")
@@ -17,41 +22,47 @@ public class FileServiceImpl {
 	 * @throws IOException 
 	 * @throws IllegalStateException 
 	 */
-	/*
-	public void multiFileCheck(ProductOrderVo productOrderVo, HttpServletRequest request) throws IllegalStateException, IOException {
+	
+	public void multiFileCheck(MovieVo movieVo, HttpServletRequest request) throws IllegalStateException, IOException {
 		String root_path = request.getSession().getServletContext().getRealPath("/");
 		String attach_path = "\\resources\\upload\\";
 		int count = 0;
-		for(CommonsMultipartFile file : productOrderVo.getFiles()) {
+		for(CommonsMultipartFile file : movieVo.getFiles()) {
 			if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
-				File saveFile = new File(root_path + attach_path+ productOrderVo.getPsfiles().get(count));
+				File saveFile = new File(root_path + attach_path+ movieVo.getMsfiles().get(count));
 				file.transferTo(saveFile);
 			}
 			count++;
 		}
 	}
-	public NoticeVo multiFileCheck(ProductOrderVo productOrderVo) {
+	public MovieVo multiFileCheck(MovieVo movieVo) {
 		
-		for(CommonsMultipartFile file : productOrderVo.getFiles()) {
+		for(CommonsMultipartFile file : movieVo.getFiles()) {
 			if(!file.getOriginalFilename().equals("")) {
 				UUID uuid = UUID.randomUUID();
-				productOrderVo.getNfiles().add(file.getOriginalFilename());
-				productOrderVo.getNsfiles().add(uuid+"_"+file.getOriginalFilename());
+				movieVo.getMfiles().add(file.getOriginalFilename());
+				movieVo.getMsfiles().add(uuid+"_"+file.getOriginalFilename());
 			} else {
-				productOrderVo.getNfiles().add("");
-				productOrderVo.getNsfiles().add("");
+				movieVo.getMfiles().add("");
+				movieVo.getMsfiles().add("");
 			}
 		}
 		
-		productOrderVo.setNfile1(productOrderVo.getNfiles().get(0));
-		productOrderVo.setNsfile1(productOrderVo.getNsfiles().get(0));
-		productOrderVo.setNfile2(productOrderVo.getNfiles().get(1));
-		productOrderVo.setNsfile2(productOrderVo.getNsfiles().get(1));
+		movieVo.setMainposter(movieVo.getMfiles().get(0));
+		movieVo.setSmainposter(movieVo.getMsfiles().get(0));
+		movieVo.setStillcut1(movieVo.getMfiles().get(1));
+		movieVo.setSstillcut1(movieVo.getMsfiles().get(1));
+		movieVo.setStillcut2(movieVo.getMfiles().get(2));
+		movieVo.setSstillcut2(movieVo.getMsfiles().get(2));
+		movieVo.setStillcut3(movieVo.getMfiles().get(3));
+		movieVo.setSstillcut3(movieVo.getMsfiles().get(3));
+		movieVo.setStillcut4(movieVo.getMfiles().get(4));
+		movieVo.setSstillcut4(movieVo.getMsfiles().get(4));
 		
 		
-		return productOrderVo;
+		return movieVo;
 	}
-	*/
+	
 	/**
 	 * fileDelete ��� - ���� ���� 
 	 */
@@ -64,7 +75,6 @@ public class FileServiceImpl {
 		//������ �����ϸ� ������ ����
 		if(oldFileName != null &&  !oldFileName.equals("")) { //���ο� ���� ����
 			File deleteFile = new File(root_path + attach_path+ oldFileName);
-System.out.println(root_path + attach_path+ oldFileName);			
 			if(deleteFile.exists()) {
 				deleteFile.delete();
 			}
