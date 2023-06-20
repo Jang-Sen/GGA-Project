@@ -2,11 +2,11 @@ $(document).ready(function(){
 
 	/* 윈도우 창 */
 	$("#findIdBtn").click(function(){
-		window.open("login_idFind.do", "_blank", "width=1000, height=550");
+		window.open("login_idFind.do", "_blank", "width=600, height=550");
 	}); // findIdBtn
 	
 	$("#findPwBtn").click(function(){
-		window.open("login_pwFind.do", "_blank", "width=1000, height=550");
+		window.open("login_pwFind.do", "_blank", "width=600, height=580");
 	}); // findPwBtn
 
 
@@ -85,7 +85,7 @@ $(document).ready(function(){
 	}); // btnFindPw
 	
 	/**
-	 * 회원가입
+	 * 내 정보 수정
 	 */
 	$("#updatebtn").click(function(){
 		if ($("#pass").val() == ""){

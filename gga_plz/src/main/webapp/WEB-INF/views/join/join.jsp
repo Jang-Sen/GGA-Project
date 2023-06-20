@@ -96,7 +96,7 @@
 					</li>
 					<li>
 						<label>차량번호</label>
-						<input type="text" name="car1" id="car1" class="input1" placeholder= "예) 00가">
+						<input type="text" name="car1" id="car1" class="input1" maxlength="3" placeholder= "예) 00가">
 						<input type="text" name="car2" id="car2" class="input1" maxlength="4" numberOnly placeholder= "예) 0000">
 					</li>
 					<li>

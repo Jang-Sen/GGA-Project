@@ -32,15 +32,27 @@
 	margin-right:20px;
 	width:130px;
 }
+
+.fmsg{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
 </style>
 
 <body>
 	<!-- content -->
 	<div class="container">
 		<div class="login_title">
-			<img src="http://localhost:9000/gga_plz/images/idschtitle.png">
+			<img src="http://localhost:9000/gga_plz/images/passschtitle.png">
 		</div>
-		<p>입력하신 회원님의 비밀번호 정보입니다.</p>${ pass }
+		<p>입력하신 회원님의 비밀번호 정보입니다.</p>
+		<div style="text-align : center;">
+			<br><br><br><h3>${ pass }</h3>
+		</div>
+		<div class="fmsg">
+			<p>로그인 후 '마이페이지', '내 정보 수정'에서 <strong><span style="color: red;">반드시</span></strong> 비밀번호 변경을 해주세요.</p>
+		</div>
 	</div>
 	<!-- content -->
 	
