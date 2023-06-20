@@ -39,12 +39,18 @@ public class MypageController {
 	public String mypage_update_proc(MemberVo memberVo) {
 		String viewName = "";
 		
-		if (memberService.getUpdate(memberVo) == 1) {
-			viewName = "redirect:/mypage.do";
-		} else if (memberVo == null) {
-			// error
+		try {
+			
+			if (memberService.getUpdate(memberVo) == 1) {
+				viewName = "redirect:/mypage.do";
+			}
+		} catch (Exception e) { 
+			System.out.println("에러발생");
 			viewName = "redirect:/error.do";
+		}finally {
+			System.out.println("11");
 		}
+
 		
 		return viewName;
 	}

@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+	/* 윈도우 창 */
+	$("#findIdBtn").click(function(){
+		window.open("login_idFind.do", "_blank", "width=600, height=550");
+	}); // findIdBtn
+	
+	$("#findPwBtn").click(function(){
+		window.open("login_pwFind.do", "_blank", "width=600, height=580");
+	}); // findPwBtn
+
+
 	/* 아이디 찾기 입력 */
 	$("#btnFindId").click(function(){
 		var name = $("#name").val();
@@ -26,8 +36,7 @@ $(document).ready(function(){
 						alert("존재하지 않는 정보입니다.");
 						location.href="login_idFind.do";
 					} else {
-						alert(result);
-						location.href="login.do";
+						location.href="login_idSelect.do?id=" + result;
 					}
 				}
 				
@@ -67,13 +76,58 @@ $(document).ready(function(){
 						alert("존재하지 않는 정보입니다.");
 						location.href="login_pwFind.do";
 					} else {
-						alert(result);
-						location.href="login.do";
+						location.href="login_pwSelect.do?pass=" + result;
 					}
 				}
 			}); // ajax
 		}
 					
 	}); // btnFindPw
+	
+	/**
+	 * 내 정보 수정
+	 */
+	$("#updatebtn").click(function(){
+		if ($("#pass").val() == ""){
+			alert("비밀번호를 입력해주세요.");
+			$("#pass").focus();
+			return false;
+		} else if ($("#cpass").val() == ""){
+			alert("비밀번호 확인을 입력해주세요.");
+			$("#cpass").focus();
+			return false;
+		} else if ($("input[name = 'gender']:checked").length == 0){
+			alert("성별을 선택해주세요.");
+			return false;
+		} else if ($("input[name = 'tel']:checked").length == 0){
+			alert("통신사를 선택해주세요.");
+			return false;
+		} else if ($("#phone").val() == ""){
+			alert("번호를 입력해주세요.");
+			$("#phone").focus();
+			return false;
+		} else if ($("#email1").val() == ""){
+			alert("이메일을 입력해주세요.");
+			$("#email1").focus();
+			return false;
+		} else if ($("#email2").val() == ""){
+			alert("주소를 입력 또는 선택해주세요.");
+			$("#email3").focus();
+			return false;
+		} else if ($("#car1").val() == ""){
+			alert("차량번호를 입력해주세요.");
+			$("#car1").focus();
+			return false;
+		} else if ($("#car2").val() == ""){
+			alert("차량번호를 입력해주세요.");
+			$("#car2").focus();
+			return false;
+		} else{
+			
+			mp_updateForm.submit();
+		}
+	}); // btnJoin
+	
+	
 	
 }); // ready

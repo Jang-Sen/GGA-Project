@@ -64,7 +64,7 @@ public class LoginController {
 		
 		if(svo == null) {
 			model.addObject("loginFail", "nope");
-			model.setViewName("login/login_fail");
+			model.setViewName("redirect:/login_fail.do");
 		} else if (svo.getLoginResult() == 1) {
 			session.setAttribute("svo", svo);
 			model.addObject("loginResult", "ok");
@@ -75,7 +75,7 @@ public class LoginController {
 	}
 	
 	/*
-	 * login_idFind - 아이디 찾기
+	 * login_idFind - 아이디 찾기 폼
 	 */
 	@RequestMapping(value="/login_idFind.do", method=RequestMethod.GET)
 	public String login_idFind() {
@@ -83,7 +83,19 @@ public class LoginController {
 	}
 	
 	/*
-	 * login_idFind_proc
+	 * login_idSelect - 아이디 확인
+	 */
+	@RequestMapping(value="/login_idSelect.do", method=RequestMethod.GET)
+	public ModelAndView login_idSelect(String id) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("id", id);
+		mav.setViewName("login/login_idSelect");
+		return mav;
+	}
+	
+	/*
+	 * login_idFind_proc - 아이디 찾기
 	 */
 	@RequestMapping(value="/login_idFind_proc.do", method=RequestMethod.GET)
 	@ResponseBody
@@ -92,7 +104,7 @@ public class LoginController {
 	}
 	
 	/*
-	 * login_pwFind - 비밀번호 찾기
+	 * login_pwFind - 비밀번호 찾기 폼
 	 */
 	@RequestMapping(value="/login_pwFind.do", method=RequestMethod.GET)
 	public String login_pwFind() {
@@ -100,7 +112,19 @@ public class LoginController {
 	}
 	
 	/*
-	 * login_pwFind_proc 비밀번호 찾기 후 수정
+	 * login_passSelect - 비밀번호 확인
+	 */
+	@RequestMapping(value="/login_pwSelect.do", method=RequestMethod.GET)
+	public ModelAndView login_passSelect(String pass) {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("pass", pass);
+		mav.setViewName("login/login_pwSelect");
+		return mav;
+	}
+	
+	/*
+	 * login_pwFind_proc - 비밀번호 찾기
 	 */
 	@RequestMapping(value="/login_pwFind_proc.do", method=RequestMethod.GET)
 	@ResponseBody
