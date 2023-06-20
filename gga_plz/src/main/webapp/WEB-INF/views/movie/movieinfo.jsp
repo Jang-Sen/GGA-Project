@@ -28,15 +28,27 @@
 	width:450px;
 	height:700px;
 }
-table img{
+.movieinfotable img{
 	height:50px;
 	width:117px;
-	margin:0 50px 50px 0;
+	margin:25px 50px 25px 0;
 }
 .orderbtn{
 	width:200px;
 	heigth:110px;
 	margin:50px 125px;	
+}
+
+.movie_info2 .movieinfoback{
+	background-image: url(http://localhost:9000/gga_plz/images/ddaom.png);
+	background-size: 100%;
+	background-position: center top -50px;
+}
+
+#movieinfobtn{
+	width:200px;
+	height: 90px;
+	margin-top: 10px;
 }
 </style>
 
@@ -57,7 +69,7 @@ table img{
 						<img class="john" src="http://localhost:9000/gga_plz/images/${movieVo.mainposter}">
 					</div>
 					<div class="col">
-						<table>
+						<table class="movieinfotable">
 							<tr>
 								<th><img src="http://localhost:9000/gga_plz/images/desctitle.png"></th>
 								<td>${movieVo.movietitle}</td>
@@ -92,15 +104,17 @@ table img{
 			
 			<div>
 				<a class="headerorderbtn">
-					<img class="orderbtn" src="http://localhost:9000/gga_plz/images/orderbtn.png"></a>
+					<img class="orderbtn" src="http://localhost:9000/gga_plz/images/neworderbtn.png" id="movieinfobtn"></a>
 			</div>
 			<!-- </section> -->
 			
 			<section class="movie_info2">
 			<div>
-				<table border="1">
-					<tr>
-						<td>${movieVo.movieinfo}</td>
+				<table class="table">
+					<tr class="movieinfoback">
+						<td></td>
+						<td style="width: 80%;">${movieVo.movieinfo}</td>
+						<td></td>
 					</tr>
 				</table>
 				<!-- <table border="1">
@@ -118,22 +132,22 @@ table img{
 			</div>
 			<section class="movie_info3">
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut1}">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut1.jpg">
 					<img alt="cut1" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut1}" width="250" height="210">
 				</a>
 			</div>		
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut2}">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut2.jpg">
 					<img alt="cut2" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut2}" width="250" height="210">
 				</a>
 			</div>		
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut3}">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut3.jpg">
 					<img alt="cut3" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut3}" width="250" height="210">
 				</a>
 			</div>		
 			<div>
-				<a target="_blank" href="http://localhost:9000/gga_plz/images/${movieVo.stillcut4}">
+				<a target="_blank" href="http://localhost:9000/gga_plz/images/johncut4.jpg">
 					<img alt="cut4" src="http://localhost:9000/gga_plz/images/${movieVo.stillcut4}" width="250" height="210">
 				</a>
 			</div>		

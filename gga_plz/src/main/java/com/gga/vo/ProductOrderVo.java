@@ -1,10 +1,17 @@
 package com.gga.vo;
 
 public class ProductOrderVo {
-	String pid, pname, pfile, cid, id, poid, podate, qty, pprice;
+	String pid, pname, pfile, cid, id, poid, podate, qty, pprice, psfile;
 	int rno, totalprice;
 	int[] qtyList;
 	String[] pidList;
+	
+	public String getPsfile() {
+		return psfile;
+	}
+	public void setPsfile(String psfile) {
+		this.psfile = psfile;
+	}
 	public int getTotalprice() {
 		return totalprice;
 	}

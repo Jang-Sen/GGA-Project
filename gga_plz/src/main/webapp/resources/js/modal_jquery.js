@@ -26,7 +26,7 @@ $(document).on('click', '#modalkakaopay', function() {
 		  pnameArray: $('.pname').map(function() { return $(this).val(); }).get(),
 		  ppriceArray: $('.pprice').map(function() { return $(this).val(); }).get(),
 		  qtyArray: $('.qtyy').map(function() { return $(this).val(); }).get(),
-		  pfileArray: $('.pfile').map(function() { return $(this).val(); }).get()
+		  pfileArray: $('.pfile').map(function() { return $(this).val(); }).get(),
 		};
 		var IMP = window.IMP; 
         IMP.init("imp71285848"); 

@@ -27,10 +27,10 @@
 	
 	<insert id="insert">
 		insert into gga_movie(movieid, movietitle, genre, moviedday, runtime, audience, movieinfo, director, actor, 
-								mainposter, stillcut1, stillcut2, stillcut3,stillcut4, youtube) 
+								mainposter, stillcut1, stillcut2, stillcut3,stillcut4, youtube, smainposter, sstillcut1, sstillcut2, sstillcut3,sstillcut4) 
 		values('MOVIE_'||to_char(sequ_gga_movieid.nextval, 'fm0000'), #{movietitle},#{genre},#{moviedday},
 				#{runtime},0,#{movieinfo},#{director},#{actor},#{mainposter},#{stillcut1},#{stillcut2},#{stillcut3},
-				#{stillcut4},#{youtube})
+				#{stillcut4},#{youtube},#{smainposter},#{sstillcut1},#{sstillcut2},#{sstillcut3},#{stillcut4})
 	</insert>
 	
 	<update id="update" parameterType="com.gga.vo.MovieVo">

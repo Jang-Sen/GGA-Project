@@ -47,7 +47,7 @@
 		<h1>상품 등록</h1>
 		</div>
 		<section class="product">
-			<form name="productVo" action="admin_product_register.do" method="post">
+			<form name="productVo" action="admin_product_register.do" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered" style="width: 90%;">
 				<tr>
 					<th>상품명</th>
@@ -59,7 +59,7 @@
 				</tr>
 				<tr>
 					<th>이미지</th>
-					<td><input type="text" name="pfile"></td>
+					<td><input type="file" name="file1"></td>
 				</tr>
 				<tr>
 					<td colspan="2">

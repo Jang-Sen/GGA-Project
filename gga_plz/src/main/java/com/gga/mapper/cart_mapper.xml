@@ -6,7 +6,7 @@
     
 <mapper namespace="mapper.cart">
 	<select id="list" resultType="com.gga.vo.CartVo" parameterType="String">
-		select p.pid pid, pname, pprice, qty, (pprice*qty) totalprice, p.pfile pfile, cid 
+		select p.pid pid, pname, pprice, qty, (pprice*qty) totalprice, p.pfile pfile, cid, psfile 
 		from gga_cart c, gga_product p 
 		where c.pid=p.pid and id=#{id}
 	</select>
