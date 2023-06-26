@@ -55,7 +55,7 @@ $(document).ready(function(){
 	
 	$("#btnBoardComment").click(function(){
 			if($("#userComment").val() == "") {
-				alert("뎃글을 입력하세요.");
+				alert("댓글을 입력하세요.");
 				$("#userComment").focus();
 				return false;
 			}else{

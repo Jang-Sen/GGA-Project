@@ -28,48 +28,7 @@ public class MypageController {
 	
 	@Autowired
 	ProductOrderService productOrderService;
-	
-	@Autowired
-	MemberService memberService;
-	
-	/**
-	 * mypage_update_proc.do
-	 */
-	@RequestMapping(value="/mypage_update_proc.do", method=RequestMethod.POST)
-	public String mypage_update_proc(MemberVo memberVo) {
-		String viewName = "";
-		
-		try {
-			
-			if (memberService.getUpdate(memberVo) == 1) {
-				viewName = "redirect:/mypage.do";
-			}
-		} catch (Exception e) { 
-			System.out.println("에러발생");
-			viewName = "redirect:/error.do";
-		}finally {
-			System.out.println("11");
-		}
 
-		
-		return viewName;
-	}
-	
-	/**
-	 * mypage_update.do
-	 */
-	@RequestMapping(value="/mypage_update.do", method=RequestMethod.GET)
-	public ModelAndView mypage_update(HttpSession session) {
-		SessionVo svo = (SessionVo)session.getAttribute("svo");
-		ModelAndView mav = new ModelAndView();
-		MemberVo memberVo = memberService.getMypageUpdate(svo.getId());
-		
-		mav.addObject("memberVo", memberVo);
-		mav.setViewName("/mypage/mypage_update");
-		
-		return mav;
-	}
-	
 	/**
 	 *	mypage_poster_proc.do
 	 */
@@ -122,7 +81,6 @@ public class MypageController {
 		model.addObject("polist", polist);
 		}
 		model.setViewName("/mypage/mypage");
-		
 		
 		return model;
 	}

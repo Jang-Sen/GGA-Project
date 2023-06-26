@@ -27,25 +27,25 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	
-	// Board_comment_update_result (뎃글 업데이트 결과)
+	// Board_comment_update_result (댓글 업데이트 결과)
 	@Override
 	public int getCommentUpdateResult(String bcid, String updateComment) {
 		return boardDao.commentUpdateResult(bcid,updateComment);
 	}
 	
-	// Board_comment_delete_result (뎃글 삭제 결과)
+	// Board_comment_delete_result (댓글 삭제 결과)
 	@Override
 	public int getCommentDeleteResult(String bcid) {
 		return boardDao.commentDeleteResult(bcid);
 	}
 	
-	// Board_comment_delete_select (뎃글 삭제전 Bid 값 추출)
+	// Board_comment_delete_select (댓글 삭제전 Bid 값 추출)
 	@Override
 	public String getCommentSelect(String bcid) {
 		return boardDao.commentSelect(bcid);
 	}
 	
-	// Board_comment_write (뎃글 작성 저장)
+	// Board_comment_write (댓글 작성 저장)
 	@Override
 	public int getCommentWriteResult(BoardCommentVo commentVo) {
 		return boardDao.commentInsert(commentVo);

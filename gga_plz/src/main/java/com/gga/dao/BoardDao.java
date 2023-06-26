@@ -23,7 +23,7 @@ public class BoardDao {
 		return sqlSession.selectOne("mapper.board.commentMasterRowCount", id);
 	}
 	
-	// 마이페이지 뎃글 조회
+	// 마이페이지 댓글 조회
 	public List<BoardVo> commentMaster(int startCount, int endCount, String id) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("startCount", startCount);
@@ -32,7 +32,7 @@ public class BoardDao {
 		return sqlSession.selectList("mapper.board.commentMaster", param);
 	}
 	
-	// 뎃글 업데이트 결과
+	// 댓글 업데이트 결과
 	public int commentUpdateResult(String bcid, String updateComment) {
 		Map<String, String> param = new HashMap<String,String>();
 		param.put("bcid", bcid);
@@ -40,12 +40,12 @@ public class BoardDao {
 		return sqlSession.update("mapper.board.commentUpdate", param);
 	}
 	
-	// 뎃글 삭제 결과
+	// 댓글 삭제 결과
 	public int commentDeleteResult(String bcid) {
 		return sqlSession.delete("mapper.board.commentDelete", bcid);
 	}
 	
-	// 뎃글 삭제 전 Bid 추출
+	// 댓글 삭제 전 Bid 추출
 	public String commentSelect(String bcid) {
 		return sqlSession.selectOne("mapper.board.commentSelect", bcid);
 	}
