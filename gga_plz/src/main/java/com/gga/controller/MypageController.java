@@ -26,6 +26,7 @@ public class MypageController {
 	
 	@Autowired
 	ProductOrderService productOrderService;
+	
 	/**
 	 *	mypage_poster_proc.do
 	 */
@@ -78,7 +79,6 @@ public class MypageController {
 		model.addObject("polist", polist);
 		}
 		model.setViewName("/mypage/mypage");
-		
 		
 		return model;
 	}

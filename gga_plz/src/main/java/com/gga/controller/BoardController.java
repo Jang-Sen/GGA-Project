@@ -32,9 +32,9 @@ public class BoardController {
 	@Autowired
 	private PageServiceImpl pageService;
 	
-	// board_master_json_data.do - 마이페이지 보드 뎃글
+	// board_master_json_data.do - 마이페이지 보드 댓글
 	@ResponseBody
-	@RequestMapping(value="/board_master_json_data.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board_master_json_data.do", method=RequestMethod.GET, produces="text/plain;charset=UTF-8")
 	public String board_master_json_data(String page, String id) {
 		Map<String, Integer> param = pageService.getPageResult(page, "boardMaster", boardService, id);
 		ArrayList<BoardVo> list = boardService.getCommentMaster(param.get("startCount"), param.get("endCount"), id);
@@ -61,7 +61,7 @@ public class BoardController {
 		return new Gson().toJson(jlist);
 	}
 	
-//	 board_comment_update.do - 보드 뎃글 업데이트
+//	 board_comment_update.do - 보드 댓글 업데이트
 	@ResponseBody
 	@RequestMapping(value="/board_comment_update.do", method=RequestMethod.GET)
 	public String board_comment_update(String bcid, String updateComment) {
@@ -72,7 +72,7 @@ public class BoardController {
 		return bid;
 	}
 	
-	// board_comment_delete.do - 보드 뎃글삭제
+	// board_comment_delete.do - 보드 댓글삭제
 	@ResponseBody
 	@RequestMapping(value="/board_comment_delete.do", method=RequestMethod.GET)
 	public String board_comment_delete(String bcid) {

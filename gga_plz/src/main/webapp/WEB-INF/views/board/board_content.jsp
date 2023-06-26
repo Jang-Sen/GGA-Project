@@ -167,7 +167,7 @@ section.board form table.table img.scoreImg {
 				<input type="hidden" name="bid" value="${boardVo.bid }">
 				<table border="3" class="comment_box">
 					<tr>
-						<th colspan="3">뎃글 창</th>
+						<th colspan="3">댓글 창</th>
 					</tr>
 					<c:if test="${totals == 0}">
 					<tr>

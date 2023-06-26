@@ -3,11 +3,11 @@ $(document).ready(function(){
 	 6월 7일 추가 커맨트 crud /
 	**********************************/
 	
-	/*** 뎃글 삭제 버튼 ***/
+	/*** 댓글 삭제 버튼 ***/
 	
 	$("#commentDelete1").click(function(){
 		var bcid = $("#hiddenBcid1").text();
-		var confirmResult = confirm("뎃글을 삭제할까요?");
+		var confirmResult = confirm("댓글을 삭제할까요?");
 		if(confirmResult) {
 			$.ajax({
 				url:"http://localhost:9000/gga_plz/board_comment_delete.do?bcid="+bcid,
@@ -20,7 +20,7 @@ $(document).ready(function(){
 	});
 	$("#commentDelete2").click(function(){
 		var bcid = $("#hiddenBcid2").text();
-		var confirmResult = confirm("뎃글을 삭제할까요?");
+		var confirmResult = confirm("댓글을 삭제할까요?");
 		if(confirmResult) {
 			$.ajax({
 				url:"http://localhost:9000/gga_plz/board_comment_delete.do?bcid="+bcid,
@@ -33,7 +33,7 @@ $(document).ready(function(){
 	});
 	$("#commentDelete3").click(function(){
 		var bcid = $("#hiddenBcid3").text();
-		var confirmResult = confirm("뎃글을 삭제할까요?");
+		var confirmResult = confirm("댓글을 삭제할까요?");
 		if(confirmResult) {
 			$.ajax({
 				url:"http://localhost:9000/gga_plz/board_comment_delete.do?bcid="+bcid,
@@ -46,7 +46,7 @@ $(document).ready(function(){
 	});
 	$("#commentDelete4").click(function(){
 		var bcid = $("#hiddenBcid4").text();
-		var confirmResult = confirm("뎃글을 삭제할까요?");
+		var confirmResult = confirm("댓글을 삭제할까요?");
 		if(confirmResult) {
 			$.ajax({
 				url:"http://localhost:9000/gga_plz/board_comment_delete.do?bcid="+bcid,
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	});
 	$("#commentDelete5").click(function(){
 		var bcid = $("#hiddenBcid5").text();
-		var confirmResult = confirm("뎃글을 삭제할까요?");
+		var confirmResult = confirm("댓글을 삭제할까요?");
 		if(confirmResult) {
 			$.ajax({
 				url:"http://localhost:9000/gga_plz/board_comment_delete.do?bcid="+bcid,
@@ -71,7 +71,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	/*** 뎃글 업데이트 버튼 ***/
+	/*** 댓글 업데이트 버튼 ***/
 	
 	$("#edit1").click(function(){
 		var select = $('.commentEdit').attr('id');
