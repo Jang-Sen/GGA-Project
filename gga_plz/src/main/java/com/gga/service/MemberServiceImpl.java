@@ -50,5 +50,16 @@ public class MemberServiceImpl implements MemberService {
 	public String findPw(MemberVo memberVo) {
 		return memberDao.select_pw(memberVo);
 	}
+	
+	@Override
+	public MemberVo getMypageUpdate(String id) {
+		return memberDao.select(id);
+	}
+	
+	@Override
+	public int getUpdate(MemberVo memberVo) {
+		return memberDao.update(memberVo);
+	}
+
 
 }

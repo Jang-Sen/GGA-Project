@@ -74,7 +74,7 @@ public class ProductOrderController {
 
 	@RequestMapping(value = "/product_order_proc.do", method = RequestMethod.GET)
 	@ResponseBody
-	public String product_order_proc(String pprice, String pid, String pname, String pfile, HttpServletRequest request, 
+	public String product_order_proc(String pprice, String pid, String pname, String pfile, String psfile, HttpServletRequest request, 
 			HttpServletResponse response, 
 			Object handler) {
 		HttpSession session = request.getSession();
@@ -86,6 +86,7 @@ public class ProductOrderController {
 		param.put("pid", pid);
 		param.put("pname", pname);
 		param.put("pfile", pfile);
+		param.put("psfile", pfile);
 		param.put("poid", uuid);
 		param.put("id", svo.getId());
 		
@@ -93,12 +94,15 @@ public class ProductOrderController {
 	}
 
 	@RequestMapping(value = "/productordercon.do", method = RequestMethod.GET)
-	public ModelAndView productordercon() {
+	public ModelAndView productordercon(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
-
-		List<ProductOrderVo> list = productOrderService.getList();
-
-		model.addObject("list", list);
+		HttpSession session = request.getSession();
+		SessionVo svo = (SessionVo)session.getAttribute("svo");
+		ArrayList<ProductOrderVo> polist = new ArrayList<ProductOrderVo>();
+		if(svo != null) {
+			polist = productOrderService.selectProductOrderMypage(svo.getId());
+			model.addObject("list", polist);
+		}
 		model.setViewName("/store/productordercon");
 
 		return model;

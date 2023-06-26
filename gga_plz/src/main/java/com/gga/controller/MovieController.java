@@ -2,6 +2,8 @@ package com.gga.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gga.dao.MovieDao;
+import com.gga.service.FileServiceImpl;
 import com.gga.service.MovieServiceImpl;
 import com.gga.vo.MovieVo;
 
@@ -17,6 +20,9 @@ public class MovieController {
 	
 	@Autowired
 	private MovieServiceImpl movieService;
+	
+	@Autowired
+	private FileServiceImpl fileService;
 	/**
 	 * admin => movie_delete_proc.do
 	 */
@@ -77,11 +83,13 @@ public class MovieController {
 	 * admin -> movie_register_proc.do
 	 */
 	@RequestMapping(value="/movie_register_proc.do", method=RequestMethod.POST)
-	public String movie_register_proc(MovieVo movieVo) {
+	public String movie_register_proc(MovieVo movieVo, HttpServletRequest request) throws Exception {
 		String viewName = "";
-		int result = movieService.getMovieInsert(movieVo);
-		
+		int result = movieService.getMovieInsert(fileService.multiFileCheck(movieVo));
 		if(result == 1) {
+			if(!movieVo.getFiles()[0].getOriginalFilename().equals("")) {
+				fileService.multiFileCheck(movieVo, request);
+			}
 			viewName = "redirect:/movie_list.do";
 		} else {
 			//��� ���� ������

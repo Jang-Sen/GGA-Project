@@ -13,4 +13,6 @@ public interface MemberService {
 	ArrayList<MemberVo> getSelect(int startCount, int endCount);
 	String findId(MemberVo memberVo);
 	String findPw(MemberVo memberVo);
+	MemberVo getMypageUpdate(String id);
+	int getUpdate(MemberVo memberVo);
 }

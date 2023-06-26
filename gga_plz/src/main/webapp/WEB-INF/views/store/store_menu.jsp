@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,10 +65,18 @@
 		<img src="http://localhost:9000/gga_plz/images/storetitle.png">
 		</div>
 		<br>
-		<div class="store_cart"><button type="button" id="store_cart" class="btn btn-success" data-toggle="modal" data-target="#cartModal">
-		<img src="http://localhost:9000/gga_plz/images/cartimg.png">
-		</button>
-		</div>
+		<c:choose>
+			<c:when test="${svo == null }">
+				<div class="store_cart">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/cartimg.png">
+								</a></div>
+							</c:when>
+			<c:otherwise>
+				<div class="store_cart"><button type="button" id="store_cart" class="btn btn-success" data-toggle="modal" data-target="#cartModal">
+				<img src="http://localhost:9000/gga_plz/images/cartimg.png"></button></div>
+			</c:otherwise>
+		</c:choose>
 		<nav class="menu1">
 			<div class="row">
 				<div class="col">
@@ -77,15 +86,35 @@
 					    <h5 class="card-title">팝콘 콤보</h5>
 					    <p class="card-text">가격 : 15,000<p>
 					    <div class="storebtns">
-					    <a class="cartbtn" data-id="P_0001" id="popcorncombobtn">
-							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
+					    <c:choose>
+					    	<c:when test="${svo == null }">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img class="cartbtnimg" style="width: 135px" src="http://localhost:9000/gga_plz/images/cartbtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+						    <a class="cartbtn" data-id="P_0001" id="popcorncombobtn">
+								<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${svo == null }">
+					    		<a class="cartbtn2" href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/buybtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
 							<a id="buybtn" class="cartbtn2" data-id="P_0001" data-price="15000" data-pname="팝콘 콤보"
-							data-pfile="http://localhost:9000/gga_plz/images/comboset.png">
-    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
-					    </div>
+								data-pfile="comboset.png">
+	    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+	    					</c:otherwise>
+	    				</c:choose>
+						    </div>
 					  </div>
 					</div>
 				</div>
+				
+				
 				<div class="col">
 					<div class="card">
 					  <img src="http://localhost:9000/gga_plz/images/popcorn.png">
@@ -93,15 +122,35 @@
 					    <h5 class="card-title">팝콘 단품</h5>
 					    <p class="card-text">가격 : 5,000</p>
 					    <div class="storebtns">
-					   <a class="cartbtn" data-id="P_0002" id="popcorncombobtn">
-							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0002" data-price="5000" data-pname="팝콘 단품"
-							data-pfile="http://localhost:9000/gga_plz/images/popcorn.png">
-    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+					    <c:choose>
+					    	<c:when test="${svo == null }">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img class="cartbtnimg" style="width: 135px" src="http://localhost:9000/gga_plz/images/cartbtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+							   <a class="cartbtn" data-id="P_0002" id="popcorncombobtn">
+									<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${svo == null }">
+					    		<a class="cartbtn2" href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/buybtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a id="buybtn" class="cartbtn2" data-id="P_0002" data-price="5000" data-pname="팝콘 단품"
+								data-pfile="popcorn.png">
+	    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+    						</c:otherwise>
+    					</c:choose>
 					  </div>
 					  </div>
 					</div>
 				</div>
+				
+				
 				<div class="col">
 					<div class="card">
 					  <img src="http://localhost:9000/gga_plz/images/coke.png">
@@ -109,11 +158,29 @@
 					    <h5 class="card-title">콜라 단품</h5>
 					    <p class="card-text">가격 : 3,000<p>
 					    <div class="storebtns">
-					    <a class="cartbtn" data-id="P_0003">
-							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0003" data-price="3000" data-pname="콜라 단품"
-							data-pfile="http://localhost:9000/gga_plz/images/coke.png">
-    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+					    <c:choose>
+					    	<c:when test="${svo == null }">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img class="cartbtnimg" style="width: 135px" src="http://localhost:9000/gga_plz/images/cartbtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+							    <a class="cartbtn" data-id="P_0003">
+								<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${svo == null }">
+					    		<a class="cartbtn2" href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/buybtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a id="buybtn" class="cartbtn2" data-id="P_0003" data-price="3000" data-pname="콜라 단품"
+								data-pfile="coke.png">
+	    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+    						</c:otherwise>
+    					</c:choose>
 					  </div>
 					  </div>
 					</div>
@@ -128,15 +195,35 @@
 					    <h5 class="card-title">솜사탕</h5>
 					    <p class="card-text">가격 : 5,000<p>
 					    <div class="storebtns">
-					   <a class="cartbtn" data-id="P_0004">
-							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0004" data-price="5000" data-pname="솜사탕"
-							data-pfile="http://localhost:9000/gga_plz/images/cottoncandy.png">
+					     <c:choose>
+					    	<c:when test="${svo == null }">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img class="cartbtnimg" style="width: 135px" src="http://localhost:9000/gga_plz/images/cartbtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+							    <a class="cartbtn" data-id="P_0004">
+								<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${svo == null }">
+					    		<a class="cartbtn2" href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/buybtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a id="buybtn" class="cartbtn2" data-id="P_0004" data-price="5000" data-pname="솜사탕"
+							data-pfile="cottoncandy.png">
     						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+    						</c:otherwise>
+    					</c:choose>
 					  </div>
 					  </div>
 					</div>
 				</div>
+				
+				
 				<div class="col">
 					<div class="card">
 					  <img src="http://localhost:9000/gga_plz/images/ggagiftcard.png">
@@ -144,11 +231,29 @@
 					    <h5 class="card-title">GGA 기프트카드</h5>
 					    <p class="card-text">가격 : 30,000<p>
 					    <div class="storebtns">
-					    <a class="cartbtn" data-id="P_0005">
+					     <c:choose>
+					    	<c:when test="${svo == null }">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img class="cartbtnimg" style="width: 135px" src="http://localhost:9000/gga_plz/images/cartbtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+							    <a class="cartbtn" data-id="P_0005">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0005" data-price="30000" data-pname="GGA 기프트카드"
-							data-pfile="http://localhost:9000/gga_plz/images/ggagiftcard.png">
-    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${svo == null }">
+					    		<a class="cartbtn2" href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/buybtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a id="buybtn" class="cartbtn2" data-id="P_0005" data-price="30000" data-pname="GGA 기프트카드"
+								data-pfile="ggagiftcard.png">
+	    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+    						</c:otherwise>
+    					</c:choose>
 					  </div>
 					  </div>
 					</div>
@@ -160,11 +265,29 @@
 				    <h5 class="card-title">버터구이 오징어</h5>
 				    <p class="card-text">가격 : 5,000<p>
 				    <div class="storebtns">
-				   			 <a class="cartbtn" data-id="P_0006">
+				    <c:choose>
+					    	<c:when test="${svo == null }">
+					    		<a href="http://localhost:9000/gga_plz/login.do">
+									<img class="cartbtnimg" style="width: 135px" src="http://localhost:9000/gga_plz/images/cartbtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+							    <a class="cartbtn" data-id="P_0006">
 							<img class="cartbtnimg" src="http://localhost:9000/gga_plz/images/cartbtn.png"></a>
-							<a id="buybtn" class="cartbtn2" data-id="P_0006" data-price="5000" data-pname="GGA 기프트카드"
-							data-pfile="http://localhost:9000/gga_plz/images/snack.png">
-    						<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${svo == null }">
+					    		<a class="cartbtn2" href="http://localhost:9000/gga_plz/login.do">
+									<img src="http://localhost:9000/gga_plz/images/buybtn.png">
+								</a>
+							</c:when>
+							<c:otherwise>
+									<a id="buybtn" class="cartbtn2" data-id="P_0006" data-price="5000" data-pname="GGA 기프트카드"
+								data-pfile="snack.png">
+    							<img src="http://localhost:9000/gga_plz/images/buybtn.png"></a>
+    						</c:otherwise>
+    					</c:choose>
 				  </div>
 				  </div>
 				</div>

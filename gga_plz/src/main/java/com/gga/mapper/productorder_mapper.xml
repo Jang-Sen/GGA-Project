@@ -25,7 +25,7 @@
 
 	<select id="list" resultType="com.gga.vo.ProductOrderVo">
 		select poid, pname, pprice, qty, (pprice*qty) totalprice, pfile, to_char(podate, 'yy-mm-dd') podate 
-		from gga_product_order
+		from gga_product_order order by podate desc
 	</select>
 	
 	<insert id="oneInsert" parameterType="map">

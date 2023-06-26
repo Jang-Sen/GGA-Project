@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 
 <script src ="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script> <!-- gga_jquery.js -->
@@ -32,36 +32,27 @@
 	margin-right:20px;
 	width:130px;
 }
+
+.fmsg{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
 </style>
 
 <body>
 	<!-- content -->
 	<div class="container">
 		<div class="login_title">
-			<img src="http://localhost:9000/gga_plz/images/idschtitle.png">
+			<img src="http://localhost:9000/gga_plz/images/passschtitle.png">
 		</div>
-		<p>찾으실 회원님의 정보를 입력해주세요.</p>
-		<section class="login">
-			<form name="findIdForm" action="login_idFind_proc.do" method="get" class="loginForm" id="findIdForm">
-				<ul>
-					<li>
-						<label>이름</label>
-						<input type="text" name="name" id="name" class="input1">
-					</li>
-					<li>
-						<label>생년월일</label>
-						<input type="text" name="birth" id="birth" maxlength="6" class="input1" numberOnly placeholder="주민등록번호 앞 6자리">
-					</li>
-					<li>
-						<label>휴대전화</label>
-						<input type="text" name="phone" id="phone" maxlength="11" numberOnly placeholder="'-'없이 모두 입력">
-					</li>
-					<li>
-						<img src="http://localhost:9000/gga_plz/images/schbtn.png" id="btnFindId" class="btnfindproc">
-					</li>
-				</ul>
-			</form>
-		</section>
+		<p>입력하신 회원님의 비밀번호 정보입니다.</p>
+		<div style="text-align : center;">
+			<br><br><br><h3>${ pass }</h3>
+		</div>
+		<div class="fmsg">
+			<p>로그인 후 '마이페이지', '내 정보 수정'에서 <strong><span style="color: red;">반드시</span></strong> 비밀번호 변경을 해주세요.</p>
+		</div>
 	</div>
 	<!-- content -->
 	

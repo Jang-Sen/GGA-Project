@@ -27,6 +27,7 @@
 }
 section.moviemanager table {
 		margin:auto;
+		vertical-align:middle;
 } 
 section.moviemanager table input {
 		width:90%;
@@ -49,7 +50,7 @@ section.moviemanager table button {
 		<h1>영화 등록</h1>
 		</div>
 		<section class="moviemanager">
-			<form name="movieRegister" action="movie_register_proc.do" method="post">
+			<form name="movieRegister" action="movie_register_proc.do" method="post" enctype="multipart/form-data">
 			<table class="table table-bordered" style="width: 90%;">
 				<tr>
 					<th>영화제목</th>
@@ -81,27 +82,27 @@ section.moviemanager table button {
 				</tr>
 				<tr>
 					<th>메인포스터</th>
-					<td><input type="text" name="mainposter" placeholder="파일업로드로 대체 예정"></td>
+					<td><input type="file" name="files" class="btn-outline-secondary"></td>
 				</tr>
 				<tr>
 					<th>스틸컷1</th>
-					<td><input type="text" name="stillcut1" placeholder="파일업로드로 대체 예정"></td>
+					<td><input type="file" name="files" class="btn-outline-secondary"></td>
 				</tr>
 				<tr>
 					<th>스틸컷2</th>
-					<td><input type="text" name="stillcut2" placeholder="파일업로드로 대체 예정"></td>
+					<td><input type="file" name="files" class="btn-outline-secondary"></td>
 				</tr>
 				<tr>
 					<th>스틸컷3</th>
-					<td><input type="text" name="stillcut3" placeholder="파일업로드로 대체 예정"></td>
+					<td><input type="file" name="files" class="btn-outline-secondary"></td>
 				</tr>
 				<tr>
 					<th>스틸컷4</th>
-					<td><input type="text" name="stillcut4" placeholder="파일업로드로 대체 예정"></td>
+					<td><input type="file" name="files" class="btn-outline-secondary"></td>
 				</tr>
 				<tr>
 					<th>예고편</th>
-					<td><input type="text" name="youtube" placeholder="파일업로드로 대체 예정"></td>
+					<td><input type="text" name="youtube" placeholder="주소를 입력해주세요"></td>
 				</tr>
 				<tr>
 					<td colspan="2">

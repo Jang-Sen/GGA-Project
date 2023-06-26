@@ -67,7 +67,7 @@
 			</tr>
 			<c:forEach var="productOrderVo" items="${list}">
 			<tr>
-				<td><img src="${productOrderVo.pfile}"></td>
+				<td><img src="http://localhost:9000/gga_plz/images/${productOrderVo.pfile}"></td>
 				<td>${productOrderVo.pname}</td>
 				<td>${productOrderVo.qty}</td>
 				<td>${productOrderVo.totalprice}</td>

@@ -51,7 +51,7 @@ public class NoticeController {
 		}
 		
 		jlist.add("jlist", jarray);
-		jlist.addProperty("totals", param.get("dbCount"));
+		jlist.addProperty("totals", param.get("totals"));
 		jlist.addProperty("pageSize", param.get("pageSize"));
 		jlist.addProperty("maxSize", param.get("maxSize"));
 		jlist.addProperty("page", param.get("page"));
@@ -96,7 +96,7 @@ public class NoticeController {
 		}
 		
 		jlist.add("jlist", jarray);
-		jlist.addProperty("totals", param.get("dbCount"));
+		jlist.addProperty("totals", param.get("totals"));
 		jlist.addProperty("pageSize", param.get("pageSize"));
 		jlist.addProperty("maxSize", param.get("maxSize"));
 		jlist.addProperty("page", param.get("page"));

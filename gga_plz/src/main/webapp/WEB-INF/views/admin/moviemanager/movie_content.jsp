@@ -39,6 +39,10 @@ section.moviemanager table input {
 section.moviemanager table button {
 	border:1px solid black;
 }
+section.moviemanager table img{
+	width:300px;
+	height: 200px;
+}
 </style>
 
 <body>
@@ -87,23 +91,23 @@ section.moviemanager table button {
 				</tr>
 				<tr>
 					<th>메인포스터</th>
-					<td>${movieVo.mainposter}</td>
+					<td><img src="http://localhost:9000/gga_plz/images/${movieVo.mainposter}"></td>
 				</tr>
 				<tr>
 					<th>스틸컷1</th>
-					<td>${movieVo.stillcut1}</td>
+					<td><img src="http://localhost:9000/gga_plz/images/${movieVo.stillcut1}"></td>
 				</tr>
 				<tr>
 					<th>스틸컷2</th>
-					<td>${movieVo.stillcut2}</td>
+					<td><img src="http://localhost:9000/gga_plz/images/${movieVo.stillcut2}"></td>
 				</tr>
 				<tr>
 					<th>스틸컷3</th>
-					<td>${movieVo.stillcut3}</td>
+					<td><img src="http://localhost:9000/gga_plz/images/${movieVo.stillcut3}"></td>
 				</tr>
 				<tr>
 					<th>스틸컷4</th>
-					<td>${movieVo.stillcut4}</td>
+					<td><img src="http://localhost:9000/gga_plz/images/${movieVo.stillcut4}"></td>
 				</tr>
 				<tr>
 					<th>예고편</th>

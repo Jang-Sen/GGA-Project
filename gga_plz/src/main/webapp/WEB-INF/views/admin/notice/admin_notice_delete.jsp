@@ -31,10 +31,14 @@ text-align:center;
 .admin_notice{
 margin:auto;
 }
-.oscar{
-width:150px;
+.bossbaby1{
+width:170px;
 height:270px;
 position:relative;
+}
+.really{
+font-family:Gothic A1;
+font-weight:500;
 }
 
 </style>
@@ -56,8 +60,8 @@ position:relative;
 			<input type = "hidden" name="nid" value = "${nid}">
 				<table class="delete_table"style="width: 60%;">
 					<tr>					
-						<td>정말로 삭제 하시겠습니까?</td>
-						<img src="http://localhost:9000/gga_plz/images/delete_oscar.png" class="oscar">
+						<td class="really">정말로 삭제 하시겠습니까?</td>
+						<img src="http://localhost:9000/gga_plz/images/bossbaby1.png" class="bossbaby1">
 					</tr>				
 					<tr>
 						<td colspan="5" >

@@ -70,7 +70,7 @@
 	<!-- content -->
 	<div class="container">
 	<div class="product_title">
-		<img src="http://localhost:9000/gga_plz/images/adminmovietitle.png">
+		<img src="http://localhost:9000/gga_plz/images/adminstoretitle.png">
 		</div>
 		<section class="product">
 			<form name="productDeleteForm" action="admin_product_delete.do?pid=${productVo.pid}" method="post">
@@ -88,10 +88,12 @@
 					<th>가격</th>
 					<td>${productVo.pprice}</td>
 				</tr>
+				
 				<tr>
 					<th>이미지</th>
-					<td><img src="${productVo.pfile}"></td>
+						<td><c:if test="${productVo.psfile != null}"><img style="width : 150px"src="http://localhost:9000/gga_plz/images/${productVo.pfile}"></c:if></td>
 				</tr>
+				
 				<tr>
 					<td colspan="2">
 						<a href="admin_product_update.do?pid=${productVo.pid}">

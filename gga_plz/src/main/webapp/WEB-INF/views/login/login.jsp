@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>gga_plz</title>
+<title>로그인</title>
 <script src ="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script> <!-- gga_jquery.js -->
+<script src="http://localhost:9000/gga_plz/js/jangwon.js"></script> <!-- gga_jquery.js -->
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css"> <!-- gga.css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
@@ -65,8 +66,8 @@
 							<img src="http://localhost:9000/gga_plz/images/loginbtn.png" class="loginbtnbtn" id="btnLogin">
 						</li>
 						<li>
-							<span><a href="http://localhost:9000/gga_plz/login_idFind.do">아이디 찾기></a></span>
-							<span><a href="http://localhost:9000/gga_plz/login_pwFind.do">비밀번호 찾기></a></span>
+							<span><a href="#" id="findIdBtn">아이디 찾기></a></span>
+							<span><a href="#" id="findPwBtn">비밀번호 찾기></a></span>
 						</li>
 						<li>
 							<h5>간편로그인</h5>

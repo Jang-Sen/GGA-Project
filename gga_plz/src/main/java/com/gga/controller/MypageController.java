@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gga.service.MemberService;
 import com.gga.service.OrderService;
 import com.gga.service.ProductOrderService;
 import com.gga.vo.BoardVo;
+import com.gga.vo.MemberVo;
 import com.gga.vo.OrderconVo;
 import com.gga.vo.ProductOrderVo;
 import com.gga.vo.SessionVo;
@@ -26,7 +28,7 @@ public class MypageController {
 	
 	@Autowired
 	ProductOrderService productOrderService;
-	
+
 	/**
 	 *	mypage_poster_proc.do
 	 */

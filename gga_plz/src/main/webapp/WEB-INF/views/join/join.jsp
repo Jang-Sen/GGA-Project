@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>gga_plz</title>
+<title>회원가입</title>
 <script src="http://localhost:9000/gga_plz/js/jquery-3.6.4.min.js"></script>
 <script src="http://localhost:9000/gga_plz/js/gga_jquery.js"></script>
 <link rel="stylesheet" href="http://localhost:9000/gga_plz/css/gga.css"> <!-- gga.css -->
@@ -80,7 +80,7 @@
 						<input type="radio" name="tel" value="skt"><span>SKT</span>
 						<input type="radio" name="tel" value="kt"><span>KT</span>
 						<input type="radio" name="tel" value="lgu+"><span>LG U+</span>
-						<input type="text" name="phone" id="phone" maxlength="11" numberOnly>				
+						<input type="text" name="phone" id="phone" maxlength="11" numberOnly placeholder="'-'없이 모두 입력">				
 					</li>
 					<li>
 						<label>이메일</label>
@@ -96,10 +96,9 @@
 					</li>
 					<li>
 						<label>차량번호</label>
-						<input type="text" name="car1" id="car1" class="input1" placeholder= "예) 00가">
+						<input type="text" name="car1" id="car1" class="input1" maxlength="3" placeholder= "예) 00가">
 						<input type="text" name="car2" id="car2" class="input1" maxlength="4" numberOnly placeholder= "예) 0000">
 					</li>
-					<li>
 					<li>
 						<label>영화 장르</label>
 						
